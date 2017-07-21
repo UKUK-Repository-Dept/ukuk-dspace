@@ -111,9 +111,10 @@
                                         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
                                             <xsl:apply-templates select="dri:options"/>
                                         </div>
-
                                     </div>
                                 </div>
+
+				
 
                                 <!--
                             The footer div, dropping whatever extra information is needed on the page. It will
@@ -321,113 +322,109 @@
         </head>
     </xsl:template>
 
+    <xsl:template name="odkladiste">
+    	<div class="navbar-header navbar-right hidden-sm hidden-md hidden-lg" id="mobile-menu-small">
+				<ul class="nav nav-pills pull-left">
+					<li>
+						<form style="display: inline" method="get" action="{$context-path}/discover">
+							<button title="Hledat" class="navbar-toggle navbar-link">
+								<b aria-hidden="true" class="visible-xs glyphicon glyphicon-search"></b>
+							</button>
+						</form>
+					</li>
+					<xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
+                                		<li id="ds-language-selection" class="hidden-sxs dropdown">
+                                    			<xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
+                                    				<button id="language-dropdown-toggle-xs" href="#" role="button" class="dropdown-toggle navbar-toggle navbar-link" data-toggle="dropdown">
+                                        				<b class="visible-xs glyphicon glyphicon-globe" aria-hidden="true"/>
+                                    				</button>
+                                    				<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle-xs" data-no-collapse="true">
+                                        			<xsl:for-each
+                                                			select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
+                                            				<xsl:variable name="locale" select="."/>
+                                            				<li role="presentation" class="visible-sxs">
+                                                				<xsl:if test="$locale = $active-locale">
+                                                    					<xsl:attribute name="class">
+                                                        					<xsl:text>disabled</xsl:text>
+                                                    					</xsl:attribute>
+                                                				</xsl:if>
+                                                				<a>
+                                                    					<xsl:attribute name="href">
+                                                        					<xsl:value-of select="$current-uri"/>
+                                                        					<xsl:text>?locale-attribute=</xsl:text>
+                                                        					<xsl:value-of select="$locale"/>
+                                                    					</xsl:attribute>
+                                                    					<xsl:value-of
+                                                            					select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+                                                				</a>
+                                            				</li>
+                                        			</xsl:for-each>
+                                    				</ul>
+                                		</li>
+                            		</xsl:if>
+					<xsl:choose>
+                                		<xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+                                    		<li class="visible-sxs">
+                                                	<a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']}"><i18n:text>xmlui.EPerson.Navigation.profile</i18n:text></a>
+                                            	</li>
+                                            	<li class="visible-sxs">
+                                                	<a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']}"><i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text></a>
+                                            	</li>
+                                		</xsl:when>
+                                		<xsl:otherwise>
+                                    		<li>
+                                        		<form style="display: inline" action="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']}" method="get">
+                                            			<button class="navbar-toggle navbar-link">
+                                            				<b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
+                                            			</button>
+                                        		</form>
+                                    		</li>
+                                		</xsl:otherwise>
+                            		</xsl:choose>
+				</ul>
+			</div>
+    </xsl:template>
 
-    <!-- The header (distinct from the HTML head element) contains the title, subtitle, login box and various
-        placeholders for header images -->
-    <xsl:template name="buildHeader">
-
-
-        <header>
-            <div class="navbar navbar-default navbar-static-top" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-
-                        <button type="button" class="navbar-toggle" data-toggle="offcanvas">
-                            <span class="sr-only">
-                                <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
-                            </span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    
-                       <!--2.6.2017 <AM> přidán atribut pro dvojjazyčný text loga repozitáře -->
-                        <a href="{$context-path}/" class="navbar-brand">
-                            <!-- <img src="{$theme-path}/images/DSpace-logo-line.svg" />  -->
-                            <img class="img-responsive" src="{$theme-path}/images/DRepozitarUK_Helvetica.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
-                        </a>
-
-
-                        <div class="navbar-header pull-right visible-xs hidden-sm hidden-md hidden-lg">
-                        <ul class="nav nav-pills pull-left ">
-
-                            <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
-                                <li id="ds-language-selection-xs" class="dropdown">
-                                    <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
-                                    <button id="language-dropdown-toggle-xs" href="#" role="button" class="dropdown-toggle navbar-toggle navbar-link" data-toggle="dropdown">
-                                        <b class="visible-xs glyphicon glyphicon-globe" aria-hidden="true"/>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle-xs" data-no-collapse="true">
-                                        <xsl:for-each
-                                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
-                                            <xsl:variable name="locale" select="."/>
-                                            <li role="presentation">
-                                                <xsl:if test="$locale = $active-locale">
-                                                    <xsl:attribute name="class">
-                                                        <xsl:text>disabled</xsl:text>
-                                                    </xsl:attribute>
-                                                </xsl:if>
-                                                <a>
-                                                    <xsl:attribute name="href">
-                                                        <xsl:value-of select="$current-uri"/>
-                                                        <xsl:text>?locale-attribute=</xsl:text>
-                                                        <xsl:value-of select="$locale"/>
-                                                    </xsl:attribute>
-                                                    <xsl:value-of
-                                                            select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
-                                                </a>
-                                            </li>
-                                        </xsl:for-each>
-                                    </ul>
-                                </li>
-                            </xsl:if>
-
-                            <xsl:choose>
-                                <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
-                                    <li class="dropdown">
-                                        <button class="dropdown-toggle navbar-toggle navbar-link" id="user-dropdown-toggle-xs" href="#" role="button"  data-toggle="dropdown">
-                                            <b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
-                                        </button>
-                                        <ul class="dropdown-menu pull-right" role="menu"
-                                            aria-labelledby="user-dropdown-toggle-xs" data-no-collapse="true">
-                                            <li>
-                                                <a href="{/dri:document/dri:meta/dri:userMeta/
-                            dri:metadata[@element='identifier' and @qualifier='url']}">
-                                                    <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{/dri:document/dri:meta/dri:userMeta/
-                            dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
-                                                    <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <li>
-                                        <form style="display: inline" action="{/dri:document/dri:meta/dri:userMeta/
-                            dri:metadata[@element='identifier' and @qualifier='loginURL']}" method="get">
-                                            <button class="navbar-toggle navbar-link">
-                                            <b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
-                                            </button>
-                                        </form>
-                                    </li>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </ul>
-                              </div>
-                    </div>
-
-                    <div class="navbar-header pull-right hidden-xs">
+    <xsl:template name="buildNormalMenu">
+    	<div class="navbar-header navbar-right hidden-xs">
                         <ul class="nav navbar-nav pull-left">
-                              <xsl:call-template name="languageSelection"/>
-                        </ul>
+
+				<xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
+                                                <li id="ds-language-selection" class="hidden-sxs dropdown">
+                                                        <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
+                                                                <button id="language-dropdown-toggle-xs" href="#" role="button" class="dropdown-toggle navbar-toggle navbar-link" data-toggle="dropdown">
+                                                                        <b class="visible-xs glyphicon glyphicon-globe" aria-hidden="true"/>
+                                                                </button>
+                                                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle-xs" data-no-collapse="true">
+                                                                <xsl:for-each
+                                                                        select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
+                                                                        <xsl:variable name="locale" select="."/>
+                                                                        <li role="presentation" class="visible-sxs">
+                                                                                <xsl:if test="$locale = $active-locale">
+                                                                                        <xsl:attribute name="class">
+                                                                                                <xsl:text>disabled</xsl:text>
+                                                                                        </xsl:attribute>
+                                                                                </xsl:if>
+                                                                                <a>
+                                                                                        <xsl:attribute name="href">
+                                                                                                <xsl:value-of select="$current-uri"/>
+                                                                                                <xsl:text>?locale-attribute=</xsl:text>
+                                                                                                <xsl:value-of select="$locale"/>
+                                                                                        </xsl:attribute>
+                                                                                        <xsl:value-of
+                                                                                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+                                                                                </a>
+                                                                        </li>
+                                                                </xsl:for-each>
+                                                                </ul>
+                                                </li>
+                                        </xsl:if>
+
+			</ul>
                         <ul class="nav navbar-nav pull-left">
                             <xsl:choose>
                                 <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
-                                    <li class="dropdown">
+                                    <li class="hidden-sxs dropdown">
                                         <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
                                            data-toggle="dropdown">
                                             <span class="hidden-xs">
@@ -477,13 +474,148 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
+    </xsl:template>
+
+
+    <!-- The header (distinct from the HTML head element) contains the title, subtitle, login box and various
+        placeholders for header images -->
+    <xsl:template name="buildHeader">
+
+
+        <header>
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header" id="dspace-header">
+			<button type="button" class="navbar-toggle" data-toggle="offcanvas">
+                            	<span class="sr-only">
+                                	<i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
+                            	</span>
+                            	<span class="icon-bar"></span>
+                            	<span class="icon-bar"></span>
+                            	<span class="icon-bar"></span>
+                        </button>
+                    
+		               <!--2.6.2017 <AM> přidán atribut pro dvojjazyčný text loga repozitáře -->
+		                <a href="{$context-path}/" class="navbar-brand">
+		                    <!-- <img src="{$theme-path}/images/DSpace-logo-line.svg" />  -->
+				    <!--<img class="img-responsive" src="{$theme-path}/images/logo_uk_black_70x70.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />-->
+				    <i18n:text>xmlui.general.dspace_home</i18n:text>
+			    	</a>
+				<xsl:call-template name="buildExtraSmallMenu" />
+						
+		    </div> <!-- End of navbar-header -->
+		    <div id="collapse-admin-menu" class="panel-collapse collapse out" role="navigation">
+				<div class="panel-body">
+					<xsl:call-template name="buildCollapseMenuContent"/>
+				</div>
+		    </div>
+				<!--<xsl:call-template name="buildCollapseMenu" />-->
+		    
+		    <form method="post" role="search" class="navbar-form navbar-left" id="ds-search-form" action="{$context-path}/discover">
+			    <fieldset>
+				    <div class="input-group" id="navbar-search-form">
+					    <input placeholder="Hledat" type="text" class="ds-text-field form-control" name="query"/>
+					    <span class="input-group-btn">
+						    <button title="Hledat" class="ds-button-field btn btn-primary">
+							    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+						    </button>
+					    </span>
+				    </div>
+			    </fieldset>
+		    </form>
+                    
                 </div>
             </div>
 
         </header>
 
     </xsl:template>
+    <xsl:template name="buildCollapseMenuContent">
+	<ul class="nav nav-pills nav-stacked">
+		<li class="nav-header"><i18n:text>xmlui.EPerson.EditProfile.Language</i18n:text></li>
+		<xsl:call-template name="buildLanguageMenu"/>
+	</ul>
+    </xsl:template>
 
+    <!-- <JR> 30. 6. 2017 - Language menu dropdown -->
+    <xsl:template name="buildLanguageMenu">
+	<!-- If there are more suported locales then 1, create a list of languages -->
+	<xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
+	
+		<xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
+			<xsl:variable name="locale" select="."/>
+			<li role="presentation">
+				<xsl:if test="$locale = $active-locale">
+					<xsl:attribute name="class">
+						<xsl:text>disabled</xsl:text>
+					</xsl:attribute>
+				</xsl:if>
+			<a>
+		        	<xsl:attribute name="href">
+		                	<xsl:value-of select="$current-uri"/>
+					<xsl:text>?locale-attribute=</xsl:text>
+					<xsl:value-of select="$locale"/>
+				</xsl:attribute>
+				<xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+			</a>
+			</li>
+		</xsl:for-each>
+        </xsl:if>
+    </xsl:template>
+
+
+    <!-- <JR> 30. 6. 2017 - Create e-person links -->
+    <xsl:template name="buildEpersonLinks">
+	<xsl:choose>
+		<xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+		<li>
+			<a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']}">
+				<i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+			</a>
+		</li>
+		<li>
+			<a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+				<i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+		</a>
+		</li>
+		</xsl:when>
+		<xsl:otherwise>
+		<li>
+			<a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+				<span accesskey="l">
+					<i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
+				</span>
+			</a>
+		</li>
+		</xsl:otherwise>
+	</xsl:choose>
+    </xsl:template>
+
+    <!-- <JR> 30. 6. 2017 - Create an extra small menu -->
+    <xsl:template name="buildExtraSmallMenu">
+	<div class="navbar-header pull-right visible-sxs hidden-sm hidden-md hidden-lg" id="extra-small-mobile-menu">
+		<!--<div class="dropdown">-->
+			<button id="mobile-menu-dropdown" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-admin-menu" aria-expanded="false" aria-controls="collapse-admin-menu">
+				<span class="glyphicon glyphicon-cog"></span>
+			</button>		
+			<!--<ul aria-labelledby="mobile-menu-dropdown" role="menu" class="dropdown-menu" id="mobile-menu-dropdown-list">
+				<li>
+					<a href="{$context-path}/discover"><i18n:text>xmlui.dri2xhtml.structural.search</i18n:text></a>
+				</li>
+				<li class="dropdown-header">
+					<i18n:text>xmlui.EPerson.EditProfile.Language</i18n:text>
+				</li>
+				<xsl:call-template name="buildLanguageDropdownMenu" />
+				<li role="separator" class="divider"></li>
+				<li class="dropdown-header">
+					<i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+				</li>
+				<xsl:call-template name="buildEpersonLinks" />
+									
+			</ul>-->
+		<!--</div>-->
+	</div>
+    </xsl:template>
 
     <!-- The header (distinct from the HTML head element) contains the title, subtitle, login box and various
         placeholders for header images -->
