@@ -44,27 +44,15 @@
 				<dc:advisor><xsl:value-of select="." /></dc:advisor>
 			</xsl:for-each>
 			<!-- dc.grantor -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='uk']/doc:element[@name='university-name']/doc:element[@name='cs']/doc:element/doc:field[@name='value']">
-				<xsl:variable name="uniname"><xsl:value-of select="." /></xsl:variable>
-				<xsl:for-each select="doc:metadata/doc:element[@name='uk']/doc:element[@name='faculty-name']/doc:element[@name='cs']/doc:element/doc:field[@name='value']">
-					<xsl:variable name="facultyname"><xsl:value-of select="." /></xsl:variable>
-					<xsl:for-each select="doc:metadata/doc:element[@name='uk']/doc:element[@name='department-name']/doc:element[@name='cs']/doc:element/doc:field[@name='value']">
-						<xsl:variable name="departmentname"><xsl:value-of select="." /></xsl:variable>
-						<dc:grantor><xsl:value-of select="$uniname" /><xsl:text>, </xsl:text><xsl:value-of select="$facultyname" /><xsl:text>, </xsl:text><xsl:value-of
-								select="departmentname" /></dc:grantor>
-					</xsl:for-each>
-				</xsl:for-each>
+			<xsl:for-each select="doc:metadata/doc:element[@name='uk']/doc:element[@name='grantor']/doc:element/doc:field[@name='value']">
+				<dc:grantor><xsl:value-of select="." /></dc:grantor>
 			</xsl:for-each>
 			<!-- dc.publisher.place -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='uk']/doc:element[@name='publication-place']/doc:element/doc:field[@name='value']">
 				<dc:publisher-place><xsl:value-of select="." /></dc:publisher-place>
 			</xsl:for-each>
-			<!-- dc.contributor.* (!advisor) -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name!='advisor']/doc:element/doc:field[@name='value']">
-				<dc:contributor><xsl:value-of select="." /></dc:contributor>
-			</xsl:for-each>	
-			<!-- dc.contributor.* (!author) -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name!='author']/doc:element/doc:field[@name='value']">
+			<!-- dc.contributor.* (!author and !advisor) -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name!='author' and @name!='advisor']/doc:element/doc:field[@name='value']">
 				<dc:contributor><xsl:value-of select="." /></dc:contributor>
 			</xsl:for-each>
 			<!-- dc.contributor -->
