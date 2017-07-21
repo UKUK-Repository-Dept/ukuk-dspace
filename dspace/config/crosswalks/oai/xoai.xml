@@ -30,13 +30,30 @@
             <Format ref="qdc"/>
             <Format ref="marc"/>
             <Format ref="uketd_dc"/>
+            <Format ref="uk_nusl"/>
+	    <Format ref="oai_uk_vufind"/>
+	    <Format ref="oai_dc_citations"/>
             <!--<Format ref="junii2" />-->
             <Description>
                 This is the default context of the DSpace OAI-PMH data provider.
             </Description>
         </Context>
 
-        <!--
+	<Context baseurl="nusl" name="NUSL Context">
+                <!-- The NUŠL filtr -->
+                <Filter ref="nuslFilter"/>
+                <Set ref="nuslSet"/>
+                <!-- Metadata Formats -->
+                <Format ref="xoai"/>
+                <Format ref="uketd_dc"/>
+                <Format ref="oaidc"/>
+                <Format ref="marc"/>
+                <Description>
+                        This context is used for NUSL metadata harversting. Only publicly accessible theses are returned
+                </Description>
+        </Context>
+        
+	<!--
             Driver Guidelines:
 
             - http://www.driver-support.eu/documents/DRIVER_Guidelines_v2_Final_2008-11-13.pdf
@@ -167,8 +184,25 @@
             <Namespace>http://irdb.nii.ac.jp/oai</Namespace>
             <SchemaLocation>http://irdb.nii.ac.jp/oai/junii2-3-1.xsd</SchemaLocation>
         </Format>
+        <Format id="uk_nusl">
+            <Prefix>uk_nusl</Prefix>
+            <XSLT>metadataFormats/uk_nusl.xsl</XSLT>
+            <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
+            <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+        </Format>
+	<Format id="oai_uk_vufind">
+	    <Prefix>oai_uk</Prefix>
+	    <XSLT>metadataFormats/oai_uk_vufind.xsl</XSLT>
+	    <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
+	    <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+	</Format>
+	<Format id="oai_dc_citations">
+		<Prefix>oai_dc_citations</Prefix>
+		<XSLT>metadataFormats/oai_dc_citations.xsl</XSLT>
+		<Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
+		<SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+	</Format>
     </Formats>
-
     <Transformers>
         <Transformer id="driverTransformer">
             <XSLT>transformers/driver.xsl</XSLT>
@@ -180,6 +214,34 @@
 
 
     <Filters>
+
+	<!-- NUŠL filter for records returned by OAI-PMH.
+                By defailt, return an Item record:
+                        * If a Title and Author field both exist
+                        * AND a valid NUŠL Document Type exists
+                        * AND Item is publicly accessible
+                This filter is only used in the NUŠL context ([oai]/nusl).
+        -->
+        <Filter id="nuslFilter">
+                <Definition>
+                        <And>
+                                <LeftCondition>
+                                        <Custom ref="nuslDocumentTypeCondition"/>
+                                </LeftCondition>
+                                <RightCondition>
+                                        <Or>
+                                                <LeftCondition>
+                                                        <Custom ref="itemAccessCondition"/>
+                                                </LeftCondition>
+                                                <RightCondition>
+                                                        <Custom ref="itemWithdrawnCondition"/>
+                                                </RightCondition>
+                                        </Or>
+                                </RightCondition>
+                        </And>
+                </Definition>
+        </Filter>
+
         <!-- DRIVER filter for records returned by OAI-PMH.
              By default, return an Item record:
                * If a Title & Author field both exist
@@ -310,6 +372,22 @@
             </Definition>
         </Filter>
 
+	<!-- This condition determines if an Item has a "dc.type" field
+                specifyung one of the valid NUSL document types. -->
+        <CustomCondition id="nuslDocumentTypeCondition">
+                <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+                <Configuration>
+                        <string name="field">dc.type</string>
+                        <string name="operator">contains</string>
+                        <list name="values">
+                                <string>bakalářská práce</string>
+                                <string>diplomová práce</string>
+                                <string>dizertační práce</string>
+                                <string>rigorózní práce</string>
+                        </list>
+                </Configuration>
+        </CustomCondition>
+
         <!-- This condition determines if an Item has a "dc.type" field
              which contains "Thesis". -->
         <CustomCondition id="thesisDocumentTypeCondition">
@@ -415,6 +493,10 @@
             <Spec>ec_fundedresources</Spec>
             <Name>EC_fundedresources set</Name>
             <!-- Just an alias -->
+        </Set>
+	<Set id="nuslSet">
+                <Spec>nusl_set</Spec>
+                <Name>NUSL set</Name>
         </Set>
     </Sets>
 </Configuration>
