@@ -1073,7 +1073,7 @@ public class ShibAuthentication implements AuthenticationMethod
                 
 		// <J.R> - 7. 9. 2017
         // Added extra check for blank value of attribute.
-        // In case that value is Blank, it should not be returned, return null instead.
+        // In case that value is Empty, it should not be returned, return null instead.
         if (StringUtils.isEmpty(value))
         {
         	log.debug("ShibAuthentication - this value: " + name + " has value " + value + " == is empty!");

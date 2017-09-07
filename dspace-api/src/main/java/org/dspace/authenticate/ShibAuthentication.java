@@ -766,7 +766,7 @@ public class ShibAuthentication implements AuthenticationMethod
 		String email = findSingleAttribute(request,emailHeader);
 		String fname = findSingleAttribute(request,fnameHeader);
 		String lname = findSingleAttribute(request,lnameHeader);
-
+		
 		// Truncate values of parameters that are too big.
 		if (fname != null && fname.length() > NAME_MAX_SIZE) {
 			log.warn("Truncating eperson's first name because it is longer than "+NAME_MAX_SIZE+": '"+fname+"'");
@@ -1071,6 +1071,15 @@ public class ShibAuthentication implements AuthenticationMethod
 		if (StringUtils.isEmpty(value))
 			value = request.getHeader(name.toUpperCase());
                 
+		// <J.R> - 7. 9. 2017
+        // Added extra check for blank value of attribute.
+        // In case that value is Empty, it should not be returned, return null instead.
+        if (StringUtils.isEmpty(value))
+        {
+        	log.debug("ShibAuthentication - this value: " + name + " has value " + value + " == is empty!");
+       	 	return null;
+        }
+        
                 boolean reconvertAttributes = 
                         ConfigurationManager.getBooleanProperty(
                             "authentication-shibboleth",
