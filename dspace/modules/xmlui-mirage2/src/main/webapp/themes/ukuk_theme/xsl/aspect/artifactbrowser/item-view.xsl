@@ -44,6 +44,9 @@
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
         mode="itemSummaryView-DIM"/>
 
+	<!-- <JR> - 15. 9. 2017 - calling new template for CitacePro -->
+        <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim" mode="itemSummaryView-DIM-citacepro"/>
+
         <xsl:copy-of select="$SFXLink" />
 
         <!-- Generate the Creative Commons license information from the file section (DSpace deposit license hidden by default)-->
@@ -154,6 +157,37 @@
             </div>
         </div>
     </xsl:template>
+
+	<!-- <JR> - 15. 9. 2017 - new template for CitacePRO -->
+        <xsl:template match="dim:dim" mode="itemSummaryView-DIM-citacepro">
+                <xsl:variable name="urlPrefix">
+                        <xsl:text>https://www.citacepro.com/api/dspaceuk/citace/oai:locahost:</xsl:text>
+                </xsl:variable>
+
+                <h4 class="item-view-heading">
+                        <xsl:text>CitacePRO</xsl:text>
+                </h4>
+                <div id="ds-search-option" class="ds-option-set">
+                        <embed style="width:100%;height:230px">
+                                <xsl:attribute name="src">
+                                        <xsl:call-template name="itemSummaryView-DIM-citaceURL">
+                                                <xsl:with-param name="prefix" select="$urlPrefix" />
+                                        </xsl:call-template>
+                                </xsl:attribute>
+                        </embed>
+                </div>
+        </xsl:template>
+
+        <xsl:template name="itemSummaryView-DIM-citaceURL">
+                <xsl:param name="prefix" />
+                <xsl:variable name="urlPref">
+                        <xsl:value-of select="$prefix" />
+                </xsl:variable>
+                <xsl:variable name="handleId">
+                        <xsl:value-of select="$document//dri:meta/dri:pageMeta/dri:metadata[@element='identifier'][@qualifier='handle']"/>
+                </xsl:variable>
+                <xsl:value-of select="concat($urlPref,$handleId)"/>
+        </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-title">
         <xsl:choose>
