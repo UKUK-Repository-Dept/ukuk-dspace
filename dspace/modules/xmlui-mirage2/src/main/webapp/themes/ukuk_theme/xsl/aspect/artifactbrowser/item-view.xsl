@@ -161,7 +161,7 @@
 	<!-- <JR> - 15. 9. 2017 - new template for CitacePRO -->
         <xsl:template match="dim:dim" mode="itemSummaryView-DIM-citacepro">
                 <xsl:variable name="urlPrefix">
-                        <xsl:text>https://www.citacepro.com/api/dspaceuk/citace/oai:locahost:</xsl:text>
+                        <xsl:text>https://www.citacepro.com/api/dspaceuk/citace/oai:dspace.cuni.cz:</xsl:text>
                 </xsl:variable>
 
                 <h4 class="item-view-heading">
