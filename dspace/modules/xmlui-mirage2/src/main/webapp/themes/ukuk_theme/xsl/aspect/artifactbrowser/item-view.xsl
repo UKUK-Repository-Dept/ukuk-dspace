@@ -165,7 +165,7 @@
                 </xsl:variable>
 
                 <h4 class="item-view-heading">
-                        <xsl:text>CitacePRO</xsl:text>
+                        <xsl:text>Citace dokumentu</xsl:text>
                 </h4>
                 <div id="ds-search-option" class="ds-option-set">
                         <embed style="width:100%;height:230px">
