@@ -158,6 +158,8 @@
    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_thesesAdvisor">Advisor</message>
    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_thesesReferee">Referee</message>
    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_thesesDefenceYear">Year of defence</message>
+   <!-- <JR> - 24. 11. 2017 - přidán výraz pro vyhledávací filtr VŠKP DID -->
+	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_uk_theses_did">Theses DID</message>
 	<!-- <JR> - 26. 2. 2017 - přidání výrazu pro hodnocení práce-->
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_uk_grade">Grade</message>
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_uk_language">Language</message>
@@ -336,6 +338,8 @@
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_workType">Type of work</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_uk_language">Language</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_uk_language_iso">Language (ISO)</message>
+	<!-- <JR> 24. 11. 2017 - přidání výrazu pro search filter VŠKP DID -->
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_uk_theses_did">Theses DID</message>
 
 	<!-- org.dspace.app.xmlui.artifactbrowser.RestrictedItem.java -->
 	<message key="xmlui.ArtifactBrowser.RestrictedItem.title">This resource is restricted</message>

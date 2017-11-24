@@ -2608,6 +2608,8 @@
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_facultyDepartment">Součást fakulty</message>
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_thesesAdvisor">Vedoucí práce</message>
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_thesesReferee">Oponent práce</message>
+    <!-- <JR> - 24. 11. 2017 - Přidání výrazu pro DID vyhledávací filter -->
+    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_uk_theses_did">DID VŠKP</message>
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_thesesDefenceYear">Datum obhajoby</message>
 	<!-- <JR> - 26. 2. 2017 - přidání výrazu pro fakultu -->
    	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_ds_uk_faculty">Fakulta</message>
@@ -2683,7 +2685,8 @@
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_uk_grade">Hodnocení práce</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_uk_language">Jazyk</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_uk_language_iso">Jazyk (ISO)</message>
-
+	<!-- <JR> - 24. 11. 2017 - přidání výrazu pro VŠKP DID -->
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.ds_uk_theses_did">VŠKP DID</message>
     <message key="xmlui.dri2xhtml.structural.pagination-info.nototal">Zobrazují se záznamy {0}-{1}</message>
 
     <message key="xmlui.Discovery.AbstractSearch.type_author">Filtrovat dle: Autora</message>

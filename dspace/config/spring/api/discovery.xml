@@ -46,6 +46,63 @@
                <!--Use site to override the default configuration for the home page & default discovery page-->
                <entry key="site" value-ref="homepageConfiguration" />
                <!--<entry key="123456789/7621" value-ref="defaultConfiguration"/>-->
+
+                <!-- CUSTOM UK CONFIGURATION -->
+                <!-- Theses Community configuration reference -->
+                <entry key="20.500.11956/1895" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1896" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1897" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1892" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1907" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1905" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1906" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1900" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1901" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1893" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1891" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1899" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1898" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1903" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1904" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1894" value-ref="thesesCommConfiguration"/>
+                <entry key="20.500.11956/1902" value-ref="thesesCommConfiguration"/>
+
+                <!-- Theses Collection configuration reference -->
+                <entry key="20.500.11956/1908" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1910" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1912" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1914" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1916" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1918" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1920" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1922" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1924" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1926" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1928" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1930" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1932" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1934" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1936" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1938" value-ref="thesesCollConfiguration"/>
+                <entry key="20.500.11956/1940" value-ref="thesesCollConfiguration"/>
+                <!-- Habilitations Collection configuration reference -->
+                <entry key="20.500.11956/1935" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1909" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1911" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1913" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1915" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1917" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1919" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1921" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1923" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1925" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1927" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1929" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1931" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1933" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1937" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1939" value-ref="thesesCollConfiguration"/>
+		<entry key="20.500.11956/1941" value-ref="thesesCollConfiguration"/>
             </map>
         </property>
         <property name="toIgnoreMetadataFields">
@@ -95,9 +152,10 @@
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterThesesFaculty" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterThesesLanguage" />
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -105,10 +163,14 @@
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterThesesFaculty" />
                 <ref bean="searchFilterTitle" />
-                <ref bean="searchFilterAuthor" />
+		<ref bean="searchFilterAuthor" />
+		<ref bean="searchFilterThesesDID" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterThesesLanguage" />
+                <ref bean="searchFilterThesesLanguageISO" />
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -200,9 +262,10 @@
         <!--Which sidebar facets are to be displayed (same as defaultConfiguration above)-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterThesesFaculty" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterThesesLanguage" />
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -212,8 +275,17 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterThesesAdvisor" />
+                <ref bean="searchFilterThesesFaculty" />
+                <ref bean="searchFilterWorkType" />
+		<ref bean="searchFilterThesesDID" />
+		<ref bean="searchFilterThesesFacultyDepartment" />
+                <ref bean="searchFilterDefenceYear" />
+                <ref bean="searchFilterThesesGrade" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterThesesLanguage" />
+                <ref bean="searchFilterThesesLanguageISO" />
             </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
@@ -231,11 +303,12 @@
             </bean>
         </property>
         <!-- Limit recent submissions on homepage to only 5 (default is 20) -->
+        <!-- <JR> - 21. 2. 2017 - limit recent submission on homepage to 0 -->
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
                 <property name="metadataSortField" value="dc.date.accessioned" />
                 <property name="type" value="date"/>
-                <property name="max" value="5"/>
+                <property name="max" value="0"/>
                 <property name="useAsHomePage" value="false"/>
             </bean>
         </property>
@@ -269,8 +342,259 @@
         <property name="spellCheckEnabled" value="true"/>
     </bean>
 
-    <!--TagCloud configuration bean for homepage discovery configuration-->
-    <bean id="homepageTagCloudFacetConfiguration" class="org.dspace.discovery.configuration.TagCloudFacetConfiguration">
+	<!-- UK THESES COMMUNITY CONFIGURATION -->
+	<bean id="thesesCommConfiguration" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
+		<!--Which sidebar facets are to be displayed-->
+        	<property name="sidebarFacets">
+            		<list>
+				        <ref bean="searchFilterWorkType" />
+				        <ref bean="searchFilterThesesFacultyDepartment" />
+                        <ref bean="searchFilterThesesLanguage" />
+				        <ref bean="searchFilterDefenceYear" />
+                        <ref bean="searchFilterThesesGrade" />
+                        <ref bean="searchFilterSubject" />
+            		</list>
+        	</property>
+        
+		<!-- Set TagCloud configuration per discovery configuration -->
+        	<property name="tagCloudFacetConfiguration" ref="defaultTagCloudFacetConfiguration"/>
+        	<!--The search filters which can be used on the discovery search page-->
+        	<property name="searchFilters">
+            		<list>
+                		<ref bean="searchFilterTitle" />
+                        	<ref bean="searchFilterAuthor" />
+                        	<ref bean="searchFilterThesesAdvisor" />
+                        	<ref bean="searchFilterThesesFaculty" />
+                        	<ref bean="searchFilterWorkType" />
+				<ref bean="searchFilterThesesDID" />
+				<ref bean="searchFilterThesesFacultyDepartment" />
+                        	<ref bean="searchFilterDefenceYear" />
+                        	<ref bean="searchFilterThesesGrade" />
+                        	<ref bean="searchFilterIssued" />
+                        	<ref bean="searchFilterSubject" />
+                        	<ref bean="searchFilterThesesLanguage" />
+                        	<ref bean="searchFilterThesesLanguageISO" />
+            		</list>
+        	</property>
+        	
+		<!--The sort filters for the discovery search-->
+        	<property name="searchSortConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                		<!--<property name="defaultSort" ref="sortDateIssued"/>-->
+                		<!--DefaultSortOrder can either be desc or asc (desc is default)-->
+                		<property name="defaultSortOrder" value="desc"/>
+                		<property name="sortFields">
+                    			<list>
+                        			<ref bean="sortTitle" />
+                        			<ref bean="sortDateIssued" />
+                    			</list>
+                		</property>
+            		</bean>
+        	</property>
+        
+		<!--Any default filter queries, these filter queries will be used for all queries done by discovery for this configuration-->
+        	<!--<property name="defaultFilterQueries">-->
+            		<!--<list>-->
+                		<!--Only find items-->
+                		<!--<value>search.resourcetype:2</value>-->
+            		<!--</list>-->
+        	<!--</property>-->
+        
+		<!--The configuration for the recent submissions-->
+        	<property name="recentSubmissionConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
+                		<property name="metadataSortField" value="dc.date.accessioned" />
+                		<property name="type" value="date"/>
+                		<property name="max" value="20"/>
+                		<!-- If enabled the collection home page will not display metadata but show a pageable list of recent submissions -->
+                		<property name="useAsHomePage" value="false"/>
+            		</bean>
+        	</property>
+        
+		<!--Default result per page  -->
+        	<property name="defaultRpp" value="10" />
+        	<property name="hitHighlightingConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
+                		<property name="metadataFields">
+                    			<list>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="dc.title"/>
+                            				<property name="snippets" value="5"/>
+                        			</bean>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="dc.contributor.author"/>
+                            				<property name="snippets" value="5"/>
+                        			</bean>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="dc.description.abstract"/>
+                            				<property name="maxSize" value="250"/>
+                            				<property name="snippets" value="2"/>
+                        			</bean>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="fulltext"/>
+                            				<property name="maxSize" value="250"/>
+                            				<property name="snippets" value="2"/>
+                        			</bean>
+                    			</list>
+                		</property>
+            		</bean>
+        	</property>
+        
+		<property name="moreLikeThisConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoveryMoreLikeThisConfiguration">
+                		<!--When altering this list also alter the "xmlui.Discovery.RelatedItems.help" key as it describes the metadata fields below-->
+                		<property name="similarityMetadataFields">
+                    			<list>
+                        			<value>dc.title</value>
+                        			<value>dc.contributor.author</value>
+                        			<value>dc.creator</value>
+                        			<value>dc.subject</value>
+                    			</list>
+                		</property>
+                		
+				<!--The minimum number of matching terms across the metadata fields above before an item is found as related -->
+                		<property name="minTermFrequency" value="5"/>
+                		<!--The maximum number of related items displayed-->
+                		<property name="max" value="3"/>
+                		<!--The minimum word length below which words will be ignored-->
+                		<property name="minWordLength" value="5"/>
+            		</bean>
+        	</property>
+        
+		<!-- When true a "did you mean" example will be displayed, value can be true or false -->
+        	<property name="spellCheckEnabled" value="true"/>
+
+	</bean>
+	<!-- END OF THEHES COMMUNITY CONFIGURATION -->
+
+	<!-- UK THESES COLLECTION CONFIGURATION -->
+	<bean id="thesesCollConfiguration" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
+		<!--Which sidebar facets are to be displayed-->
+        	<property name="sidebarFacets">
+            		<list>
+				        <ref bean="searchFilterWorkType" />
+				        <ref bean="searchFilterThesesFacultyDepartment" />
+                        <ref bean="searchFilterThesesLanguage" />
+				        <ref bean="searchFilterDefenceYear" />
+                        <ref bean="searchFilterThesesGrade" />
+                        <ref bean="searchFilterSubject" />
+            		</list>
+        	</property>
+        
+		<!-- Set TagCloud configuration per discovery configuration -->
+        	<property name="tagCloudFacetConfiguration" ref="defaultTagCloudFacetConfiguration"/>
+        	<!--The search filters which can be used on the discovery search page-->
+        	<property name="searchFilters">
+            		<list>
+                		<ref bean="searchFilterTitle" />
+                        	<ref bean="searchFilterAuthor" />
+                        	<ref bean="searchFilterThesesAdvisor" />
+                        	<ref bean="searchFilterThesesFaculty" />
+				<ref bean="searchFilterWorkType" />
+				<ref bean="searchFilterThesesDID" />
+           	            	<ref bean="searchFilterThesesFacultyDepartment" />
+                        	<ref bean="searchFilterDefenceYear" />
+                        	<ref bean="searchFilterThesesGrade" />
+                        	<ref bean="searchFilterIssued" />
+                        	<ref bean="searchFilterSubject" />
+                        	<ref bean="searchFilterThesesLanguage" />
+                        	<ref bean="searchFilterThesesLanguageISO" />
+            		</list>
+        	</property>
+        	
+		<!--The sort filters for the discovery search-->
+        	<property name="searchSortConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                		<!--<property name="defaultSort" ref="sortDateIssued"/>-->
+                		<!--DefaultSortOrder can either be desc or asc (desc is default)-->
+                		<property name="defaultSortOrder" value="desc"/>
+                		<property name="sortFields">
+                    			<list>
+                        			<ref bean="sortTitle" />
+                        			<ref bean="sortDateIssued" />
+                    			</list>
+                		</property>
+            		</bean>
+        	</property>
+        
+		<!--Any default filter queries, these filter queries will be used for all queries done by discovery for this configuration-->
+        	<!--<property name="defaultFilterQueries">-->
+            		<!--<list>-->
+                		<!--Only find items-->
+                		<!--<value>search.resourcetype:2</value>-->
+            		<!--</list>-->
+        	<!--</property>-->
+        
+		<!--The configuration for the recent submissions-->
+        	<property name="recentSubmissionConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
+                		<property name="metadataSortField" value="dc.date.accessioned" />
+                		<property name="type" value="date"/>
+                		<property name="max" value="20"/>
+                		<!-- If enabled the collection home page will not display metadata but show a pageable list of recent submissions -->
+                		<property name="useAsHomePage" value="false"/>
+            		</bean>
+        	</property>
+        
+		<!--Default result per page  -->
+        	<property name="defaultRpp" value="10" />
+        	<property name="hitHighlightingConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
+                		<property name="metadataFields">
+                    			<list>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="dc.title"/>
+                            				<property name="snippets" value="5"/>
+                        			</bean>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="dc.contributor.author"/>
+                            				<property name="snippets" value="5"/>
+                        			</bean>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="dc.description.abstract"/>
+                            				<property name="maxSize" value="250"/>
+                            				<property name="snippets" value="2"/>
+                        			</bean>
+                        			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            				<property name="field" value="fulltext"/>
+                            				<property name="maxSize" value="250"/>
+                            				<property name="snippets" value="2"/>
+                        			</bean>
+                    			</list>
+                		</property>
+            		</bean>
+        	</property>
+        
+		<property name="moreLikeThisConfiguration">
+            		<bean class="org.dspace.discovery.configuration.DiscoveryMoreLikeThisConfiguration">
+                		<!--When altering this list also alter the "xmlui.Discovery.RelatedItems.help" key as it describes the metadata fields below-->
+                		<property name="similarityMetadataFields">
+                    			<list>
+                        			<value>dc.title</value>
+                        			<value>dc.contributor.author</value>
+                        			<value>dc.creator</value>
+                        			<value>dc.subject</value>
+                    			</list>
+                		</property>
+                		
+				<!--The minimum number of matching terms across the metadata fields above before an item is found as related -->
+                		<property name="minTermFrequency" value="5"/>
+                		<!--The maximum number of related items displayed-->
+                		<property name="max" value="3"/>
+                		<!--The minimum word length below which words will be ignored-->
+                		<property name="minWordLength" value="5"/>
+            		</bean>
+        	</property>
+        
+		<!-- When true a "did you mean" example will be displayed, value can be true or false -->
+        	<property name="spellCheckEnabled" value="true"/>
+
+	</bean>
+	<!-- END OF THEHES COLLECTION CONFIGURATION -->
+
+
+    	<!--TagCloud configuration bean for homepage discovery configuration-->
+    	<bean id="homepageTagCloudFacetConfiguration" class="org.dspace.discovery.configuration.TagCloudFacetConfiguration">
         <!-- Actual configuration of the tagcloud (colors, sorting, etc.) -->
         <property name="tagCloudConfiguration" ref="tagCloudConfiguration"/>
         <!-- List of tagclouds to appear, one for every search filter, one after the other -->
@@ -389,7 +713,7 @@
                 <value>dc.subject.*</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="5"/>
         <property name="sortOrder" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
@@ -399,11 +723,151 @@
         <property name="metadataFields">
             <list>
                 <value>dc.date.issued</value>
+		<value>dcterms.created</value>
             </list>
         </property>
         <property name="type" value="date"/>
         <property name="sortOrder" value="VALUE"/>
     </bean>
+
+    <!-- JR  - 16.1.2017 - new facet added for ds_workType -->
+    <bean id="searchFilterWorkType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+	<property name="indexFieldName" value="ds_workType"/>
+	<property name="metadataFields">
+		<list>
+			<value>dc.type</value>
+		</list>
+	</property>
+	<property name="facetLimit" value="10"/>
+	<property name="sortOrder" value="COUNT"/>
+</bean>
+
+	<!-- UK - Rok obhajoby -->
+	<bean id="searchFilterDefenceYear" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+		<property name="indexFieldName" value="ds_thesesDefenceYear"/>
+		<property name="metadataFields">
+			<list>
+				<value>dcterms.created</value>
+			</list>
+		</property>
+		<property name="type" value="date"/>
+		<property name="facetLimit" value="5"/>
+		<property name="sortOrder" value="VALUE"/>
+	</bean>
+
+	<!-- UK - specific filter configuration beans -->
+	<bean id="searchFilterThesesType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+		<property name="indexFieldName" value="ds_thesesType"/>
+		<property name="metadataFields">
+			<list>
+				<value>dc.type</value>
+				<value>uk.thesis.type</value>
+			</list>
+		</property>
+		<property name="facetLimit" value="10"/>
+		<property name="sortOrder" value="COUNT"/>
+	</bean>
+
+	<bean id="searchFilterThesesAdvisor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+		<property name="indexFieldName" value="ds_thesesAdvisor"/>
+		<property name="metadataFields">
+			<list>
+				<value>dc.contributor.advisor</value>
+			</list>
+		</property>
+		<property name="facetLimit" value="5"/>
+		<property name="sortOrder" value="COUNT"/>
+	</bean>
+
+	<bean id="searchFilterThesesReferee" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+		<property name="indexFieldName" value="ds_thesesReferee"/>
+		<property name="metadataFields">
+			<list>
+				<value>dc.contributor.referee</value>
+			</list>
+		</property>
+		<property name="facetLimit" value="5"/>
+		<property name="sortOrder" value="COUNT"/>
+	</bean>
+
+	<bean id="searchFilterThesesFacultyDepartment" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+		<property name="indexFieldName" value="ds_facultyDepartment"/>
+		<property name="metadataFields">
+			<list>
+				<value>uk.taxonomy.organization-cs</value>
+			</list>
+		</property>
+		<property name="facetLimit" value="50"/>
+		<property name="sortOrder" value="COUNT"/>
+		<property name="splitter" value="::"/>
+		<property name="skipFirstNodeLevel" value="true"/>
+	</bean>
+
+    <bean id="searchFilterThesesFaculty" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="ds_uk_faculty"/>
+        <property name="metadataFields">
+            <list>
+                <value>uk.faculty-name.cs</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="20"/>
+        <property name="sortOrder" value="VALUE"/>
+    </bean>
+
+    <bean id="searchFilterThesesFacultyAbbr" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="ds_uk_faculty_abbr"/>
+        <property name="metadataFields">
+            <list>
+                <value>uk.faculty-abbr.cs</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="20"/>
+        <property name="sortOrder" value="VALUE"/>
+    </bean>
+
+    <bean id="searchFilterThesesGrade" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="ds_uk_grade"/>
+        <property name="metadataFields">
+            <list>
+                <value>thesis.grade.cs</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterThesesLanguage" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="ds_uk_language"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.language</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterThesesLanguageISO" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="ds_uk_language_iso"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.language.iso</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrder" value="COUNT"/>
+</bean>
+
+	<bean id="searchFilterThesesDID" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+		<property name="indexFieldName" value="ds_uk_theses_did"/>
+		<property name="metadataFields">
+			<list>
+				<value>dc.identifier.repId</value>
+			</list>
+		</property>
+		<property name="facetLimit" value="10"/>
+		<property name="sortOrder" value="COUNT"/>
+	</bean>
 
     <!--Sort properties-->
     <bean id="sortTitle" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
