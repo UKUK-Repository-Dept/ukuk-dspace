@@ -661,28 +661,28 @@
               <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-item-view</i18n:text></h4>
                 <div>
                     <xsl:choose>
-                       <xsl:when test="dim:field[@element='language']/text()='Čeština'">
+                       <xsl:when test="dim:field[@element='language']/text()='Čeština' or dim:field[@element='language']/text()='Czech'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-cs-item-view</i18n:text>
                         </xsl:when>
-                        <xsl:when test="dim:field[@element='language']/text()='Angličtina'">
+                        <xsl:when test="dim:field[@element='language']/text()='Angličtina' or dim:field[@element='language']/text()='English'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-en-item-view</i18n:text>
                         </xsl:when>
-                        <xsl:when test="dim:field[@element='language']/text()='Němčina'">
+                        <xsl:when test="dim:field[@element='language']/text()='Němčina' or dim:field[@element='language']/text()='German'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-de-item-view</i18n:text>
                         </xsl:when>
-                        <xsl:when test="dim:field[@element='language']/text()='Ruština'">
+                        <xsl:when test="dim:field[@element='language']/text()='Ruština' or dim:field[@element='language']/text()='Russian'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-ru-item-view</i18n:text>
                         </xsl:when>
-                        <xsl:when test="dim:field[@element='language']/text()='Francouzština'">
+                        <xsl:when test="dim:field[@element='language']/text()='Francouzština' or dim:field[@element='language']/text()='French'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-fr-item-view</i18n:text>
                         </xsl:when>
-                        <xsl:when test="dim:field[@element='language']/text()='Španělština'">
+                        <xsl:when test="dim:field[@element='language']/text()='Španělština' or dim:field[@element='language']/text()='Spanish'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-es-item-view</i18n:text>
                         </xsl:when>
-                        <xsl:when test="dim:field[@element='language']/text()='Portugalština'">
+                        <xsl:when test="dim:field[@element='language']/text()='Portugalština' or dim:field[@element='language']/text()='Portuguese'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-pt-item-view</i18n:text>
                         </xsl:when>
-                        <xsl:when test="dim:field[@element='language']/text()='Jiný'">
+                        <xsl:when test="dim:field[@element='language']/text()='Jiný' or dim:field[@element='language']/text()='Other'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-00-item-view</i18n:text>
                         </xsl:when>
                     </xsl:choose>
@@ -697,6 +697,9 @@
         <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
             <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
                 <xsl:choose>
+                    <xsl:when test="node()/text()='Výtečně'">
+                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
+                    </xsl:when>
                     <xsl:when test="node()/text()='Výborně'">
                         <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
                     </xsl:when>
