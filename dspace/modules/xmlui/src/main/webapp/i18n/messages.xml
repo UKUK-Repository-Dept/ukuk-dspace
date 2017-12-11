@@ -2317,6 +2317,18 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-es-item-view">Spanish</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-pt-item-view">Portuguese</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-nl-item-view">Dutch</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-pl-item-view">Polish</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-no-item-view">Norwegian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-sv-item-view">Swedish</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-hu-item-view">Hungarian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-sr-item-view">Serbian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-ro-item-view">Romanian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-lt-item-view">Lithuanian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-sh-item-view">Serbo-Croatian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-da-item-view">Danish</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-bg-item-view">Bulgarian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-sl-item-view">Slovenian</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-uk-item-view">Ukrainian</message>
         <message key="xmlui.dri2xhtml.METS-1.0.item-work-language-00-item-view">Other</message>
 	<!--<JR> - 22. 2. 2017 - přidání výrazu pro známku-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-grade-item-view">Grade</message>

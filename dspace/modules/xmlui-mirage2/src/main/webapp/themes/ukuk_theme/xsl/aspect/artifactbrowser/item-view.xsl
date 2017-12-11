@@ -651,6 +651,42 @@
                         <xsl:when test="node()/text()='nl_NL'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-nl-item-view</i18n:text>
                         </xsl:when>
+                        <xsl:when test="node()/text()='pl_PL'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-pl-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='no_NO'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-no-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='sv_SE'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sv-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='hu_HU'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-hu-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='sr_SP'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sr-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='ro_RO'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-ro-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='lt_LT'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-lt-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='sh_RS'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sh-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='da_DK'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-da-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='bg_BG'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-bg-item-view</i18n:text>
+                        </xsl:when>
+                            <xsl:when test="node()/text()='sl_SL'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sl-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="node()/text()='uk_UA'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-uk-item-view</i18n:text>
+                        </xsl:when>
                     </xsl:choose>
                 </div>
              </div>
@@ -682,9 +718,48 @@
                         <xsl:when test="dim:field[@element='language']/text()='Portugalština' or dim:field[@element='language']/text()='Portuguese'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-pt-item-view</i18n:text>
                         </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Polština' or dim:field[@element='language']/text()='Polish'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-pl-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Norština' or dim:field[@element='language']/text()='Norwegian'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-no-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Švédština' or dim:field[@element='language']/text()='Swedish'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sv-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Maďarština' or dim:field[@element='language']/text()='Hungarian'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-hu-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Srbština' or dim:field[@element='language']/text()='Serbian'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sr-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Rumunština' or dim:field[@element='language']/text()='Romanian'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-ro-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Litevština' or dim:field[@element='language']/text()='Lithuanian'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-lt-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Srbochorvatština' or dim:field[@element='language']/text()='Serbo-Croatian'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sh-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Dánština' or dim:field[@element='language']/text()='Danish'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-da-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Bulharština' or dim:field[@element='language']/text()='Bulgarian'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-bg-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Slovinština' or dim:field[@element='language']/text()='Slovenian'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-sl-item-view</i18n:text>
+                        </xsl:when>
+                        <xsl:when test="dim:field[@element='language']/text()='Ukrajinština' or dim:field[@element='language']/text()='Ukrainian'">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-uk-item-view</i18n:text>
+                        </xsl:when>
                         <xsl:when test="dim:field[@element='language']/text()='Jiný' or dim:field[@element='language']/text()='Other'">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-00-item-view</i18n:text>
                         </xsl:when>
+                        <xsl:otherwise>
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-work-language-00-item-view</i18n:text>
+                        </xsl:otherwise>
                     </xsl:choose>
                 </div>
              </div>
