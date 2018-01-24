@@ -121,7 +121,7 @@
         <map:component-configurations>
             <global-variables>
                 <theme-path>ukuk_theme</theme-path>
-                <theme-name>UKUKTheme</theme-name>
+                <theme-name>UKUKtheme</theme-name>
             </global-variables>
         </map:component-configurations>
 

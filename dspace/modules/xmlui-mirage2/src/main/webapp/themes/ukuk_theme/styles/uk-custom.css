@@ -1,0 +1,63 @@
+body {
+    background-image: url(../images/bgn.jpg);
+}
+
+.artifact-preview {
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.artifact-description a > h4 {
+    margin-top:0 ;
+}
+
+.search-result-item-div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.search-result-item-div:hover {
+    background-color: #f7f7f7;
+}
+
+.item-list-entry {
+    /*font-size: 1.2em;*/
+}
+
+.item-view-heading {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item-view-header {
+    font-size: 26px;
+    border-bottom: none;
+}
+
+.item-view-heading-secondary {
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.sidebar-panel-heading {
+    padding: 0px !important;
+}
+
+.sidebar-panel-body {
+    padding: 0px !important;
+}
+
+.text-theses-defended {
+    color: #309925;
+}
+
+.text-theses-failed {
+    color: #b72c32;
+}
+
+#aspect_discovery_SiteViewer_field_query {
+    margin-bottom: 10px;
+}
+

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <document xmlns="http://di.tamu.edu/DRI/1.0/" xmlns:i18n="http://apache.org/cocoon/i18n/2.1" version="1.1">
 <body>
-<div id="file.news.div.news" n="news" rend="primary">
-<head>DSpace Repository</head>
-<p>DSpace is a digital service that collects, preserves, and distributes digital material. Repositories are important tools for preserving an organization&apos;s legacy; they facilitate digital preservation and scholarly communication.</p>
-</div>
+    <div id="aspect.discovery.SiteViewer.div.front-page-search-custom" interactive="yes" rend="primary" action="/discover" n="front-page-search-custom" method="get">
+        <head><i18n:text>xmlui.dri2xhtml.structural.homepage-search-dspace</i18n:text></head>
+        <!--<p class="search-field-homepage">-->
+        <field id="aspect.discovery.SiteViewer.field.query" n="query" type="text"> <params/> </field>
+        <field id="aspect.discovery.SiteViewer.field.submit" n="submit" type="button"> <params/> <value type="raw"><i18n:text>xmlui.general.search</i18n:text></value> </field>
+        <!--</p>-->
+    </div>
 </body>
 <options/>
 <meta>
