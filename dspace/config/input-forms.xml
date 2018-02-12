@@ -396,9 +396,9 @@ it, please enter the types and the actual numbers or codes.</hint>
 		</page>
 		<page number="2">
 			<field>
-				<dc-schema>dc</dc-schema>
-				<dc-element>description</dc-element>
-				<dc-qualifier>faculty</dc-qualifier>
+				<dc-schema>uk</dc-schema>
+				<dc-element>faculty-name</dc-element>
+				<dc-qualifier>cs</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Název fakulty (povinný údaj)</label>
 				<hint>Vyberte ze seznamu fakultu, na které byla práce obhajována.</hint>
