@@ -454,7 +454,7 @@
 
     <!-- <JR> - 20. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-faculty">
-        <xsl:if test="dim:field[@element='faculty-name' and @qualifier='cs']">
+	<xsl:if test="dim:field[@element='faculty-name' and @qualifier='cs']">
             <div class="simple-item-view-description item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-faculty-item-view</i18n:text></h4>
                 <div>
@@ -464,8 +464,10 @@
                     </xsl:if>
                 </div>
             </div>
-        </xsl:if>
-        <xsl:if test="dim:field[@element='description' and @qualifier='faculty']">
+    	</xsl:if>
+	<!-- <JR> - 16. 2. 2017 -->
+	<!-- Removed duplicate display of faculty name from item-view -->	
+	<!--<xsl:if test="dim:field[@element='description' and @qualifier='faculty']">
             <div class="simple-item-view-description item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-faculty-item-view</i18n:text></h4>
                 <div>
@@ -475,7 +477,7 @@
                     </xsl:if>
                 </div>
             </div>
-        </xsl:if>
+	</xsl:if>-->
     </xsl:template>
 
    <!-- <AM> - 18. 4. 2017
