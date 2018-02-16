@@ -457,12 +457,27 @@
 	<xsl:if test="dim:field[@element='faculty-name' and @qualifier='cs']">
             <div class="simple-item-view-description item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-faculty-item-view</i18n:text></h4>
-                <div>
-                    <xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='cs']"/>
-                    <xsl:if test="dim:field[@element='faculty-name' and @qualifier='en']">
-                        <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='en']"/>
-                    </xsl:if>
-                </div>
+		<xsl:choose>
+			<xsl:when test="$active-locale='en'">
+			<xsl:choose>
+				<xsl:when test="dim:field[@element='description' and @qualifier='faculty' and language='en']">
+					<div>
+						<xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='en']"/>
+					</div>
+				</xsl:when>
+				<xsl:otherwise>
+					<div>
+						<xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='cs']"/>
+					</div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+		<xsl:when test="$active-locale='cs'">
+			<div>
+				<xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='cs']"/>
+			</div>
+		</xsl:when>
+		</xsl:choose>
             </div>
     	</xsl:if>
 	<!-- <JR> - 16. 2. 2017 -->
