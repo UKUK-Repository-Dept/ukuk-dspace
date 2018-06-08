@@ -36,6 +36,10 @@
     xmlns:rights="http://cosimo.stanford.edu/sdr/metsrights/"
     xmlns:confman="org.dspace.core.ConfigurationManager"
     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink xsl util jstring rights confman">
+    <xsl:import href="item-view-general-templates.xsl" />
+    <!--<xsl:import href="item-view-theses-templates.xsl" />
+    <xsl:import href="item-view-articles-templates.xsl" />
+    <xsl:import href="item-view-other-templates.xsl" />-->
 
     <xsl:output indent="yes"/>
 
@@ -63,7 +67,7 @@
 
 
     </xsl:template>
-
+<!-- TEST -->
     <!-- An item rendered in the detailView pattern, the "full item record" view of a DSpace item in Manakin. -->
     <xsl:template name="itemDetailView-DIM">
         <!-- Output all of the metadata about the item from the metadata section -->
@@ -108,55 +112,148 @@
 
     <xsl:template match="dim:dim" mode="itemSummaryView-DIM">
         <div class="item-summary-view-metadata">
-            <xsl:call-template name="itemSummaryView-DIM-title"/>
-            <xsl:call-template name="itemSummaryView-DIM-work-type"/>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-5">
-                            <!--<xsl:call-template name="itemSummaryView-DIM-date"/>-->
-                            <xsl:call-template name="itemSummaryView-DIM-file-section"/>
-                            <xsl:call-template name="itemSummaryView-DIM-URI"/>
-                            <xsl:call-template name="itemSummaryView-collections"/>
-                        </div>
-                        <div class="col-xs-12 col-sm-7">
-                            <xsl:call-template name="itemSummaryView-DIM-authors"/>
-                            <xsl:call-template name="itemSummaryView-DIM-advisors"/>
-                            <xsl:call-template name="itemSummaryView-DIM-referees"/>
-                            <xsl:call-template name="itemSummaryView-DIM-affiliation"/>
-                            <xsl:call-template name="itemSummaryView-DIM-faculty"/>
-                            <xsl:call-template name="itemSummaryView-DIM-discipline"/>
-                            <xsl:call-template name="itemSummaryView-DIM-department"/>
-                            <xsl:call-template name="itemSummaryView-DIM-acceptance-date"/>
-                            <xsl:call-template name="itemSummaryView-DIM-work-language"/>
-                            <xsl:call-template name="itemSummaryView-DIM-grade"/>
-                            <xsl:call-template name="itemSummaryView-DIM-keywords-cs"/>
-                            <xsl:call-template name="itemSummaryView-DIM-keywords-en"/>
-                        </div>
-                        <div class="col-xs-12 col-sm-12">
-                            <xsl:call-template name="itemSummaryView-DIM-abstract-cs"/>
-                            <xsl:call-template name="itemSummaryView-DIM-abstract-en"/>
-                            <xsl:call-template name="itemSummaryView-DIM-abstract-original"/>
-                            <!--<xsl:call-template name="itemSummaryView-DIM-thumbnail"/>-->
-                        </div>
-                        <!--<div class="col-xs-6 col-sm-12">-->
-                            <!--<xsl:call-template name="itemSummaryView-DIM-file-section"/>-->
-                        <!--</div>-->
-                    </div>
-                    <!--<xsl:call-template name="itemSummaryView-DIM-date"/>-->
-                    <!--<xsl:call-template name="itemSummaryView-DIM-authors"/>-->
-                    <xsl:if test="$ds_item_view_toggle_url != ''">
-                        <xsl:call-template name="itemSummaryView-show-full"/>
-                    </xsl:if>
-                </div>
-                <!--<div class="col-sm-8">-->
-                    <!--<xsl:call-template name="itemSummaryView-DIM-abstract"/>-->
-                    <!--<xsl:call-template name="itemSummaryView-DIM-URI"/>-->
-                    <!--<xsl:call-template name="itemSummaryView-collections"/>-->
-                <!--</div>-->
-            </div>
+
+		<!-- <JR>. 1. 6. 2018 --> 
+		<!-- 
+		Call template for general information (displayed for every object in DSpace.
+		Then, separate templates should be called for theses and publications based
+		on the dc.type of the object
+		-->
+            <xsl:call-template name="itemSummaryView-DIM-general"/>		                
+	
+        	<xsl:if test="$ds_item_view_toggle_url != ''">
+            	<xsl:call-template name="itemSummaryView-show-full"/>
+        	</xsl:if>
+
         </div>
     </xsl:template>
+
+	<xsl:template name="itemSummaryView-DIM-general" >
+        <h2 class="page-header first-page-header item-view-header">
+            <xsl:call-template name="itemSummaryView-DIM-general-title-first"/>
+        </h2>
+        <h5 class="item-view-heading-secondary">
+            <xsl:call-template name="itemSummaryView-DIM-general-title-translated"/>
+        </h5>
+        <div class="simple-item-view-other">
+            <p class="lead">
+                <xsl:call-template name="itemSummaryView-DIM-general-title-all-other"/>
+            </p>
+        </div>
+		<div class="simple-item-view-description item-page-field-wrapper table">
+            <div>
+                <h4>
+                    <xsl:call-template name="itemSummaryView-DIM-general-work-type"/>
+                    <xsl:call-template name="itemSummaryView-DIM-general-defense-status"/>
+                </h4>
+            </div>
+        </div>
+    	<div class="row">
+        	<div class="col-sm-12">
+        		<div class="row">
+            		<div class="col-xs-12 col-sm-5">
+            			<!--<xsl:call-template name="itemSummaryView-DIM-date"/>-->
+            			<xsl:call-template name="itemSummaryView-DIM-general-file-section"/>
+            			<xsl:call-template name="itemSummaryView-DIM-general-URI"/>
+            			<xsl:call-template name="itemSummaryView-general-collections"/>
+            		</div>
+					
+					<!-- Call doctype handler and create itemView specific for the type of the item that is being displayed -->
+					<xsl:call-template name="doctype-handler"/>
+
+				</div>
+			</div>
+		</div>
+	</xsl:template>
+
+	<xsl:template name="doctype-handler">
+		
+		<!-- Get Document Type (dc.type) -->		
+		<xsl:variable name="document_type_en" select="dim:field[@element='type' and @language='en_US']/text()" />
+		<xsl:variable name="document_type_cs" select="dim:field[@element='type' and @language='cs_CZ']/text()" />
+		<xsl:variable name="document_type_nolang" select="dim:field[@element='type'][not(@language)]/text()" />
+		
+		<!-- Checking document type -->
+		<xsl:choose>
+			<xsl:when test="($document_type_en = 'bachelor thesis') or ($document_type_en='diploma thesis') or ($document_type_en = 'disertation thesis') or ($document_type_en = 'doctoral thesis') or ($document_type_en = 'rigorous work') or ($document_type_en = 'rigorous thesis') or ($document_type_en = 'habilitation thesis')">
+				<!-- English document type of the object was found in english thesis types list -->					
+				<!-- It's a thesis!!! -->
+				
+				<xsl:call-template name="itemSummaryView-DIM-theses" />
+			</xsl:when>
+			<xsl:when test="($document_type_cs = 'bakalářská práce') or ($document_type_cs='diplomová práce') or ($document_type_cs = 'dizertační práce') or ($document_type_cs = 'rigorózní práce') or ($document_type_cs = 'habilitační práce')">
+				<!-- Czech document type of the object was found in czech thesis types list -->					
+				<!-- It's a thesis!!! -->
+				
+				<xsl:call-template name="itemSummaryView-DIM-theses" />
+			</xsl:when>
+			<xsl:when test="($document_type_nolang = 'bachelor thesis') or ($document_type_nolang = 'diploma thesis') or ($document_type_nolang = 'disertation thesis') or ($document_type_nolang = 'doctoral thesis') or ($document_type_nolang = 'rigorous work') or ($document_type_nolang = 'rigorous thesis') or ($document_type_nolang = 'habilitation thesis')">
+				<!-- No-language document type of the object was found in english thesis types list -->					
+				<!-- It's a thesis!!! -->
+				
+				<xsl:call-template name="itemSummaryView-DIM-theses" />
+			</xsl:when>
+			<xsl:when test="($document_type_nolang = 'bakalářská práce') or ($document_type_nolang='diplomová práce') or ($document_type_nolang = 'dizertační práce') or ($document_type_nolang = 'rigorózní práce') or ($document_type_nolang = 'habilitační práce')">
+				<!-- No-language document type of the object was found in czech thesis types list -->					
+				<!-- It's a thesis!!! -->
+				
+				<xsl:call-template name="itemSummaryView-DIM-theses" />
+			</xsl:when>
+			<xsl:when test="($document_type_cs = 'Článek' or $document_type_nolang = 'Článek') or ($document_type_en = 'Article' or $document_type_nolang = 'Article')">
+				<!-- It's an Article!!! -->
+				<xsl:call-template name="itemSummaryView-DIM-articles" />
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- Document type was not found in any of the thesis types lists-->
+				<!-- It's not a thesis, nor article or any other document type listed above -->
+				
+				<xsl:call-template name="itemSummaryView-DIM-other" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="itemSummaryView-DIM-theses" >
+		<div class="col-xs-12 col-sm-7">
+		    <xsl:call-template name="itemSummaryView-DIM-authors"/>
+		    <xsl:call-template name="itemSummaryView-DIM-advisors"/>
+		    <xsl:call-template name="itemSummaryView-DIM-referees"/>
+		    <xsl:call-template name="itemSummaryView-DIM-affiliation"/>
+		    <xsl:call-template name="itemSummaryView-DIM-faculty"/>
+		    <xsl:call-template name="itemSummaryView-DIM-discipline"/>
+		    <xsl:call-template name="itemSummaryView-DIM-department"/>
+		    <xsl:call-template name="itemSummaryView-DIM-acceptance-date"/>
+		    <xsl:call-template name="itemSummaryView-DIM-work-language"/>
+		    <xsl:call-template name="itemSummaryView-DIM-grade"/>
+		    <xsl:call-template name="itemSummaryView-DIM-keywords-cs"/>
+		    <xsl:call-template name="itemSummaryView-DIM-keywords-en"/>
+		</div>
+                <div class="col-xs-12 col-sm-12">
+                    <xsl:call-template name="itemSummaryView-DIM-abstract-cs"/>
+                    <xsl:call-template name="itemSummaryView-DIM-abstract-en"/>
+                    <xsl:call-template name="itemSummaryView-DIM-abstract-original"/>
+
+                </div>	
+	</xsl:template>
+
+	<xsl:template name="itemSummaryView-DIM-articles">
+		<div class="row">
+			<div class="col-xs-12 col-sm-7">
+				<div class="simple-item-view-authors item-apge-field-wrapper table">
+					<h4 class="item-view-heading">Článek!!!</h4>
+				</div>		
+			</div>
+		</div>
+	</xsl:template>
+
+	<xsl:template name="itemSummaryView-DIM-other">
+		<div class="row">
+			<div class="col-xs-12 col-sm-7">
+				<div class="simple-item-view-authors item-apge-field-wrapper table">
+					<h4 class="item-view-heading">Něco jiného!!!</h4>
+				</div>		
+			</div>
+		</div>
+	</xsl:template>
 
 	<!-- <JR> - 15. 9. 2017 - new template for CitacePRO -->
         <xsl:template match="dim:dim" mode="itemSummaryView-DIM-citacepro">
@@ -188,50 +285,6 @@
                 </xsl:variable>
                 <xsl:value-of select="concat($urlPref,$handleId)"/>
         </xsl:template>
-
-    <xsl:template name="itemSummaryView-DIM-title">
-        <xsl:choose>
-            <xsl:when test="count(dim:field[@element='title'][not(@qualifier)]) &gt; 1">
-                <h2 class="page-header first-page-header item-view-header">
-                    <xsl:value-of select="dim:field[@element='title'][not(@qualifier)][1]/node()"/>
-                    <xsl:call-template name="itemSummaryView-DIM-title-translated"/>
-                </h2>
-                <div class="simple-item-view-other">
-                    <p class="lead">
-                        <xsl:for-each select="dim:field[@element='title'][not(@qualifier)]">
-                            <xsl:if test="not(position() = 1)">
-                                <xsl:value-of select="./node()"/>
-                                <xsl:if test="count(following-sibling::dim:field[@element='title'][not(@qualifier)]) != 0">
-                                    <xsl:text>; </xsl:text>
-                                    <br/>
-                                </xsl:if>
-                            </xsl:if>
-
-                        </xsl:for-each>
-                    </p>
-                </div>
-            </xsl:when>
-            <xsl:when test="count(dim:field[@element='title'][not(@qualifier)]) = 1">
-                <h2 class="page-header first-page-header item-view-header">
-                    <xsl:value-of select="dim:field[@element='title'][not(@qualifier)][1]/node()"/>
-                    <xsl:call-template name="itemSummaryView-DIM-title-translated"/>
-                </h2>
-            </xsl:when>
-            <xsl:otherwise>
-                <h2 class="page-header first-page-header">
-                    <i18n:text>xmlui.dri2xhtml.METS-1.0.no-title</i18n:text>
-                </h2>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-
-    <xsl:template name="itemSummaryView-DIM-title-translated">
-        <xsl:if test="dim:field[@element='title' and @qualifier='translated']">
-            <h5 class="item-view-heading-secondary">
-                <xsl:value-of select="dim:field[@element='title' and @qualifier='translated']"/>
-            </h5>
-        </xsl:if>
-    </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-thumbnail">
         <div class="thumbnail">
@@ -454,45 +507,33 @@
 
     <!-- <JR> - 20. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-faculty">
-	<xsl:if test="dim:field[@element='faculty-name' and @qualifier='cs']">
             <div class="simple-item-view-description item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-faculty-item-view</i18n:text></h4>
-		<xsl:choose>
-			<xsl:when test="$active-locale='en'">
+		<div>		
 			<xsl:choose>
-				<xsl:when test="dim:field[@element='description' and @qualifier='faculty' and language='en']">
-					<div>
-						<xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='en']"/>
-					</div>
+				<xsl:when test="$active-locale='en'">			
+					<xsl:choose>
+						<xsl:when test="dim:field[@element='description' and @qualifier='faculty' and (@language='en' or @language='en_US')]">	
+							<xsl:value-of select="dim:field[@element='description' and @qualifier='faculty' and (@language='en' or @language='en_US')]"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text>Information unavailable</xsl:text>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:when>
-				<xsl:otherwise>
-					<div>
-						<xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='cs']"/>
-					</div>
-				</xsl:otherwise>
+				<xsl:when test="$active-locale='cs'">
+					<xsl:choose>
+						<xsl:when test="dim:field[@element='description' and @qualifier='faculty' and (@language='cs' or @language='cs_CZ')]">	
+							<xsl:value-of select="dim:field[@element='description' and @qualifier='faculty' and (@language='cs' or @language='cs_CZ')]"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text>Informace není k dispozici</xsl:text>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:when>
 			</xsl:choose>
-		</xsl:when>
-		<xsl:when test="$active-locale='cs'">
-			<div>
-				<xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='cs']"/>
-			</div>
-		</xsl:when>
-		</xsl:choose>
+		</div>
             </div>
-    	</xsl:if>
-	<!-- <JR> - 16. 2. 2017 -->
-	<!-- Removed duplicate display of faculty name from item-view -->	
-	<!--<xsl:if test="dim:field[@element='description' and @qualifier='faculty']">
-            <div class="simple-item-view-description item-page-field-wrapper table">
-                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-faculty-item-view</i18n:text></h4>
-                <div>
-                    <xsl:value-of select="dim:field[@element='description' and @qualifier='faculty']"/>
-                    <xsl:if test="dim:field[@element='description' and @qualifier='faculty' and language='en']">
-                        <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='description' and @qualifier='faculty' and @language='en']"/>
-                    </xsl:if>
-                </div>
-            </div>
-	</xsl:if>-->
     </xsl:template>
 
    <!-- <AM> - 18. 4. 2017
@@ -545,89 +586,66 @@
 
     <!-- <JR> - 20. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-department">
-        <xsl:if test="dim:field[@element='description' and @qualifier='department' and @language='cs_CZ']">
             <div class="simple-item-view-description item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-department-item-view</i18n:text></h4>
                 <div>
-                    <xsl:value-of select="dim:field[@element='description' and @qualifier='department' and @language='cs_CZ']"/>
-                    <xsl:if test="dim:field[@element='description' and @qualifier='department' and @language='en_US']">
-                        <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='description' and @qualifier='department' and @language='en_US']"/>
-                    </xsl:if>
-
+			<div>
+				<xsl:choose>			
+					<xsl:when test="$active-locale='en'">
+						<xsl:choose>
+							<xsl:when test="dim:field[@element='description' and @qualifier='department' and @language='en_US']">
+								<xsl:value-of select="dim:field[@element='description' and @qualifier='department' and @language='en_US']"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text>Information is unavailable</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:when>
+					<xsl:when test="$active-locale='cs'">
+						<xsl:choose>						
+							<xsl:when test="dim:field[@element='description' and @qualifier='department' and @language='cs_CZ']">
+								<xsl:value-of select="dim:field[@element='description' and @qualifier='department' and @language='cs_CZ']"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text>Informace není k dispozici</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:when>
+				</xsl:choose>
+			</div>
                 </div>
             </div>
-        </xsl:if>
     </xsl:template>
 
     <!-- <JR> - 22. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-grade">
-        <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
             <div class="simple-item-view-description item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-grade-item-view</i18n:text></h4>
                 <div>
-                    <xsl:value-of select="dim:field[@element='grade' and @qualifier='cs']"/>
-                    <xsl:if test="dim:field[@element='grade' and @qualifier='en']">
-                        <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='grade' and @qualifier='en']"/>
-                    </xsl:if>
+			<xsl:choose>			
+				<xsl:when test="$active-locale='cs'">
+					<xsl:choose>
+						<xsl:when test="dim:field[@element='grade' and @qualifier='cs']">
+							<xsl:value-of select="dim:field[@element='grade' and @qualifier='cs']"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text>Informace není k dispozici</xsl:text>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:when>
+				<xsl:when test="$active-locale='en'">
+					<xsl:choose>
+						<xsl:when test="dim:field[@element='grade' and @qualifier='en']">
+							<xsl:value-of select="dim:field[@element='grade' and @qualifier='en']"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text>Information unavailable</xsl:text>
+						</xsl:otherwise>
+					</xsl:choose>		
+				</xsl:when>
+			</xsl:choose>
                 </div>
             </div>
-        </xsl:if>
-    </xsl:template>
-
-    <!-- <JR> - 20. 2. 2017 -->
-    <xsl:template name="itemSummaryView-DIM-work-type">
-        <xsl:if test="dim:field[@element='type'][not(@qualifier)]">
-            <div class="simple-item-view-description item-page-field-wrapper table">
-                <!--<h4><i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-item-view</i18n:text></h4>-->
-                <div>
-                    <xsl:choose>
-                        <xsl:when test="dim:field[@element='type']/text()='bakalářská práce'">
-                            <h4>
-                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view</i18n:text>
-                                <!--<xsl:text> [</xsl:text><xsl:call-template name="itemSummaryView-DIM-defense-status"/><xsl:text>]</xsl:text>-->
-                                <xsl:call-template name="itemSummaryView-DIM-defense-status"/>
-                            </h4>
-                        </xsl:when>
-                        <xsl:when test="dim:field[@element='type']/text()='diplomová práce'">
-                            <h4>
-                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view</i18n:text>
-                                <!--<xsl:text> [</xsl:text><xsl:call-template name="itemSummaryView-DIM-defense-status"/><xsl:text>]</xsl:text>-->
-                                <xsl:call-template name="itemSummaryView-DIM-defense-status"/>
-                            </h4>
-
-                        </xsl:when>
-                        <xsl:when test="dim:field[@element='type']/text()='dizertační práce'">
-                            <h4>
-                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-disert-th-item-view</i18n:text>
-                                <!--<xsl:text> [</xsl:text><xsl:call-template name="itemSummaryView-DIM-defense-status"/><xsl:text>]</xsl:text>-->
-                                <xsl:call-template name="itemSummaryView-DIM-defense-status"/>
-                            </h4>
-                        </xsl:when>
-                        <xsl:when test="dim:field[@element='type']/text()='rigorózní práce'">
-                            <h4>
-                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-rigo-th-item-view</i18n:text>
-                                <!--<xsl:text> [</xsl:text><xsl:call-template name="itemSummaryView-DIM-defense-status"/><xsl:text>]</xsl:text>-->
-                                <xsl:call-template name="itemSummaryView-DIM-defense-status"/>
-                            </h4>
-                        </xsl:when>
-                        <xsl:when test="dim:field[@element='type']/text()='habilitační práce'">
-                            <h4>
-                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-habi-th-item-view</i18n:text>
-                                <!--<xsl:text> [</xsl:text><xsl:call-template name="itemSummaryView-DIM-defense-status"/><xsl:text>]</xsl:text>-->
-                                <xsl:call-template name="itemSummaryView-DIM-defense-status"/>
-                            </h4>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <h4>
-                                <xsl:value-of select="dim:field[@element='type']"/>
-                                <!--<xsl:text> [</xsl:text><xsl:call-template name="itemSummaryView-DIM-defense-status"/><xsl:text>]</xsl:text>-->
-                                <xsl:call-template name="itemSummaryView-DIM-defense-status"/>
-                            </h4>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </div>
-            </div>
-        </xsl:if>
     </xsl:template>
 
     <!-- <JR> - 22. 2. 2017 -->
@@ -784,34 +802,6 @@
       </xsl:choose>
     </xsl:template>
 
-    <!-- <JR> - 22. 2. 2017 -->
-    <xsl:template name="itemSummaryView-DIM-defense-status">
-        <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
-            <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
-                <xsl:choose>
-                    <xsl:when test="node()/text()='Výtečně'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="node()/text()='Výborně'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="node()/text()='Velmi dobře'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="node()/text()='Dobře'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="node()/text()='Prospěl'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:text> [</xsl:text><span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:if>
-        </xsl:if>
-    </xsl:template>
-
     <!-- <JR> - 21. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-acceptance-date">
         <xsl:if test="dim:field[@element='dateAccepted'][not (@qualifier)]">
@@ -962,27 +952,6 @@
         </div>
     </xsl:template>
 
-    <xsl:template name="itemSummaryView-DIM-URI">
-        <xsl:if test="dim:field[@element='identifier' and @qualifier='uri' and descendant::text()]">
-            <div class="simple-item-view-uri item-page-field-wrapper table">
-                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-uri</i18n:text></h4>
-                <span>
-                    <xsl:for-each select="dim:field[@element='identifier' and @qualifier='uri']">
-                        <a>
-                            <xsl:attribute name="href">
-                                <xsl:copy-of select="./node()"/>
-                            </xsl:attribute>
-                            <xsl:copy-of select="./node()"/>
-                        </a>
-                        <xsl:if test="count(following-sibling::dim:field[@element='identifier' and @qualifier='uri']) != 0">
-                            <br/>
-                        </xsl:if>
-                    </xsl:for-each>
-                </span>
-            </div>
-        </xsl:if>
-    </xsl:template>
-
     <xsl:template name="itemSummaryView-DIM-date">
         <xsl:if test="dim:field[@element='date' and @qualifier='issued' and descendant::text()]">
             <div class="simple-item-view-date word-break item-page-field-wrapper table">
@@ -1011,145 +980,18 @@
         </div>
     </xsl:template>
 
-    <xsl:template name="itemSummaryView-collections">
-        <xsl:if test="$document//dri:referenceSet[@id='aspect.artifactbrowser.ItemViewer.referenceSet.collection-viewer']">
-            <div class="simple-item-view-collections item-page-field-wrapper table">
-                <h4 class="item-view-heading">
-                    <i18n:text>xmlui.mirage2.itemSummaryView.Collections</i18n:text>
-                </h4>
-                <xsl:apply-templates select="$document//dri:referenceSet[@id='aspect.artifactbrowser.ItemViewer.referenceSet.collection-viewer']/dri:reference"/>
-            </div>
-        </xsl:if>
-    </xsl:template>
-
-    <xsl:template name="itemSummaryView-DIM-file-section">
-        <xsl:choose>
-            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
-                <div class="item-page-field-wrapper table word-break">
-                    <h4 class="item-view-heading">
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-viewOpen</i18n:text>
-                    </h4>
-
-                    <xsl:variable name="label-1">
-                            <xsl:choose>
-                                <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.1')">
-                                    <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.1')"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:text>label</xsl:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                    </xsl:variable>
-
-                    <xsl:variable name="label-2">
-                            <xsl:choose>
-                                <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.2')">
-                                    <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.2')"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:text>title</xsl:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                    </xsl:variable>
-
-                    <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
-                        <xsl:call-template name="itemSummaryView-DIM-file-section-entry">
-                            <xsl:with-param name="href" select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
-                            <xsl:with-param name="mimetype" select="@MIMETYPE" />
-                            <xsl:with-param name="label-1" select="$label-1" />
-                            <xsl:with-param name="label-2" select="$label-2" />
-                            <xsl:with-param name="title" select="mets:FLocat[@LOCTYPE='URL']/@xlink:title" />
-                            <xsl:with-param name="label" select="mets:FLocat[@LOCTYPE='URL']/@xlink:label" />
-                            <xsl:with-param name="size" select="@SIZE" />
-                        </xsl:call-template>
-                    </xsl:for-each>
-                </div>
-            </xsl:when>
-            <!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
-            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='ORE']">
-                <xsl:apply-templates select="//mets:fileSec/mets:fileGrp[@USE='ORE']" mode="itemSummaryView-DIM" />
-            </xsl:when>
-        </xsl:choose>
-    </xsl:template>
-
-    <xsl:template name="itemSummaryView-DIM-file-section-entry">
-        <xsl:param name="href" />
-        <xsl:param name="mimetype" />
-        <xsl:param name="label-1" />
-        <xsl:param name="label-2" />
-        <xsl:param name="title" />
-        <xsl:param name="label" />
-        <xsl:param name="size" />
-        <div>
-            <h5 class="item-list-entry">
-            <a>
-                <xsl:attribute name="href">
-                    <xsl:value-of select="$href"/>
-                </xsl:attribute>
-                <xsl:call-template name="getFileIcon">
-                    <xsl:with-param name="mimetype">
-                        <xsl:value-of select="substring-before($mimetype,'/')"/>
-                        <xsl:text>/</xsl:text>
-                        <xsl:value-of select="substring-after($mimetype,'/')"/>
-                    </xsl:with-param>
-                </xsl:call-template>
-                <xsl:choose>
-                    <xsl:when test="contains($label-1, 'label') and string-length($label)!=0">
-                        <xsl:value-of select="$label"/>
-                    </xsl:when>
-                    <xsl:when test="contains($label-1, 'title') and string-length($title)!=0">
-                        <xsl:value-of select="$title"/>
-                    </xsl:when>
-                    <xsl:when test="contains($label-2, 'label') and string-length($label)!=0">
-                        <xsl:value-of select="$label"/>
-                    </xsl:when>
-                    <xsl:when test="contains($label-2, 'title') and string-length($title)!=0">
-                        <xsl:value-of select="$title"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:call-template name="getFileTypeDesc">
-                            <xsl:with-param name="mimetype">
-                                <xsl:value-of select="substring-before($mimetype,'/')"/>
-                                <xsl:text>/</xsl:text>
-                                <xsl:choose>
-                                    <xsl:when test="contains($mimetype,';')">
-                                        <xsl:value-of select="substring-before(substring-after($mimetype,'/'),';')"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:value-of select="substring-after($mimetype,'/')"/>
-                                    </xsl:otherwise>
-                                </xsl:choose>
-                            </xsl:with-param>
-                        </xsl:call-template>
-                    </xsl:otherwise>
-                </xsl:choose>
-                <xsl:text> (</xsl:text>
-                <xsl:choose>
-                    <xsl:when test="$size &lt; 1024">
-                        <xsl:value-of select="$size"/>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-bytes</i18n:text>
-                    </xsl:when>
-                    <xsl:when test="$size &lt; 1024 * 1024">
-                        <xsl:value-of select="substring(string($size div 1024),1,5)"/>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-kilobytes</i18n:text>
-                    </xsl:when>
-                    <xsl:when test="$size &lt; 1024 * 1024 * 1024">
-                        <xsl:value-of select="substring(string($size div (1024 * 1024)),1,5)"/>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-megabytes</i18n:text>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="substring(string($size div (1024 * 1024 * 1024)),1,5)"/>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-gigabytes</i18n:text>
-                    </xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>)</xsl:text>
-            </a>
-            </h5>
-        </div>
-    </xsl:template>
-
     <xsl:template match="dim:dim" mode="itemDetailView-DIM">
-        <xsl:call-template name="itemSummaryView-DIM-title"/>
+        <h2 class="page-header first-page-header item-view-header">
+            <xsl:call-template name="itemSummaryView-DIM-general-title-first"/>
+        </h2>
+        <h5 class="item-view-heading-secondary">
+            <xsl:call-template name="itemSummaryView-DIM-general-title-translated"/>
+        </h5>
+        <div class="simple-item-view-other">
+            <p class="lead">
+                <xsl:call-template name="itemSummaryView-DIM-general-title-all-other"/>
+            </p>
+        </div>
         <div class="ds-table-responsive">
             <table class="ds-includeSet-table detailtable table table-striped table-hover">
                 <xsl:apply-templates mode="itemDetailView-DIM"/>
@@ -1465,6 +1307,5 @@
 
         <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
     </xsl:template>
-
 
 </xsl:stylesheet>
