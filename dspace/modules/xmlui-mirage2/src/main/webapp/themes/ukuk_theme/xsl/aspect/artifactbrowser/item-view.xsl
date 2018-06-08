@@ -37,9 +37,9 @@
     xmlns:confman="org.dspace.core.ConfigurationManager"
     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink xsl util jstring rights confman">
     <xsl:import href="item-view-general-templates.xsl" />
-    <!--<xsl:import href="item-view-theses-templates.xsl" />
-    <xsl:import href="item-view-articles-templates.xsl" />
-    <xsl:import href="item-view-other-templates.xsl" />-->
+    <xsl:import href="item-view-theses-templates.xsl" />
+    <!--<xsl:import href="item-view-articles-templates.xsl" />-->
+    <!--<xsl:import href="item-view-other-templates.xsl" />-->
 
     <xsl:output indent="yes"/>
 
@@ -144,7 +144,7 @@
             <div>
                 <h4>
                     <xsl:call-template name="itemSummaryView-DIM-general-work-type"/>
-                    <xsl:call-template name="itemSummaryView-DIM-general-defense-status"/>
+                    <xsl:call-template name="itemSummaryView-DIM-theses-defense-status"/>
                 </h4>
             </div>
         </div>
@@ -214,7 +214,7 @@
 
 	<xsl:template name="itemSummaryView-DIM-theses" >
 		<div class="col-xs-12 col-sm-7">
-		    <xsl:call-template name="itemSummaryView-DIM-authors"/>
+		    <xsl:call-template name="itemSummaryView-DIM-general-authors"/>
 		    <xsl:call-template name="itemSummaryView-DIM-advisors"/>
 		    <xsl:call-template name="itemSummaryView-DIM-referees"/>
 		    <xsl:call-template name="itemSummaryView-DIM-affiliation"/>
@@ -859,34 +859,6 @@
                         <xsl:value-of select="./node()"/><xsl:if test="position() != last()"><xsl:text>, </xsl:text></xsl:if>
                     </xsl:for-each>
                 </div>
-            </div>
-        </xsl:if>
-    </xsl:template>
-
-    <xsl:template name="itemSummaryView-DIM-authors">
-        <xsl:if test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()] or dim:field[@element='contributor' and descendant::text()]">
-            <div class="simple-item-view-authors item-page-field-wrapper table">
-                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h4>
-                <xsl:choose>
-                    <xsl:when test="dim:field[@element='contributor'][@qualifier='author']">
-                        <xsl:for-each select="dim:field[@element='contributor'][@qualifier='author']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <xsl:when test="dim:field[@element='creator']">
-                        <xsl:for-each select="dim:field[@element='creator']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <!--<xsl:when test="dim:field[@element='contributor']">-->
-                        <!--<xsl:for-each select="dim:field[@element='contributor']">-->
-                            <!--<xsl:call-template name="itemSummaryView-DIM-authors-entry" />-->
-                        <!--</xsl:for-each>-->
-                    <!--</xsl:when>-->
-                    <xsl:otherwise>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
-                    </xsl:otherwise>
-                </xsl:choose>
             </div>
         </xsl:if>
     </xsl:template>

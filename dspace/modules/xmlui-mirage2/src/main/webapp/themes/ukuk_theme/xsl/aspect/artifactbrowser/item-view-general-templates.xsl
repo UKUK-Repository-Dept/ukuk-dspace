@@ -112,31 +112,31 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- <JR> - 22. 2. 2017 -->
-    <xsl:template name="itemSummaryView-DIM-general-defense-status">
-        <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
-            <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+    <xsl:template name="itemSummaryView-DIM-general-authors">
+        <xsl:if test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()] or dim:field[@element='contributor' and descendant::text()]">
+            <div class="simple-item-view-authors item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h4>
                 <xsl:choose>
-                    <xsl:when test="node()/text()='Výtečně'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
+                    <xsl:when test="dim:field[@element='contributor'][@qualifier='author']">
+                        <xsl:for-each select="dim:field[@element='contributor'][@qualifier='author']">
+                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
+                        </xsl:for-each>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Výborně'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
+                    <xsl:when test="dim:field[@element='creator']">
+                        <xsl:for-each select="dim:field[@element='creator']">
+                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
+                        </xsl:for-each>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Velmi dobře'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="node()/text()='Dobře'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="node()/text()='Prospěl'">
-                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
-                    </xsl:when>
+                    <!--<xsl:when test="dim:field[@element='contributor']">-->
+                        <!--<xsl:for-each select="dim:field[@element='contributor']">-->
+                            <!--<xsl:call-template name="itemSummaryView-DIM-authors-entry" />-->
+                        <!--</xsl:for-each>-->
+                    <!--</xsl:when>-->
                     <xsl:otherwise>
-                        <xsl:text> [</xsl:text><span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
                     </xsl:otherwise>
                 </xsl:choose>
-            </xsl:if>
+            </div>
         </xsl:if>
     </xsl:template>
 
