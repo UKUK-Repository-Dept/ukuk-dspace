@@ -637,7 +637,7 @@
             <div role="tab" id="panel-abstract-en">
                 <h4 class="item-view-heading">
                     <a role="button" data-toggle="collapse" href="#abstract-en-collapse" aria-expanded="false" aria-labelledby="abstract-en-collapse">
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-cs</i18n:text>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-en</i18n:text>
                         <span class="glyphicon glyphicon-collapse-down pull-right"></span>
                     </a>
                 </h4>
@@ -690,7 +690,7 @@
             <div role="tab" id="panel-abstract-original">
                 <h4 class="item-view-heading">
                     <a role="button" data-toggle="collapse" href="#abstract-original-collapse" aria-expanded="false" aria-labelledby="abstract-original-collapse">
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-cs</i18n:text>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-original</i18n:text>
                         <span class="glyphicon glyphicon-collapse-down pull-right"></span>
                     </a>
                 </h4>
