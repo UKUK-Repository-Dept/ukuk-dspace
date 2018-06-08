@@ -45,4 +45,277 @@
         </xsl:if>
     </xsl:template>
 
+    <!-- <JR> - 21. 2. 2017 -->
+    <!-- THESIS ADVISORS -->
+    <xsl:template name="itemSummaryView-DIM-theses-advisors">
+        <xsl:if test="dim:field[@element='contributor' and @qualifier='advisor' and descendant::text()]">
+            <div class="simple-item-view-authors item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-advisor-item-view</i18n:text></h4>
+                <xsl:for-each select="dim:field[@element='contributor' and @qualifier='advisor']">
+                    <xsl:call-template name="itemSummaryView-DIM-theses-advisors-entry" />
+                </xsl:for-each>
+            </div>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-theses-advisors-entry">
+        <div>
+            <xsl:if test="@authority">
+                <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
+            </xsl:if>
+            <a>
+                <xsl:attribute name="href">
+                    <xsl:text>/browse?type=advisor&amp;value=</xsl:text><xsl:copy-of select="./node()"/>
+                </xsl:attribute>
+                <xsl:copy-of select="node()"/>
+            </a>
+        </div>
+    </xsl:template>
+    <!-- END OF: THESIS ADVISORS -->
+
+    <!-- THESIS REFEREES -->
+    <!-- <JR> - 21. 2. 2017 -->
+    <xsl:template name="itemSummaryView-DIM-theses-referees">
+        <xsl:if test="dim:field[@element='contributor' and @qualifier='referee' and descendant::text()]">
+            <div class="simple-item-view-authors item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-referee-item-view</i18n:text></h4>
+                <xsl:for-each select="dim:field[@element='contributor' and @qualifier='referee']">
+                    <xsl:call-template name="itemSummaryView-DIM-theses-referees-entry" />
+                </xsl:for-each>
+            </div>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-theses-referees-entry">
+        <div>
+            <xsl:if test="@authority">
+                <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
+            </xsl:if>
+            <xsl:copy-of select="node()"/>
+        </div>
+    </xsl:template>
+    <!-- END OF: THESIS REFEREES -->
+
+    <!-- THESIS FACULTY -->
+    <!-- <JR> - 20. 2. 2017 -->
+    <xsl:template name="itemSummaryView-DIM-theses-faculty">
+        <div class="simple-item-view-description item-page-field-wrapper table">
+            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-faculty-item-view</i18n:text></h4>
+            <div>       
+                <xsl:choose>
+                    <xsl:when test="$active-locale='en'">           
+                        <xsl:choose>
+                            <xsl:when test="dim:field[@element='description' and @qualifier='faculty' and (@language='en' or @language='en_US')]">  
+                                <xsl:value-of select="dim:field[@element='description' and @qualifier='faculty' and (@language='en' or @language='en_US')]"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <!-- TODO: This has to be i18n message key -->
+                                <xsl:text>Information unavailable</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:when>
+                    <xsl:when test="$active-locale='cs'">
+                        <xsl:choose>
+                            <xsl:when test="dim:field[@element='description' and @qualifier='faculty' and (@language='cs' or @language='cs_CZ')]">  
+                                <xsl:value-of select="dim:field[@element='description' and @qualifier='faculty' and (@language='cs' or @language='cs_CZ')]"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <!-- TODO: This has to be i18n message key -->
+                                <xsl:text>Informace není k dispozici</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:when>
+                </xsl:choose>
+            </div>
+        </div>
+    </xsl:template>
+    <!-- END OF: THESIS FACULTY-->
+
+    <!--    THESIS DISCIPLINE   -->
+    <!-- <AM> - 5. 5. 2017 -->
+    <xsl:template name="itemSummaryView-DIM-theses-discipline">
+        
+        <div class="simple-item-view-description item-page-field-wrapper table">
+            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-discipline-item-view</i18n:text></h4>
+            <div>
+                <xsl:choose>
+                    <xsl:when test="$active-locale='en'">           
+                        <xsl:choose>
+                            <xsl:when test="dim:field[@element='degree' and @qualifier='discipline' and (@language='en' or @language='en_US')]">  
+                                <xsl:value-of select="dim:field[@element='degree' and @qualifier='discipline' and (@language='en' or @language='en_US')]"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <!-- TODO: This has to be i18n message key -->
+                                <xsl:text>Information unavailable</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:when>
+                    <xsl:when test="$active-locale='cs'">
+                        <xsl:choose>
+                            <xsl:when test="dim:field[@element='degree' and @qualifier='discipline' and (@language='cs' or @language='cs_CZ')]">  
+                                <xsl:value-of select="dim:field[@element='degree' and @qualifier='discipline' and (@language='cs' or @language='cs_CZ')]"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <!-- TODO: This has to be i18n message key -->
+                                <xsl:text>Informace není k dispozici</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:when>
+                </xsl:choose>
+            </div>
+        </div>
+        
+    </xsl:template>
+    <!--    END OF: THESIS DISCIPLINE   -->
+
+    <!--    THESIS DEPARTMENT   -->
+    <!-- <JR> - 20. 2. 2017 -->
+    <xsl:template name="itemSummaryView-DIM-theses-department">
+            <div class="simple-item-view-description item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-department-item-view</i18n:text></h4>
+                <div>
+                    <xsl:choose>            
+                        <xsl:when test="$active-locale='en'">
+                            <xsl:choose>
+                                <xsl:when test="dim:field[@element='description' and @qualifier='department' and @language='en_US']">
+                                    <xsl:value-of select="dim:field[@element='description' and @qualifier='department' and @language='en_US']"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>Information is unavailable</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:when>
+                        <xsl:when test="$active-locale='cs'">
+                            <xsl:choose>                        
+                                <xsl:when test="dim:field[@element='description' and @qualifier='department' and @language='cs_CZ']">
+                                    <xsl:value-of select="dim:field[@element='description' and @qualifier='department' and @language='cs_CZ']"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>Informace není k dispozici</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:when>
+                    </xsl:choose>
+                </div>
+            </div>
+    </xsl:template>
+    <!--    END OF: THESIS DEPARTMENT   -->
+
+    <!--    THESIS ACCEPTANCE DATE  -->
+    <!-- <JR> - 21. 2. 2017 -->
+    <xsl:template name="itemSummaryView-DIM-theses-acceptance-date">
+        <div class="simple-item-view-date item-page-field-wrapper table">
+            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-acceptance-date-item-view</i18n:text></h4>
+            <div>
+                <xsl:choose>
+                    <xsl:when test="dim:field[@element='dateAccepted'][not (@qualifier)]">
+                        <xsl:choose>
+                            <xsl:when test="substring(dim:field[@element='dateAccepted'][not (@qualifier)],9,1) = 0">
+                                <xsl:value-of select="substring(dim:field[@element='dateAccepted'][not (@qualifier)],10,1)"/>
+                                <xsl:text>. </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="substring(dim:field[@element='dateAccepted'][not (@qualifier)],9,2)"/>
+                                <xsl:text>. </xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                
+                        <xsl:choose>
+                            <xsl:when test="substring(dim:field[@element='dateAccepted'][not (@qualifier)],6,1) = 0">
+                                <xsl:value-of select="substring(dim:field[@element='dateAccepted'][not (@qualifier)],7,1)"/>
+                                <xsl:text>. </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="substring(dim:field[@element='dateAccepted'][not (@qualifier)],6,2)"/>
+                                <xsl:text>. </xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                
+                        <xsl:value-of select="substring(dim:field[@element='dateAccepted'][not (@qualifier)],1,4)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:choose>
+                            <xsl:when test="$active-locale='en'">
+                                <xsl:text>Information unavailable</xsl:text>
+                            </xsl:when>
+                            <xsl:when test="$active-locale='cs'">
+                                <xsl:text>Informace není k dispozici</xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:text>Information unavailable</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </div>
+        </div>
+    </xsl:template>
+    <!--    END OF: THESIS ACCEPTANCE DATE  -->
+
+    <!--    THESIS GRADE    -->
+    <!-- <JR> - 22. 2. 2017 -->
+    <xsl:template name="itemSummaryView-DIM-theses-grade">
+            <div class="simple-item-view-description item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-grade-item-view</i18n:text></h4>
+                <div>
+                    <xsl:choose>            
+                        <xsl:when test="$active-locale='cs'">
+                            <xsl:choose>
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']">
+                                    <xsl:value-of select="dim:field[@element='grade' and @qualifier='cs']"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>Informace není k dispozici</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:when>
+                        <xsl:when test="$active-locale='en'">
+                            <xsl:choose>
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='en']">
+                                    <xsl:value-of select="dim:field[@element='grade' and @qualifier='en']"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>Information unavailable</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>       
+                        </xsl:when>
+                    </xsl:choose>
+                </div>
+            </div>
+    </xsl:template>
+    <!--    END OF: THESIS GRADE    -->
+
+    <!--    THESIS AFILIATION   -->
+    <!-- <AM> - 18. 4. 2017 -->
+    <xsl:template name="itemSummaryView-DIM-theses-affiliation">
+        <div class="simple-item-view-description item-page-field-wrapper table">
+            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-affiliation-item-view</i18n:text></h4>
+            <div>
+                <xsl:choose>
+                    <xsl:when test="dim:field[@element='author' and @qualifier='affiliation']">
+                    
+                            
+                                <xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation']"/>
+                                <xsl:if test="dim:field[@element='author' and @qualifier='affiliation' and @language='en']">
+                                    <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation' and @language='en']"/>
+                                </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:choose>
+                            <xsl:when test="$active-locale='en'">
+                                <xsl:text>Information unavailable</xsl:text>
+                            </xsl:when>
+                            <xsl:when test="$active-locale='cs'">
+                                <xsl:text>Informace není k dispozici</xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:text>Information unavailable</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </div>
+        </div>
+    </xsl:template>
+    <!--    END OF: THESIS AFILIATION   -->
 </xsl:stylesheet>
