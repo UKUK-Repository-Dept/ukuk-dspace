@@ -228,9 +228,9 @@
 		    <xsl:call-template name="itemSummaryView-DIM-general-keywords-en"/>
 		</div>
                 <div class="col-xs-12 col-sm-12">
-                    <xsl:call-template name="itemSummaryView-DIM-theses-abstract-cs"/>
-                    <xsl:call-template name="itemSummaryView-DIM-abstract-en"/>
-                    <xsl:call-template name="itemSummaryView-DIM-abstract-original"/>
+                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-cs"/>
+                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-en"/>
+                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-original"/>
                 </div>	
 	</xsl:template>
 
