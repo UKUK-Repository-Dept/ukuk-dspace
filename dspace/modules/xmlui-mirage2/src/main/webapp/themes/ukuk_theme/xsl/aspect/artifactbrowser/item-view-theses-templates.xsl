@@ -293,12 +293,10 @@
             <div>
                 <xsl:choose>
                     <xsl:when test="dim:field[@element='author' and @qualifier='affiliation']">
-                    
-                            
-                                <xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation']"/>
-                                <xsl:if test="dim:field[@element='author' and @qualifier='affiliation' and @language='en']">
-                                    <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation' and @language='en']"/>
-                                </xsl:if>
+                        <xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation']"/>
+                        <xsl:if test="dim:field[@element='author' and @qualifier='affiliation' and @language='en']">
+                            <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation' and @language='en']"/>
+                        </xsl:if>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>

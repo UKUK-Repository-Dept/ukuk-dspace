@@ -338,7 +338,7 @@
                             <xsl:when test="$active-locale='en'">
                                 <xsl:text>Information unavailable</xsl:text>
                             </xsl:when>
-                            <xsl:when test="$active-locale='cs">
+                            <xsl:when test="$active-locale='cs'">
                                 <xsl:text>Informace není k dispozici</xsl:text>
                             </xsl:when>
                             <xsl:otherwise>
@@ -368,7 +368,7 @@
                             <xsl:when test="$active-locale='en'">
                                 <xsl:text>Information unavailable</xsl:text>
                             </xsl:when>
-                            <xsl:when test="$active-locale='cs">
+                            <xsl:when test="$active-locale='cs'">
                                 <xsl:text>Informace není k dispozici</xsl:text>
                             </xsl:when>
                             <xsl:otherwise>
