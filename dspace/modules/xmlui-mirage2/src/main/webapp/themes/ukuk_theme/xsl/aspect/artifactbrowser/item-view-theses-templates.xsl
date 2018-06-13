@@ -48,6 +48,9 @@
     <!-- <JR> - 21. 2. 2017 -->
     <!-- THESIS ADVISORS -->
     <xsl:template name="itemSummaryView-DIM-theses-advisors">
+        <!-- # TODO: Upravit šablonu tak, aby se v nadpis metadatového údaje zobrazoval pokaždé a aby se v případě chybějící
+        hodnoty zobrazil text "Informace není k dispozici"
+        --> 
         <xsl:if test="dim:field[@element='contributor' and @qualifier='advisor' and descendant::text()]">
             <div class="simple-item-view-authors item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-advisor-item-view</i18n:text></h4>
@@ -75,6 +78,9 @@
 
     <!-- THESIS REFEREES -->
     <!-- <JR> - 21. 2. 2017 -->
+    <!-- # TODO: Upravit šablonu tak, aby se v nadpis metadatového údaje zobrazoval pokaždé a aby se v případě chybějící
+        hodnoty zobrazil text "Informace není k dispozici"
+    -->
     <xsl:template name="itemSummaryView-DIM-theses-referees">
         <xsl:if test="dim:field[@element='contributor' and @qualifier='referee' and descendant::text()]">
             <div class="simple-item-view-authors item-page-field-wrapper table">

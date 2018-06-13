@@ -38,7 +38,7 @@
     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink xsl util jstring rights confman">
     <xsl:import href="item-view-general-templates.xsl" />
     <xsl:import href="item-view-theses-templates.xsl" />
-    <!--<xsl:import href="item-view-articles-templates.xsl" />-->
+    <xsl:import href="item-view-articles-templates.xsl" />
     <!--<xsl:import href="item-view-other-templates.xsl" />-->
 
     <xsl:output indent="yes"/>
@@ -224,24 +224,35 @@
 		    <xsl:call-template name="itemSummaryView-DIM-theses-acceptance-date"/>
 		    <xsl:call-template name="itemSummaryView-DIM-general-work-language"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-grade"/>
-		    <xsl:call-template name="itemSummaryView-DIM-general-keywords-cs"/>
-		    <xsl:call-template name="itemSummaryView-DIM-general-keywords-en"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-keywords"/>
+		    <!--<xsl:call-template name="itemSummaryView-DIM-general-keywords-cs"/>
+		    <xsl:call-template name="itemSummaryView-DIM-general-keywords-en"/>-->
 		</div>
                 <div class="col-xs-12 col-sm-12">
-                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-cs"/>
+                    <!--<xsl:call-template name="itemSummaryView-DIM-general-abstract-cs"/>
                     <xsl:call-template name="itemSummaryView-DIM-general-abstract-en"/>
-                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-original"/>
+                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-original"/>-->
+                    <xsl:call-template name="itemSummaryView-DIM-general-abstract"/>
                 </div>	
 	</xsl:template>
 
 	<xsl:template name="itemSummaryView-DIM-articles">
-		<div class="row">
-			<div class="col-xs-12 col-sm-7">
-				<div class="simple-item-view-authors item-apge-field-wrapper table">
-					<h4 class="item-view-heading">Článek!!!</h4>
-				</div>		
-			</div>
+		<div class="col-xs-12 col-sm-7">
+			<div class="simple-item-view-authors item-apge-field-wrapper table">
+				<xsl:call-template name="itemSummaryView-DIM-general-authors"/>
+                <xsl:call-template name="itemSummaryView-DIM-general-contributors"/>
+                <xsl:call-template name="itemSummaryView-DIM-general-date"/>
+                <xsl:call-template name="itemSummaryView-DIM-articles-ISSN"/>
+                <xsl:call-template name="itemSummaryView-DIM-periodical-source"/>
+                <xsl:call-template name="itemSummaryView-DIM-periodical-source-url"/>
+                <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
+                <xsl:call-template name="itemSummaryView-DIM-general-rights"/>
+                <xsl:call-template name="itemSummaryView-DIM-general-keywords"/>
+			</div>		
 		</div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <xsl:call-template name="itemSummaryView-DIM-general-abstract"/>
+        </div>
 	</xsl:template>
 
 	<xsl:template name="itemSummaryView-DIM-other">

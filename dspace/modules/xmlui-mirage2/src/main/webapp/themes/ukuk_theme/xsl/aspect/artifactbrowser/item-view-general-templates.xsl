@@ -114,16 +114,25 @@
 
     <!-- AUTHORS -->
     <xsl:template name="itemSummaryView-DIM-general-authors">
-        <xsl:if test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()] or dim:field[@element='contributor' and descendant::text()]">
+        <!--<xsl:if test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()] or dim:field[@element='contributor' and descendant::text()]">-->
+
             <div class="simple-item-view-authors item-page-field-wrapper table">
-                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h4>
                 <xsl:choose>
-                    <xsl:when test="dim:field[@element='contributor'][@qualifier='author']">
+                    <xsl:when test="count(dim:field[@element='contributor'][@qualifier='author']) &gt; 1">
+                        <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author-multiple</i18n:text></h4>
+                    </xsl:when>
+                    <xsl:when test="count(dim:field[@element='creator']) &gt; 1">
+                        <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author-multiple</i18n:text></h4>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h4>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:choose>
+                    <xsl:when test="dim:field[@element='contributor'][@qualifier='author'] or dim:field[@element='creator']">
                         <xsl:for-each select="dim:field[@element='contributor'][@qualifier='author']">
                             <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
                         </xsl:for-each>
-                    </xsl:when>
-                    <xsl:when test="dim:field[@element='creator']">
                         <xsl:for-each select="dim:field[@element='creator']">
                             <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
                         </xsl:for-each>
@@ -133,7 +142,7 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </div>
-        </xsl:if>
+        <!--</xsl:if>-->
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors-entry">
@@ -151,6 +160,47 @@
     </xsl:template>
 
     <!-- END OF AUTHORS -->
+
+    <!-- CONTRIBUTORS -->
+    <xsl:template name="itemSummaryView-DIM-general-contributors">
+        <xsl:if test="count(dim:field[@element='contributor'][not(@qualifier='author')]) &gt; 0">
+            <div class="simple-item-view-contributors item-page-field-wrapper table">
+                <xsl:choose>
+                    <xsl:when test="count(dim:field[@element='contributor'][not(@qualifier='author')]) &gt; 1">
+                        <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-contributor-multiple</i18n:text></h4>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-contributor</i18n:text></h4>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:choose>
+                        <xsl:when test="dim:field[@element='contributor'][not(@qualifier='author')]">
+                            <xsl:for-each select="dim:field[@element='contributor'][not(@qualifier='author')]">
+                                <xsl:call-template name="itemSummaryView-DIM-contributors-entry" />
+                            </xsl:for-each>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+            </div>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-contributors-entry">
+        <div>
+            <xsl:if test="@authority">
+                <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
+            </xsl:if>
+            <a>
+                <xsl:attribute name="href">
+                    <xsl:text>/browse?type=author&amp;value=</xsl:text><xsl:copy-of select="./node()"/>
+                </xsl:attribute>
+                <xsl:copy-of select="node()"/>
+            </a>
+        </div>
+    </xsl:template>
+    <!-- END OF: CONTRIBUTORS -->
 
     <!-- <JR> - 22. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-general-work-language">
@@ -319,6 +369,69 @@
     </xsl:template>
 
     <!--    END OF: WORK language   -->
+
+    <!-- KEYWORDS (GENERAL)-->
+
+    <xsl:template name="itemSummaryView-DIM-general-keywords">
+        <xsl:choose>
+            <xsl:when test="count(dim:field[@element='subject']) &gt; 1 or count(dim:field[@element='subject']) = 1">
+                <xsl:choose>
+                    <xsl:when test="count(dim:field[@element='subject'][not(@qualifier)][@language='']) &gt; 1">
+                        <div class="simple-item-view-keywords item-page-field-wrapper table">
+                            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-subject</i18n:text></h4>
+                            <div>
+                                <xsl:for-each select="dim:field[@element='subject'][not(@qualifier)][@language='']">
+                                    <xsl:value-of select="./node()"/><xsl:if test="position() != last()"><xsl:text>, </xsl:text></xsl:if>
+                                </xsl:for-each>
+                            </div>
+                        </div>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:choose>
+                    <xsl:when test="count(dim:field[@element='subject'][not(@qualifier)][@language='cs_CZ']) &gt; 1 or count(dim:field[@element='subject'][not(@qualifier)][@language='cs_CZ']) = 1">
+                        <div class="simple-item-view-keywords-cs item-page-field-wrapper table">
+                            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-subject-item-view-cs</i18n:text></h4>
+                            <div>
+                                <xsl:for-each select="dim:field[@element='subject' and @language='cs_CZ']">
+                                    <xsl:value-of select="./node()"/><xsl:if test="position() != last()"><xsl:text>, </xsl:text></xsl:if>
+                                </xsl:for-each>
+                            </div>
+                        </div>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:choose>
+                    <xsl:when test="count(dim:field[@element='subject'][not(@qualifier)][@language='en_US']) &gt; 1 or count(dim:field[@element='subject'][not(@qualifier)][@language='en_US']) = 1">
+                        <div class="simple-item-view-keywords-en item-page-field-wrapper table">
+                            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-subject-item-view-en</i18n:text></h4>
+                            <div>
+                                <xsl:for-each select="dim:field[@element='subject' and @language='en_US']">
+                                    <xsl:value-of select="./node()"/><xsl:if test="position() != last()"><xsl:text>, </xsl:text></xsl:if>
+                                </xsl:for-each>
+                            </div>
+                        </div>
+                    </xsl:when>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <div class="simple-item-view-keywords item-page-field-wrapper table">
+                    <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-subject</i18n:text></h4>
+                    <xsl:choose>
+                        <xsl:when test="$active-locale='cs'">
+                            <xsl:text>Klíčová slova nejsou k dispozici</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$active-locale='en'">
+                            <xsl:text>Keywords not found</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>Keywords not found</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </div>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <!--    END OF: KEYWORDS (GENERAL)  -->
 
     <!--    KEYWORDS (CS)   -->
     <!-- <JR> - 20. 2. 2017 -->
@@ -547,7 +660,7 @@
     <xsl:template name="itemSummaryView-DIM-general-date">
         <div class="simple-item-view-date word-break item-page-field-wrapper table">
             <h4 class="item-view-heading">
-                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-date</i18n:text>
+                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-date-issued</i18n:text>
             </h4>
             <xsl:choose>
                 <xsl:when test="dim:field[@element='date' and @qualifier='issued' and descendant::text()]">
@@ -576,165 +689,243 @@
     </xsl:template>
     <!--    END OF: GENERAL DATE    -->
 
-    <!--    ABSTRACT (CS)   -->
-    <!--9.5.2017 <AM> doplněn český abstrakt uk.abstract.cs -->
-    <xsl:template name="itemSummaryView-DIM-general-abstract-cs">
-        <div class="simple-item-view-description item-page-field-wrapper table">
+    <!-- SOURCE DATA -->
+    <xsl:template name="itemSummaryView-DIM-general-source-data">
+        <xsl:choose>
+            <xsl:when test="dim:field[@element='source'][not(@qualifier)]">
+                <xsl:value-of select="dim:field[@element='source'][not(@qualifier)]"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:choose>
+                    <xsl:when test="$active-locale='cs'">
+                        <xsl:text>Informace není k dispozici</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$active-locale='en'">
+                        <xsl:text>Information unavailable</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>Information unavailable</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <!-- END OF: SOURCE -->
+
+    <!-- SOURCE URL DATA -->
+
+    <xsl:template name="itemSummaryView-DIM-general-source-url-data">
+        
+        <xsl:choose>
+            <xsl:when test="dim:field[@element='source'][@qualifier='uri']">
+                <xsl:variable name="periodical-url" select="dim:field[@element='source'][@qualifier='uri']"/>
+                <a>
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="$periodical-url"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="target">
+                        <xsl:text>_blank</xsl:text>
+                    </xsl:attribute>
+                    <xsl:value-of select="$periodical-url"/>
+                </a>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:choose>
+                    <xsl:when test="$active-locale='cs'">
+                        <xsl:text>Informace není k dispozici</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$active-locale='en'">
+                        <xsl:text>Information unavailable</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>Information unavailable</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:template>
+    <!-- END OF: SOURCE URL -->
+
+    <!-- PUBLISHER -->
+    <xsl:template name="itemSummaryView-DIM-general-publisher">
+        <div class="simple-item-view-publisher item-page-field-wrapper table">
+            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-publisher</i18n:text></h4>
+            <xsl:choose>
+                <xsl:when test="dim:field[@element='publisher']">
+                    <xsl:value-of select="dim:field[@element='publisher']"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="$active-locale='cs'">
+                            <xsl:text>Informace není k dispozici</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$active-locale='en'">
+                            <xsl:text>Information unavailable</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>Information unavailable</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise>
+            </xsl:choose>
+        </div>
+    </xsl:template>
+    <!-- END OF: PUBLISHER -->
+
+    <!-- RIGHTS -->
+    <xsl:template name="itemSummaryView-DIM-general-rights">
+        <div class="simple-item-view-rights item-page-field-wrapper table">
+            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-rights</i18n:text></h4>
+            <xsl:choose>
+                <xsl:when test="dim:field[@element='rights']">
+                    <a>
+                        <xsl:attribute name="href">
+                            <xsl:value-of select="dim:field[@element='rights']"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="target">
+                            <xsl:text>_blank</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="dim:field[@element='rights']"/>
+                    </a>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="$active-locale='cs'">
+                            <xsl:text>Informace není k dispozici</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$active-locale='en'">
+                            <xsl:text>Information unavailable</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>Information unavailable</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise>
+            </xsl:choose>
+        </div>
+    </xsl:template>
+    <!-- END OF: RIGHTS -->
+
+    <!-- ABSTRACT(GENERAL) -->
+    <!-- TODO: Dodělat šablonu pro abstrakty tak, aby se zobrazovala vždy konkrétní jazyková mutace abstraktu a případně abstrakt v originálním jazyce (jakýkoliv další, který nemá jazyk cs_CZ nebo en_US)? -->
+    <xsl:template name="itemSummaryView-DIM-general-abstract">
+        <div class="simple-item-view-abstract item-page-field-wrapper table">
             <div role="tab" id="panel-abstract-cs">
                 <h4 class="item-view-heading">
-                    <a role="button" data-toggle="collapse" href="#abstract-cs-collapse" aria-expanded="false" aria-labelledby="abstract-cs-collapse">
+                    <a role="button" data-toggle="collapse" href="#abstract-collapse-cs" aria-expanded="true" aria-labelledby="abstract-collapse-cs">
                         <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-cs</i18n:text>
                         <span class="glyphicon glyphicon-collapse-down pull-right"></span>
                     </a>
                 </h4>
             </div>
 
-            <div id="abstract-cs-collapse" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-cs">
-                <div>
-                    <xsl:choose>
-                        <xsl:when test="dim:field[@element='abstract' and @qualifier='cs']">
-                            <xsl:for-each select="dim:field[@element='abstract' and @qualifier='cs']">
-                                <xsl:choose>
-                                    <xsl:when test="node()">
-                                        <xsl:copy-of select="node()"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:text>&#160;</xsl:text>
-                                    </xsl:otherwise>
-                                </xsl:choose>
-                                <xsl:if test="count(following-sibling::dim:field[@element='description' and @qualifier='abstract']) != 0">
-                                    <div class="spacer">&#160;</div>
-                                </xsl:if>
-                            </xsl:for-each>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:choose>
-                                <xsl:when test="$active-locale='en'">
-                                    <xsl:text>Information unavailable</xsl:text>
-                                </xsl:when>
-                                <xsl:when test="$active-locale='cs'">
-                                    <xsl:text>Informace není k dispozici</xsl:text>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:text>Information unavailable</xsl:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </div>
-                <xsl:if test="count(dim:field[@element='abstract' and @qualifier='cs']) &gt; 1">
-                    <div class="spacer">&#160;</div>
-                </xsl:if>
+            <div id="abstract-collapse-cs" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-cs">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-data">
+                    <xsl:with-param name="language">
+                        <xsl:text>cs</xsl:text>
+                    </xsl:with-param>
+                </xsl:call-template>
             </div>
         </div>
-    </xsl:template>
-    <!--    END OF: ABSTRACT (CS)   -->
 
-
-    <!--    ABSTRACT (EN)  -->
-    <xsl:template name="itemSummaryView-DIM-general-abstract-en">
-        <div class="simple-item-view-description item-page-field-wrapper table">
+        <div class="simple-item-view-abstract item-page-field-wrapper table">
             <div role="tab" id="panel-abstract-en">
                 <h4 class="item-view-heading">
-                    <a role="button" data-toggle="collapse" href="#abstract-en-collapse" aria-expanded="false" aria-labelledby="abstract-en-collapse">
+                    <a role="button" data-toggle="collapse" href="#abstract-collapse-en" aria-expanded="false" aria-labelledby="abstract-collapse-en">
                         <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-en</i18n:text>
                         <span class="glyphicon glyphicon-collapse-down pull-right"></span>
                     </a>
                 </h4>
             </div>
 
-            <div id="abstract-en-collapse" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-en">
-                <div>
-                    <xsl:choose>
-                        <xsl:when test="dim:field[@element='abstract' and @qualifier='en']">
-                            <xsl:for-each select="dim:field[@element='abstract' and @qualifier='en']">
-                                <xsl:choose>
-                                    <xsl:when test="node()">
-                                        <xsl:copy-of select="node()"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:text>&#160;</xsl:text>
-                                    </xsl:otherwise>
-                                </xsl:choose>
-                                <xsl:if test="count(following-sibling::dim:field[@element='description' and @qualifier='abstract']) != 0">
-                                    <div class="spacer">&#160;</div>
-                                </xsl:if>
-                            </xsl:for-each>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:choose>
-                                <xsl:when test="$active-locale='en'">
-                                    <xsl:text>Information unavailable</xsl:text>
-                                </xsl:when>
-                                <xsl:when test="$active-locale='cs'">
-                                    <xsl:text>Informace není k dispozici</xsl:text>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:text>Information unavailable</xsl:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </div>
-                <xsl:if test="count(dim:field[@element='abstract' and @qualifier='en']) &gt; 1">
-                    <div class="spacer">&#160;</div>
-                </xsl:if>
+            <div id="abstract-collapse-en" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-en">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-data">
+                    <xsl:with-param name="language">
+                        <xsl:text>en</xsl:text>
+                    </xsl:with-param>
+                </xsl:call-template>
             </div>
-        </div>
-    </xsl:template>
-    <!--    END OF: ABSTRACT (EN)   -->
 
-    <!--    ABSTRACT (ORIGINAL) -->
-    <xsl:template name="itemSummaryView-DIM-general-abstract-original">
-        <div class="simple-item-view-description item-page-field-wrapper table">
+        </div>
+
+        <div class="simple-item-view-abstract item-page-field-wrapper table">
             <div role="tab" id="panel-abstract-original">
                 <h4 class="item-view-heading">
-                    <a role="button" data-toggle="collapse" href="#abstract-original-collapse" aria-expanded="false" aria-labelledby="abstract-original-collapse">
+                    <a role="button" data-toggle="collapse" href="#abstract-collapse-original" aria-expanded="false" aria-labelledby="abstract-collapse-original">
                         <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-original</i18n:text>
                         <span class="glyphicon glyphicon-collapse-down pull-right"></span>
                     </a>
                 </h4>
             </div>
+            <div id="abstract-collapse-original" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-original">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-data">
+                    <xsl:with-param name="language">
+                        <xsl:text>original</xsl:text>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </div>
+        </div>
+    </xsl:template>
 
-            <div id="abstract-original-collapse" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-original">
-                <div>
+    <xsl:template name="itemSummaryView-DIM-general-abstract-data">
+        <xsl:param name="language"/>
+        <div>
+            <xsl:choose>
+                <xsl:when test="$language='cs'">
                     <xsl:choose>
-                        <xsl:when test="dim:field[@element='abstract' and @qualifier='original']">
-                            <xsl:for-each select="dim:field[@element='abstract' and @qualifier='original']">
-                                <xsl:choose>
-                                    <xsl:when test="node()">
-                                        <xsl:copy-of select="node()"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:text>&#160;</xsl:text>
-                                    </xsl:otherwise>
-                                </xsl:choose>
-                                <xsl:if test="count(following-sibling::dim:field[@element='description' and @qualifier='abstract']) != 0">
-                                    <div class="spacer">&#160;</div>
-                                </xsl:if>
-                            </xsl:for-each>
+                        <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][@language='cs_CZ']">
+                            <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='cs_CZ']"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:choose>
-                                <xsl:when test="$active-locale='en'">
-                                    <xsl:text>Information unavailable</xsl:text>
-                                </xsl:when>
-                                <xsl:when test="$active-locale='cs'">
-                                    <xsl:text>Informace není k dispozici</xsl:text>
+                                <xsl:when test="dim:field[@element='abstract'][@qualifier='cs']">
+                                    <xsl:value-of select="dim:field[@element='abstract'][@qualifier='cs']"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>Information unavailable</xsl:text>
+                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-info-unavailable</i18n:text>
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:otherwise>
                     </xsl:choose>
-                </div>
-                <xsl:if test="count(dim:field[@element='abstract' and @qualifier='original']) &gt; 1">
-                    <div class="spacer">&#160;</div>
-                </xsl:if>
-            </div>
+                </xsl:when>
+                <xsl:when test="$language='en'">
+                    <xsl:choose>
+                        <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][@language='en_US']">
+                            <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='en_US']"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:choose>
+                                <xsl:when test="dim:field[@element='abstract'][@qualifier='en']">
+                                    <xsl:value-of select="dim:field[@element='abstract'][@qualifier='en']"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-info-unavailable</i18n:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="$language='original'">
+                    <xsl:choose>
+                            <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][not(@language='en_US') and not(@language='cs_CZ')]">
+                                <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='' and not(@language='cs_CZ') and not(@language='en_US')]"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:choose>
+                                    <xsl:when test="dim:field[@element='abstract'][@qualifier='original']">
+                                        <xsl:value-of select="dim:field[@element='abstract'][@qualifier='original']"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-info-unavailable</i18n:text>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                </xsl:when>    
+            </xsl:choose>
         </div>
     </xsl:template>
-    <!--    END OF: ABSTRACT (ORIGINAL) -->
+    <!-- END OF: ABSTRACT (GENERAL) -->
 
 </xsl:stylesheet>

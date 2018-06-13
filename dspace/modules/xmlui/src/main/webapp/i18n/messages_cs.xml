@@ -2240,14 +2240,23 @@
 		který používáte.
 	</message>
 	
+	<message key="xmlui.dri2xhtml.METS-1.0.item-info-unavailable">Informace není k dispozici</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-preview">Náhled</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-title">Název</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-author">Autor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-author-multiple">Autoři</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor">Spoluautor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-multiple">Spoluautoři</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-abstract">Abstrakt</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-description">Popis</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">Trvalý odkaz</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-date">Datum</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-date-issued">Datum vydání</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-issn">ISSN časopisu</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-source-periodical-uri">Odkaz na časopis</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-source-periodical">Zdrojový časopis</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Nakladatel</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-rights">Licence</message>
 	<!-- <JR> - 20. 2. 2017 - změna na "Klíčová slova"-->
 	<!--<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Klíčové slovo</message>-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Klíčová slova</message>

@@ -2260,14 +2260,23 @@
         whatever profile you use.
     </message>
 
+    <message key="xmlui.dri2xhtml.METS-1.0.item-info-unavailable">Information unavailable</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-preview">Preview</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-title">Title</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-author">Author</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-author-multiple">Authors</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor">Contributor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-multiple">Contributors</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-abstract">Abstract</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-description">Description</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">Permanent link</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-date">Date</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-date-issued">Issue Date</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-issn">Periodical ISSN</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-source-periodical-uri">Periodical URL</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-source-periodical">Source Periodical</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Publisher</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-rights">Rights</message>
 	<!--<JR> - 20. 2. 2017 - změna na "Keywords"-->
 	<!--<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Subject</message>-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Keywords</message>
