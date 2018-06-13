@@ -34,6 +34,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     exclude-result-prefixes="xalan encoder i18n dri mets dim  xlink xsl">
+    <xsl:import href="item-view-general-templates.xsl"/>
 
 
     <xsl:output indent="yes"/>
@@ -49,7 +50,7 @@
                 <xsl:variable name="link_href" select="@href"/>
                 <xsl:if test="/atom:entry/oreatom:triples/rdf:Description[@rdf:about=$link_href][dcterms:description='ORIGINAL']
                             or not(/atom:entry/oreatom:triples/rdf:Description[@rdf:about=$link_href])">
-                    <xsl:call-template name="itemSummaryView-DIM-file-section-entry">
+                    <xsl:call-template name="itemSummaryView-DIM-general-file-section-entry">
                         <xsl:with-param name="href" select="@href" />
                         <xsl:with-param name="mimetype" select="@type" />
                         <xsl:with-param name="label-1" select="'title'" />
