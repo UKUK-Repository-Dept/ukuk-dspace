@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node id="DSpaceDocumentTypology" label="Typologie dokumentů DSpace UK">
+	<isComposedBy>
+		<node id="UKDSType1_CS" label="Příspěvek do periodika">
+			<isComposedBy>
+				<node id="UKDSType1.1_CS" label="Článek">
+					<isComposedBy>
+						<node id="UKDSType1.1.1_CS" label="Vědecký článek">
+							<hasNote>Vědecký článek</hasNote>
+						</node>
+					</isComposedBy>
+					<isComposedBy>
+						<node id="UKDSType1.1.2_CS" label="Recenze">
+							<hasNote>Recenze</hasNote>
+						</node>
+					</isComposedBy>
+					<isComposedBy>
+						<node id="UKDSType1.1.3_CS" label="Preprint">
+							<hasNote>Preprint</hasNote>
+						</node>
+					</isComposedBy>
+					<hasNote>Článek</hasNote>
+				</node>
+			</isComposedBy>
+			<isComposedBy>
+				<node id="UKDSType1.2_CS" label="Editorial">
+					<hasNote>Editorial</hasNote>
+				</node>
+			</isComposedBy>
+			<isComposedBy>
+				<node id="UKDSType1.3_CS" label="Data paper">
+					<hasNote>Data paper</hasNote>
+				</node>
+			</isComposedBy>
+			<isComposedBy>
+				<node id="UKDSType1.4_CS" label="Dopis editorovi">
+					<hasNote>Dopis editorovi</hasNote>
+				</node>
+			</isComposedBy>
+			<hasNote>Příspěvek do periodika</hasNote>
+		</node>
+		<node id="UKDSType1_EN" label="Contribution to journal">
+			<isComposedBy>
+				<node id="UKDSType1.1_EN" label="Journal Article">
+					<isComposedBy>
+						<node id="UKDSType1.1.1_EN" label="Research Article">
+							<hasNote>Research Article</hasNote>
+						</node>
+					</isComposedBy>
+					<isComposedBy>
+						<node id="UKDSType1.1.2_EN" label="Review Article">
+							<hasNote>Review Article</hasNote>
+						</node>
+					</isComposedBy>
+					<isComposedBy>
+						<node id="UKDSType1.1.3_EN" label="Preprint">
+							<hasNote>Preprint</hasNote>
+						</node>
+					</isComposedBy>
+					<hasNote>Journal Article</hasNote>
+				</node>
+			</isComposedBy>
+			<isComposedBy>
+				<node id="UKDSType1.2_EN" label="Editorial">
+					<hasNote>Editorial</hasNote>
+				</node>
+			</isComposedBy>
+			<isComposedBy>
+				<node id="UKDSType1.3_EN" label="Data paper">
+					<hasNote>Data paper</hasNote>
+				</node>
+			</isComposedBy>
+			<isComposedBy>
+				<node id="UKDSType1.4_EN" label="Letter to the Editors">
+					<hasNote>Letter to the Editors</hasNote>
+				</node>
+			</isComposedBy>
+			<hasNote>Contribution to Journal</hasNote>
+		</node>
+	</isComposedBy>
+</node>

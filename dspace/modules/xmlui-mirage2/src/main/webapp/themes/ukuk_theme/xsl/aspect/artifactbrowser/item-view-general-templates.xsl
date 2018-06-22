@@ -38,15 +38,19 @@
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-general-title-all-other">
-        <xsl:for-each select="dim:field[@element='title'][not(@qualifier)]">
-            <xsl:if test="not(position() = 1)">
-                <xsl:value-of select="./node()"/>
-                <xsl:if test="count(following-sibling::dim:field[@element='title'][not(@qualifier)]) != 0">
-                    <xsl:text> </xsl:text>
-                    <br/>
-                </xsl:if>
-            </xsl:if>
-        </xsl:for-each>
+        <xsl:choose>
+            <xsl:when test="dim:field[@element='title'][not(not(@qualifier))]">
+                    <xsl:for-each select="dim:field[@element='title'][not(not(@qualifier))]">
+                        <!--<xsl:if test="not(position() = 1)">-->
+                            <xsl:value-of select="./node()"/>
+                            <xsl:if test="count(following-sibling::dim:field[@element='title'][not(not(@qualifier))]) != 0">
+                                <xsl:text> </xsl:text>
+                                <br/>
+                            </xsl:if>
+                        <!--</xsl:if>-->
+                    </xsl:for-each>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-general-title-translated">

@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE input-forms SYSTEM "input-forms.dtd">
 
-
 <input-forms>
 
  <!-- The form-map maps collection handles to forms. DSpace does not       -->
@@ -51,6 +50,8 @@
          <name-map collection-handle="123456789/47" form-name="habilitace" />
          <name-map collection-handle="123456789/49" form-name="habilitace" />
          <name-map collection-handle="123456789/51" form-name="habilitace" />
+         <!-- OA ARTICLES - FF UK -->
+         <name-map collection-handle="1233456789/1367" form-name="articles" /> 
  </form-map>
 
 
@@ -251,6 +252,104 @@ it, please enter the types and the actual numbers or codes.</hint>
          <required></required>
        </field>
       </page>
+    </form>
+
+    <form name="articles">
+        <page number="1">
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>type</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Typ dokumentu</label>
+                <input-type value-pairs-name="ukdstypes_CS">dropdown</input-type>
+                <required>Musíte vyplnit typ dokumentu</required>
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>contributor</dc-element>
+                <dc-qualifier>author</dc-qualifier>
+                <repeatable>true</repeatable>
+                <label>Autor práce (povinný údaj)</label>
+                <input-type>name</input-type>
+                <hint>Zadejte jméno autorů článku.</hint>
+                <required>Musíte zadat jméno autora habilitační práce.</required>               
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>title</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Název práce</label>
+                <input-type>onebox</input-type>
+                <hint>Zadejte název článku.</hint>
+                <required>Musíte zadat název článku.</required> 
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>title</dc-element>
+                <dc-qualifier>alternative</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Přeložený název práce</label>
+                <input-type>onebox</input-type>
+                <hint>Zadejte přeložený název článku.</hint>
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>date</dc-element>
+                <dc-qualifier>issued</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Datum vydání článku</label>
+                <input-type>date</input-type>
+                <hint>Zadejte datum vydání článku. Můžete vynechat měsíc a den vydání.</hint>
+                <required>Zadejte alespoň rok vydání článku.</required>
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>subject</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>true</repeatable>
+                <label>Klíčová slova</label>
+                <input-type>onebox</input-type>
+                <hint>Vložte klíčové slovo. Další klíčová slova můžete přidat kliknutím na tlačítko "Přidat".</hint>
+            </field>
+            <field>
+                <dc-schema>uk</dc-schema>
+                <dc-element>abstract</dc-element>
+                <dc-qualifier>cs</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Abstrakt článku (česky)</label>
+                <input-type>textarea</input-type>
+                <hint>Vložte český abstrakt článku.</hint>
+            </field>
+            <field>
+                <dc-schema>uk</dc-schema>
+                <dc-element>abstract</dc-element>
+                <dc-qualifier>en</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Abstrakt článku (anglicky)</label>
+                <input-type>textarea</input-type>
+                <hint>Vložte anglický abstrakt článku.</hint>
+            </field>
+            <field>
+                <dc-schema>uk</dc-schema>
+                <dc-element>abstract</dc-element>
+                <dc-qualifier>original</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Abstrakt článku (jiný jazyk)</label>
+                <input-type>textarea</input-type>
+                <hint>Vložte abstrakt článku v jiném jazyce než v češtině nebo angličtině.</hint>
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>source</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Bibliografický údaj o časopisu</label>
+                <input-type>onebox</input-type>
+                <hint>Vložte bibliografický údaj o časopisu. Příklad: Fórum sociální práce, 2017, 2, 5-6</hint>
+            </field>
+        </page>
     </form>
 
 	<form name="habilitace">
@@ -484,6 +583,84 @@ it, please enter the types and the actual numbers or codes.</hint>
  <!-- stores the associated stored-values in the database.                  -->
 
  <form-value-pairs>
+
+    <value-pairs value-pairs-name="ukdstypes_CS" dc-term="type">
+        <pair>
+            <displayed-value>Příspěvek v periodiku</displayed-value>
+            <stored-value>Příspěvek v periodiku</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Příspěvek v periodiku -> Článek</displayed-value>
+            <stored-value>Článek</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Příspěvek v periodiku -> Článek -> Vědecký článek</displayed-value>
+            <stored-value>Vědecký článek</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Příspěvek v periodiku -> Článek -> Recenze</displayed-value>
+            <stored-value>Recenze</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Příspěvek v periodiku -> Článek -> Preprint</displayed-value>
+            <stored-value>Preprint</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Příspěvek v periodiku -> Editorial</displayed-value>
+            <stored-value>Editorial</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Příspěvek v periodiku -> Data paper</displayed-value>
+            <stored-value>Data paper</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Příspěvek v periodiku -> Dopis editorovi</displayed-value>
+            <stored-value>Dopis editorovi</stored-value>
+        </pair>
+    </value-pairs>
+
+    <value-pairs value-pairs-name="ukdstypes_EN" dc-term="type">
+        <pair>
+            <displayed-value>Contribution to Journal</displayed-value>
+            <stored-value>Contribution to Journal</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Contribution to Journal -> Article</displayed-value>
+            <stored-value>Article</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Contribution to Journal -> Article -> Research Article</displayed-value>
+            <stored-value>Vědecký článek</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Contribution to Journal -> Article -> Review Article</displayed-value>
+            <stored-value>Review Article</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Contribution to Journal -> Article -> Preprint</displayed-value>
+            <stored-value>Preprint</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Contribution to Journal -> Editorial</displayed-value>
+            <stored-value>Editorial</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Contribution to Journal -> Data paper</displayed-value>
+            <stored-value>Data paper</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Contribution to Journal -> Letter to the Editors</displayed-value>
+            <stored-value>Letter to the Editors</stored-value>
+        </pair>
+    </value-pairs>
+
+    <value-pairs value-pairs-name="ffuk_oa_journals" dc-term="identifier_issn">
+        <pair>
+            <displayed-value>Časopis pro moderní filologii</displayed-value>
+            <stored-value>2336-6591</stored-value>
+        </pair>
+    </value-pairs>
+
 	<value-pairs value-pairs-name="uk-fakulty" dc-term="descríption_faculty">
 		<pair>
 			<displayed-value>Katolická teologická fakulta</displayed-value>

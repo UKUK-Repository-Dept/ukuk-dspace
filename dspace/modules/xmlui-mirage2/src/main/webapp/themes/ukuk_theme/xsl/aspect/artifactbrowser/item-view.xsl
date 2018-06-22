@@ -48,9 +48,6 @@
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
         mode="itemSummaryView-DIM"/>
 
-	<!-- <JR> - 15. 9. 2017 - calling new template for CitacePro -->
-        <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim" mode="itemSummaryView-DIM-citacepro"/>
-
         <xsl:copy-of select="$SFXLink" />
 
         <!-- Generate the Creative Commons license information from the file section (DSpace deposit license hidden by default)-->
@@ -133,13 +130,13 @@
             <xsl:call-template name="itemSummaryView-DIM-general-title-first"/>
         </h2>
         <h5 class="item-view-heading-secondary">
-            <xsl:call-template name="itemSummaryView-DIM-general-title-translated"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-title-all-other"/>
         </h5>
-        <div class="simple-item-view-other">
+        <!--<div class="simple-item-view-other">
             <p class="lead">
                 <xsl:call-template name="itemSummaryView-DIM-general-title-all-other"/>
             </p>
-        </div>
+        </div>-->
 		<div class="simple-item-view-description item-page-field-wrapper table">
             <div>
                 <h4>
@@ -157,7 +154,7 @@
             			<xsl:call-template name="itemSummaryView-DIM-general-URI"/>
             			<xsl:call-template name="itemSummaryView-general-collections"/>
             		</div>
-					
+
 					<!-- Call doctype handler and create itemView specific for the type of the item that is being displayed -->
 					<xsl:call-template name="doctype-handler"/>
 
@@ -172,6 +169,7 @@
 		<xsl:variable name="document_type_en" select="dim:field[@element='type' and @language='en_US']/text()" />
 		<xsl:variable name="document_type_cs" select="dim:field[@element='type' and @language='cs_CZ']/text()" />
 		<xsl:variable name="document_type_nolang" select="dim:field[@element='type'][not(@language)]/text()" />
+        <xsl:variable name="document_type_internal" select="dim:field[@element='internal-type']/text()" />
 		
 		<!-- Checking document type -->
 		<xsl:choose>
@@ -203,6 +201,9 @@
 				<!-- It's an Article!!! -->
 				<xsl:call-template name="itemSummaryView-DIM-articles" />
 			</xsl:when>
+            <xsl:when test="$document_type_internal = 'uk_publication'">
+                <xsl:call-template name="itemSummaryView-DIM-articles" />
+            </xsl:when>
 			<xsl:otherwise>
 				<!-- Document type was not found in any of the thesis types lists-->
 				<!-- It's not a thesis, nor article or any other document type listed above -->
@@ -228,12 +229,14 @@
 		    <!--<xsl:call-template name="itemSummaryView-DIM-general-keywords-cs"/>
 		    <xsl:call-template name="itemSummaryView-DIM-general-keywords-en"/>-->
 		</div>
-                <div class="col-xs-12 col-sm-12">
-                    <!--<xsl:call-template name="itemSummaryView-DIM-general-abstract-cs"/>
-                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-en"/>
-                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-original"/>-->
-                    <xsl:call-template name="itemSummaryView-DIM-general-abstract"/>
-                </div>	
+        <div class="col-xs-12 col-sm-12">
+            <!--<xsl:call-template name="itemSummaryView-DIM-general-abstract-cs"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-abstract-en"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-abstract-original"/>-->
+            <xsl:call-template name="itemSummaryView-DIM-general-abstract"/>
+            <xsl:call-template name="citacePro"/>
+        </div>
+
 	</xsl:template>
 
 	<xsl:template name="itemSummaryView-DIM-articles">
@@ -266,24 +269,24 @@
 	</xsl:template>
 
 	<!-- <JR> - 15. 9. 2017 - new template for CitacePRO -->
-        <xsl:template match="dim:dim" mode="itemSummaryView-DIM-citacepro">
-                <xsl:variable name="urlPrefix">
-                        <xsl:text>https://www.citacepro.com/api/dspaceuk/citace/oai:dspace.cuni.cz:</xsl:text>
-                </xsl:variable>
+    <xsl:template name="citacePro">
+            <xsl:variable name="urlPrefix">
+                    <xsl:text>https://www.citacepro.com/api/dspaceuk/citace/oai:dspace.cuni.cz:</xsl:text>
+            </xsl:variable>
 
-                <h4 class="item-view-heading">
-                        <xsl:text>Citace dokumentu</xsl:text>
-                </h4>
-                <div id="ds-search-option" class="ds-option-set">
-                        <embed style="width:100%;height:230px">
-                                <xsl:attribute name="src">
-                                        <xsl:call-template name="itemSummaryView-DIM-citaceURL">
-                                                <xsl:with-param name="prefix" select="$urlPrefix" />
-                                        </xsl:call-template>
-                                </xsl:attribute>
-                        </embed>
-                </div>
-        </xsl:template>
+            <h4 class="item-view-heading">
+                    <xsl:text>Citace dokumentu</xsl:text>
+            </h4>
+            <div id="ds-search-option" class="ds-option-set">
+                    <embed style="width:100%;height:230px">
+                            <xsl:attribute name="src">
+                                    <xsl:call-template name="itemSummaryView-DIM-citaceURL">
+                                            <xsl:with-param name="prefix" select="$urlPrefix" />
+                                    </xsl:call-template>
+                            </xsl:attribute>
+                    </embed>
+            </div>
+    </xsl:template>
 
         <xsl:template name="itemSummaryView-DIM-citaceURL">
                 <xsl:param name="prefix" />
