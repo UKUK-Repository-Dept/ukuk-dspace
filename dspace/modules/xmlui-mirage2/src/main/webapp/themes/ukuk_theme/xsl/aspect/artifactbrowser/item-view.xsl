@@ -351,13 +351,14 @@
             <xsl:call-template name="itemSummaryView-DIM-general-title-first"/>
         </h2>
         <h5 class="item-view-heading-secondary">
-            <xsl:call-template name="itemSummaryView-DIM-general-title-translated"/>
+            <!--<xsl:call-template name="itemSummaryView-DIM-general-title-translated"/>-->
+            <xsl:call-template name="itemSummaryView-DIM-general-title-all-other"/>
         </h5>
-        <div class="simple-item-view-other">
+        <!--<div class="simple-item-view-other">
             <p class="lead">
                 <xsl:call-template name="itemSummaryView-DIM-general-title-all-other"/>
             </p>
-        </div>
+        </div>-->
         <div class="ds-table-responsive">
             <table class="ds-includeSet-table detailtable table table-striped table-hover">
                 <xsl:apply-templates mode="itemDetailView-DIM"/>

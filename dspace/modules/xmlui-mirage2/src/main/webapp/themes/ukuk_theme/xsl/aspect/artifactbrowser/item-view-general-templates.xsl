@@ -39,8 +39,8 @@
 
     <xsl:template name="itemSummaryView-DIM-general-title-all-other">
         <xsl:choose>
-            <xsl:when test="dim:field[@element='title'][not(not(@qualifier))]">
-                    <xsl:for-each select="dim:field[@element='title'][not(not(@qualifier))]">
+            <xsl:when test="dim:field[@element='title'][@qualifier]">
+                    <xsl:for-each select="dim:field[@element='title'][@qualifier]">
                         <!--<xsl:if test="not(position() = 1)">-->
                             <xsl:value-of select="./node()"/>
                             <xsl:if test="count(following-sibling::dim:field[@element='title'][not(not(@qualifier))]) != 0">
