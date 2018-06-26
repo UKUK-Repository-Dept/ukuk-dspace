@@ -114,6 +114,12 @@
                             <xsl:when test="dim:field[@element='description' and @qualifier='faculty' and (@language='en' or @language='en_US')]">  
                                 <xsl:value-of select="dim:field[@element='description' and @qualifier='faculty' and (@language='en' or @language='en_US')]"/>
                             </xsl:when>
+                            <xsl:when test="dim:field[@lement='faculty-name' and @qualifier='en']">
+                                <xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='en']"/>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='faculty-name' and @qualifier='cs']">
+                                <xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='cs']"/>
+                            </xsl:when>
                             <xsl:otherwise>
                                 <!-- TODO: This has to be i18n message key -->
                                 <xsl:text>Information unavailable</xsl:text>
@@ -124,6 +130,12 @@
                         <xsl:choose>
                             <xsl:when test="dim:field[@element='description' and @qualifier='faculty' and (@language='cs' or @language='cs_CZ')]">  
                                 <xsl:value-of select="dim:field[@element='description' and @qualifier='faculty' and (@language='cs' or @language='cs_CZ')]"/>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='faculty-name' and @qualifier='cs']">
+                                <xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='cs']"/>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@lement='faculty-name' and @qualifier='en']">
+                                <xsl:value-of select="dim:field[@element='faculty-name' and @qualifier='en']"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <!-- TODO: This has to be i18n message key -->
@@ -150,6 +162,9 @@
                             <xsl:when test="dim:field[@element='degree' and @qualifier='discipline' and (@language='en' or @language='en_US')]">  
                                 <xsl:value-of select="dim:field[@element='degree' and @qualifier='discipline' and (@language='en' or @language='en_US')]"/>
                             </xsl:when>
+                            <xsl:when test="dim:field[@element='degree' and @qualifier='discipline']">
+                                <xsl:value-of select="dim:field[@element='degree' and @qualifier='discipline']"/>
+                            </xsl:when>
                             <xsl:otherwise>
                                 <!-- TODO: This has to be i18n message key -->
                                 <xsl:text>Information unavailable</xsl:text>
@@ -160,6 +175,9 @@
                         <xsl:choose>
                             <xsl:when test="dim:field[@element='degree' and @qualifier='discipline' and (@language='cs' or @language='cs_CZ')]">  
                                 <xsl:value-of select="dim:field[@element='degree' and @qualifier='discipline' and (@language='cs' or @language='cs_CZ')]"/>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='degree' and @qualifier='discipline']">
+                                <xsl:value-of select="dim:field[@element='degree' and @qualifier='discipline']"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <!-- TODO: This has to be i18n message key -->
