@@ -37,6 +37,14 @@
                     <xsl:when test="node()/text()='Prospěl'">
                         <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
                     </xsl:when>
+                    <xsl:when test="none()/text()='Uspokojivě'">
+                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>
+                        xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="none()/text()='Dostatečně'">
+                        <xsl:text> [</xsl:text><span class="text-theses-defended"><i18n:text>
+                        xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
+                    </xsl:when>
                     <xsl:otherwise>
                         <xsl:text> [</xsl:text><span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view</i18n:text></span><xsl:text>]</xsl:text>
                     </xsl:otherwise>
