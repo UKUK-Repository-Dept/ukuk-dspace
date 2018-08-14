@@ -32,6 +32,52 @@
 	 <name-map collection-handle="20.500.11956/1937" form-name="habilitace" />
 	 <name-map collection-handle="20.500.11956/1939" form-name="habilitace" />
 	 <name-map collection-handle="20.500.11956/1941" form-name="habilitace" />
+     <!-- Open Access journals of the Faculty of Arts -->
+     <!-- ČASOPIS PRO MODERNÍ FILOLOGII -->
+     <!-- Volume 2014 -->
+     <name-map collection-handle="20.500.11956/96141" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96142" form-name="articles" />
+     <!-- Volume 2015 -->
+     <name-map collection-handle="20.500.11956/96144" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96145" form-name="articles" />
+     <!-- Volume 2016 -->
+     <name-map collection-handle="20.500.11956/96147" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96148" form-name="articles" />
+     <!-- Volume 2017 -->
+     <name-map collection-handle="20.500.11956/96150" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96151" form-name="articles" />
+     <!-- Volume 2018 -->
+     <name-map collection-handle="20.500.11956/100445" form-name="articles" />
+     <name-map collection-handle="20.500.11956/100446" form-name="articles" />
+     <!-- FÓRUM SOCIÁLNÍ PRÁCE-->
+     <!-- Volume 2014 -->
+     <name-map collection-handle="20.500.11956/96167" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96168" form-name="articles" />
+     <!-- Volume 2015 -->
+     <name-map collection-handle="20.500.11956/96170" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96171" form-name="articles" />
+     <!-- Volume 2016 -->
+     <name-map collection-handle="20.500.11956/96173" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96174" form-name="articles" />
+     <!-- Volume 2017 -->
+     <name-map collection-handle="20.500.11956/96176" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96177" form-name="articles" />
+     <!-- Volume 2018 -->
+     <name-map collection-handle="20.500.11956/98721" form-name="articles" />
+     <!-- SVĚT LITERATURY -->
+     <!-- Volume 2015 -->
+     <name-map collection-handle="20.500.11956/96299" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96300" form-name="articles" />
+     <!-- Volume 2016 -->
+     <name-map collection-handle="20.500.11956/96303" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96304" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96305" form-name="articles" />
+     <!-- Volume 2017 -->
+     <name-map collection-handle="20.500.11956/96307" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96308" form-name="articles" />
+     <name-map collection-handle="20.500.11956/96309" form-name="articles" />
+     <!-- Volume 2018 -->
+     <name-map collection-handle="20.500.11956/100447" form-name="articles" />
 	 <!-- TEST SERVER -->
          <name-map collection-handle="123456789/19" form-name="habilitace" />
          <name-map collection-handle="123456789/55" form-name="habilitace" />
