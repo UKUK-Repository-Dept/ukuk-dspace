@@ -43,3 +43,5 @@ script:
   #        -P !assembly => SKIP the actual building of [src]/dspace/dspace-installer (as it can be memory intensive)
   - "cd dspace && mvn package -P !assembly -B -V -Dsurefire.rerunFailingTestsCount=2"
 
+
+
