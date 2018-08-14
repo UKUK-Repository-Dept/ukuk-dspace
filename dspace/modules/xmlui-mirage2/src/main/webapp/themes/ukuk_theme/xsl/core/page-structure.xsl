@@ -881,6 +881,8 @@
                   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
                   ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
+                  <!-- <JR> - 14. 8. 2018 - Added IP anonymization for Google Analytics -->
+                  ga('set', 'anonymizeIp', true);
                   ga('send', 'pageview');
            </xsl:text></script>
         </xsl:if>
