@@ -8,3 +8,5 @@ the official [DSpace repository](https://github.com/DSpace/DSpace).
 * customized/developed at: [Central Library, Charles University in Prague](http://knihovna.cuni.cz/)
 * primary deploy at: https://dspace.cuni.cz
 * contact: jakub.rihak[at]ruk.cuni.cz
+
+We use [continuous integrations](https://github.com/UKUK-Repository-Dept/ukuk-dspace/wiki/CI).
