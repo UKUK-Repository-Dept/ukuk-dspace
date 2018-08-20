@@ -1,6 +1,5 @@
 # ukuk-dspace repository
 
-pokus
 
 [![Build Status](https://api.travis-ci.com/UKUK-Repository-Dept/ukuk-dspace.svg?branch=master)](https://travis-ci.com/UKUK-Repository-Dept/ukuk-dspace)
 
