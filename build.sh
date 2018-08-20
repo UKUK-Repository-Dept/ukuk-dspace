@@ -15,7 +15,7 @@ BRANCH=$1
 #Check if there are changes
 if git checkout $BRANCH &&
     git fetch origin $BRANCH &&
-    [ `git rev-list HEAD...origin/$BRANCH --count` != 0 ] &&
+    [ `git rev-list HEAD...origin/$$BRANCH --count` != 0 ] &&
     git merge origin/$BRANCH
 then
     #Changes found -> Rebuild dspace
