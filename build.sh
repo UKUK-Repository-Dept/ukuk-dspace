@@ -16,7 +16,7 @@ BRANCH=$1
 if git checkout $BRANCH &&
     git fetch origin $BRANCH &&
     [ `git rev-list HEAD...origin/$BRANCH --count` != 0 ] &&
-    git merge origin/master
+    git merge origin/$BRANCH
 then
     #Changes found -> Rebuild dspace
     mvn clean
