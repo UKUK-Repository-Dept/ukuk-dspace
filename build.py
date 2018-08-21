@@ -1,7 +1,14 @@
-from git import Repo
-import subprocess
+#!/usr/local/bin/python3
 
-branch = 'develop'
+import git
+import subprocess
+import os
+
+try:
+    branch = os.environ['BRANCH']
+    assert branch in ["develop","master"]
+except KeyError and AssertionError:
+    print("Set enviroment variable $BRANCH to 'develop' or 'master'.")
 
 build = """mvn clean
 mvn package -Dmirage2.on=true
@@ -10,7 +17,7 @@ cd dspace/target/dspace-installer
 ant fresh_install
 sudo systemctl restart tomcat"""
 
-repo = Repo(".")
+repo = git.Repo(".")
 assert not repo.bare
 
 if repo.head.ref != repo.heads[branch]:
