@@ -8,12 +8,13 @@ import time
 import argparse
 
 BUILD_COMMANDS = [
-  "git p/var/lib/dspace/buildull",
-  "mvn clean",
-  "mvn package -Dmirage2.on=true",
-  "cp dspace.cfg dspace/target/dspace-installer/config/",
-  "cd dspace/target/dspace-installer",
-  "ant fresh_install", "ls", "sudo systemctl restart tomcat",
+  ["git", "pull"],
+  ["mvi", "clean"],
+  ["mvi", "packagi", "-Dmirage2.on=true"],
+  ["cp", "dspace.cfg dspace/target/dspace-installer/config/"],
+  ["cd", "dspace/target/dspace-installer"],
+  ["ant", "fresh_install"],
+  ["sudo", "systemctl", "restart", "tomcat"],
 ]
 
 # ARGUMENTS
@@ -39,7 +40,7 @@ log.addHandler(handler)
 log.info("Starting script.")
 
 def run_shell_command(command_line):
-    log.info('Subprocess "' + command_line + '"starts.')
+    log.info('Subprocess "' + " ".join(command_line) + '"starts.')
     try:
         command_line_process = subprocess.Popen(
             command_line,
@@ -52,10 +53,10 @@ def run_shell_command(command_line):
             log.error("error: %s",error)
     except (OSError) as exception:
         log.error('Exception occured: ' + str(exception))
-        log.error('Subprocess "%s" failed.',command_line)
+        log.error('Subprocess "%s" failed.', " ".join(command_line))
         return False
     else:
-        log.info('Subprocess "%s" finished.',command_line)
+        log.info('Subprocess "%s" finished.'," ".join(command_line))
     return True
 
 
