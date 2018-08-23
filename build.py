@@ -26,7 +26,6 @@ parser.add_argument("--lock", help="path+name of lockfile", default="/var/lib/ds
 args = parser.parse_args()
 
 # LOGGING
-logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("dspace")
 # create file handler 
 handler = logging.handlers.RotatingFileHandler(
@@ -71,6 +70,7 @@ if args.loop:
             log.info('Building')
             rebuild()
             os.remove(args.lock)
+            print("HUI")
         time.sleep(1)
 else:
    rebuild()
