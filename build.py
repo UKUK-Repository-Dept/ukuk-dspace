@@ -23,7 +23,6 @@ parser.add_argument("--logfile", help="path+name of logfile", default="dspace-bu
 parser.add_argument("--loop",action="store_true", help="run in infinit loop")
 parser.add_argument("--lock", help="path+name of lockfile", default="/var/lib/dspace/build")
 args = parser.parse_args()
-print(args.lock)
 
 # LOGGING
 logging.basicConfig(level=logging.INFO)
@@ -61,16 +60,16 @@ def run_shell_command(command_line):
 
 
 def rebuild():
-    lock_file = Path(args.lock)
-    #TODO check lock
     for command in BUILD_COMMANDS:
         run_shell_command(command)
         #TODO posilat mail když spadne
 
 if args.loop:
     while True:
-        #rebuild()
-        print("build")
+        if os.path.isfile(args.lock):
+            log.info('Building')
+            rebuild()
+            os.remove(args.lock)
         time.sleep(1)
 else:
    rebuild()
