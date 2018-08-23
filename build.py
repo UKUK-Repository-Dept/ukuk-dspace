@@ -51,7 +51,7 @@ def run_shell_command(command_line):
         )
         output, error =  command_line_process.communicate()
         log.info("output: %s",output)
-        if error:
+        if error or command_line_process.returncode:
             log.error("error: %s",error)
     except (OSError) as exception:
         log.error('Exception occured: ' + str(exception))
