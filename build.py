@@ -11,10 +11,10 @@ BUILD_COMMANDS = [
   ["git", "pull"],
   ["mvn", "clean"],
   ["mvn", "package", "-Dmirage2.on=true"],
-  ["cp", "dspace.cfg", "dspace/target/dspace-installer/config/"],
-  ["cd", "dspace/target/dspace-installer"],
+  ["cp", "/opt/dspace.build/dspace.cfg", "/opt/dspace.build/dspace/target/dspace-installer/config/"],
+  ["cd", "/opt/dspace.build/dspace/target/dspace-installer"],
   ["ant", "fresh_install"],
-  ["cd", "-"],
+  ["cd", "/opt/dspace.build/"],
   ["sudo", "systemctl", "restart", "tomcat"],
 ]
 
