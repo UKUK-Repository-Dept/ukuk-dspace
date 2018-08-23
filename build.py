@@ -26,7 +26,9 @@ parser.add_argument("--lock", help="path+name of lockfile", default="/var/lib/ds
 args = parser.parse_args()
 
 # LOGGING
+logging.basicConfig(level=logging.DEBUG,filename=args.logfile)
 log = logging.getLogger("dspace")
+log.setLevel(logging.DEBUG)
 # create file handler 
 handler = logging.handlers.RotatingFileHandler(
               args.logfile, maxBytes=1000000, backupCount=3)
@@ -39,7 +41,7 @@ log.addHandler(handler)
 log.info("Starting script.")
 
 def run_shell_command(command_line):
-    log.info('Subprocess "' + " ".join(command_line) + '"starts.')
+    log.info('Subprocess "%s" starts.', " ".join(command_line))
     try:
         command_line_process = subprocess.Popen(
             command_line,
@@ -70,7 +72,6 @@ if args.loop:
             log.info('Building')
             rebuild()
             os.remove(args.lock)
-            print("HUI")
         time.sleep(1)
 else:
    rebuild()
