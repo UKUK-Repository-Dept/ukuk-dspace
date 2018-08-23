@@ -255,7 +255,7 @@
 	<message key="xmlui.ArtifactBrowser.CommunityBrowser.title">Community List</message>
 	<message key="xmlui.ArtifactBrowser.CommunityBrowser.trail">Community List</message>
 	<message key="xmlui.ArtifactBrowser.CommunityBrowser.head">Collections of faculties of Charles University</message>
-	<message key="xmlui.ArtifactBrowser.CommunityBrowser.select">Select a faculty to browse its collections. HUI 2</message>
+	<message key="xmlui.ArtifactBrowser.CommunityBrowser.select">Select a faculty to browse its collections. </message>
 
 	<!-- org.dspace.app.xmlui.artifactbrowser.CommunityViewer.java -->
 	<message key="xmlui.ArtifactBrowser.CommunityViewer.search_scope">Search Scope</message>
