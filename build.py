@@ -9,8 +9,8 @@ import argparse
 
 BUILD_COMMANDS = [
   ["git", "pull"],
-  ["mvi", "clean"],
-  ["mvi", "packagi", "-Dmirage2.on=true"],
+  ["mvn", "clean"],
+  ["mvn", "package", "-Dmirage2.on=true"],
   ["cp", "dspace.cfg dspace/target/dspace-installer/config/"],
   ["cd", "dspace/target/dspace-installer"],
   ["ant", "fresh_install"],
