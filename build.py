@@ -14,6 +14,7 @@ BUILD_COMMANDS = [
   ["cp", "dspace.cfg dspace/target/dspace-installer/config/"],
   ["cd", "dspace/target/dspace-installer"],
   ["ant", "fresh_install"],
+  ["cd", "-"],
   ["sudo", "systemctl", "restart", "tomcat"],
 ]
 
