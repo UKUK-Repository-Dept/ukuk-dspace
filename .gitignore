@@ -38,3 +38,9 @@ META-INF/
 
 .*.sw[pon]
 /bin/
+
+# Config
+dspace.cfg
+
+# Other
+.bash*
