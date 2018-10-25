@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -362,6 +364,44 @@ public class ShibAuthentication implements AuthenticationMethod
 				} // foreach affiliations
 			} // if affiliations
 
+
+			// Loop for dspace groups
+			try {
+				Group[] allGroups = Group.search(context,"");
+				if (allGroups != null) {
+					for ( Group group: allGroups ) {
+						log.debug("Find group: '"+group.getName()+"'");
+						String groupAttributes = ConfigurationManager.getProperty("authentication-shibboleth","group." + group.getName());
+						if (groupAttributes == null || groupAttributes.trim().length() == 0) {
+							continue;
+						}
+						log.debug("HUII Find group`s attributes: '"+groupAttributes+"'");
+						Boolean member = true; 
+						for ( String attribute: groupAttributes.split(",") ) {
+							attribute = attribute.trim();
+							String expectationStr = ConfigurationManager.getProperty("authentication-shibboleth","group." + group.getName() + "." + attribute);
+							String valueStr = findAttribute(request, attribute);
+							boolean result = false;
+							try {
+								result = Pattern.matches(expectationStr, valueStr);
+							} catch (PatternSyntaxException ex) {
+								log.error("Pattern '" + expectationStr + "' is not valid.");
+							}
+							if ( ! result )
+								member = false;
+							log.debug("HUII Attribute: '"+attribute+"' search '" + expectationStr +"' in '" + valueStr + "' found '" + result + "'");
+						}
+						if ( member ) {
+							groups.add(group.getID());
+							log.debug("Mapping role affiliation to DSpace group: '"+group.getName()+"'");
+						}
+					}
+				} else { 
+					log.debug("Unable to find groups");
+				}
+			} catch (SQLException sqle) {
+				log.error("Exception thrown while trying to lookup for all groups");
+			}
 
 			log.info("Added current EPerson to special groups: "+groups);
 
