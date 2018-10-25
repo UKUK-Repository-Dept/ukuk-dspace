@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -314,54 +316,8 @@ public class ShibAuthentication implements AuthenticationMethod
 				log.debug("Found Shibboleth role header: '"+roleHeader+"' = '"+affiliations+"'");
 			}
 
-			Set<Integer> groups = new HashSet<Integer>();
-			
-			// Loop for dspace groups
-			try {
-				Group[] allGroups = Group.search(context,"");
-				if (allGroups != null) {
-					for ( Group group: allGroups ) {
-						log.debug("Find group: '"+group.getName()+"'");
-						String groupAffiliations = ConfigurationManager.getProperty("authentication-shibboleth","group." + group.getName());
-						if (groupAffiliations == null || groupAffiliations.trim().length() == 0) {
-							continue;
-						}
-						log.debug("Find group`s affiliations: '"+groupAffiliations+"'");
-						if ( groupAffiliations.split(",") == null )
-							continue;
-						for ( String affiliation : affiliations) {
-							// If we ignore the affiliation's scope then strip the scope if it exists.
-							if (ignoreScope) {
-								int index = affiliation.indexOf('@');
-								if (index != -1) {
-									affiliation = affiliation.substring(0, index);
-								}
-							} 
-							// If we ignore the value, then strip it out so only the scope remains.
-							if (ignoreValue) {
-								int index = affiliation.indexOf('@');
-								if (index != -1) {
-									affiliation = affiliation.substring(index+1, affiliation.length());
-								}
-							} 
-							for ( String expectedAffiliation: groupAffiliations.split(",") ){
-								if ( ! affiliation.equals(expectedAffiliation) ) {
-									continue;
-								}
-								groups.add(group.getID());
-								log.debug("Mapping role affiliation to DSpace group: '"+group.getName()+"'");
-							}
-						}
-					}
-				} else { 
-					log.debug("Unable to find groups");
-				}
-			} catch (SQLException sqle) {
-				log.error("Exception thrown while trying to lookup for all groups");
-			}
-
-
 			// Loop through each affiliation
+			Set<Integer> groups = new HashSet<Integer>();
 			if (affiliations != null) {
 				for ( String affiliation : affiliations) {
 					// If we ignore the affiliation's scope then strip the scope if it exists.
@@ -405,10 +361,47 @@ public class ShibAuthentication implements AuthenticationMethod
 							log.error("Exception thrown while trying to lookup affiliation role for group name: '"+names[i].trim()+"'",sqle);
 						}
 					} // for each groupNames
-
 				} // foreach affiliations
 			} // if affiliations
 
+
+			// Loop for dspace groups
+			try {
+				Group[] allGroups = Group.search(context,"");
+				if (allGroups != null) {
+					for ( Group group: allGroups ) {
+						log.debug("Find group: '"+group.getName()+"'");
+						String groupAttributes = ConfigurationManager.getProperty("authentication-shibboleth","group." + group.getName());
+						if (groupAttributes == null || groupAttributes.trim().length() == 0) {
+							continue;
+						}
+						log.debug("HUII Find group`s attributes: '"+groupAttributes+"'");
+						Boolean member = true; 
+						for ( String attribute: groupAttributes.split(",") ) {
+							attribute = attribute.trim();
+							String expectationStr = ConfigurationManager.getProperty("authentication-shibboleth","group." + group.getName() + "." + attribute);
+							String valueStr = findAttribute(request, attribute);
+							boolean result = false;
+							try {
+								result = Pattern.matches(expectationStr, valueStr);
+							} catch (PatternSyntaxException ex) {
+								log.error("Pattern '" + expectationStr + "' is not valid.");
+							}
+							if ( ! result )
+								member = false;
+							log.debug("HUII Attribute: '"+attribute+"' search '" + expectationStr +"' in '" + valueStr + "' found '" + result + "'");
+						}
+						if ( member ) {
+							groups.add(group.getID());
+							log.debug("Mapping role affiliation to DSpace group: '"+group.getName()+"'");
+						}
+					}
+				} else { 
+					log.debug("Unable to find groups");
+				}
+			} catch (SQLException sqle) {
+				log.error("Exception thrown while trying to lookup for all groups");
+			}
 
 			log.info("Added current EPerson to special groups: "+groups);
 
