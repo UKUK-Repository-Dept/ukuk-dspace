@@ -32,72 +32,162 @@
 	 <name-map collection-handle="20.500.11956/1937" form-name="habilitace" />
 	 <name-map collection-handle="20.500.11956/1939" form-name="habilitace" />
 	 <name-map collection-handle="20.500.11956/1941" form-name="habilitace" />
-     <!-- Open Access journals of the Faculty of Arts -->
-     <!-- ČASOPIS PRO MODERNÍ FILOLOGII -->
-     <!-- Volume 2014 -->
-     <name-map collection-handle="20.500.11956/96141" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96142" form-name="articles" />
-     <!-- Volume 2015 -->
-     <name-map collection-handle="20.500.11956/96144" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96145" form-name="articles" />
-     <!-- Volume 2016 -->
-     <name-map collection-handle="20.500.11956/96147" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96148" form-name="articles" />
-     <!-- Volume 2017 -->
-     <name-map collection-handle="20.500.11956/96150" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96151" form-name="articles" />
-     <!-- Volume 2018 -->
-     <name-map collection-handle="20.500.11956/100445" form-name="articles" />
-     <name-map collection-handle="20.500.11956/100446" form-name="articles" />
-     <!-- FÓRUM SOCIÁLNÍ PRÁCE-->
-     <!-- Volume 2014 -->
-     <name-map collection-handle="20.500.11956/96167" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96168" form-name="articles" />
-     <!-- Volume 2015 -->
-     <name-map collection-handle="20.500.11956/96170" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96171" form-name="articles" />
-     <!-- Volume 2016 -->
-     <name-map collection-handle="20.500.11956/96173" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96174" form-name="articles" />
-     <!-- Volume 2017 -->
-     <name-map collection-handle="20.500.11956/96176" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96177" form-name="articles" />
-     <!-- Volume 2018 -->
-     <name-map collection-handle="20.500.11956/98721" form-name="articles" />
-     <!-- SVĚT LITERATURY -->
-     <!-- Volume 2015 -->
-     <name-map collection-handle="20.500.11956/96299" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96300" form-name="articles" />
-     <!-- Volume 2016 -->
-     <name-map collection-handle="20.500.11956/96303" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96304" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96305" form-name="articles" />
-     <!-- Volume 2017 -->
-     <name-map collection-handle="20.500.11956/96307" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96308" form-name="articles" />
-     <name-map collection-handle="20.500.11956/96309" form-name="articles" />
-     <!-- Volume 2018 -->
-     <name-map collection-handle="20.500.11956/100447" form-name="articles" />
-	 <!-- TEST SERVER -->
-         <name-map collection-handle="123456789/19" form-name="habilitace" />
-         <name-map collection-handle="123456789/55" form-name="habilitace" />
-         <name-map collection-handle="123456789/23" form-name="habilitace" />
-         <name-map collection-handle="123456789/25" form-name="habilitace" />
-         <name-map collection-handle="123456789/27" form-name="habilitace" />
-         <name-map collection-handle="123456789/29" form-name="habilitace" />
-         <name-map collection-handle="123456789/31" form-name="habilitace" />
-         <name-map collection-handle="123456789/33" form-name="habilitace" />
-         <name-map collection-handle="123456789/35" form-name="habilitace" />
-         <name-map collection-handle="123456789/37" form-name="habilitace" />
-         <name-map collection-handle="123456789/39" form-name="habilitace" />
-         <name-map collection-handle="123456789/41" form-name="habilitace" />
-         <name-map collection-handle="123456789/43" form-name="habilitace" />
-         <name-map collection-handle="123456789/45" form-name="habilitace" />
-         <name-map collection-handle="123456789/47" form-name="habilitace" />
-         <name-map collection-handle="123456789/49" form-name="habilitace" />
-         <name-map collection-handle="123456789/51" form-name="habilitace" />
-         <!-- OA ARTICLES - FF UK -->
-         <name-map collection-handle="1233456789/1367" form-name="articles" /> 
+
+     	<!-- Open Access journals of the Faculty of Arts -->
+	
+	<!-- ČASOPIS PRO MODERNÍ FILOLOGII -->
+	
+	<!-- Volume 2014 -->
+     	<name-map collection-handle="20.500.11956/96141" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96142" form-name="articles" />
+	
+	<!-- Volume 2015 -->
+     	<name-map collection-handle="20.500.11956/96144" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96145" form-name="articles" />
+	
+	<!-- Volume 2016 -->
+     	<name-map collection-handle="20.500.11956/96147" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96148" form-name="articles" />
+     
+     	<!-- Volume 2017 -->
+     	<name-map collection-handle="20.500.11956/96150" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96151" form-name="articles" />
+	
+	<!-- Volume 2018 -->
+     	<name-map collection-handle="20.500.11956/100445" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/100446" form-name="articles" />
+	
+	<!-- END OF ČASOPIS PRO MODERNÍ FILOLOGII -->
+	
+     	<!-- FÓRUM SOCIÁLNÍ PRÁCE-->
+     	
+	<!-- Volume 2014 -->
+     	<name-map collection-handle="20.500.11956/96167" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96168" form-name="articles" />
+	
+	<!-- Volume 2015 -->
+     	<name-map collection-handle="20.500.11956/96170" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96171" form-name="articles" />
+	
+	<!-- Volume 2016 -->
+     	<name-map collection-handle="20.500.11956/96173" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96174" form-name="articles" />
+     	
+	<!-- Volume 2017 -->
+     	<name-map collection-handle="20.500.11956/96176" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96177" form-name="articles" />
+	
+	<!-- Volume 2018 -->
+	<name-map collection-handle="20.500.11956/98721" form-name="articles" />
+	<name-map collection-handle="20.500.11956/103104" form-name="articles" />
+
+	<!-- END OF FÓRUM SOCIÁLNÍ PRÁCE -->
+	
+	<!-- SVĚT LITERATURY -->
+	
+	<!-- Volume 2015 -->
+     	<name-map collection-handle="20.500.11956/96299" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96300" form-name="articles" />
+	
+	<!-- Volume 2016 -->
+     	<name-map collection-handle="20.500.11956/96303" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96304" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96305" form-name="articles" />
+	
+	<!-- Volume 2017 -->
+     	<name-map collection-handle="20.500.11956/96307" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96308" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96309" form-name="articles" />
+	
+	<!-- Volume 2018 -->
+     	<name-map collection-handle="20.500.11956/100447" form-name="articles" />
+
+	<!-- END OF SVÉT LITERATURY -->
+
+ 	<!-- LINGUISTICA PRAGENSIA -->
+	
+	<!-- Volume 2014 -->
+     	<name-map collection-handle="20.500.11956/96200" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96201" form-name="articles" />
+	
+	<!-- Volume 2015 -->
+     	<name-map collection-handle="20.500.11956/96203" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96204" form-name="articles" />
+	
+	<!-- Volume 2016 -->
+     	<name-map collection-handle="20.500.11956/96206" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96207" form-name="articles" />
+	
+	<!-- Volume 2017 -->
+     	<name-map collection-handle="20.500.11956/96209" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96210" form-name="articles" />
+	
+	<!-- Volume 2018 -->
+     	<name-map collection-handle="20.500.11956/100759" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/101347" form-name="articles" />
+
+	<!-- END OF LINGUISTICA PRAGENSIA -->
+
+	<!-- SLOVO A SMYSL -->
+	
+	<!-- Volume 2018 -->
+     	<name-map collection-handle="20.500.11956/100688" form-name="articles" />
+	
+	<!-- END OF SLOVO A SMYSL -->
+
+	<!-- STUDIA HERCYNIA -->
+	
+	<!-- Volume 2017 -->
+     	<name-map collection-handle="20.500.11956/96278" form-name="articles" />
+     	
+	<!-- END OF STUDIA HERCYNIA -->
+
+	<!-- STUDIE Z APLIKOVANÉ LINGVISTIKY -->
+	
+	<!-- Volume 2017 -->
+     	<name-map collection-handle="20.500.11956/96295" form-name="articles" />
+	
+	<!-- Volume 2018 -->
+     	
+	<!-- Issue 1 -->
+     	<name-map collection-handle="20.500.11956/100848" form-name="articles" />
+	
+	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
+
+	<!-- PRAŽSKÉ EGYPTOLOGICKÉ STUDIE -->
+	
+	<!-- Volume 2018 -->
+     	<name-map collection-handle="20.500.11956/100793" form-name="articles" />
+     	
+	<!-- PRAGUE ECONOMIC AND SOCIAL HISTORY PAPERS -->
+     	
+	<!-- Volume 2017 -->
+     	<name-map collection-handle="20.500.11956/96222" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/96223" form-name="articles" />
+
+	<!-- END OF PRODUCTION SERVER -->
+	
+	<!-- TEST SERVER -->
+        <name-map collection-handle="123456789/19" form-name="habilitace" />
+        <name-map collection-handle="123456789/55" form-name="habilitace" />
+        <name-map collection-handle="123456789/23" form-name="habilitace" />
+        <name-map collection-handle="123456789/25" form-name="habilitace" />
+        <name-map collection-handle="123456789/27" form-name="habilitace" />
+        <name-map collection-handle="123456789/29" form-name="habilitace" />
+        <name-map collection-handle="123456789/31" form-name="habilitace" />
+        <name-map collection-handle="123456789/33" form-name="habilitace" />
+        <name-map collection-handle="123456789/35" form-name="habilitace" />
+        <name-map collection-handle="123456789/37" form-name="habilitace" />
+        <name-map collection-handle="123456789/39" form-name="habilitace" />
+        <name-map collection-handle="123456789/41" form-name="habilitace" />
+        <name-map collection-handle="123456789/43" form-name="habilitace" />
+        <name-map collection-handle="123456789/45" form-name="habilitace" />
+        <name-map collection-handle="123456789/47" form-name="habilitace" />
+        <name-map collection-handle="123456789/49" form-name="habilitace" />
+        <name-map collection-handle="123456789/51" form-name="habilitace" />
+	
+	<!-- OA ARTICLES - FF UK -->
+        <name-map collection-handle="1233456789/1367" form-name="articles" /> 
  </form-map>
 
 
@@ -308,7 +398,8 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <dc-qualifier></dc-qualifier>
                 <repeatable>false</repeatable>
                 <label>Typ dokumentu</label>
-                <input-type value-pairs-name="ukdstypes_CS">dropdown</input-type>
+		<input-type value-pairs-name="ukdstypes_CS">dropdown</input-type>
+		<hint>Vyberte typ dokumentu.</hint>
                 <required>Musíte vyplnit typ dokumentu</required>
             </field>
             <field>
@@ -515,9 +606,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>original</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Abstrakt práce v originálním jazyce</label>
+				<input-type>textarea</input-type>
 				<hint>Vložte abstrakt práce v originálním jazyce práce, pokud tento abstrakt není česky nebo anglicky. V takovém případě použijte
 				pole pro český, respektive anglický abstrakt.</hint>
-				<input-type>textarea</input-type>
+
 				<!--<required>Musíte vložit abstrakt práce v originálním jazyce práce</required>-->
 			</field>
 			<field>
@@ -526,8 +618,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>cs</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Abstrakt práce v češtině</label>
-				<hint>Vložte abstrakt práce v češtině. Pokud je originální jazyk práce "čeština", vyplňte český abstrakt práce do tohoto pole.</hint>
 				<input-type>textarea</input-type>
+				<hint>Vložte abstrakt práce v češtině. Pokud je originální jazyk práce "čeština", vyplňte český abstrakt práce do tohoto pole.</hint>
 			</field>
 			<field>
 				<dc-schema>uk</dc-schema>
@@ -535,8 +627,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>en</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Abstrakt v angličtině</label>
-				<hint>Vložte abstrakt práce v angličtině. Pokud je originální jazyk práce "angličtina", vyplňte anglický abstrakt do tohoto pole.</hint>
 				<input-type>textarea</input-type>
+				<hint>Vložte abstrakt práce v angličtině. Pokud je originální jazyk práce "angličtina", vyplňte anglický abstrakt do tohoto pole.</hint>
 			</field>
 		</page>
 		<page number="2">
@@ -546,8 +638,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>cs</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Název fakulty (povinný údaj)</label>
-				<hint>Vyberte ze seznamu fakultu, na které byla práce obhajována.</hint>
 				<input-type value-pairs-name="uk-fakulty">dropdown</input-type>
+				<hint>Vyberte ze seznamu fakultu, na které byla práce obhajována.</hint>
 				<required>Musíte vybrat fakultu ze seznamu.</required>
 			</field>
 			<field>
@@ -556,8 +648,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>discipline</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Obor habilitačního řízení (povinný údaj)</label>
-				<hint>Obor habilitačního řízení</hint>
 				<input-type>onebox</input-type>
+				<hint>Obor habilitačního řízení</hint>
 				<required>Musíte zapsat obor habilitačního řízení.</required>
 			</field>
 			<field>
@@ -566,8 +658,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>chairman</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Předseda habilitační komise (povinný údaj)</label>
-				<hint>Zadejte jméno předsedy habilitační komise</hint>
 				<input-type>name</input-type>
+				<hint>Zadejte jméno předsedy habilitační komise</hint>
 				<required>Musíte zadat jméno předsedy habilitační komise.</required>
 			</field>
 			<field>
@@ -576,8 +668,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>member</dc-qualifier>
 				<repeatable>true</repeatable>
 				<label>Jména další členů habilitační komise (povinný údaj)</label>
-				<hint>Zadejte jména dalších členů habilitační komise, pokud jsou k dispozici.</hint>
 				<input-type>name</input-type>
+				<hint>Zadejte jména dalších členů habilitační komise, pokud jsou k dispozici.</hint>
 				<required>Musíte zadat jména členů habilitační komise.</required>
 			</field>
 			<field>
