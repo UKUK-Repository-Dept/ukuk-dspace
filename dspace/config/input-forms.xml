@@ -101,7 +101,7 @@
 	
 	<!-- Volume 2018 -->
      	<name-map collection-handle="20.500.11956/100447" form-name="articles" />
-
+	<name-map collection-handle="20.500.11956/103719" form-name="articles" />
 	<!-- END OF SVÉT LITERATURY -->
 
  	<!-- LINGUISTICA PRAGENSIA -->
@@ -183,6 +183,14 @@
 	<name-map collection-handle="20.500.11956/103732" form-name="articles" />
 	
 	<!-- END OF CHATREŠSAR -->
+	
+	<!-- PRAGUE PAPERS ON THE HISTORY OF INTERNATIONAL RELATIONS -->
+
+	<!-- Volume 2018 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/103721" form-name="articles" />
+
+	<!-- END OF PRAGUE PAPERS ON THE HISTORY OF INTERNATIONAL RELATIONS -->
 	
 	<!-- END OF PRODUCTION SERVER -->
 	
