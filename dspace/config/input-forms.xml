@@ -145,13 +145,17 @@
 	<!-- STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 	
 	<!-- Volume 2017 -->
-     	<name-map collection-handle="20.500.11956/96295" form-name="articles" />
+	<name-map collection-handle="20.500.11956/96295" form-name="articles" />
+
 	
 	<!-- Volume 2018 -->
      	
 	<!-- Issue 1 -->
      	<name-map collection-handle="20.500.11956/100848" form-name="articles" />
 	
+	<!-- Special Issue 2018-->
+	<name-map collection-handle="20.500.11956/103605" form-name="articles" />
+
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
 	<!-- PRAŽSKÉ EGYPTOLOGICKÉ STUDIE -->
@@ -159,12 +163,27 @@
 	<!-- Volume 2018 -->
      	<name-map collection-handle="20.500.11956/100793" form-name="articles" />
      	
+	
+	<!-- STUDIA ETHNOLOGICA PRAGENSIA -->
+	
+	<!-- Volume 2018 -->
+	<name-map collection-handle="20.500.11956/103461" form-name="articles" />
+
+	<!-- END OF STUDIA ETHNOLOGICA PRAGENSIA -->
+	
 	<!-- PRAGUE ECONOMIC AND SOCIAL HISTORY PAPERS -->
      	
 	<!-- Volume 2017 -->
      	<name-map collection-handle="20.500.11956/96222" form-name="articles" />
-     	<name-map collection-handle="20.500.11956/96223" form-name="articles" />
+	<name-map collection-handle="20.500.11956/96223" form-name="articles" />
 
+	<!-- CHATREŠŠAR -->
+
+	<!-- Volume 2018 -->
+	<name-map collection-handle="20.500.11956/103732" form-name="articles" />
+	
+	<!-- END OF CHATREŠSAR -->
+	
 	<!-- END OF PRODUCTION SERVER -->
 	
 	<!-- TEST SERVER -->
