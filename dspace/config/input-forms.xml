@@ -78,8 +78,12 @@
      	<name-map collection-handle="20.500.11956/96177" form-name="articles" />
 	
 	<!-- Volume 2018 -->
+	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/98721" form-name="articles" />
+	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/103104" form-name="articles" />
+	<!-- Special Issue -->
+	<name-map collection-handle="20.500.11956/104158" form-name="articles" />
 
 	<!-- END OF FÓRUM SOCIÁLNÍ PRÁCE -->
 	
@@ -131,14 +135,21 @@
 	<!-- SLOVO A SMYSL -->
 	
 	<!-- Volume 2018 -->
-     	<name-map collection-handle="20.500.11956/100688" form-name="articles" />
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/100688" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/104166" form-name="articles" />
 	
 	<!-- END OF SLOVO A SMYSL -->
 
 	<!-- STUDIA HERCYNIA -->
 	
 	<!-- Volume 2017 -->
-     	<name-map collection-handle="20.500.11956/96278" form-name="articles" />
+	<name-map collection-handle="20.500.11956/96278" form-name="articles" />
+
+	<!-- Volume 2018 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/104164" form-name="articles" />
      	
 	<!-- END OF STUDIA HERCYNIA -->
 
@@ -177,6 +188,10 @@
      	<name-map collection-handle="20.500.11956/96222" form-name="articles" />
 	<name-map collection-handle="20.500.11956/96223" form-name="articles" />
 
+	<!-- Volume 2018 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/104162" form-name="articles" />
+
 	<!-- CHATREŠŠAR -->
 
 	<!-- Volume 2018 -->
@@ -189,8 +204,27 @@
 	<!-- Volume 2018 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/103721" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/104165" form-name="articles" />
 
 	<!-- END OF PRAGUE PAPERS ON THE HISTORY OF INTERNATIONAL RELATIONS -->
+
+	<!-- NOVÁ ČEŠTINA DOMA A VE SVĚTĚ -->
+
+	<!-- Volume 2018 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/103787" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/104157" form-name="articles" />
+
+	<!-- END OF NOVÁ ČEŠTINA DOMA A VE SVĚTĚ-->
+
+	<!-- HISTORIE - OTÁZKY - PROBLÉMY -->
+	<!-- Volume 2018 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/104160" form-name="articles" />
+
+	<!-- END OF HISTORIE - OTÁZKY - PROBLÉMY -->
 	
 	<!-- END OF PRODUCTION SERVER -->
 	
