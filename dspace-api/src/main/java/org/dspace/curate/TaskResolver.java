@@ -196,8 +196,10 @@ public class TaskResolver
 	public ResolvedTask resolveTask(String taskName)
 	{
 		CurationTask ctask = (CurationTask)PluginManager.getNamedPlugin("curate", CurationTask.class, taskName);
+		log.error("NACITANI1" );
 		if (ctask != null)
 		{
+			log.error("NACITANI2" );
 			return new ResolvedTask(taskName, ctask);
 		}
 		// maybe it is implemented by a script?
@@ -205,6 +207,7 @@ public class TaskResolver
 		String scriptDesc = catalog.getProperty(taskName);
 		if (scriptDesc != null)
 		{
+			log.error("NACITANI3" );
 			String[] tokens = scriptDesc.split("\\|");
 			// first descriptor token is name ('alias') of scripting engine
 			ScriptEngineManager mgr = new ScriptEngineManager();
@@ -213,11 +216,13 @@ public class TaskResolver
 			{
 			    // see if we can locate the script file and load it
 			    // the second token is the relative path to the file
+				log.error("NACITANI4" );
 			    File script = new File(scriptDir, tokens[1]);
 			    if (script.exists())
 			    {
 			    	try
 			    	{
+						log.error("NACITANI5" );
 			    		Reader reader = new FileReader(script);
 			    		engine.eval(reader);
 			    		reader.close();
