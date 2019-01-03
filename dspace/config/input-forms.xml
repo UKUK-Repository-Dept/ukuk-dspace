@@ -991,10 +991,6 @@ it, please enter the types and the actual numbers or codes.</hint>
        <stored-value>tr</stored-value>
      </pair>
      <pair>
-       <displayed-value>Czech</displayed-value>
-       <stored-value>cs</stored-value>
-     </pair>
-     <pair>
        <displayed-value>(Other)</displayed-value>
        <stored-value>other</stored-value>
      </pair>
