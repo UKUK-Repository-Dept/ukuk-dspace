@@ -2,8 +2,7 @@
 
 touch /var/lib/dspace/buildlock
 mvn clean
-mvn package -Dmirage2.on=true
-cp /opt/dspace.build/dspace.cfg /opt/dspace.build/dspace/target/dspace-installer/config/
+mvn package -Dmirage2.on=true -Denv=build-`uname-n`
 cd /opt/dspace.build/dspace/target/dspace-installer
 ant fresh_install
 cd /opt/dspace.build/
