@@ -6,6 +6,7 @@ if [ ! -f /var/lib/dspace/build -o -f /var/lib/dspace/buildlock ]; then
    exit 0
 fi
 
-rm -f /var/lib/dspace/build
+git pull
 ./build.sh
+rm -f /var/lib/dspace/build
 
