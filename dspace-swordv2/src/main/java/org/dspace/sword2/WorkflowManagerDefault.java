@@ -54,10 +54,14 @@ public class WorkflowManagerDefault implements WorkflowManager
 	public void replaceResourceContent(Context context, Item item) throws SwordError, DSpaceSwordException
 	{
 		WorkflowTools wft = new WorkflowTools();
-		if (item.isArchived() || item.isWithdrawn())
+		
+		// Temporary change - JR - 12.11.2018 - removing if (item.isArchived() || item.isWithdrawn())
+		
+		if (item.isWithdrawn())
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been archived, and can no longer be modified");
 		}
+		
 		if (wft.isItemInWorkflow(context, item))
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been injected into the review workflow, and can no longer be modified");
@@ -75,10 +79,11 @@ public class WorkflowManagerDefault implements WorkflowManager
 
         // otherwise, go ahead and figure out the state
 		WorkflowTools wft = new WorkflowTools();
-		if (item.isArchived() || item.isWithdrawn())
+		if (item.isWithdrawn())
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been archived, and can no longer be modified");
 		}
+		
 		if (wft.isItemInWorkflow(context, item))
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been injected into the review workflow, and can no longer be modified");
@@ -94,10 +99,11 @@ public class WorkflowManagerDefault implements WorkflowManager
 	public void deleteMediaResource(Context context, Item item) throws SwordError, DSpaceSwordException
 	{
 		WorkflowTools wft = new WorkflowTools();
-		if (item.isArchived() || item.isWithdrawn())
+		if (item.isWithdrawn())
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been archived, and can no longer be modified");
 		}
+		
 		if (wft.isItemInWorkflow(context, item))
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been injected into the review workflow, and can no longer be modified");
@@ -167,10 +173,11 @@ public class WorkflowManagerDefault implements WorkflowManager
     public void addResourceContent(Context context, Item item) throws SwordError, DSpaceSwordException
 	{
 		WorkflowTools wft = new WorkflowTools();
-		if (item.isArchived() || item.isWithdrawn())
+		if (item.isWithdrawn())
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been archived, and can no longer be modified");
 		}
+		
 		if (wft.isItemInWorkflow(context, item))
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been injected into the review workflow, and can no longer be modified");
@@ -188,10 +195,11 @@ public class WorkflowManagerDefault implements WorkflowManager
 
         // otherwise, lookup the state of the item
 		WorkflowTools wft = new WorkflowTools();
-		if (item.isArchived() || item.isWithdrawn())
+		if (item.isWithdrawn())
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been archived, and can no longer be modified");
 		}
+		
 		if (wft.isItemInWorkflow(context, item))
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been injected into the review workflow, and can no longer be modified");
@@ -201,10 +209,11 @@ public class WorkflowManagerDefault implements WorkflowManager
 	public void deleteItem(Context context, Item item) throws SwordError, DSpaceSwordException
 	{
 		WorkflowTools wft = new WorkflowTools();
-		if (item.isArchived() || item.isWithdrawn())
+		if (item.isWithdrawn())
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been archived, and can no longer be modified");
 		}
+		
 		if (wft.isItemInWorkflow(context, item))
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been injected into the review workflow, and can no longer be modified");
@@ -219,10 +228,11 @@ public class WorkflowManagerDefault implements WorkflowManager
 	public void modifyState(Context context, Item item) throws SwordError, DSpaceSwordException
 	{
 		WorkflowTools wft = new WorkflowTools();
-		if (item.isArchived() || item.isWithdrawn())
+		if (item.isWithdrawn())
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been archived, and can no longer be modified");
 		}
+		
 		if (wft.isItemInWorkflow(context, item))
 		{
 			throw new SwordError(UriRegistry.ERROR_METHOD_NOT_ALLOWED, "The item has already been injected into the review workflow, and can no longer be modified");
