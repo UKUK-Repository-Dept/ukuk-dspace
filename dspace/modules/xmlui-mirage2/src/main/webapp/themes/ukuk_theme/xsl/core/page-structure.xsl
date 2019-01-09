@@ -343,8 +343,19 @@
                     
                        <!--2.6.2017 <AM> přidán atribut pro dvojjazyčný text loga repozitáře -->
                         <a href="{$context-path}/" class="navbar-brand">
-                            <!-- <img src="{$theme-path}/images/DSpace-logo-line.svg" />  -->
-                            <img class="img-responsive" src="{$theme-path}/images/DRepozitarUK_Helvetica.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
+				<!-- <img src="{$theme-path}/images/DSpace-logo-line.svg" />  -->
+				<xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
+				<xsl:choose>
+					<xsl:when test="$active-locale = cs">
+						<img class="img-responsive" src="{$theme-path}/images/repository_logo_test_1_cze.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
+					</xsl:when>
+					<xsl:when test="$active-locale = en">
+						<img class="img-responsive" src="{$theme-path}/images/repository_logo_test_1_eng.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
+					</xsl:when>
+					<xsl:otherwise>
+						<img class="img-responsive" src="{$theme-path}/images/repository_logo_test_1_eng.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
+					</xsl:otherwise>
+				</xsl:choose>
                         </a>
 
 
