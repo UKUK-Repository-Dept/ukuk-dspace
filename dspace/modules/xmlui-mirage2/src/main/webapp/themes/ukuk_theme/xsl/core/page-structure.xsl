@@ -347,15 +347,15 @@
 				<xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
 				<xsl:choose>
 					<xsl:when test="$active-locale = 'cs'">
-						<img class="img-responsive" src="{$theme-path}/images/repository_logo_test_1_cze.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
+						<img class="img-responsive" src="{$theme-path}/images/repository_logo_cze_test3.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
 						<!--<p><xsl:text>Locale:</xsl:text><xsl:value-of select="$active-locale"/></p>-->
 					</xsl:when>
 					<xsl:when test="$active-locale = 'en'">
-						<img class="img-responsive" src="{$theme-path}/images/repository_logo_test_1_eng.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
+						<img class="img-responsive" src="{$theme-path}/images/repository_logo_eng_test3.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
 						<!--<p><xsl:text>Locale:</xsl:text><xsl:value-of select="$active-locale"/></p>-->
 					</xsl:when>
 					<xsl:otherwise>
-						<img class="img-responsive" src="{$theme-path}/images/repository_logo_test_1_eng.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
+						<img class="img-responsive" src="{$theme-path}/images/repository_logo_eng_test3.png" i18n:attr="title" title="xmlui.general.attr.Logo.repozitarUK" />
 						<!--<p><xsl:text>Locale:</xsl:text><xsl:value-of select="$active-locale"/></p>-->
 					</xsl:otherwise>
 				</xsl:choose>

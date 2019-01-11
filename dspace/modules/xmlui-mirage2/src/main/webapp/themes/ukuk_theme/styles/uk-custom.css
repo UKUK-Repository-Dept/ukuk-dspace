@@ -1,15 +1,126 @@
+@font-face {
+	font-family: palanquinlight; /* deklarace fontu */
+	src: url(../fonts/palanquin-light.ttf);
+}
+
+@font-face {
+	font-family: palanquinthin; /* deklarace fontu */
+	src: url(../fonts/palanquin-thin.ttf);
+}
+
+@font-face {
+	font-family: palanquinmedium;
+	src: url(../fonts/palanquin-medium.ttf);
+}
+
 body {
     background-image: url(../images/bgn.jpg);
+		font-family: palanquinlight, Helvetica, Arial, sans-serif;
+		font-size: 15px;
+}
+
+label {
+	font-weight: normal;
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+}
+
+.dropdown-menu {
+	font-size: 15px;
+}
+
+.form-control {
+	font-size: 15px;
+	padding: 0px 12px;
+}
+
+.btn {
+	font-size: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+h5 {
+	font-size: 15px;
+}
+
+p {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+.breadcrumb {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+.navbar-header {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+.sidebar-panel-heading span {
+	font-size: 15px;
+}
+
+.community-browser-wrapper {
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+	font-size: 20px;
+}
+
+.community-browser-wrapper p {
+	font-size: 18px;
+}
+
+.community-browser-row a[name='community-browser-link'] {
+	font-size: 20px;
+}
+
+.btn-default {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+#ds-language-selection {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+}
+
+.list-group-item-heading {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+}
+
+#ds-options h2 {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+.artifact-description .h4 {
+	font-size: 15px;
+}
+
+.artifact-description .artifact-title {
+	font-size: 20px;
+	font-weight: normal;
+}
+
+.artifact-description .artifact-info {
+	font-weight: normal;
+	font-size: 18px;
+}
+
+.artifact-description small {
+	font-size: 100%;
 }
 
 .artifact-preview {
     -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-}
-
-.artifact-description a > h4 {
-    margin-top:0 ;
 }
 
 .search-result-item-div {
@@ -26,8 +137,7 @@ body {
 }
 
 .item-view-heading {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 15px;
 }
 
 .item-view-header {
