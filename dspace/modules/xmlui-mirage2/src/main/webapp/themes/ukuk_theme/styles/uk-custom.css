@@ -1,15 +1,179 @@
+@font-face {
+	font-family: palanquinlight; /* deklarace fontu */
+	src: url(../fonts/palanquin-light.ttf);
+}
+
+@font-face {
+	font-family: palanquinthin; /* deklarace fontu */
+	src: url(../fonts/palanquin-thin.ttf);
+}
+
+@font-face {
+	font-family: palanquinmedium;
+	src: url(../fonts/palanquin-medium.ttf);
+}
+
 body {
     background-image: url(../images/bgn.jpg);
+		font-family: palanquinlight, Helvetica, Arial, sans-serif;
+		font-size: 15px;
+		color: #000;
+}
+
+label {
+	font-weight: normal;
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+}
+
+b, strong {
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+.pagination > .active > a {
+	background-color: #cc2c32;
+	border-color: #cc2c32;
+}
+
+.pagination > li > a, .pagination > li > span {
+	color: #cc2c32;
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus,
+.pagination > li > span:hover, .pagination > li > span:focus {
+	color: #cc2c32;
+	background-color: #eee;
+	border-color: #ccc;
+}
+
+header .navbar-default .navbar-toggle .icon-bar, 
+header .navbar-default .navbar-nav .icon-bar {
+	background-color: #cc2c32;
+}
+
+header .navbar-default .navbar-toggle:hover .icon-bar, 
+header .navbar-default .navbar-toggle:focus .icon-bar, 
+header .navbar-default .navbar-nav:hover .icon-bar, 
+header .navbar-default .navbar-nav:focus .icon-bar {
+	background-color: #fff;
+}
+
+header .navbar-default .navbar-toggle:hover, 
+header .navbar-default .navbar-toggle:focus, 
+header .navbar-default .navbar-nav:hover, 
+header .navbar-default .navbar-nav:focus {
+	background-color: #cc2c32;
+}
+
+header .navbar-default .navbar-toggle, 
+header .navbar-default .navbar-nav {
+	color: #cc2c32;
+}
+
+.dropdown-menu {
+	font-size: 15px;
+}
+
+.form-control {
+	font-size: 15px;
+	padding: 0px 12px;
+}
+
+.btn {
+	font-size: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+h5 {
+	font-size: 15px;
+}
+
+p {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, 
+h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, 
+.h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .h3 .small, 
+.h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
+	color: #000;
+}
+
+.breadcrumb {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+.navbar-header {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+.sidebar-panel-heading span {
+	font-size: 15px;
+}
+
+.community-browser-wrapper {
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+	font-size: 20px;
+}
+
+.community-browser-wrapper p {
+	font-size: 18px;
+}
+
+.community-browser-row a[name='community-browser-link'] {
+	font-size: 20px;
+}
+
+.btn-default {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+#ds-language-selection {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+}
+
+.list-group-item-heading {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+}
+
+#ds-options h2 {
+	font-family: palanquinlight, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+
+.artifact-description .h4 {
+	font-size: 15px;
+}
+
+.artifact-description .artifact-title {
+	font-size: 20px;
+	font-weight: normal;
+}
+
+.artifact-description .artifact-info {
+	font-weight: normal;
+	font-size: 18px;
+}
+
+.artifact-description small {
+	font-size: 100%;
 }
 
 .artifact-preview {
     -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-}
-
-.artifact-description a > h4 {
-    margin-top:0 ;
 }
 
 .search-result-item-div {
@@ -26,8 +190,7 @@ body {
 }
 
 .item-view-heading {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 15px;
 }
 
 .item-view-header {
