@@ -17,11 +17,57 @@ body {
     background-image: url(../images/bgn.jpg);
 		font-family: palanquinlight, Helvetica, Arial, sans-serif;
 		font-size: 15px;
+		color: #000;
 }
 
 label {
 	font-weight: normal;
 	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+}
+
+b, strong {
+	font-family: palanquinmedium, Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+.pagination > .active > a {
+	background-color: #cc2c32;
+	border-color: #cc2c32;
+}
+
+.pagination > li > a, .pagination > li > span {
+	color: #cc2c32;
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus,
+.pagination > li > span:hover, .pagination > li > span:focus {
+	color: #cc2c32;
+	background-color: #eee;
+	border-color: #ccc;
+}
+
+header .navbar-default .navbar-toggle .icon-bar, 
+header .navbar-default .navbar-nav .icon-bar {
+	background-color: #cc2c32;
+}
+
+header .navbar-default .navbar-toggle:hover .icon-bar, 
+header .navbar-default .navbar-toggle:focus .icon-bar, 
+header .navbar-default .navbar-nav:hover .icon-bar, 
+header .navbar-default .navbar-nav:focus .icon-bar {
+	background-color: #fff;
+}
+
+header .navbar-default .navbar-toggle:hover, 
+header .navbar-default .navbar-toggle:focus, 
+header .navbar-default .navbar-nav:hover, 
+header .navbar-default .navbar-nav:focus {
+	background-color: #cc2c32;
+}
+
+header .navbar-default .navbar-toggle, 
+header .navbar-default .navbar-nav {
+	color: #cc2c32;
 }
 
 .dropdown-menu {
@@ -52,6 +98,13 @@ h5 {
 p {
 	font-family: palanquinlight, Helvetica, Arial, sans-serif;
 	font-size: 15px;
+}
+
+h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, 
+h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, 
+.h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .h3 .small, 
+.h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
+	color: #000;
 }
 
 .breadcrumb {
