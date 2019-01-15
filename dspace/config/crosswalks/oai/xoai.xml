@@ -30,8 +30,8 @@
             <Format ref="qdc"/>
             <Format ref="marc"/>
             <Format ref="uketd_dc"/>
-	    <Format ref="uk_nusl"/>
-	    <Format ref="dctransport"/>
+            <Format ref="dctransport"
+            <Format ref="uk_nusl"/>
 	    <Format ref="oai_uk_vufind"/>
 	    <Format ref="oai_dc_citations"/>
             <!--<Format ref="junii2" />-->
@@ -50,7 +50,7 @@
                 <Format ref="oaidc"/>
                 <Format ref="marc"/>
                 <Description>
-                        This context is used for NUSL metadata harversting. Only publicly accessible theses are returned
+                        This context is used for NUSL metadata harversting. Only publicly accessible theses that are not blacklisted because of GDPR are returned
                 </Description>
         </Context>
         
@@ -111,11 +111,11 @@
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
         </Format>
         <Format id="dctransport">
-	    <Prefix>dc_transport</Prefix>
-	    <XSLT>metadataFormats/dc_transport.xsl</XSLT>
-	    <Namespace>http://www.openartchives.org/OAI/2.0/oai_dc/</Namespace>
-	    <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
-	</Format>
+	        <Prefix>dc_transport</Prefix>
+	        <XSLT>metadataFormats/dc_transport.xsl</XSLT>
+	        <Namespace>http://www.openartchives.org/OAI/2.0/oai_dc/</Namespace>
+	        <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+        </Format>
         <Format id="mets">
             <Prefix>mets</Prefix>
             <XSLT>metadataFormats/mets.xsl</XSLT>
@@ -225,7 +225,7 @@
 	<!-- NUŠL filter for records returned by OAI-PMH.
                 By defailt, return an Item record:
                         * If a Title and Author field both exist
-                        * AND a valid NUŠL Document Type exists
+                        * AND a valid NUŠL Document Type exists AND document is not blacklisted because of the GDPR
                         * AND Item is publicly accessible
                 This filter is only used in the NUŠL context ([oai]/nusl).
         -->
@@ -233,8 +233,19 @@
                 <Definition>
                         <And>
                                 <LeftCondition>
-                                        <Custom ref="nuslDocumentTypeCondition"/>
-                                </LeftCondition>
+					<And>
+						<LeftCondition>
+                                        		<Custom ref="nuslDocumentTypeCondition"/>
+                                		</LeftCondition>
+						<RightCondition>
+							<Not>
+								<Condition>
+									<Custom ref="nuslDocumentBlacklistCondition"/>
+								</Condition>
+							</Not>
+						</RightCondition>
+					</And>
+				</LeftCondition>
                                 <RightCondition>
                                         <Or>
                                                 <LeftCondition>
@@ -394,6 +405,20 @@
                         </list>
                 </Configuration>
         </CustomCondition>
+
+	<!-- <JR> - 26. 6. 2018 - Custom condition for blacklisted items -->
+	<!-- Blacklisted item won't be added to NUŠL set -->
+	<!-- Item is blacklisted if it has metadata value uk.gdpr.forbidden is True-->
+	<CustomCondition id="nuslDocumentBlacklistCondition">
+		<Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+		<Configuration>
+			<string name="field">uk.gdpr.forbidden</string>
+			<string name="operator">contains</string>
+			<list name="values">
+				<string>True</string>
+			</list>
+		</Configuration>
+	</CustomCondition>
 
         <!-- This condition determines if an Item has a "dc.type" field
              which contains "Thesis". -->

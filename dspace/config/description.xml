@@ -2,5 +2,5 @@
 <scheme>oai</scheme>
 <repositoryIdentifier>${dspace.baseUrl}</repositoryIdentifier>
 <delimiter>:</delimiter>
-<sampleIdentifier>oai:${dspace.baseUrl}:20.500.11956/3586</sampleIdentifier>
+<sampleIdentifier>oai:dspace.cuni.cz:123456789/1234</sampleIdentifier>
 </oai-identifier>
