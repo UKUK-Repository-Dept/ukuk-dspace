@@ -30,6 +30,7 @@
             <Format ref="qdc"/>
             <Format ref="marc"/>
             <Format ref="uketd_dc"/>
+            <Format ref="dctransport"
             <Format ref="uk_nusl"/>
 	    <Format ref="oai_uk_vufind"/>
 	    <Format ref="oai_dc_citations"/>
@@ -108,6 +109,12 @@
             <XSLT>metadataFormats/oai_dc.xsl</XSLT>
             <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+        </Format>
+        <Format id="dctransport">
+	        <Prefix>dc_transport</Prefix>
+	        <XSLT>metadataFormats/dc_transport.xsl</XSLT>
+	        <Namespace>http://www.openartchives.org/OAI/2.0/oai_dc/</Namespace>
+	        <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
         </Format>
         <Format id="mets">
             <Prefix>mets</Prefix>
