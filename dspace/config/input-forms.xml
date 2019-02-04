@@ -165,17 +165,22 @@
      	
 	<!-- Issue 1 -->
      	<name-map collection-handle="20.500.11956/100848" form-name="articles" />
-	
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/104576" form-name="articles" />
 	<!-- Special Issue 2018-->
 	<name-map collection-handle="20.500.11956/103605" form-name="articles" />
+
 
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
 	<!-- PRAŽSKÉ EGYPTOLOGICKÉ STUDIE -->
 	
 	<!-- Volume 2018 -->
-     	<name-map collection-handle="20.500.11956/100793" form-name="articles" />
-     	
+	
+	<!-- Issue 20 -->
+	<name-map collection-handle="20.500.11956/100793" form-name="articles" />
+	<!-- Issue 21 -->
+	<name-map collection-handle="20.500.11956/104450" form-name="articles" />
 	
 	<!-- STUDIA ETHNOLOGICA PRAGENSIA -->
 	
