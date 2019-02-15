@@ -132,17 +132,40 @@
                 </h2>
             </div>
             <div id="aspect_viewArtifacts_Navigation_list_toplinks" class="list-group">
-                <div class="panel panel-default sidebar-panel">
-                    <div role="tab" id="tab-xmluiArtifactToplinksNavigationhead_all_of_dspace_links" class="panel-heading sidebar-panel-heading">
-                        <a class="list-group-item active" role="button" tabindex="0" accesskey="o" data-toggle="collapse" href="#xmluiArtifactToplinksNavigationhead_all_of_dspace_links" aria-expanded="true" aria-labelledby="xmluiArtifactToplinksNavigationhead_all_of_dspace_links" aria-controls="xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_links"><span class="h5 list-group-item-heading  h5"> <i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_links</i18n:text></span><span class="glyphicon glyphicon-collapse-down pull-right"> </span> </a>
-                     </div>
-                    <div id="xmluiArtifactToplinksNavigationhead_all_of_dspace_links" class="panel-collapse out panel-body sidebar-panel-body collapse" aria-labelledby="tab-xmluiArtifactToplinksNavigationhead_all_of_dspace_links" role="tabpanel" aria-expanded="true">
-                        <a href="http://digitalizace.cuni.cz/" target="_blank" class="list-group-item ds-option"><i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_digitization</i18n:text></a>
-                        <a href="http://knihovna.cuni.cz" target="_blank" class="list-group-item ds-option"><i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_central-library</i18n:text></a>
-                        <a href="http://ukaz.cuni.cz/" target="_blank" class="list-group-item ds-option">UKAŽ</a>
-                        <a href="https://knihovna.cuni.cz/rozcestnik/repozitare/metodika-vkladani-habilitacnich-praci-do-repozitare/" target="_blank" class="list-group-item ds-option"><i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_habilitation</i18n:text></a>
-                    </div>
-                </div>
+		    <div class="panel panel-default sidebar-panel">
+			    <div role="tab" id="tab-xmluiArtifactToplinksNavigationhead_all_of_dspace_links" class="panel-heading sidebar-panel-heading">
+				    <a class="list-group-item active" role="button" tabindex="0" accesskey="o" data-toggle="collapse" href="#xmluiArtifactToplinksNavigationhead_all_of_dspace_links" aria-expanded="true" aria-labelledby="xmluiArtifactToplinksNavigationhead_all_of_dspace_links" aria-controls="xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_links">
+					    <span class="h5 list-group-item-heading  h5"> 
+						    <i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_links</i18n:text>
+					    </span>
+					    <span class="glyphicon glyphicon-collapse-down pull-right"></span> 
+				    </a>
+			    </div>
+			    <div id="xmluiArtifactToplinksNavigationhead_all_of_dspace_links" class="panel-collapse out panel-body sidebar-panel-body collapse" aria-labelledby="tab-xmluiArtifactToplinksNavigationhead_all_of_dspace_links" role="tabpanel" aria-expanded="true">
+					<a href="http://digitalizace.cuni.cz/" target="_blank" class="list-group-item ds-option">
+						<i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_digitization</i18n:text>
+					</a>
+				<xsl:if test="$active-locale='cs'">
+				    	<a href="http://knihovna.cuni.cz" target="_blank" class="list-group-item ds-option">
+					    <i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_central-library</i18n:text>
+				    	</a>
+				</xsl:if>
+				<xsl:if test="$active-locale='en'">
+					<a href="http://library.cuni.cz" target="_blank" class="list-group-item ds-option">
+						<i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_central-library</i18n:text>
+					</a>
+				</xsl:if>
+				<xsl:if test="$active-locale='cs'">
+					<a href="http://ukaz.cuni.cz/" target="_blank" class="list-group-item ds-option">UKAŽ</a>
+				</xsl:if>
+				<xsl:if test="$active-locale='en'">
+					<a href="http://ukaz.cuni.cz/en" target="_blank" class="list-group-item ds-option">UKAŽ</a>
+				</xsl:if>
+				    <a href="https://knihovna.cuni.cz/rozcestnik/repozitare/metodika-vkladani-habilitacnich-praci-do-repozitare/" target="_blank" class="list-group-item ds-option">
+					    <i18n:text>xmlui.ArtifactToplinks.Navigationhead.all_of_dspace_habilitation</i18n:text>
+				    </a>
+			    </div>
+		    </div>
             </div>
 
             <xsl:apply-templates/>
