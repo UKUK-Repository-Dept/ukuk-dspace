@@ -550,7 +550,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 		<dc-qualifier>doi</dc-qualifier>
 		<repeatable>false</repeatable>
 		<label>DOI článku</label>
-		<input-type></input-type>
+		<input-type>onebox</input-type>
 		<hint>Zadejte DOI článku.</hint>
 	    </field>
             <field>
