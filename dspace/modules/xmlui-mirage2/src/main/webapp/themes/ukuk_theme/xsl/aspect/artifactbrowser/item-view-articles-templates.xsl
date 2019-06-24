@@ -25,7 +25,7 @@
 
 		<div class="simple-item-view-doi item-page-field-wrapper table">
 			<h4 class="item-view-heading">DOI</h4>
-			<a href="{$doi-url}" target="_blank"><xsl:value-of select="dim:field[@element='identifier'][@qualifier='doi']"/></a>
+			<a href="https://doi.org/{$doi-url}" target="_blank"><xsl:value-of select="dim:field[@element='identifier'][@qualifier='doi']"/></a>
 		</div>
 	</xsl:if>
     </xsl:template>
