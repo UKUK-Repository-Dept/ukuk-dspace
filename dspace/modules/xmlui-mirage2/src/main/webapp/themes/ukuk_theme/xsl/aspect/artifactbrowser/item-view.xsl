@@ -245,7 +245,8 @@
 				<xsl:call-template name="itemSummaryView-DIM-general-authors"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-contributors"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-date"/>
-                <xsl:call-template name="itemSummaryView-DIM-articles-ISSN"/>
+		<xsl:call-template name="itemSummaryView-DIM-articles-ISSN"/>
+		<xsl:call-template name="itemSummaryView-DIM-articles-DOI"/>
                 <xsl:call-template name="itemSummaryView-DIM-periodical-source"/>
                 <xsl:call-template name="itemSummaryView-DIM-periodical-source-url"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
