@@ -543,7 +543,16 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <input-type>date</input-type>
                 <hint>Zadejte datum vydání článku. Můžete vynechat měsíc a den vydání.</hint>
                 <required>Zadejte alespoň rok vydání článku.</required>
-            </field>
+	    </field>
+	    <field>
+		<dc-schema>dc</dc-schema>
+		<dc-element>identifier</dc-element>
+		<dc-qualifier>doi</dc-qualifier>
+		<repeatable>false</repeatable>
+		<label>DOI článku</label>
+		<input-type></input-type>
+		<hint>Zadejte DOI článku.</hint>
+	    </field>
             <field>
                 <dc-schema>dc</dc-schema>
                 <dc-element>subject</dc-element>
