@@ -2298,11 +2298,11 @@
         <!--<AM> - 18.4.2017 - přidání výrazu pro afiliaci v item-view-->
         <message key="xmlui.dri2xhtml.METS-1.0.item-affiliation-item-view">Author's Affiliation</message>
 	<!--<JR> - 20. 2. 2017 - přidání výrazů pro jednotlivé typy dokumentů v item-view-->
-	<message key="xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view">Bachelor Theses</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view">Diploma Theses</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-type-rigo-th-item-view">Rigorous Work</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-type-disert-th-item-view">Disertation Theses</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-type-habi-th-item-view">Habilitation Work</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view">bachelor thesis</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view">diploma thesis</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-type-rigo-th-item-view">rigorous thesis</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-type-disert-th-item-view">dissertation thesis</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-type-habi-th-item-view">habilitation thesis</message>
 	<!--<JR> - 21. 2. 2017 - přidání výrazu pro datum obhajoby v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-acceptance-date-item-view">Date of defense</message>
 	<!--<JR> - 21. 2. 2017 - přidání výrazu pro vedoucího práce  v item-view-->
