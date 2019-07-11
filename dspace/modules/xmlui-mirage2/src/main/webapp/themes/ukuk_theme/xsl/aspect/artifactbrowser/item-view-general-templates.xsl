@@ -60,6 +60,7 @@
     </xsl:template>
 
     <!-- <JR> - 20. 2. 2017 -->
+    <!-- DC.TYPE -->
     <xsl:template name="itemSummaryView-DIM-general-work-type">
         <xsl:choose>
             <xsl:when test="$active-locale='en'">
@@ -69,6 +70,21 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>
+                            <xsl:when test="dim:field[@element='type']='bakalářská práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='diplomová práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='rigorózní práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-rigo-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='dizertační práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-disert-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='habilitační práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-habi-th-item-view</i18n:text>
+                            </xsl:when>
                             <xsl:when test="dim:field[@element='type']">
                                 <xsl:value-of select="dim:field[@element='type']"/>
                             </xsl:when>
@@ -103,6 +119,21 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>
+                            <xsl:when test="dim:field[@element='type']='bakalářská práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='diplomová práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='rigorózní práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-rigo-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='dizertační práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-disert-th-item-view</i18n:text>
+                            </xsl:when>
+                            <xsl:when test="dim:field[@element='type']='habilitační práce'">
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-habi-th-item-view</i18n:text>
+                            </xsl:when>
                             <xsl:when test="dim:field[@element='type']">
                                 <xsl:value-of select="dim:field[@element='type']"/>
                             </xsl:when>
