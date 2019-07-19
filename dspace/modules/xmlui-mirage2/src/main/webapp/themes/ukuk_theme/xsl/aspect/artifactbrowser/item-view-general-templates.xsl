@@ -842,125 +842,130 @@
     </xsl:template>
     <!-- END OF: RIGHTS -->
 
-    <!-- ABSTRACT(GENERAL) -->
-    <!-- TODO: Dodělat šablonu pro abstrakty tak, aby se zobrazovala vždy konkrétní jazyková mutace abstraktu a případně abstrakt v originálním jazyce (jakýkoliv další, který nemá jazyk cs_CZ nebo en_US)? -->
+    <!-- ABSTRACT - GENERAL -->
     <xsl:template name="itemSummaryView-DIM-general-abstract">
-        <div class="simple-item-view-abstract item-page-field-wrapper table">
-            <div role="tab" id="panel-abstract-cs">
-                <h4 class="item-view-heading">
-                    <a role="button" data-toggle="collapse" href="#abstract-collapse-cs" aria-expanded="true" aria-labelledby="abstract-collapse-cs">
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-cs</i18n:text>
-                        <span class="glyphicon glyphicon-collapse-down pull-right"></span>
-                    </a>
-                </h4>
-            </div>
-
-            <div id="abstract-collapse-cs" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-cs">
-                <xsl:call-template name="itemSummaryView-DIM-general-abstract-data">
+        <xsl:choose>
+            <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][@language='cs_CZ']">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-structure">
+                    <xsl:with-param name="abstract-data">
+                        <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='cs_CZ']"/>
+                    </xsl:with-param>
                     <xsl:with-param name="language">
                         <xsl:text>cs</xsl:text>
                     </xsl:with-param>
                 </xsl:call-template>
-            </div>
-        </div>
-
-        <div class="simple-item-view-abstract item-page-field-wrapper table">
-            <div role="tab" id="panel-abstract-en">
-                <h4 class="item-view-heading">
-                    <a role="button" data-toggle="collapse" href="#abstract-collapse-en" aria-expanded="false" aria-labelledby="abstract-collapse-en">
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-en</i18n:text>
-                        <span class="glyphicon glyphicon-collapse-down pull-right"></span>
-                    </a>
-                </h4>
-            </div>
-
-            <div id="abstract-collapse-en" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-en">
-                <xsl:call-template name="itemSummaryView-DIM-general-abstract-data">
+            </xsl:when>
+            <xsl:when test="dim:field[@element='abstract'][@qualifier='cs']">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-structure">
+                    <xsl:with-param name="abstract-data">
+                        <xsl:value-of select="dim:field[@element='abstract'][@qualifier='cs']"/>
+                    </xsl:with-param>
+                    <xsl:with-param name="language">
+                        <xsl:text>cs</xsl:text>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- pass -->
+            </xsl:otherwise>
+        </xsl:choose>
+            
+        <xsl:choose>
+            <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][@language='en_US']">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-structure">
+                    <xsl:with-param name="abstract-data">
+                        <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='en_US']"/>
+                    </xsl:with-param>
                     <xsl:with-param name="language">
                         <xsl:text>en</xsl:text>
                     </xsl:with-param>
                 </xsl:call-template>
-            </div>
+            </xsl:when>
+            <xsl:when test="dim:field[@element='abstract'][@qualifier='en']">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-structure">
+                    <xsl:with-param name="abstract-data">
+                        <xsl:value-of select="dim:field[@element='abstract'][@qualifier='en']"/>
+                    </xsl:with-param>
+                    <xsl:with-param name="language">
+                        <xsl:text>en</xsl:text>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- pass -->
+            </xsl:otherwise>
+        </xsl:choose>
 
-        </div>
-
-        <div class="simple-item-view-abstract item-page-field-wrapper table">
-            <div role="tab" id="panel-abstract-original">
-                <h4 class="item-view-heading">
-                    <a role="button" data-toggle="collapse" href="#abstract-collapse-original" aria-expanded="false" aria-labelledby="abstract-collapse-original">
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-original</i18n:text>
-                        <span class="glyphicon glyphicon-collapse-down pull-right"></span>
-                    </a>
-                </h4>
-            </div>
-            <div id="abstract-collapse-original" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="panel-abstract-original">
-                <xsl:call-template name="itemSummaryView-DIM-general-abstract-data">
+        <xsl:choose>
+            <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][not(@language='en_US') and not(@language='cs_CZ')]">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-structure">
+                    <xsl:with-param name="abstract-data">
+                        <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='' and not(@language='cs_CZ') and not(@language='en_US')]"/>
+                    </xsl:with-param>
                     <xsl:with-param name="language">
                         <xsl:text>original</xsl:text>
                     </xsl:with-param>
                 </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="dim:field[@element='abstract'][@qualifier='original']">
+                <xsl:call-template name="itemSummaryView-DIM-general-abstract-structure">
+                    <xsl:with-param name="abstract-data">
+                        <xsl:value-of select="dim:field[@element='abstract'][@qualifier='original']"/>
+                    </xsl:with-param>
+                    <xsl:with-param name="language">
+                        <xsl:text>original</xsl:text>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- pass -->
+            </xsl:otherwise>
+        </xsl:choose>
+
+    </xsl:template>
+    <!-- END OF: ABSTRACT - GENERAL -->
+
+    <!-- ABSTRACT - STRUCTURE -->
+    <xsl:template name="itemSummaryView-DIM-general-abstract-structure">
+        <xsl:param name="abstract-data"/>
+        <xsl:param name="language"/>
+        <xsl:variable name="tab-id" select="concat('panel-abstract','-',$language)"/>
+        <xsl:variable name="toggle-href" select="concat('#abstract-collapse','-',$language)"/>
+        <xsl:variable name="aria-labelled-by" select="concat('abstract-collapse','-',$language)"/>
+        <xsl:variable name="i18n-message" select="concat('xmlui.dri2xhtml.METS-1.0.item-abstract-item-view','-',$language)"/>
+        <xsl:variable name="panel-id" select="concat('abstract-collapse','-',$language)"/>
+        <xsl:variable name="panel-aria-labelled-by" select="concat('panel-abstract','-',$language)"/>
+
+        
+        <div class="simple-item-view-abstract item-page-field-wrapper table">
+            <div role="tab" id="{$tab-id}">
+                <h4 class="item-view-heading">
+                    <a role="button" data-toggle="collapse" href="{$toggle-href}" aria-expanded="true" aria-labelledby="{$aria-labelled-by}">
+                        <i18n:text><xsl:value-of select="$i18n-message"/></i18n:text>
+                        <span class="glyphicon glyphicon-collapse-down pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+
+            <div id="{$panel-id}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="{$panel-aria-labelled-by}">
+                <div>
+                    <xsl:call-template name="itemSummaryView-DIM-general-abstract-data">
+                        <xsl:with-param name="abstract-data" select="$abstract-data"/>
+                        <!--<xsl:with-param name="language" select="$language"/>-->
+                    </xsl:call-template>
+                </div>
             </div>
         </div>
+        
     </xsl:template>
+    <!-- END OF: ABSTRACT - STRUCTURE -->
 
     <xsl:template name="itemSummaryView-DIM-general-abstract-data">
-        <xsl:param name="language"/>
-        <div>
-            <xsl:choose>
-                <xsl:when test="$language='cs'">
-                    <xsl:choose>
-                        <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][@language='cs_CZ']">
-                            <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='cs_CZ']"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:choose>
-                                <xsl:when test="dim:field[@element='abstract'][@qualifier='cs']">
-                                    <xsl:value-of select="dim:field[@element='abstract'][@qualifier='cs']"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-info-unavailable</i18n:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:when>
-                <xsl:when test="$language='en'">
-                    <xsl:choose>
-                        <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][@language='en_US']">
-                            <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='en_US']"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:choose>
-                                <xsl:when test="dim:field[@element='abstract'][@qualifier='en']">
-                                    <xsl:value-of select="dim:field[@element='abstract'][@qualifier='en']"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-info-unavailable</i18n:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:when>
-                <xsl:when test="$language='original'">
-                    <xsl:choose>
-                            <xsl:when test="dim:field[@element='description'][@qualifier='abstract'][not(@language='en_US') and not(@language='cs_CZ')]">
-                                <xsl:value-of select="dim:field[@element='description'][@qualifier='abstract'][@language='' and not(@language='cs_CZ') and not(@language='en_US')]"/>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:choose>
-                                    <xsl:when test="dim:field[@element='abstract'][@qualifier='original']">
-                                        <xsl:value-of select="dim:field[@element='abstract'][@qualifier='original']"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-info-unavailable</i18n:text>
-                                    </xsl:otherwise>
-                                </xsl:choose>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                </xsl:when>    
-            </xsl:choose>
-        </div>
+        <xsl:param name="abstract-data"/>
+        <!--<xsl:param name="language"/>-->
+        
+       <xsl:value-of select="$abstract-data"/>
     </xsl:template>
-    <!-- END OF: ABSTRACT (GENERAL) -->
+    <!-- END OF: ABSTRACT - DATA -->
 
 </xsl:stylesheet>
