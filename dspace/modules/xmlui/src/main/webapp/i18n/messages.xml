@@ -2286,7 +2286,7 @@
 	<!--<JR> - 20.2.2017 - přidání výrazu pro abstrakt v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-cs">Abstract (Czech)</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-en">Abstract (English)</message>
-        <message key="xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-original">Abstract (Original)</message>
+        <message key="xmlui.dri2xhtml.METS-1.0.item-abstract-item-view-original">Abstract (Other Langague)</message>
 	<!--<JR> - 20.2.2017 - přidání výrazu pro fakultu v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-faculty-item-view">Faculty / Institute</message>
 	<!--<JR> - 20.2.2017 - přidání výrazu pro katedru/ústav v item-view-->
