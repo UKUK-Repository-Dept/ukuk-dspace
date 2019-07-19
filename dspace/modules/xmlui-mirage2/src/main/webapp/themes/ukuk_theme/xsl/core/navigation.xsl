@@ -253,10 +253,12 @@
 
 
     <xsl:template match="dri:options//dri:item">
+        <div>
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class">list-group-item ds-option</xsl:with-param>
             </xsl:call-template>
             <xsl:apply-templates />
+        </div>
     </xsl:template>
 
     <xsl:template match="dri:options//dri:item[dri:xref]">
