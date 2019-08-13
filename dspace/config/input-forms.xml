@@ -292,6 +292,12 @@
 	
 	<!-- OA ARTICLES - FF UK -->
         <name-map collection-handle="1233456789/1367" form-name="articles" /> 
+	<!-- END OF OA ARTICLES - FF UK-->
+
+	<!-- OA BOOKS - FF UK -->
+		<name-map collection-handle="123456789/16277" form-name="oa_books" />
+		<name-map collection-handle="123456789/23994" form-name="oa_books" />
+	<!-- END OF OA BOOKS - FF UK -->
  </form-map>
 
 
@@ -494,6 +500,203 @@ it, please enter the types and the actual numbers or codes.</hint>
       </page>
     </form>
 
+	<form name="oa_books">
+        <page number="1">
+			<!-- <JR> - 12. 8. 2019 - This field is not required in this form, because only documents of one type (book) will be submitted. 
+			dc.type will be set using a item template on top of the collection -->
+            <!-- <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>type</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Typ dokumentu</label>
+				<input-type value-pairs-name="ukdstypes_CS">dropdown</input-type>
+				<hint>Vyberte typ dokumentu.</hint>
+                <required>Musíte vyplnit typ dokumentu</required>
+            </field> -->
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>language</dc-element>
+				<dc-qualifier>iso</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Jazyk práce (povinný údaj)</label>
+				<input-type value-pairs-name="common-noniso-language-uk-habilitations">dropdown</input-type>
+				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
+				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
+			</field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>contributor</dc-element>
+                <dc-qualifier>author</dc-qualifier>
+                <repeatable>true</repeatable>
+                <label>Autor dokumentu (povinný údaj)</label>
+                <input-type>name</input-type>
+                <hint>Zadejte jméno autora/ů dokumentu.</hint>
+                <required>Musíte zadat jméno autora habilitační práce.</required>               
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>title</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Název dokumentu (povinný údaj)</label>
+                <input-type>onebox</input-type>
+                <hint>Zadejte název dokumentu.</hint>
+                <required>Musíte zadat název dokumentu.</required> 
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>title</dc-element>
+                <dc-qualifier>alternative</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Přeložený název práce</label>
+                <input-type>onebox</input-type>
+                <hint>Zadejte přeložený název dokumentu.</hint>
+            </field>
+			<field>
+				<dc-schema>oaire</dc-schema>
+				<dc-element>citationEdition</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Edice</label>
+				<input-type>onebox</input-type>
+				<hint>Zadate název edice, v rámci které byla monografie vydána.</hint>
+			</field>
+			<field>
+				<dc-schema>dcterms</dc-schema>
+				<dc-element>extent</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Počet stran (povinný údaj)</label>
+				<input-type>onebox</input-type>
+				<hint>Zadajte počet stran dokumentu</hint>
+				<required>Musíte zadat počet stran dokumentu.</required>
+			</field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>date</dc-element>
+                <dc-qualifier>issued</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Datum vydání dokumentu (povinný údaj)</label>
+                <input-type>date</input-type>
+                <hint>Zadejte datum vydání dokumentu. Můžete vynechat měsíc a den vydání.</hint>
+                <required>Zadejte alespoň rok vydání dokumentu.</required>
+	    	</field>
+			<field>
+         		<dc-schema>dc</dc-schema>
+         		<dc-element>identifier</dc-element>
+         		<dc-qualifier></dc-qualifier>
+         		<!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+         		<repeatable>true</repeatable>
+         		<label>Identifikátory (povinný údaj)</label>
+         		<input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
+         		<hint>Zadejte identifikátory dokumentu (ISBN, případně také DOI)</hint>
+         		<required>Zadejte ISBN a případně také DOI dokumentu.</required>
+       		</field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>subject</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>true</repeatable>
+                <label>Klíčová slova</label>
+                <input-type>onebox</input-type>
+                <hint>Vložte klíčové slovo. Další klíčová slova můžete přidat kliknutím na tlačítko "Přidat".</hint>
+            </field>
+            <field>
+                <dc-schema>uk</dc-schema>
+                <dc-element>abstract</dc-element>
+                <dc-qualifier>cs</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Abstrakt/anotace dokumentu (česky)</label>
+                <input-type>textarea</input-type>
+                <hint>Vložte český abstrakt dokumentu.</hint>
+            </field>
+            <field>
+                <dc-schema>uk</dc-schema>
+                <dc-element>abstract</dc-element>
+                <dc-qualifier>en</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Abstrakt/anotace dokumentu (anglicky)</label>
+                <input-type>textarea</input-type>
+                <hint>Vložte anglický abstrakt dokumentu.</hint>
+            </field>
+            <field>
+                <dc-schema>uk</dc-schema>
+                <dc-element>abstract</dc-element>
+                <dc-qualifier>original</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Abstrakt/anotace dokumentu (jiný jazyk)</label>
+                <input-type>textarea</input-type>
+                <hint>Vložte abstrakt dokumentu v jiném jazyce než v češtině nebo angličtině.</hint>
+            </field>
+        </page>
+		<page number="2">
+			<!-- Sponsorship of the book-->
+			<field>
+				<dc-schema>oaire</dc-schema>
+				<dc-element>fundingReference</dc-element>
+				<dc-qualifier>funderName</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Jméno poskytovatele financí (povinný údaj)</label>
+				<input-type value-pairs-name="uk_fundingTypes_cs">dropdown</input-type>
+				<required>Musíte uvést jméno poskytovatele financí.</required>
+				<hint>Uvěďte celý název poskytovatele financí (Evropská komise, Univerzita Karlova, atd.).</hint>
+			</field>
+			<field>
+				<dc-schema>oaire</dc-schema>
+				<dc-element>fundingReference</dc-element>
+				<dc-qualifier>fundingStream</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Název programu financování (povinný údaj)</label>
+				<input-type>onebox</input-type>
+				<required>Musíte uvést název programu financování.</required>
+				<hint>Uveďte celý název programu financování, např. "Praha - pól růstu ČR", "Výzkum, vývoj a vzdělávání", "Horizont 2020", atd...</hint>
+			</field>
+			<field>
+				<dc-schema>oaire</dc-schema>
+				<dc-element>fundingReference</dc-element>
+				<dc-qualifier>awardNumber</dc-qualifier>
+				<repeatable>true</repeatable>
+				<label>Číslo/identifikátor projektu nebo grantu (povinný údaj)</label>
+				<input-type>onebox</input-type>
+				<hint>Uveďte číslo/identifikátor projektu nebo grantu, ze kterého byl podpořen vznik tohoto dokumentu. V případě, že byl vznik tohoto dokumentu podpořen z více projektů v rámci jednoho programu financování, vložte další hodnotu pomocí tlačítka "Přidat".</hint>
+				<required>Musíte uvést číslo/identifikátor projektu nebo grantu.</required>
+			</field>
+			<!-- END OF Sponsorship of the book -->
+
+			<!-- Licence of the book -->
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>rights</dc-element>
+				<dc-qualifier>uri</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Licence (povinný údaj)</label>
+				<input-type value-pairs-name="uk_license_uri">dropdown</input-type>
+				<required>Musíte vybrat licenci dokumentu.</required>
+				<hint>Vyberte některou z licencí Creative Commons nebo zvolte možnost "Bez licence"</hint>
+			</field>
+			<field>
+				<dc-schema>datacite</dc-schema>
+				<dc-element>date</dc-element>
+				<dc-qualifier>Accepted</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Datum začátku embarga pro zpřístupnění</label>
+				<input-type>date</input-type>
+				<hint>Vyplňte datum začátku embarga pro zpřístupnění dokumentu. Může se jednat o přesné datum vydání (včetně měsíce a dne), rok vydání, nebo jiné datum uvedené například v licenční smlouvě s vydavatelem.</hint>
+			</field>
+			<field>
+				<dc-schema>datacite</dc-schema>
+				<dc-element>date</dc-element>
+				<dc-qualifier>Available</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Datum ukončení embarga pro zpřístupnění</label>
+				<input-type>date</input-type>
+				<hint>Vyplňte datum ukončení embarga pro zpřístupnění. Toto datum by mělo být uvedeno ve smlouvě s vydavatelem, případně by mělo být možné datum ukončení embarga pro zpřístupnění vypočítat na základě známého data vydání a časového období, kdy musí být dokument nepřístupný v licenčních podmínkách vydavatele (např. datum vydání + 6 měsíců).</hint>
+			</field>
+			<!-- END OF License of the book -->
+		</page>
+    </form>
+
     <form name="articles">
         <page number="1">
             <field>
@@ -502,8 +705,8 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <dc-qualifier></dc-qualifier>
                 <repeatable>false</repeatable>
                 <label>Typ dokumentu</label>
-		<input-type value-pairs-name="ukdstypes_CS">dropdown</input-type>
-		<hint>Vyberte typ dokumentu.</hint>
+				<input-type value-pairs-name="ukdstypes_CS">dropdown</input-type>
+				<hint>Vyberte typ dokumentu.</hint>
                 <required>Musíte vyplnit typ dokumentu</required>
             </field>
             <field>
@@ -835,6 +1038,28 @@ it, please enter the types and the actual numbers or codes.</hint>
 
  <form-value-pairs>
 
+	<value-pairs value-pairs-name="uk_license_uri" dc-term="rights_uri">
+		<pair>
+			<displayed-value>CC BY-NC-ND 2.0</displayed-value>
+			<stored-value>http://creativecommons.org/licenses/by-nc-nd/2.0/</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Bez licence Creative Commons</displayed-value>
+			<stored-value></stored-value>
+		</pair>
+	</value-pairs>
+
+	<value-pairs value-pairs-name="uk_fundingTypes_cs" dc-term="fundingReference_funderName">
+		<pair>
+			<displayed-value>Evropská komise</displayed-value>
+			<stored-value>Evropská komise</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Univerzita Karlova</displayed-value>
+			<stored-value>Univerzita Karlova</stored-value>
+		</pair>
+	</value-pairs>
+
     <value-pairs value-pairs-name="ukdstypes_CS" dc-term="type">
         <pair>
             <displayed-value>Příspěvek v periodiku</displayed-value>
@@ -1058,6 +1283,10 @@ it, please enter the types and the actual numbers or codes.</hint>
        <displayed-value>ISBN</displayed-value>
        <stored-value>isbn</stored-value>
      </pair>
+	 <pair>
+		<displayed-value>DOI</displayed-value>
+		<stored-value>DOI</stored-value>
+	 </pair>
    </value-pairs>
 
    <value-pairs value-pairs-name="common_types" dc-term="type">
