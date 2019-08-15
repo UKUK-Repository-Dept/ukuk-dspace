@@ -17,18 +17,6 @@
     xmlns:confman="org.dspace.core.ConfigurationManager"
     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink xsl util jstring rights confman">
     <xsl:import href="item-view-general-templates.xsl" />
-    
-    <xsl:template name="itemSummaryView-DIM-articles-DOI">
-	<xsl:if test="dim:field[@element='identifier'][@qualifier='doi']">
-	    	<!-- Store DOI in variable for later use -->    
-		<xsl:variable name="doi-url"><xsl:value-of select="dim:field[@element='identifier'][@qualifier='doi']"/></xsl:variable>
-
-		<div class="simple-item-view-doi item-page-field-wrapper table">
-			<h4 class="item-view-heading">DOI</h4>
-			<a href="https://doi.org/{$doi-url}" target="_blank"><xsl:value-of select="dim:field[@element='identifier'][@qualifier='doi']"/></a>
-		</div>
-	</xsl:if>
-    </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-articles-ISSN">
 

@@ -116,12 +116,13 @@
                                 </div>
 
                                 <!--
-                                The footer div, dropping whatever extra information is needed on the page. It will
-                                most likely be something similar in structure to the currently given example. -->
-                                <div class="hidden-xs hidden-sm">
-                                    <xsl:call-template name="buildFooter"/>
-                                </div>
-                            </div>
+                            The footer div, dropping whatever extra information is needed on the page. It will
+                            most likely be something similar in structure to the currently given example. -->
+                            <div class="hidden-xs hidden-sm">
+                            <xsl:call-template name="buildFooter"/>
+                             </div>
+                         </div>
+
 
                         </xsl:otherwise>
                     </xsl:choose>
@@ -265,7 +266,7 @@
                 &lt;![endif]--&gt;</xsl:text>
 
             <!-- Modernizr enables HTML5 elements & feature detects -->
-            <script src="{concat($theme-path, 'scripts/cookies-info.js')}">&#160;</script>
+            <script src="{concat($theme-path, 'vendor/modernizr/modernizr.js')}">&#160;</script>
 
             <!-- Add the title in -->
             <xsl:variable name="page_title" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title'][last()]" />
@@ -317,39 +318,6 @@
                 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">&#160;</script>
             </xsl:if>
 
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-            <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-            <script>
-                window.addEventListener("load", function(){
-                    window.cookieconsent.initialise({
-                        "palette": {
-                        "popup": {
-                        "background": "#cc2c32"
-                        },
-                        "button": {
-                        "background": "#ffffff"
-                    }
-                },
-                <xsl:choose>
-                    <xsl:when test="$active-locale = 'cs'">
-                        "content": {
-                            "message": "Tato stránka používá soubory cookies, prostřednictvím kterých uchovává informace ve vašem počítači. Některé cookies zajišťují správnou funkci těchto stránek a bez jejich užití by stránku nebylo možné řádně zobrazit. Jiné cookies nám pomáhají vylepšovat stránky tím, že nám dovolí nahlédnout, jak jsou stránky používány. Cookies používáme na základě vašeho souhlasu, který vyjadřujete nastavením svého internetového prohlížeče tak, že ukládání těchto cookies umožňuje. Pokud si přejete svůj souhlas s používáním těchto cookies odvolat, proveďte prosím příslušné nastavení vašeho internetového prohlížeče.",
-                            "dismiss": "Beru na vědomí!",
-                            "link": "",
-                            "href": ""
-                        }
-                    </xsl:when>
-                    <xsl:otherwise>
-                        "content": {
-                            "message": "This website uses cookies to ensure you get the best experience on our website. Please adjust the settings of your web browser in case you do not consent with our website using the cookies.",
-                            "dismiss": "Got it!",
-                            "link": "",
-                            "href": ""
-                        }
-                    </xsl:otherwise>
-                </xsl:choose>
-                })});
-            </script>
         </head>
     </xsl:template>
 
@@ -749,7 +717,7 @@
                     <hr/>
                     <div class="col-xs-7 col-sm-8">
                         <div>
-                          <p>&#169; 2017 <a href="http://www.cuni.cz" target="_blank"> Univerzita Karlova</a>, <a href="http://knihovna.cuni.cz" target="_blank"> &#218;st&#345;edn&#237; knihovna</a>, Ovocn&#253; trh 3-5, 116 36 Praha; <a href="mailto:admin-repozitar@cuni.cz">email: admin-repozitar [at] cuni.cz</a> </p>
+                          <p>&#169; 2017 <a href="http://www.cuni.cz" target="_blank"> Univerzita Karlova</a>, <a href="http://knihovna.cuni.cz" target="_blank"> &#218;st&#345;edn&#237; knihovna</a>, Ovocn&#253; trh 3-5, 116 36 Praha; <a href="mailto:dspace @ is.cuni.cz">email: dspace (at) is.cuni.cz</a> </p>
                           <p> Za dodr&#382;en&#237; v&#353;ech ustanoven&#237; autorsk&#233;ho z&#225;kona jsou zodpov&#283;dn&#233; jednotliv&#233; slo&#382;ky Univerzity Karlovy. / Each constituent part of Charles University is responsible for adherence to all provisions of the copyright law. </p>
                             <p><strong>Upozornění / Notice: </strong>Získané informace nemohou být použity k výdělečným účelům nebo vydávány za studijní, vědeckou nebo jinou tvůrčí činnost jiné osoby než autora. / Any retrieved information shall not be used for any commercial purposes or claimed as results of studying, scientific or any other creative activities of any person other than the author.</p>
                         </div>
@@ -804,31 +772,6 @@
         </footer>
     </xsl:template>
 
-    <!--
-            Build Cookies notificiation template
-    -->
-    <xsl:template name="buildCookies">
-        <xsl:choose>
-            <xsl:when test="$active-locale='cs'">
-                Tato stránka používá soubory cookies, prostřednictvím kterých uchovává informace ve vašem počítači. 
-                Některé cookies zajišťují správnou funkci těchto stránek a bez jejich užití by stránku nebylo možné řádně zobrazit. 
-                Jiné cookies nám pomáhají vylepšovat stránky tím, že nám dovolí nahlédnout, jak jsou stránky používány. 
-                Cookies používáme na základě vašeho souhlasu, který vyjadřujete nastavením svého internetového prohlížeče tak, že ukládání těchto cookies umožňuje. 
-                Pokud si přejete svůj souhlas s používáním těchto cookies odvolat, proveďte prosím příslušné nastavení vašeho internetového prohlížeče.
-                <!--<a href="#" id="close">&times;</a>-->
-                <button type="button" class="close" data-dismiss="alert" aria-label="Got it!">
-                    <strong>Beru na vědomí!</strong>
-                </button>
-            </xsl:when>
-            <xsl:otherwise>
-                This website uses cookies to ensure you get the best experience on our website. 
-                Please adjust the settings of your web browser in case you do not consent with our website using the cookies.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Got it!">
-                    <strong>Got it!</strong>
-                </button>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
 
     <!--
             The meta, body, options elements; the three top-level elements in the schema

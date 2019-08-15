@@ -1,7 +1,5 @@
 # ukuk-dspace repository
 
-zmena 3
-
 [![Build Status](https://api.travis-ci.com/UKUK-Repository-Dept/ukuk-dspace.svg?branch=master)](https://travis-ci.com/UKUK-Repository-Dept/ukuk-dspace)
 
 This repository contains local DSpace 5.6 customizations made just for Central Library of Charles University. To get the latest DSpace release, please visit
@@ -11,4 +9,4 @@ the official [DSpace repository](https://github.com/DSpace/DSpace).
 * primary deploy at: https://dspace.cuni.cz
 * contact: jakub.rihak[at]ruk.cuni.cz
 
-We use [continuous integrations](https://github.com/UKUK-Repository-Dept/ukuk-dspace/wiki/CI).
+Look on our [wiki](https://github.com/UKUK-Repository-Dept/ukuk-dspace/wiki/CI).

@@ -55,14 +55,8 @@
 	
 	<!-- Volume 2018 -->
      	<name-map collection-handle="20.500.11956/100445" form-name="articles" />
-	<name-map collection-handle="20.500.11956/100446" form-name="articles" />
-
-	<!-- Volume 2019 -->
-	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/106561" form-name="articles" />
-	<!-- Issue 2 -->
-	<name-map collection-handle="20.500.11956/106562" form-name="articles" />
-
+     	<name-map collection-handle="20.500.11956/100446" form-name="articles" />
+	
 	<!-- END OF ČASOPIS PRO MODERNÍ FILOLOGII -->
 	
      	<!-- FÓRUM SOCIÁLNÍ PRÁCE-->
@@ -91,9 +85,6 @@
 	<!-- Special Issue -->
 	<name-map collection-handle="20.500.11956/104158" form-name="articles" />
 
-	<!-- Volume 2019 -->
-	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/106109" form-name="articles" />
 	<!-- END OF FÓRUM SOCIÁLNÍ PRÁCE -->
 	
 	<!-- SVĚT LITERATURY -->
@@ -115,11 +106,6 @@
 	<!-- Volume 2018 -->
      	<name-map collection-handle="20.500.11956/100447" form-name="articles" />
 	<name-map collection-handle="20.500.11956/103719" form-name="articles" />
-		
-	<!-- Volume 2019 -->
-	<!-- Issue 59 -->
-	<name-map collection-handle="20.500.11956/105612" form-name="articles" />
-	
 	<!-- END OF SVÉT LITERATURY -->
 
  	<!-- LINGUISTICA PRAGENSIA -->
@@ -144,8 +130,6 @@
      	<name-map collection-handle="20.500.11956/100759" form-name="articles" />
      	<name-map collection-handle="20.500.11956/101347" form-name="articles" />
 
-	<!-- Volume 2019 -->
-	<name-map collection-handle="20.500.11956/105986" form-name="articles" />
 	<!-- END OF LINGUISTICA PRAGENSIA -->
 
 	<!-- SLOVO A SMYSL -->
@@ -181,22 +165,17 @@
      	
 	<!-- Issue 1 -->
      	<name-map collection-handle="20.500.11956/100848" form-name="articles" />
-	<!-- Issue 2 -->
-	<name-map collection-handle="20.500.11956/104576" form-name="articles" />
+	
 	<!-- Special Issue 2018-->
 	<name-map collection-handle="20.500.11956/103605" form-name="articles" />
-
 
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
 	<!-- PRAŽSKÉ EGYPTOLOGICKÉ STUDIE -->
 	
 	<!-- Volume 2018 -->
-	
-	<!-- Issue 20 -->
-	<name-map collection-handle="20.500.11956/100793" form-name="articles" />
-	<!-- Issue 21 -->
-	<name-map collection-handle="20.500.11956/104450" form-name="articles" />
+     	<name-map collection-handle="20.500.11956/100793" form-name="articles" />
+     	
 	
 	<!-- STUDIA ETHNOLOGICA PRAGENSIA -->
 	
@@ -254,20 +233,8 @@
 	<!-- Volume 2018 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/104160" form-name="articles" />
-	
-	<!-- Issue 2 -->
-	<name-map collection-handle="20.500.11956/105294" form-name="articles" />
+
 	<!-- END OF HISTORIE - OTÁZKY - PROBLÉMY -->
-
- 	<!-- ESTETIKA -->
-  	<!-- Issue 1 -->
-  	<name-map collection-handle="20.500.11956/105686" form-name="articles" />
-
-	<!-- LITTERARIA PRAGENSIA -->
-	<!-- Volume 2019 -->
-	<!--  Issue 57 -->
-	<name-map collection-handle="20.500.11956/106641" form-name="articles" />
-	<!-- END OF LITTERARIA PRAGENSIA -->
 	
 	<!-- END OF PRODUCTION SERVER -->
 	
@@ -544,16 +511,7 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <input-type>date</input-type>
                 <hint>Zadejte datum vydání článku. Můžete vynechat měsíc a den vydání.</hint>
                 <required>Zadejte alespoň rok vydání článku.</required>
-	    </field>
-	    <field>
-		<dc-schema>dc</dc-schema>
-		<dc-element>identifier</dc-element>
-		<dc-qualifier>doi</dc-qualifier>
-		<repeatable>false</repeatable>
-		<label>DOI článku</label>
-		<input-type>onebox</input-type>
-		<hint>Zadejte DOI článku.</hint>
-	    </field>
+            </field>
             <field>
                 <dc-schema>dc</dc-schema>
                 <dc-element>subject</dc-element>
