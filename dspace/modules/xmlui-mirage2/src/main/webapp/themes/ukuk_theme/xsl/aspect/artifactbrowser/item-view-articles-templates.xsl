@@ -30,41 +30,54 @@
 	</xsl:if>
     </xsl:template>
 
-    <xsl:template name="itemSummaryView-DIM-articles-ISSN">
-
-    	<div class="simple-item-view-contributors item-page-field-wrapper table">
-            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-issn</i18n:text></h4>
-            <xsl:choose>
-            	<xsl:when test="dim:field[@element='identifier'][@qualifier='issn']">
-            		<xsl:value-of select="dim:field[@element='identifier'][@qualifier='issn']"/>
-            	</xsl:when>
-            	<xsl:otherwise>
-            		<xsl:choose>
-            			<xsl:when test="$active-locale='cs'">
-            				<xsl:text>Informace není k dispozici</xsl:text>
-            			</xsl:when>
-            			<xsl:when test="$active-locale='en'">
-            				<xsl:text>Information unavailable</xsl:text>
-            			</xsl:when>
-            			<xsl:otherwise>
-            				<xsl:text>Information unavailable</xsl:text>
-            			</xsl:otherwise>
-            		</xsl:choose>
-            	</xsl:otherwise>
-            </xsl:choose>
-        </div>
+    <xsl:template name="itemSummaryView-DIM-publications-identifiers">
+        <xsl:if test="dim:field[@element='identifier'][@qualifier] and descendant::text()">
+            <xsl:for-each select="dim:field[@element='identifier'][@qualifier]">
+                    <xsl:variable name="id-value"><xsl:value-of select="node()"/></xsl:variable>
+                    <xsl:call-template name="itemSummaryView-DIM-publications-identifier-data">
+                        <xsl:with-param name="id-data">
+                            <xsl:value-of select="$id-value"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="qualifier">
+                            <xsl:value-of select="@qualifier"/>
+                        </xsl:with-param>
+                    </xsl:call-template>
+            </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 
-    <xsl:template name="itemSummaryView-DIM-periodical-source">
+    <xsl:template name="itemSummaryView-DIM-publications-identifier-data">
+        <xsl:param name="id-data"/>
+        <xsl:param name="qualifier"/>
+        <xsl:choose>
+            <xsl:when test="$qualifier = 'uri'">
+            </xsl:when>
+            <xsl:otherwise>
+                <div class="simple-item-view-publication-identifier item-page-field-wrapper table">
+                    <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-<xsl:value-of select="$qualifier"/></i18n:text></h4>
+                    <xsl:choose>
+                        <xsl:when test="$qualifier = 'doi'">
+                            <a href="https://doi.org/{$id-data}" target="_blank"><xsl:value-of select="$id-data"/></a>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$id-data"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </div>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-publication-source">
     	<div class="simple-item-view-source-uri item-page-field-wrapper table">
-    		<h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-source-periodical</i18n:text></h4>
+    		<h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-source</i18n:text></h4>
     		<xsl:call-template name="itemSummaryView-DIM-general-source-data"/>
     	</div>
     </xsl:template>
 
-    <xsl:template name="itemSummaryView-DIM-periodical-source-url">
+    <xsl:template name="itemSummaryView-DIM-publication-source-url">
         <div class="simple-item-view-source-uri item-page-field-wrapper table">
-            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-source-periodical-uri</i18n:text></h4>
+            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-source-uri</i18n:text></h4>
             <xsl:call-template name="itemSummaryView-DIM-general-source-url-data"/>
         </div>
     </xsl:template>

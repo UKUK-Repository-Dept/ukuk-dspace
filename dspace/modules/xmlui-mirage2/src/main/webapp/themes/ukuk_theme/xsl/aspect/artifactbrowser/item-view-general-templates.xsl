@@ -968,4 +968,17 @@
     </xsl:template>
     <!-- END OF: ABSTRACT - DATA -->
 
+    <!-- EMBARGO DATE -->
+
+    <xsl:template>
+        <xsl:if test="dim:field[@mdschema='datacite'][@element='date'][@qualifier='Available']">
+            <div class="simple-item-view-embargo-dates item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-dates</i18n:text></h4>
+                <xsl:value-of select="node()"/>
+            </div>
+        </xsl:if>
+    </xsl:template>
+
+    <!-- END OF: EMBARGO DATE -->
+
 </xsl:stylesheet>

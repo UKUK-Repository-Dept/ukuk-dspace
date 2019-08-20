@@ -150,6 +150,7 @@
         		<div class="row">
             		<div class="col-xs-12 col-sm-5">
             			<!--<xsl:call-template name="itemSummaryView-DIM-general-date"/>-->
+                        <xsl:call-template name=""
             			<xsl:call-template name="itemSummaryView-DIM-general-file-section"/>
             			<xsl:call-template name="itemSummaryView-DIM-general-URI"/>
             			<xsl:call-template name="itemSummaryView-general-collections"/>
@@ -199,10 +200,10 @@
 			</xsl:when>
 			<xsl:when test="($document_type_cs = 'Článek' or $document_type_nolang = 'Článek') or ($document_type_en = 'Article' or $document_type_nolang = 'Article')">
 				<!-- It's an Article!!! -->
-				<xsl:call-template name="itemSummaryView-DIM-articles" />
+				<xsl:call-template name="itemSummaryView-DIM-publications" />
 			</xsl:when>
             <xsl:when test="$document_type_internal = 'uk_publication'">
-                <xsl:call-template name="itemSummaryView-DIM-articles" />
+                <xsl:call-template name="itemSummaryView-DIM-publications" />
             </xsl:when>
 			<xsl:otherwise>
 				<!-- Document type was not found in any of the thesis types lists-->
@@ -239,16 +240,16 @@
 
 	</xsl:template>
 
-	<xsl:template name="itemSummaryView-DIM-articles">
+	<xsl:template name="itemSummaryView-DIM-publications">
 		<div class="col-xs-12 col-sm-7">
 			<div class="simple-item-view-authors item-apge-field-wrapper table">
 				<xsl:call-template name="itemSummaryView-DIM-general-authors"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-contributors"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-date"/>
-		<xsl:call-template name="itemSummaryView-DIM-articles-ISSN"/>
-		<xsl:call-template name="itemSummaryView-DIM-articles-DOI"/>
-                <xsl:call-template name="itemSummaryView-DIM-periodical-source"/>
-                <xsl:call-template name="itemSummaryView-DIM-periodical-source-url"/>
+		        <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/>
+		        <!-- <xsl:call-template name="itemSummaryView-DIM-articles-DOI"/> -->
+                <xsl:call-template name="itemSummaryView-DIM-publication-source"/>
+                <xsl:call-template name="itemSummaryView-DIM-publication-source-url"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-rights"/>
                 <xsl:call-template name="itemSummaryView-DIM-general-keywords"/>
