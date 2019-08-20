@@ -504,16 +504,6 @@ it, please enter the types and the actual numbers or codes.</hint>
         <page number="1">
 			<!-- <JR> - 12. 8. 2019 - This field is not required in this form, because only documents of one type (book) will be submitted. 
 			dc.type will be set using a item template on top of the collection -->
-            <!-- <field>
-                <dc-schema>dc</dc-schema>
-                <dc-element>type</dc-element>
-                <dc-qualifier></dc-qualifier>
-                <repeatable>false</repeatable>
-                <label>Typ dokumentu</label>
-				<input-type value-pairs-name="ukdstypes_CS">dropdown</input-type>
-				<hint>Vyberte typ dokumentu.</hint>
-                <required>Musíte vyplnit typ dokumentu</required>
-            </field> -->
 			<field>
 				<dc-schema>dc</dc-schema>
 				<dc-element>language</dc-element>
@@ -532,8 +522,17 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <label>Autor dokumentu (povinný údaj)</label>
                 <input-type>name</input-type>
                 <hint>Zadejte jméno autora/ů dokumentu.</hint>
-                <required>Musíte zadat jméno autora habilitační práce.</required>               
+                <required>Musíte zadat jméno autora dokumentu.</required>               
             </field>
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>contributor</dc-element>
+				<dc-qualifier>editor</dc-qualifier>
+				<repeatable>true</repeatable>
+				<label>Editor dokumentu</label>
+				<input-type>name</input-type>
+				<hint>Zadejte jméno editora/ů dokumentu.</hint>
+			</field>
             <field>
                 <dc-schema>dc</dc-schema>
                 <dc-element>title</dc-element>
@@ -560,7 +559,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Edice</label>
 				<input-type>onebox</input-type>
-				<hint>Zadate název edice, v rámci které byla monografie vydána.</hint>
+				<hint>Zadejte název edice, v rámci které byla monografie vydána.</hint>
 			</field>
 			<field>
 				<dc-schema>dcterms</dc-schema>
@@ -639,7 +638,6 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Jméno poskytovatele financí (povinný údaj)</label>
 				<input-type value-pairs-name="uk_fundingTypes_cs">dropdown</input-type>
-				<required>Musíte uvést jméno poskytovatele financí.</required>
 				<hint>Uvěďte celý název poskytovatele financí (Evropská komise, Univerzita Karlova, atd.).</hint>
 			</field>
 			<field>
@@ -649,7 +647,6 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Název programu financování (povinný údaj)</label>
 				<input-type>onebox</input-type>
-				<required>Musíte uvést název programu financování.</required>
 				<hint>Uveďte celý název programu financování, např. "Praha - pól růstu ČR", "Výzkum, vývoj a vzdělávání", "Horizont 2020", atd...</hint>
 			</field>
 			<field>
@@ -660,7 +657,6 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<label>Číslo/identifikátor projektu nebo grantu (povinný údaj)</label>
 				<input-type>onebox</input-type>
 				<hint>Uveďte číslo/identifikátor projektu nebo grantu, ze kterého byl podpořen vznik tohoto dokumentu. V případě, že byl vznik tohoto dokumentu podpořen z více projektů v rámci jednoho programu financování, vložte další hodnotu pomocí tlačítka "Přidat".</hint>
-				<required>Musíte uvést číslo/identifikátor projektu nebo grantu.</required>
 			</field>
 			<!-- END OF Sponsorship of the book -->
 
@@ -696,7 +692,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 			<!-- END OF License of the book -->
 		</page>
     </form>
-
+	<!-- OA ARTICLES SUBMISSION FORM -->
     <form name="articles">
         <page number="1">
             <field>
@@ -858,17 +854,6 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
 				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
 			</field>
-       			<!--<field>-->
-         			<!--<dc-schema>dc</dc-schema>-->
-         			<!--<dc-element>type</dc-element>-->
-         			<!--<dc-qualifier></dc-qualifier>-->
-         			<!--<repeatable>true</repeatable>-->
-         			<!--<label>Typ práce (povinný údaj)</label>-->
-         			<!--<input-type value-pairs-name="common-types-uk-habilitace">dropdown</input-type>-->
-         			<!--<hint>Vyberte typ vložené práce. Pro výběr více položek stiskněte klávesu "CTRL" nebo "Shift".</hint>-->
-         			<!--<required></required>-->
-       			<!--</field>-->
-
 			<field>
 				<dc-schema>dcterms</dc-schema>
 				<dc-element>dateAccepted</dc-element>
@@ -1050,6 +1035,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 	</value-pairs>
 
 	<value-pairs value-pairs-name="uk_fundingTypes_cs" dc-term="fundingReference_funderName">
+		<pair>
+			<displayed-value>N/A</displayed-value>
+			<stored-value></stored-value>
+		</pair>
 		<pair>
 			<displayed-value>Evropská komise</displayed-value>
 			<stored-value>Evropská komise</stored-value>
