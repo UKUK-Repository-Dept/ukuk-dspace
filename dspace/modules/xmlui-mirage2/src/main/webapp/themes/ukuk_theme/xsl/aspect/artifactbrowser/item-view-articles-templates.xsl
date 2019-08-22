@@ -62,7 +62,7 @@
                     
                     <div>
                         <xsl:choose>
-                            <xsl:when test="($qualifier= 'issn') or ($qualifier = 'isbn') or ($qualifier = 'doi') or ($qualifier = 'aleph') or ($qualifier = 'obd')">
+                            <xsl:when test="($qualifier= 'issn') or ($qualifier = 'isbn') or ($qualifier = 'doi') or ($qualifier = 'aleph') or ($qualifier = 'obd') or ($qualifier = 'repId')">
                                 <span>
                                     <i18n:text><xsl:value-of select="$i18n-text"/></i18n:text><xsl:text>: </xsl:text>
 
