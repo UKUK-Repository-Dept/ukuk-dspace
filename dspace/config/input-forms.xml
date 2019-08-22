@@ -510,7 +510,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-qualifier>iso</dc-qualifier>
 				<repeatable>false</repeatable>
 				<label>Jazyk práce (povinný údaj)</label>
-				<input-type value-pairs-name="common-noniso-language-uk-habilitations">dropdown</input-type>
+				<input-type value-pairs-name="common_iso_languages_cz">dropdown</input-type>
 				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
 				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
 			</field>
@@ -705,6 +705,16 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<hint>Vyberte typ dokumentu.</hint>
                 <required>Musíte vyplnit typ dokumentu</required>
             </field>
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>language</dc-element>
+				<dc-qualifier>iso</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Jazyk práce (povinný údaj)</label>
+				<input-type value-pairs-name="common_iso_languages_cz">dropdown</input-type>
+				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
+				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
+			</field>
             <field>
                 <dc-schema>dc</dc-schema>
                 <dc-element>contributor</dc-element>
@@ -1274,7 +1284,7 @@ it, please enter the types and the actual numbers or codes.</hint>
      </pair>
 	 <pair>
 		<displayed-value>DOI</displayed-value>
-		<stored-value>DOI</stored-value>
+		<stored-value>doi</stored-value>
 	 </pair>
    </value-pairs>
 
@@ -1372,6 +1382,65 @@ it, please enter the types and the actual numbers or codes.</hint>
    <!-- default language order: (from dspace 1.2.1)
         "en_US", "en", "es", "de", "fr", "it", "ja", "zh", "other", ""
      -->
+   <value-pairs value-pairs-name="common_iso_languages_cz" dc-term="language_iso">
+     <pair>
+       <displayed-value>N/A</displayed-value>
+       <stored-value></stored-value>
+     </pair>
+	 <pair>
+       <displayed-value>Čeština</displayed-value>
+       <stored-value>cs_CZ</stored-value>
+	 </pair>
+	 <pair>
+       <displayed-value>Slovenština</displayed-value>
+       <stored-value>sk</stored-value>
+	 </pair>
+	 <pair>
+       <displayed-value>Polština</displayed-value>
+       <stored-value>pl</stored-value>
+	 </pair>
+     <pair>
+       <displayed-value>Angličtina (Spojené státy)</displayed-value>
+       <stored-value>en_US</stored-value>
+      </pair>
+     <pair>
+       <displayed-value>Angličtina</displayed-value>
+       <stored-value>en</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Španělština</displayed-value>
+       <stored-value>es</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Němčina</displayed-value>
+       <stored-value>de</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Francouzština</displayed-value>
+       <stored-value>fr</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Italština</displayed-value>
+       <stored-value>it</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Japonština</displayed-value>
+       <stored-value>ja</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Čínština</displayed-value>
+       <stored-value>zh</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Turečtina</displayed-value>
+       <stored-value>tr</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>(Other)</displayed-value>
+       <stored-value>other</stored-value>
+     </pair>
+   </value-pairs>
+
    <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
      <pair>
        <displayed-value>N/A</displayed-value>
