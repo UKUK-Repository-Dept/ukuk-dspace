@@ -2252,9 +2252,27 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">Trvalý odkaz</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-date">Datum</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-date-issued">Datum vydání</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-issn">ISSN časopisu</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-identifier">Identifikátor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-identifiers">Identifikátory</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-other-identifiers">Další identifikátory</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-isbn">ISBN</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-issn">ISSN</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-ismn">ISMN</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-govdoc">GovDoc</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-doi">DOI</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-sici">SICI</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-other">Jiný identifikátor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-slug">SLUG</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-aleph">Katalog UK</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-repId">SIS</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-dtl">Repozitář Digitool</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-obd">OBD</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-wos">Web of Science</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-citation">Bibliografická citace</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-source-periodical-uri">Odkaz na časopis</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-source-periodical">Zdrojový časopis</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-source">Zdroj</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-source-uri">Odkaz na zdroj</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Nakladatel</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-rights">Licence</message>
 	<!-- <JR> - 20. 2. 2017 - změna na "Klíčová slova"-->
@@ -2673,7 +2691,7 @@
     <message key="xmlui.ArtifactBrowser.AbstractSearch.type_dc.description.abstract_browse">Prohlížení dle abstraktu</message>
     <message key="xmlui.ArtifactBrowser.AbstractSearch.type_series_browse">Prohlížení dle série</message>
     <message key="xmlui.ArtifactBrowser.AbstractSearch.type_sponsor_browse">Prohlížení dle sponzora</message>
-    <message key="xmlui.ArtifactBrowser.AbstractSearch.type_identifier_browse">Prohlížení dle identifikátora</message>
+    <message key="xmlui.ArtifactBrowser.AbstractSearch.type_identifier_browse">Prohlížení dle identifikátoru</message>
     <message key="xmlui.ArtifactBrowser.AbstractSearch.type_language_browse">Prohlížení dle jazyka (ISO)</message>
     <message key="xmlui.ArtifactBrowser.AbstractSearch.type_keyword_browse">Prohlížení dle klíčového slova</message>
     <message key="xmlui.ArtifactBrowser.AbstractSearch.type_taxon_browse">Prohlížení dle taxonu</message>

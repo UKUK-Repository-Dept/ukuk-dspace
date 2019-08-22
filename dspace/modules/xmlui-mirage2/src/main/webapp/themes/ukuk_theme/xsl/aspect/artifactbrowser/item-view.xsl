@@ -45,8 +45,7 @@
 
     <xsl:template name="itemSummaryView-DIM">
         <!-- Generate the info about the item from the metadata section -->
-        <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
-        mode="itemSummaryView-DIM"/>
+        <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim" mode="itemSummaryView-DIM"/>
 
         <xsl:copy-of select="$SFXLink" />
 
@@ -125,7 +124,7 @@
         </div>
     </xsl:template>
 
-	<xsl:template name="itemSummaryView-DIM-general" >
+	<xsl:template name="itemSummaryView-DIM-general">
         <h2 class="page-header first-page-header item-view-header">
             <xsl:call-template name="itemSummaryView-DIM-general-title-first"/>
         </h2>
@@ -150,8 +149,10 @@
         		<div class="row">
             		<div class="col-xs-12 col-sm-5">
             			<!--<xsl:call-template name="itemSummaryView-DIM-general-date"/>-->
+                        <xsl:call-template name="itemSummaryView-DIM-thumbnail"/>
             			<xsl:call-template name="itemSummaryView-DIM-general-file-section"/>
             			<xsl:call-template name="itemSummaryView-DIM-general-URI"/>
+                        <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/>
             			<xsl:call-template name="itemSummaryView-general-collections"/>
             		</div>
 
@@ -199,10 +200,10 @@
 			</xsl:when>
 			<xsl:when test="($document_type_cs = 'Článek' or $document_type_nolang = 'Článek') or ($document_type_en = 'Article' or $document_type_nolang = 'Article')">
 				<!-- It's an Article!!! -->
-				<xsl:call-template name="itemSummaryView-DIM-articles" />
+				<xsl:call-template name="itemSummaryView-DIM-publications" />
 			</xsl:when>
             <xsl:when test="$document_type_internal = 'uk_publication'">
-                <xsl:call-template name="itemSummaryView-DIM-articles" />
+                <xsl:call-template name="itemSummaryView-DIM-publications" />
             </xsl:when>
 			<xsl:otherwise>
 				<!-- Document type was not found in any of the thesis types lists-->
@@ -213,7 +214,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="itemSummaryView-DIM-theses" >
+	<xsl:template name="itemSummaryView-DIM-theses">
 		<div class="col-xs-12 col-sm-7">
 		    <xsl:call-template name="itemSummaryView-DIM-general-authors"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-advisors"/>
@@ -223,9 +224,12 @@
 		    <xsl:call-template name="itemSummaryView-DIM-theses-discipline"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-department"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-acceptance-date"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
+            <!-- <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/> -->
 		    <xsl:call-template name="itemSummaryView-DIM-general-work-language"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-grade"/>
             <xsl:call-template name="itemSummaryView-DIM-general-keywords"/>
+            <!-- <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/> -->
 		    <!--<xsl:call-template name="itemSummaryView-DIM-general-keywords-cs"/>
 		    <xsl:call-template name="itemSummaryView-DIM-general-keywords-en"/>-->
 		</div>
@@ -239,20 +243,19 @@
 
 	</xsl:template>
 
-	<xsl:template name="itemSummaryView-DIM-articles">
+	<xsl:template name="itemSummaryView-DIM-publications">
 		<div class="col-xs-12 col-sm-7">
-			<div class="simple-item-view-authors item-apge-field-wrapper table">
-				<xsl:call-template name="itemSummaryView-DIM-general-authors"/>
-                <xsl:call-template name="itemSummaryView-DIM-general-contributors"/>
-                <xsl:call-template name="itemSummaryView-DIM-general-date"/>
-		<xsl:call-template name="itemSummaryView-DIM-articles-ISSN"/>
-		<xsl:call-template name="itemSummaryView-DIM-articles-DOI"/>
-                <xsl:call-template name="itemSummaryView-DIM-periodical-source"/>
-                <xsl:call-template name="itemSummaryView-DIM-periodical-source-url"/>
-                <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
-                <xsl:call-template name="itemSummaryView-DIM-general-rights"/>
-                <xsl:call-template name="itemSummaryView-DIM-general-keywords"/>
-			</div>		
+            <xsl:call-template name="itemSummaryView-DIM-general-authors"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-contributors"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-date"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
+            <!-- <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/> -->
+            <!-- <xsl:call-template name="itemSummaryView-DIM-articles-DOI"/> -->
+            <xsl:call-template name="itemSummaryView-DIM-publication-source"/>
+            <xsl:call-template name="itemSummaryView-DIM-publication-source-url"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-rights"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-keywords"/>
+            <!-- <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/> -->
 		</div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <xsl:call-template name="itemSummaryView-DIM-general-abstract"/>
@@ -260,14 +263,22 @@
 	</xsl:template>
 
 	<xsl:template name="itemSummaryView-DIM-other">
-		<div class="row">
-			<div class="col-xs-12 col-sm-7">
-				<div class="simple-item-view-authors item-apge-field-wrapper table">
-					<h4 class="item-view-heading">Něco jiného!!!</h4>
-				</div>		
-			</div>
-		</div>
-	</xsl:template>
+        <div class="col-xs-12 col-sm-7">
+            <xsl:call-template name="itemSummaryView-DIM-general-authors"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-contributors"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-date"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
+            <!-- <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/> -->
+            <xsl:call-template name="itemSummaryView-DIM-publication-source"/>
+            <xsl:call-template name="itemSummaryView-DIM-publication-source-url"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-rights"/>
+            <xsl:call-template name="itemSummaryView-DIM-general-keywords"/>
+            <!-- <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/> -->
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <xsl:call-template name="itemSummaryView-DIM-general-abstract"/>
+        </div>
+    </xsl:template>
 
 	<!-- <JR> - 15. 9. 2017 - new template for CitacePRO -->
     <xsl:template name="citacePro">
@@ -289,21 +300,21 @@
             </div>
     </xsl:template>
 
-        <xsl:template name="itemSummaryView-DIM-citaceURL">
-                <xsl:param name="prefix" />
-                <xsl:variable name="urlPref">
-                        <xsl:value-of select="$prefix" />
-                </xsl:variable>
-                <xsl:variable name="handleId">
-                        <xsl:value-of select="$document//dri:meta/dri:pageMeta/dri:metadata[@element='identifier'][@qualifier='handle']"/>
-                </xsl:variable>
-                <xsl:value-of select="concat($urlPref,$handleId)"/>
-        </xsl:template>
+    <xsl:template name="itemSummaryView-DIM-citaceURL">
+            <xsl:param name="prefix" />
+            <xsl:variable name="urlPref">
+                    <xsl:value-of select="$prefix" />
+            </xsl:variable>
+            <xsl:variable name="handleId">
+                    <xsl:value-of select="$document//dri:meta/dri:pageMeta/dri:metadata[@element='identifier'][@qualifier='handle']"/>
+            </xsl:variable>
+            <xsl:value-of select="concat($urlPref,$handleId)"/>
+    </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-thumbnail">
-        <div class="thumbnail">
-            <xsl:choose>
-                <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']">
+        <xsl:choose>
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']">
+                <div class="thumbnail">
                     <xsl:variable name="src">
                         <xsl:choose>
                             <xsl:when test="/mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file[@GROUPID=../../mets:fileGrp[@USE='CONTENT']/mets:file[@GROUPID=../../mets:fileGrp[@USE='THUMBNAIL']/mets:file/@GROUPID][1]/@GROUPID]">
@@ -321,18 +332,19 @@
                             <xsl:value-of select="$src"/>
                         </xsl:attribute>
                     </img>
-                </xsl:when>
-                <xsl:otherwise>
-                    <img alt="Thumbnail">
-                        <xsl:attribute name="data-src">
-                            <xsl:text>holder.js/100%x</xsl:text>
-                            <xsl:value-of select="$thumbnail.maxheight"/>
-                            <xsl:text>/text:No Thumbnail</xsl:text>
-                        </xsl:attribute>
-                    </img>
-                </xsl:otherwise>
-            </xsl:choose>
-        </div>
+                </div>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- <JR> - 19. 8. 2019 - If there's no thumbnail available, just don't display anything -->
+                <!--<img alt="Thumbnail">
+                    <xsl:attribute name="data-src">
+                        <xsl:text>holder.js/100%x</xsl:text>
+                        <xsl:value-of select="$thumbnail.maxheight"/>
+                        <xsl:text>/text:No Thumbnail</xsl:text>
+                    </xsl:attribute>
+                </img>-->
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-show-full">
@@ -399,8 +411,7 @@
     </xsl:template>
 
     <!-- don't render the item-view-toggle automatically in the summary view, only when it gets called -->
-    <xsl:template match="dri:p[contains(@rend , 'item-view-toggle') and
-        (preceding-sibling::dri:referenceSet[@type = 'summaryView'] or following-sibling::dri:referenceSet[@type = 'summaryView'])]">
+    <xsl:template match="dri:p[contains(@rend , 'item-view-toggle') and (preceding-sibling::dri:referenceSet[@type = 'summaryView'] or following-sibling::dri:referenceSet[@type = 'summaryView'])]">
     </xsl:template>
 
     <!-- don't render the head on the item view page -->
