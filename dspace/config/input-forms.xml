@@ -33,7 +33,10 @@
 	 <name-map collection-handle="20.500.11956/1939" form-name="habilitace" />
 	 <name-map collection-handle="20.500.11956/1941" form-name="habilitace" />
 
-     	<!-- Open Access journals of the Faculty of Arts -->
+	<!-- Open Access Books of the Faculty of Arts Press -->
+	 <name-map collection-handle="20.500.11956/108460" form-name="oa_books" />
+
+     	<!-- Open Access journals of the Faculty of Arts Press -->
 	
 	<!-- ČASOPIS PRO MODERNÍ FILOLOGII -->
 	
