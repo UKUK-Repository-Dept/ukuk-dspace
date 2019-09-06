@@ -149,6 +149,7 @@
 
 	<!-- Volume 2019 -->
 	<name-map collection-handle="20.500.11956/105986" form-name="articles" />
+	<name-map collection-handle="20.500.11956/108696" form-name="articles" />
 	<!-- END OF LINGUISTICA PRAGENSIA -->
 
 	<!-- SLOVO A SMYSL -->
@@ -251,6 +252,10 @@
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/104157" form-name="articles" />
 
+	<!-- Volume 2019 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/108698" form-name="articles" />
+	
 	<!-- END OF NOVÁ ČEŠTINA DOMA A VE SVĚTĚ-->
 
 	<!-- HISTORIE - OTÁZKY - PROBLÉMY -->
@@ -301,6 +306,11 @@
 		<name-map collection-handle="123456789/16277" form-name="oa_books" />
 		<name-map collection-handle="123456789/23994" form-name="oa_books" />
 	<!-- END OF OA BOOKS - FF UK -->
+	<!-- CAROLINA DIGITIZATION -->
+		<name-map collection-handle="123456789/6064" form-name="carolina_digi" />
+		<name-map collection-handle="123456789/23997" form-name="carolina_digi" />
+	<!-- END OF: CAROLINA DIGITIZATION -->
+	<!-- END OF TEST SERVER -->
  </form-map>
 
 
@@ -1018,6 +1028,232 @@ it, please enter the types and the actual numbers or codes.</hint>
 			</field>-->
 		</page>
 	</form>
+
+	<form name="carolina_digi">
+        <page number="1">
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>type</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Typ dokumentu (povinný údaj)</label>
+				<input-type value-pairs-name="ukdstypes_carolina_CS">dropdown</input-type>
+				<hint>Vyberte typ vkládaného dokumentu.</hint>
+				<required>Musíte vybrat typ vkládaného dokumentu</required>
+			</field>
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>language</dc-element>
+				<dc-qualifier>iso</dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Jazyk dokumentu (povinný údaj)</label>
+				<input-type value-pairs-name="common_iso_languages_cz">dropdown</input-type>
+				<hint>Vyberte jazyk dokumentu s rozbalovacího menu. Pokud jazyk dokumentu neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
+				<required>Musíte vybrat jazyk dokumentu z rozbalovacího seznamu.</required>
+			</field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>contributor</dc-element>
+                <dc-qualifier>author</dc-qualifier>
+                <repeatable>true</repeatable>
+                <label>Autor dokumentu (povinný údaj)</label>
+                <input-type>name</input-type>
+                <hint>Zadejte jméno autora/ů dokumentu.</hint>
+                <required>Musíte zadat jméno autora dokumentu.</required>               
+            </field>
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>contributor</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>true</repeatable>
+				<label>Další osoba s podílem na vzniku dokumentu (editor, atd.)</label>
+				<input-type>name</input-type>
+				<hint>Zadejte jména dalších osob s podílem na vzniku dokumentu (editor, ilustrátor, ...).</hint>
+			</field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>title</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Název dokumentu (povinný údaj)</label>
+                <input-type>onebox</input-type>
+                <hint>Zadejte název dokumentu.</hint>
+                <required>Musíte zadat název dokumentu.</required> 
+            </field>
+            <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>title</dc-element>
+                <dc-qualifier>alternative</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Přeložený název dokumentu</label>
+                <input-type>onebox</input-type>
+                <hint>Zadejte přeložený název dokumentu.</hint>
+            </field>
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>publisher</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+				<label>Název vydavatele (povinný údaj)</label>
+				<required>Musíte zadat název vydavatele vkládaného dokumentu</required>
+				<hint>Zadejte název vydavatele vkládaného dokumentu.</hint>
+			</field>
+			<field>
+				<dc-schema>uk</dc-schema>
+				<dc-element>publication</dc-element>
+				<dc-qualifier>place</dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+				<label>Místo vydání (povinný údaj)</label>
+				<required>Musíte zadat místo vydání vkládaného dokumentu</required>
+				<hint>Zadejte místo vydání vkládaného dokumentu.</hint>
+			</field>
+			<field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>date</dc-element>
+                <dc-qualifier>issued</dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Datum vydání dokumentu (povinný údaj)</label>
+                <input-type>date</input-type>
+                <hint>Zadejte datum vydání dokumentu. Můžete vynechat měsíc a den vydání.</hint>
+                <required>Zadejte alespoň rok vydání dokumentu.</required>
+	    	</field>
+			<field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>subject</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>true</repeatable>
+                <label>Klíčová slova</label>
+                <input-type>onebox</input-type>
+                <hint>Vložte klíčové slovo. Další klíčová slova můžete přidat kliknutím na tlačítko "Přidat".</hint>
+            </field>
+		</page>
+		<page number="2">
+			<!-- ARTCILES / BOOK PARTS SPECIFIC FIELDS -->
+			<field>
+				<dc-schema>dc</dc-schema>
+    			<dc-element>identifier</dc-element>
+    			<dc-qualifier>issn</dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+    			<label>Identifikátor ISSN zdrojového periodika (povinný údaj)</label>
+				<hint>Zadejte identifikátor ISSN periodika, ze kterého pochází vkládaný článek.</hint>
+				<required>Musíte identifikátor ISSN periodika, ze kterého pochází vkládaný článek.</required>
+    			<type-bind>Článek</type-bind>
+			</field>
+			<!-- BOOKS SPECIFIC FIELDS -->
+			<field>
+				<dc-schema>dc</dc-schema>
+    			<dc-element>identifier</dc-element>
+    			<dc-qualifier>isbn</dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+    			<label>Identifikátor ISBN knihy (povinný údaj)</label>
+				<hint>Zadejte identifikátor ISBN vkládané knihy, nebo identifikátor ISBN knihy ze které pochází vkládaná část knihy (kapitola, soubor více kapitol).</hint>
+				<required>Musíte identifikátor ISBN vkládané knihy, nebo identifikátor ISBN knihy ze které pochází vkládaná část knihy (kapitola, soubor více kapitol).</required>
+    			<type-bind>Kniha,Část knihy</type-bind>
+			</field>
+			<field>
+				<dc-schema>oaire</dc-schema>
+    			<dc-element>citationTitle</dc-element>
+    			<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+    			<label>Název zdrojového dokumentu (povinný údaj)</label>
+				<hint>Zadejte název knihy nebo periodika, ze které/ho pochází vkládaná část knihy, nebo článek.</hint>
+				<required>Musíte zadat název knihy nebo periodika, ze které/ho pochází vkládaná část knihy, nebo článek.</required>
+    			<type-bind>Článek,Část knihy</type-bind>
+			</field>
+			<!-- END OF: ARTICLES / BOOK PARTS SPECIFIC FIELDS -->
+			<field>
+				<dc-schema>oaire</dc-schema>
+				<dc-element>citationEdition</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+				<label>Edice knihy</label>
+				<hint>Zadejte název edice, v rámci které vkládaná kniha nebo část knihy vyšla.</hint>
+				<type-bind>Část knihy,Kniha</type-bind>
+			</field>
+			<!-- ARTICLES SPECIFIC FIELDS -->
+			<field>
+				<dc-schema>oaire</dc-schema>
+    			<dc-element>citationVolume</dc-element>
+    			<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+    			<label>Ročník zdrojového periodika (povinný údaj)</label>
+				<hint>Zadejte ročník periodika, ze kterého pochází vkládaný článek. Při vyplňování hodnoty se držte označení uvedeného ve zdrojovém periodiku (pokud je uvedeno "Volume 53", vyplňte "Volume 53"; pokud je uvedeno "2019", vyplňte "2019", atp.).</hint>
+				<required>Musíte zadat ročník periodika, ze kterého pochází vkládaný článek.</required>
+    			<type-bind>Článek</type-bind>
+			</field>
+			<field>
+				<dc-schema>oaire</dc-schema>
+    			<dc-element>citationIssue</dc-element>
+    			<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+    			<label>Číslo zdrojového periodika (povinný údaj)</label>
+				<hint>Zadejte číslo periodika, ze kterého pochází vkládaný článek. Při vyplňování hodnoty se držte označení uvedeného ve zdrojovém periodiu (pokud je uvedeno "Issue 2", vyplňte "Issue 2"; pokud je uvedeno "2", vyplňte "2", atp.).</hint>
+				<required>Musíte zadat číslo periodika, ze kterého pochází vkládaný článek.</required>
+    			<type-bind>Článek</type-bind>
+			</field>
+			<field>
+    			<dc-schema>oaire</dc-schema>
+    			<dc-element>citationStartPage</dc-element>
+    			<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+    			<label>Počáteční stránka (povinný údaj)</label>
+				<hint>Zadejte číslo první strany článku, nebo části knihy dle číslování ve zdrojovém časopisu, nebo knize.</hint>
+				<required>Musíte zadat číslo první strany článku, nebo části knihy dle číslování ve zdrojovém časopisu, nebo knize.</required>
+    			<type-bind>Článek,Část knihy</type-bind>
+			</field>
+			<field>
+    			<dc-schema>oaire</dc-schema>
+    			<dc-element>citationEndPage</dc-element>
+    			<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+    			<label>Závěrečná stránka (povinný údaj)</label>
+				<hint>Zadejte číslo poslední strany článku, nebo části knihy dle číslování ve zdrojovém časopisu, nebo knize.</hint>
+				<required>Musíte zadat číslo poslední strany článku dle číslování ve zdrojovém časipisu.</required>
+    			<type-bind>Článek,Část knihy</type-bind>
+			</field>
+            <field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>identifier</dc-element>
+				<dc-qualifier>aleph</dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+				<label>Systémové číslo záznamu z knihovního systému (povinný údaj)</label>
+				<hint>Zadejte systémové číslo záznamu vkládaného dokumentu z knihovního systému. Pokud vkládaný dokument nemá vytvořený záznam v knihovním systému, je nutné ho nejprve vytvořit.</hint>
+				<required>Musíte zadat systémové číslo záznamu vkládaného dokumentu v knihovním systému.</required>
+			</field>
+			<field>
+         		<dc-schema>uk</dc-schema>
+         		<dc-element>carolinaId</dc-element>
+         		<dc-qualifier></dc-qualifier>
+         		<!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+         		<repeatable>true</repeatable>
+         		<label>Identifikátor Caroliny (povinný údaj)</label>
+         		<input-type value-pairs-name="carolina_identifiers">qualdrop_value</input-type>
+         		<hint>Zadejte identifikátor dokumentu v evidenci Caroliny. Z rozbalovacího seznamu vyberte jaký typ dokumentu je identifikován (Kniha, Článek) a zadejte jeho identifikační/pořadové číslo z evidence.</hint>
+         		<required>Musíte zadat identifikátor dokumentu v evidenci Caroliny.</required>
+       		</field>
+			<field>
+				<dc-schema>uk</dc-schema>
+				<dc-element>carolinaFormat</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>true</repeatable>
+				<label>Formát souborů v balíku (povinné pole)</label>
+				<input-type value-pairs-name="carolina_file_formats">dropdown</input-type>
+				<hint>Vyberte z nabídky formát souboru, který je součástí balíčku a klikněte na tlačítko "Přidat". Pokud je formátů souborů víc, přidejte analogicky další formát.</hint>
+				<required>Musíte přidat formát souboru, který je součástí balíku.</required>
+			</field>
+        </page>
+    </form>
  </form-definitions>
 
 
@@ -1096,6 +1332,47 @@ it, please enter the types and the actual numbers or codes.</hint>
             <stored-value>Dopis editorovi</stored-value>
         </pair>
     </value-pairs>
+
+	<value-pairs value-pairs-name="ukdstypes_carolina_CS" dc-term="type">
+		<pair>
+			<displayed-value>Článek</displayed-value>
+			<stored-value>Článek</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Kniha</displayed-value>
+			<stored-value>Kniha</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Část knihy</displayed-value>
+			<stored-value>Část knihy</stored-value>
+		</pair>
+	</value-pairs>
+
+	<value-pairs value-pairs-name="carolina_identifiers" dc-term="carolinaId">
+		<pair>
+			<displayed-value>Kniha</displayed-value>
+			<stored-value>book</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Článek</displayed-value>
+			<stored-value>article</stored-value>
+		</pair>
+	</value-pairs>
+
+	<value-pairs value-pairs-name="carolina_file_formats" dc-term="carolinaFormat">
+		<pair>
+			<displayed-value>PDF</displayed-value>
+			<stored-value>application/pdf</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Dokument Word</displayed-value>
+			<stored-value>application/msword</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Jednoduchý textový soubor</displayed-value>
+			<stored-value>text/plain</stored-value>
+		</pair>
+	</value-pairs>
 
     <value-pairs value-pairs-name="ukdstypes_EN" dc-term="type">
         <pair>
