@@ -1058,7 +1058,7 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <repeatable>true</repeatable>
                 <label>Autor dokumentu (povinný údaj)</label>
                 <input-type>name</input-type>
-                <hint>Zadejte jméno autora/ů dokumentu.</hint>
+                <hint>Zadejte jméno autora/ů dokumentu. Pokud je autorů více, přidejte dalšího autora kliknutím na tlačítko "Přidat".</hint>
                 <required>Musíte zadat jméno autora dokumentu.</required>               
             </field>
 			<field>
@@ -1066,9 +1066,9 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-element>contributor</dc-element>
 				<dc-qualifier></dc-qualifier>
 				<repeatable>true</repeatable>
-				<label>Další osoba s podílem na vzniku dokumentu (editor, atd.)</label>
-				<input-type>name</input-type>
-				<hint>Zadejte jména dalších osob s podílem na vzniku dokumentu (editor, ilustrátor, ...).</hint>
+				<label>Osoba s podílem na vzniku dokumentu</label>
+				<input-type value-pairs-name="contributor_roles">qualdrop_value</input-type>
+				<hint>Zadejte jméno dalších osob s podílem na vzniku dokumentu (editor, ilustrátor, překladatel,...). Jméno vyplňujte ve tvaru "Příjmení, Jméno" (např. Novák, Jan).</hint>
 			</field>
             <field>
                 <dc-schema>dc</dc-schema>
@@ -1767,6 +1767,62 @@ it, please enter the types and the actual numbers or codes.</hint>
        <stored-value>other</stored-value>
      </pair>
    </value-pairs>
+
+	<!-- DC.CONTRIBUTOR ROLES - SUBSET OF ROLES AVAILABLE AT: http://memory.loc.gov/diglib/loc.terms/relators/dc-contributor.html -->
+	<value-pairs value-pairs-name="contributor_roles" dc-term="contributor">
+		<pair>
+			<displayed-value>Žádný</displayed-value>
+			<stored-value></stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Autor předmluvy</displayed-value>
+			<stored-value>aui</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Editor</displayed-value>
+			<stored-value>edt</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Fotograf</displayed-value>
+			<stored-value>pht</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Ilustrátor</displayed-value>
+			<stored-value>ill</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Konzultant</displayed-value>
+			<stored-value>csl</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Konzultant projektu</displayed-value>
+			<stored-value>csp</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Oponent práce</displayed-value>
+			<stored-value>referee</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Organizátor</displayed-value>
+			<stored-value>org</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Překladatel</displayed-value>
+			<stored-value>trl</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Vedoucí práce</displayed-value>
+			<stored-value>advisor</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Zpracovatel</displayed-value>
+			<stored-value>com</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Jiný</displayed-value>
+			<stored-value>other</stored-value>
+		</pair>
+	</value-pairs>
 
  </form-value-pairs>
 
