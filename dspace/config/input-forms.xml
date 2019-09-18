@@ -1161,16 +1161,14 @@ it, please enter the types and the actual numbers or codes.</hint>
     			<type-bind>Kniha,Část knihy</type-bind>
 			</field>
 			<field>
-				<dc-schema>oaire</dc-schema>
-    			<dc-element>citationTitle</dc-element>
-    			<dc-qualifier></dc-qualifier>
-				<repeatable>false</repeatable>
-				<input-type>onebox</input-type>
-    			<label>Název zdrojového dokumentu (povinný údaj)</label>
-				<hint>Zadejte název knihy nebo periodika, ze které/ho pochází vkládaná část knihy, nebo článek.</hint>
-				<required>Musíte zadat název knihy nebo periodika, ze které/ho pochází vkládaná část knihy, nebo článek.</required>
-    			<type-bind>Článek,Část knihy</type-bind>
-			</field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>source</dc-element>
+                <dc-qualifier></dc-qualifier>
+                <repeatable>false</repeatable>
+                <label>Bibliografický údaj o zdrojové dokumentu</label>
+                <input-type>onebox</input-type>
+                <hint>Vložte bibliografický údaj o časopisu nebo knize, ve které byl publikován vkládaný článek nebo část knihy. Příklad (časopis): Fórum sociální práce, 2017, 2 | Příklad (kniha): Informační gramotnost. Praha: Laser-books, 2019</hint>
+            </field>
 			<!-- END OF: ARTICLES / BOOK PARTS SPECIFIC FIELDS -->
 			<field>
 				<dc-schema>oaire</dc-schema>
@@ -1183,7 +1181,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<type-bind>Část knihy,Kniha</type-bind>
 			</field>
 			<!-- ARTICLES SPECIFIC FIELDS -->
-			<field>
+			<!-- <field>
 				<dc-schema>oaire</dc-schema>
     			<dc-element>citationVolume</dc-element>
     			<dc-qualifier></dc-qualifier>
@@ -1193,8 +1191,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<hint>Zadejte ročník periodika, ze kterého pochází vkládaný článek. Při vyplňování hodnoty se držte označení uvedeného ve zdrojovém periodiku (pokud je uvedeno "Volume 53", vyplňte "Volume 53"; pokud je uvedeno "2019", vyplňte "2019", atp.).</hint>
 				<required>Musíte zadat ročník periodika, ze kterého pochází vkládaný článek.</required>
     			<type-bind>Článek</type-bind>
-			</field>
-			<field>
+			</field> -->
+			<!-- <field>
 				<dc-schema>oaire</dc-schema>
     			<dc-element>citationIssue</dc-element>
     			<dc-qualifier></dc-qualifier>
@@ -1204,7 +1202,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<hint>Zadejte číslo periodika, ze kterého pochází vkládaný článek. Při vyplňování hodnoty se držte označení uvedeného ve zdrojovém periodiu (pokud je uvedeno "Issue 2", vyplňte "Issue 2"; pokud je uvedeno "2", vyplňte "2", atp.).</hint>
 				<required>Musíte zadat číslo periodika, ze kterého pochází vkládaný článek.</required>
     			<type-bind>Článek</type-bind>
-			</field>
+			</field> -->
 			<field>
     			<dc-schema>oaire</dc-schema>
     			<dc-element>citationStartPage</dc-element>
