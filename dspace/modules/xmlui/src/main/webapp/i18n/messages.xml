@@ -2295,6 +2295,16 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-source-uri">Source URL</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Publisher</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-rights">Rights</message>
+	<!--<JR> 18. 9. 2019 - překlady rolí v dc.contributor.*-->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-advisor">Thesis Advisor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-csl">Consultant</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-edt">Editor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-ill">Illustrator</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-referee">Thesis Referee</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-trl">Translator</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-other">Other Contributor</message>
+	<!--<JR> - 18. 9. 2019 - blok pro formáty souborů v archivu - Digitalizace Carolina-->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-archive-contents-formats">Available file formats</message>
 	<!--<JR> - 20. 2. 2017 - změna na "Keywords"-->
 	<!--<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Subject</message>-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Keywords</message>
