@@ -233,6 +233,7 @@
                 </xsl:attribute>
                 <xsl:copy-of select="node()"/>
             </a>
+            <xsl:text> (</xsl:text><i18n:text>xmlui.dri2xhtml.METS-1.0.item-contributor-<xsl:value-of select="@qualifier"/></i18n:text><xsl:text>)</xsl:text>
         </div>
     </xsl:template>
     <!-- END OF: CONTRIBUTORS -->
