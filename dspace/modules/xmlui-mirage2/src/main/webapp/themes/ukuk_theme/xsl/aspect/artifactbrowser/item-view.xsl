@@ -39,6 +39,7 @@
     <xsl:import href="item-view-general-templates.xsl" />
     <xsl:import href="item-view-theses-templates.xsl" />
     <xsl:import href="item-view-articles-templates.xsl" />
+    <xsl:import href="item-view-carolina-digi-templates.xsl" />
     <!--<xsl:import href="item-view-other-templates.xsl" />-->
 
     <xsl:output indent="yes"/>
@@ -151,6 +152,7 @@
             			<!--<xsl:call-template name="itemSummaryView-DIM-general-date"/>-->
                         <xsl:call-template name="itemSummaryView-DIM-thumbnail"/>
             			<xsl:call-template name="itemSummaryView-DIM-general-file-section"/>
+                        <xsl:call-template name="itemSummaryView-DIM-carolina-digi-archive-contents"/>
             			<xsl:call-template name="itemSummaryView-DIM-general-URI"/>
                         <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/>
             			<xsl:call-template name="itemSummaryView-general-collections"/>
