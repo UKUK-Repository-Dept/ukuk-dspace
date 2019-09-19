@@ -233,7 +233,14 @@
                 </xsl:attribute>
                 <xsl:copy-of select="node()"/>
             </a>
-            <xsl:text> (</xsl:text><i18n:text>xmlui.dri2xhtml.METS-1.0.item-contributor-<xsl:value-of select="@qualifier"/></i18n:text><xsl:text>)</xsl:text>
+            <xsl:choose>
+                <xsl:when test="dim:field[@element='contributor'][not(@qualifier)]">
+                    <!-- do not render contributor role when no role is specified -->
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text> (</xsl:text><i18n:text>xmlui.dri2xhtml.METS-1.0.item-contributor-<xsl:value-of select="@qualifier"/></i18n:text><xsl:text>)</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
         </div>
     </xsl:template>
     <!-- END OF: CONTRIBUTORS -->
