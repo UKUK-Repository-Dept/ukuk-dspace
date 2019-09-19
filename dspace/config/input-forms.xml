@@ -282,6 +282,10 @@
 	<!--  Issue 57 -->
 	<name-map collection-handle="20.500.11956/106641" form-name="articles" />
 	<!-- END OF LITTERARIA PRAGENSIA -->
+
+	<!-- CAROLINA DIGITIZATION -->
+	<name-map collection-handle="20.500.11956/108695" form-name="carolina_digi" />
+	<!-- END OF: CAROLINA DIGITIZATION -->
 	
 	<!-- END OF PRODUCTION SERVER -->
 	
