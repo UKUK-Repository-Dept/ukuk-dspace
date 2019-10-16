@@ -67,6 +67,16 @@
 	<name-map collection-handle="20.500.11956/106562" form-name="articles" />
 
 	<!-- END OF ČASOPIS PRO MODERNÍ FILOLOGII -->
+
+	<!-- DVACÁTÉ STOLETÍ -->
+	
+	<!-- Volume 2018 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/109919" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/109920" form-name="articles" />
+
+	<!-- END OF: DVACÁTÉ STOLETÍ -->
 	
      	<!-- FÓRUM SOCIÁLNÍ PRÁCE-->
      	
@@ -178,6 +188,8 @@
 	<!-- Volume 2018 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/104164" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/110564" form-name="articles" />
      	
 	<!-- END OF STUDIA HERCYNIA -->
 
@@ -190,12 +202,15 @@
 	<!-- Volume 2018 -->
      	
 	<!-- Issue 1 -->
-     	<name-map collection-handle="20.500.11956/100848" form-name="articles" />
+    <name-map collection-handle="20.500.11956/100848" form-name="articles" />
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/104576" form-name="articles" />
 	<!-- Special Issue 2018-->
 	<name-map collection-handle="20.500.11956/103605" form-name="articles" />
 
+	<!-- Volume 2019 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/110927" form-name="articles" />
 
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
@@ -276,6 +291,8 @@
  	<!-- ESTETIKA -->
   	<!-- Issue 1 -->
   	<name-map collection-handle="20.500.11956/105686" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/110563" form-name="articles" />
 
 	<!-- LITTERARIA PRAGENSIA -->
 	<!-- Volume 2019 -->
