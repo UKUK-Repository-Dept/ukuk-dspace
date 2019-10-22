@@ -634,7 +634,7 @@ it, please enter the types and the actual numbers or codes.</hint>
          		<label>Identifikátory (povinný údaj)</label>
          		<input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
          		<hint>Zadejte identifikátory dokumentu (ISBN, případně také DOI)</hint>
-         		<required>Zadejte ISBN a případně také DOI dokumentu.</required>
+         		<required>Zadejte identifikátor dokumentu.</required>
        		</field>
             <field>
                 <dc-schema>dc</dc-schema>
@@ -680,7 +680,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-element>fundingReference</dc-element>
 				<dc-qualifier>funderName</dc-qualifier>
 				<repeatable>false</repeatable>
-				<label>Jméno poskytovatele financí (povinný údaj)</label>
+				<label>Jméno poskytovatele financí</label>
 				<input-type value-pairs-name="uk_fundingTypes_cs">dropdown</input-type>
 				<hint>Uvěďte celý název poskytovatele financí (Evropská komise, Univerzita Karlova, atd.).</hint>
 			</field>
@@ -689,7 +689,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-element>fundingReference</dc-element>
 				<dc-qualifier>fundingStream</dc-qualifier>
 				<repeatable>false</repeatable>
-				<label>Název programu financování (povinný údaj)</label>
+				<label>Název programu financování</label>
 				<input-type>onebox</input-type>
 				<hint>Uveďte celý název programu financování, např. "Praha - pól růstu ČR", "Výzkum, vývoj a vzdělávání", "Horizont 2020", atd...</hint>
 			</field>
@@ -698,7 +698,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-element>fundingReference</dc-element>
 				<dc-qualifier>awardNumber</dc-qualifier>
 				<repeatable>true</repeatable>
-				<label>Číslo/identifikátor projektu nebo grantu (povinný údaj)</label>
+				<label>Číslo/identifikátor projektu nebo grantu</label>
 				<input-type>onebox</input-type>
 				<hint>Uveďte číslo/identifikátor projektu nebo grantu, ze kterého byl podpořen vznik tohoto dokumentu. V případě, že byl vznik tohoto dokumentu podpořen z více projektů v rámci jednoho programu financování, vložte další hodnotu pomocí tlačítka "Přidat".</hint>
 			</field>
@@ -712,8 +712,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Licence (povinný údaj)</label>
 				<input-type value-pairs-name="uk_license_uri">dropdown</input-type>
-				<required>Musíte vybrat licenci dokumentu.</required>
-				<hint>Vyberte některou z licencí Creative Commons nebo zvolte možnost "Bez licence"</hint>
+				<hint>Vyberte některou z licencí Creative Commons nebo zvolte možnost "Bez licence Creative Commons"</hint>
 			</field>
 			<field>
 				<dc-schema>datacite</dc-schema>
