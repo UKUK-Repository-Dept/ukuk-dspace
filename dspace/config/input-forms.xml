@@ -304,6 +304,10 @@
 	<name-map collection-handle="20.500.11956/108695" form-name="carolina_digi" />
 	<!-- END OF: CAROLINA DIGITIZATION -->
 	
+	<!-- KAROLINUM PRESS OA MONOGRAPHS -->
+	<name-map collection-handle="20.500.11956/111252" form-name="oa_books" />
+	<!-- END OF: KAROLINUM PRESS OA MONOGRAPHS -->
+
 	<!-- END OF PRODUCTION SERVER -->
 	
 	<!-- TEST SERVER -->
