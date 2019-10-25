@@ -200,6 +200,12 @@ h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small,
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 } */
 
+/* Thumbnails */
+
+.thumbnail > img {
+	max-width: 200px;
+}
+
 .thumbnail.artifact-preview {
 	margin-top: 10px;
 	background-color: transparent;
