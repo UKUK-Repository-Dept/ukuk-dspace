@@ -178,6 +178,9 @@
 	<!-- Issue 31 -->
 	<name-map collection-handle="20.500.11956/108733" form-name="articles" />
 	
+	<!-- Special Issue 2019 -->
+	<name-map collection-handle="20.500.11956/110925" form-name="articles" />
+	
 	<!-- END OF SLOVO A SMYSL -->
 
 	<!-- STUDIA HERCYNIA -->
@@ -252,7 +255,11 @@
 	<name-map collection-handle="20.500.11956/103732" form-name="articles" />
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/104363" form-name="articles" />
-	
+
+	<!-- Volume 2019 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/111335" form-name="articles" />
+
 	<!-- END OF CHATREŠSAR -->
 	
 	<!-- PRAGUE PAPERS ON THE HISTORY OF INTERNATIONAL RELATIONS -->
