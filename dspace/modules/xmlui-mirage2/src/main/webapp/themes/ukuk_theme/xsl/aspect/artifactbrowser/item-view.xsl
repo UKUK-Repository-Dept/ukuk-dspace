@@ -324,49 +324,60 @@
                         <xsl:when test="dim:field[@element='file-availability']">
                             <xsl:choose>
                                 <xsl:when test="node()/text()='N'">
-                                    <xsl:if test="$active-locale='cs'">
-                                        <!-- Could probably be done without repetition? Within xsl:call-template call with xsl:choose that would pass params to the template? -->
-                                        <!-- FIX: Currently, if custom thumbnail missing, but any other thumbnail is present, it won't show up in the record - thumbnail-default is not being called -->
-                                        <xsl:if test="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_cs.png']">
-                                            <xsl:variable name="identifier" select="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_cs.png']/@xlink:title"/>
-                                            <xsl:call-template name="itemSummaryView-DIM-thumbnail-custom">
-                                                <xsl:with-param name="alt">Neveřejný dokument</xsl:with-param>
-                                                <xsl:with-param name="link">
-                                                    <xsl:value-of select="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_cs.png']/@xlink:href"/>
-                                                </xsl:with-param>
-                                            </xsl:call-template>
-                                        </xsl:if>
-                                        <!-- <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/> -->
-                                    </xsl:if>
-                                    <xsl:if test="$active-locale='en'">
-                                        <xsl:if test="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_en.png']">
-                                            <xsl:call-template name="itemSummaryView-DIM-thumbnail-custom">
-                                                <xsl:with-param name="alt">Private document</xsl:with-param>
-                                                <xsl:with-param name="link">
-                                                    <xsl:value-of select="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_en.png']/@xlink:href"/>
-                                                </xsl:with-param>
-                                            </xsl:call-template>
-                                        </xsl:if>
-                                    </xsl:if>
+                                    <xsl:choose>
+                                        <xsl:when test="$active-locale='cs'">
+                                            <xsl:choose>
+                                                
+                                                <xsl:when test="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_cs.png']">
+                                                    <!-- Call custom thumbnail template -->
+                                                    <xsl:variable name="link" select="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_cs.png']/@xlink:href"/>
+                                                    <xsl:call-template name="itemSummaryView-DIM-thumbnail-custom">
+                                                        <xsl:with-param name="url" select="$link"/>
+                                                    </xsl:call-template>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <!-- Call default thumbnail template -->
+                                                    <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/>
+                                                </xsl:otherwise>
+
+                                            </xsl:choose>
+                                        </xsl:when>
+                                        <xsl:when test="$active-locale='en'">
+                                            <xsl:choose>
+
+                                                <xsl:when test="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_en.png']">
+                                                    <!-- Call custom thumbnail template -->
+                                                    <xsl:variable name="link" select="//mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_en.png']/@xlink:href"/>
+                                                    <xsl:call-template name="itemSummaryView-DIM-thumbnail-custom">
+                                                        <xsl:with-param name="url" select="$link"/>
+                                                    </xsl:call-template>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <!-- Call default thumbnail template -->
+                                                    <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/>
+                                                </xsl:otherwise>
+
+                                            </xsl:choose>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <!-- Call default thumbnail template -->
+                                            <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:call-template name="itemSummaryView-DIM-thumbnail-default">
-                                        <!-- TODO: Translations in i18n:text -->
-                                        <xsl:with-param name="alt">Thumbnail</xsl:with-param>
-                                    </xsl:call-template>
+                                    <xsl:call-template name="itemSummaryView-DIM-thumbnail-default" />
                                 </xsl:otherwise>
                             </xsl:choose>
 
                         </xsl:when>
                         <xsl:otherwise>
                             
-                            <xsl:call-template name="itemSummaryView-DIM-thumbnail-default">
-                                <xsl:with-param name="alt">Thumbnail</xsl:with-param>
-                            </xsl:call-template>
+                            <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/>
                             
                         </xsl:otherwise>
+
                     </xsl:choose>
-                    
                 </div>
             </xsl:when>
             <xsl:otherwise>
@@ -383,12 +394,14 @@
     </xsl:template>
     
     <xsl:template name="itemSummaryView-DIM-thumbnail-custom">
-        <xsl:param name="alt" />
-        <xsl:param name="link" />
-       
-        <img alt="{$alt}">
+        <xsl:param name="url" />
+        <xsl:variable name="alt-text"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-thumbnail-private</i18n:text></xsl:variable>
+        <img i18n:attr="alt">
+            <xsl:attribute name="alt">
+                <xsl:value-of select="$alt-text"/>
+            </xsl:attribute>
             <xsl:attribute name="src">
-                <xsl:value-of select="$link"/>
+                <xsl:value-of select="$url"/>
             </xsl:attribute>
             <xsl:attribute name="class">
                 <xsl:text>private-thumbnail</xsl:text>
@@ -398,7 +411,7 @@
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-thumbnail-default">
-        <xsl:param name="alt" />
+        <xsl:variable name="alt-text"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-thumbnail-public</i18n:text></xsl:variable>
         <xsl:variable name="src">
             <xsl:choose>
                 <xsl:when test="/mets:METS/mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file[@GROUPID=../../mets:fileGrp[@USE='CONTENT']/mets:file[@GROUPID=../../mets:fileGrp[@USE='THUMBNAIL']/mets:file/@GROUPID][1]/@GROUPID]">
@@ -411,9 +424,15 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <img alt="{$alt}">
+        <img i18n:attr="alt">
+            <xsl:attribute name="alt">
+                <xsl:value-of select="$alt-text"/>
+            </xsl:attribute>
             <xsl:attribute name="src">
                 <xsl:value-of select="$src"/>
+            </xsl:attribute>
+            <xsl:attribute name="class">
+                <xsl:text>default-thumbnail</xsl:text>
             </xsl:attribute>
         </img>
 
