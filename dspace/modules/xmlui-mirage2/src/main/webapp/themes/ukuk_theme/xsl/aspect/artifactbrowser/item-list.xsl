@@ -35,6 +35,7 @@
     xmlns:util="org.dspace.app.xmlui.utils.XSLUtils"
     xmlns:confman="org.dspace.core.ConfigurationManager"
     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink xsl util confman">
+    <xsl:import href="item-view-general-templates.xsl" />
 
     <xsl:output indent="yes"/>
 
@@ -220,19 +221,57 @@
             <a class="image-link" href="{$href}">
                 <xsl:choose>
                     <xsl:when test="mets:fileGrp[@USE='THUMBNAIL']">
-                        <img class="img-responsive" alt="xmlui.mirage2.item-list.thumbnail" i18n:attr="alt">
-                            <xsl:attribute name="src">
-                                <xsl:value-of
-                                        select="mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
-                            </xsl:attribute>
-                        </img>
+                        <xsl:choose>
+                            <xsl:when test="$active-locale='cs'">
+                                <xsl:choose>
+                                    
+                                    <xsl:when test="mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_cs.png']">
+                                        <!-- Call custom thumbnail template -->
+                                        <xsl:variable name="link" select="mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_cs.png']/@xlink:href"/>
+                                        <xsl:call-template name="itemSummaryView-DIM-thumbnail-custom">
+                                            <xsl:with-param name="url" select="$link"/>
+                                        </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <!-- Call default thumbnail template -->
+                                        <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/>
+                                    </xsl:otherwise>
+
+                                </xsl:choose>
+                            </xsl:when>
+                            <xsl:when test="$active-locale='en'">
+                                <xsl:choose>
+                                    
+                                    <xsl:when test="mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_en.png']">
+                                        <!-- Call custom thumbnail template -->
+                                        <xsl:variable name="link" select="mets:fileGrp[@USE='THUMBNAIL']/mets:file/mets:FLocat[@xlink:title = 'thmb_private_en.png']/@xlink:href"/>
+                                        <xsl:call-template name="itemSummaryView-DIM-thumbnail-custom">
+                                            <xsl:with-param name="url" select="$link"/>
+                                        </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <!-- Call default thumbnail template -->
+                                        <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/>
+                                    </xsl:otherwise>
+
+                                </xsl:choose>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:call-template name="itemSummaryView-DIM-thumbnail-default"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </xsl:when>
                     <xsl:otherwise>
+                        <!-- FIXME: THIS SHOULD BE DONE SOMEHOW BETTER, CONSIDER USING BETTER PLACEHOLDER SCRIPT-->
+                        <xsl:variable name="no-thumbnail-text"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-no-thumbnail</i18n:text></xsl:variable>
                         <img alt="xmlui.mirage2.item-list.thumbnail" i18n:attr="alt">
                             <xsl:attribute name="data-src">
                                 <xsl:text>holder.js/100%x</xsl:text>
                                 <xsl:value-of select="$thumbnail.maxheight"/>
-                                <xsl:text>/text:No Thumbnail</xsl:text>
+                                <xsl:text>/text:No thumbnail available \n \n Náhled není k dispozici</xsl:text>
+                            </xsl:attribute>
+                            <xsl:attribute name="class">
+                                <xsl:text>no-thubnail</xsl:text>
                             </xsl:attribute>
                         </img>
                     </xsl:otherwise>
