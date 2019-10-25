@@ -194,10 +194,33 @@ h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small,
 	font-size: 100%;
 }
 
-.artifact-preview {
+/* .artifact-preview {
     -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+} */
+
+.thumbnail.artifact-preview {
+	margin-top: 10px;
+	background-color: transparent;
+}
+
+.thumbnail.artifact-preview a.image-link img.no-thumbnail {
+	border: none;
+	background-color: transparent;
+}
+
+.thumbnail.artifact-preview a.image-link img.default-thumbnail {
+	border: 1px solid #ddd;
+}
+
+.thumbnail.artifact-preview a.image-link img.private-thumbnail {
+	border: none;
+	background-color: transparent;
+}
+
+.thumbnail > .private-thumbnail {
+	border: none;
 }
 
 .search-result-item-div {
