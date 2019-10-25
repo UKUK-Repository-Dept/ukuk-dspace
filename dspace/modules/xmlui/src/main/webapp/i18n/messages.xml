@@ -2260,6 +2260,12 @@
         whatever profile you use.
     </message>
 
+	<!-- Alternative thumbnail text for private items thumbnail -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-thumbnail-private">Private document</message>
+	<!-- Thumbnail alternative text for standard public items -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-thumbnail-public">Document thumbnail</message>
+	<!-- No thumbnail -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-no-thumbnail">Thumbnail not available</message>
     <message key="xmlui.dri2xhtml.METS-1.0.item-info-unavailable">Information unavailable</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-preview">Preview</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-title">Title</message>

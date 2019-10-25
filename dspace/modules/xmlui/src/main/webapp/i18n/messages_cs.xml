@@ -2240,6 +2240,12 @@
 		který používáte.
 	</message>
 	
+	<!-- Alternative thumbnail text for private items thumbnail -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-thumbnail-private">Neveřejný dokument</message>
+	<!-- Thumbnail alternative text for standard public items -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-thumbnail-public">Náhled dokumentu</message>
+	<!-- No thumbnail -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-no-thumbnail">Náhled není k dispozici</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-info-unavailable">Informace není k dispozici</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-preview">Náhled</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-title">Název</message>
