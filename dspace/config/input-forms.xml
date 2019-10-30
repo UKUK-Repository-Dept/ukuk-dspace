@@ -578,7 +578,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 			<field>
 				<dc-schema>dc</dc-schema>
 				<dc-element>contributor</dc-element>
-				<dc-qualifier>editor</dc-qualifier>
+				<dc-qualifier>edt</dc-qualifier>
 				<repeatable>true</repeatable>
 				<label>Editor dokumentu</label>
 				<input-type>name</input-type>
@@ -1313,6 +1313,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 		<pair>
 			<displayed-value>CC BY-NC-ND 2.0</displayed-value>
 			<stored-value>http://creativecommons.org/licenses/by-nc-nd/2.0/</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>CC BY-NC-ND 4.0</displayed-value>
+			<stored-value>https://creativecommons.org/licenses/by-nc-nd/4.0/</stored-value>
 		</pair>
 		<pair>
 			<displayed-value>Bez licence Creative Commons</displayed-value>
