@@ -27,6 +27,10 @@ META-INF/
 /*.properties
 !/build.properties
 
+## Ignore config files
+authentication-ip.cfg
+authentication-shibboleth.cfg
+
 ##Mac noise
 .DS_Store
 
