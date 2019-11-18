@@ -31,6 +31,9 @@ META-INF/
 authentication-ip.cfg
 authentication-shibboleth.cfg
 
+## Custom folders
+custom-config/
+
 ##Mac noise
 .DS_Store
 
