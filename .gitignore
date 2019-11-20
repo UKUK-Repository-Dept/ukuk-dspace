@@ -27,6 +27,20 @@ META-INF/
 /*.properties
 !/build.properties
 
+## Ignore all *.sh files in root folder
+/*.sh
+
+## Ignore config files
+authentication-ip.cfg
+authentication-shibboleth.cfg
+
+## Custom folders
+custom-config/
+
+## Ignore vscode directiories
+.vscode/
+dspace-services/
+
 ##Mac noise
 .DS_Store
 
