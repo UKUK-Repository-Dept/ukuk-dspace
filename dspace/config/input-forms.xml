@@ -1151,7 +1151,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>true</repeatable>
 				<label>Formát souborů v balíku (povinné pole)</label>
 				<input-type value-pairs-name="carolina_file_formats">dropdown</input-type>
-				<hint>Vyberte z nabídky formát souboru, který je součástí balíčku a klikněte na tlačítko "Přidat". Pokud je formátů souborů víc, přidejte analogicky další formát.</hint>
+				<hint>Vyberte z nabídky formát souboru, který je součástí balíčku. Pokud je formátů souborů víc, vyberte ze seznamu více položek podržením klávesy [Ctrl] a kliknutím na další formát souboru.</hint>
 				<required>Musíte přidat formát souboru, který je součástí balíku.</required>
 			</field>
 			<field>
@@ -1213,8 +1213,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 			</field>
 			<field>
 				<dc-schema>uk</dc-schema>
-				<dc-element>publication</dc-element>
-				<dc-qualifier>place</dc-qualifier>
+				<dc-element>publication-place</dc-element>
+				<dc-qualifier></dc-qualifier>
 				<repeatable>false</repeatable>
 				<input-type>onebox</input-type>
 				<label>Místo vydání (povinný údaj)</label>
