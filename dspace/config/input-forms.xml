@@ -586,10 +586,9 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <dc-element>contributor</dc-element>
                 <dc-qualifier>author</dc-qualifier>
                 <repeatable>true</repeatable>
-                <label>Autor dokumentu (povinný údaj)</label>
+                <label>Autor dokumentu</label>
                 <input-type>name</input-type>
-                <hint>Zadejte jméno autora/ů dokumentu.</hint>
-                <required>Musíte zadat jméno autora dokumentu.</required>               
+                <hint>Zadejte jméno autora/ů dokumentu.</hint>               
             </field>
 			<field>
 				<dc-schema>dc</dc-schema>
