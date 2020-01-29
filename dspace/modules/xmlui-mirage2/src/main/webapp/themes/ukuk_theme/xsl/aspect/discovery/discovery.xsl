@@ -315,10 +315,14 @@
                                 </xsl:element>
                                 <xsl:choose>
                                     <xsl:when test="dri:list[@n=(concat($handle, ':dc.date.issued'))]">
+                                        <!--select="substring(dri:list[@n=(concat($handle, ':dc.date.issued'))]/dri:item,1,10)"/>-->
                                         <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.date.issued'))]/dri:item">
-                                            <xsl:variable name="dateIssued">
-                                                <xsl:apply-templates select="."/>
-                                            </xsl:variable>
+                                            <!-- <xsl:variable name="dateIssued"> -->
+                                                <xsl:call-template name="formatdate">
+                                                    <xsl:with-param name="date" select="."/>
+                                                </xsl:call-template>
+                                                <!-- <xsl:apply-templates select="."/> -->
+                                            <!-- </xsl:variable> -->
                                             <xsl:if test="count(following-sibling::dri:item) != 0">
                                                 <xsl:text>; </xsl:text>
                                             </xsl:if>
@@ -345,7 +349,7 @@
                                         <xsl:for-each select="dri:list[@n=(concat($handle, ':dcterms.dateAccepted'))]/dri:item">
                                             <!--<xsl:variable name="dateAccepted">-->
                                             <xsl:call-template name="formatdate">
-                                                <xsl:with-param name="dateAccepted" select="."/>
+                                                <xsl:with-param name="date" select="."/>
                                             </xsl:call-template>
                                             <!--<xsl:apply-templates select="."/>-->
                                                 <!--<xsl:apply-templates select="formatdate"/>-->
@@ -554,25 +558,33 @@
     </xsl:template>
 
     <xsl:template name="formatdate">
-        <xsl:param name="dateAccepted" />
+        <xsl:param name="date" />
 
         <xsl:variable name="datestr">
-            <xsl:value-of select="$dateAccepted" />
+            <xsl:value-of select="$date" />
         </xsl:variable>
 
-        <xsl:variable name="mm">
-            <xsl:value-of select="substring($datestr,6,2)" />
-        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="string-length($datestr) = 4">
+                <xsl:value-of select="$datestr"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="mm">
+                    <xsl:value-of select="substring($datestr,6,2)" />
+                </xsl:variable>
 
-        <xsl:variable name="dd">
-            <xsl:value-of select="substring($datestr,9,2)" />
-        </xsl:variable>
+                <xsl:variable name="dd">
+                    <xsl:value-of select="substring($datestr,9,2)" />
+                </xsl:variable>
 
-        <xsl:variable name="yyyy">
-            <xsl:value-of select="substring($datestr,1,4)" />
-        </xsl:variable>
+                <xsl:variable name="yyyy">
+                    <xsl:value-of select="substring($datestr,1,4)" />
+                </xsl:variable>
 
-        <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
+                <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
+            </xsl:otherwise>
+        </xsl:choose>
+        
     </xsl:template>
 
     <!--<xsl:template name="itemSummaryList">-->
