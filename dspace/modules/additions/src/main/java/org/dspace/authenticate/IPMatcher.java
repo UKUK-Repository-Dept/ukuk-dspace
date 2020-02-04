@@ -132,7 +132,7 @@ public class IPMatcher
                 if (maskParts.length == 1)
                 {
 
-                    log.debug("JR - IP address (from config) in CIDR notation. We only have one mask part: " + maskParts[0])
+                    log.debug("JR - IP address (from config) in CIDR notation. We only have one mask part: " + maskParts[0]);
                     // CIDR slash notation
                     int x;
     
@@ -184,7 +184,7 @@ public class IPMatcher
                 }
                 else
                 {
-                    log.debug("JR - We have an IP address (in config) with full mask specified.")
+                    log.debug("JR - We have an IP address (in config) with full mask specified.");
                     // full netmask specified
                     ipToBytes(parts[0],network,true);
                     ipToBytes(parts[1], netmask, true);
@@ -249,7 +249,7 @@ public class IPMatcher
     private static int ipToBytes(String ip, byte[] bytes, boolean mustHave4)
             throws IPMatcherException
     {
-        log.debug("JR - Calling from ipToBytes!")
+        log.debug("JR - Calling from ipToBytes!");
         String[] parts = ip.split("\\.");
         log.debug("JR - ipToBytes() - we have IP with these parts: " + parts);
 
