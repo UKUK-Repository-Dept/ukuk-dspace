@@ -70,6 +70,7 @@ public class IPMatcher
             try
             {
                 network = Inet6Address.getByName(parts[0]).getAddress();
+                log.debug("JR - Getting network (IP address part from config ???): " + network);
             }
             catch (UnknownHostException e)
             {
@@ -273,6 +274,7 @@ public class IPMatcher
                 log.debug("JR - ipToBytes() - integer representing ip part: " + p + "is not < 0 or > 255!");
 
                 bytes[i] = (byte) (p < 128 ? p : p - 256);
+                log.debug("JR - ipToBytes() - bytes in array part bytes[" + i + "]:" + bytes[i]);
             }
         }
         catch (NumberFormatException nfe)
@@ -298,19 +300,24 @@ public class IPMatcher
      */
     public boolean match(String ipIn) throws IPMatcherException
     {
-        log.debug("ipIn: "+ipIn);
+        // JR - 4. 2. 2020: match() is called for each IPMatcher object 
+        // created in UKShibAuthentication class - method createIPMatchers()
+        log.debug("JR - we got this IP address: " + ipIn);
         byte[] candidate;
 
         if (ipIn.indexOf(':') < 0)
         {
             candidate = new byte[4];
             ipToBytes(ipIn, candidate, true);
+            log.debug("JR - match() - ipToBytes()=" + ipToBytes(ipIn, candidate, true));
             candidate = ip4ToIp6(candidate);
+            log.debug("JR: match() - candidate = ip4ToIp6(candidate) = " + candidate);
         }
         else
             try
             {
                 candidate = Inet6Address.getByName(ipIn).getAddress();
+                log.debug("JR - match() - candidate = Inet6Address.getByName(ipIn).getAddress()=" + candidate);
             }
             catch (UnknownHostException e)
             {

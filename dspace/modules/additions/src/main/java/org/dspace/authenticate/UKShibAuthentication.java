@@ -491,7 +491,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 							if (atCU == true)
 							{
 								String groupPrefix = "IP";
-								ipAllowedGroup = findIpAllowedGroup(context, groupPrefix + group.getName());if (ipAllowedGroup != null) 
+								ipAllowedGroup = findIpAllowedGroup(context, groupPrefix + group.getName());//if (ipAllowedGroup != null) // <-- WHAT THE HELL IS THIS DOING HERE?!
 								if (ipAllowedGroup == null) {
 									log.error("UNABLE TO FOUND AN IP-ALLOWED SPECIAL GROU FOR SHIBBOLETH GROUP '"+group.getName()+"'");
 									groups.add(group.getID());
@@ -1508,13 +1508,13 @@ public class UKShibAuthentication implements AuthenticationMethod
 	private void createIPMatchers(Context context) throws IPMatcherException
 	{
 		
-		log.info("Checking, if ALL UNI IP GROUP is defined in authentication-shibboleth config file...");
+		log.info("UK ShibAuthentication - createIPMatchers(): Checking, if ALL UNI IP GROUP is defined in authentication-shibboleth config file...");
 		String shibUniGroupName = ConfigurationManager.getProperty("authentication-shibboleth","ip.uniGroup");
-		log.info("FOUND UNI GROUP IN SHIBBOLETH CONFIG FILE: "+ shibUniGroupName);
+		log.info("UK ShibAuthentication - createIPMatchers(): FOUND UNI GROUP IN SHIBBOLETH CONFIG FILE: "+ shibUniGroupName);
 		if (shibUniGroupName != null)
 		{
 
-			log.info("Getting allowed UNI IP ranges from config file");
+			log.info("UK ShibAuthentication - createIPMatchers(): Getting allowed UNI IP ranges from config file");
 			Enumeration ipAuthProperties = ConfigurationManager.propertyNames("authentication-ip");
 		
 			while (ipAuthProperties.hasMoreElements())
@@ -1523,7 +1523,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 				if (propName.startsWith("ip."))
 				{
 					String[] nameParts = propName.split("\\.");
-					log.info("Found PROPERTIES IN IP AUTH CONFIG FILE: ");
+					log.info("UK ShibAuthentication - createIPMatchers(): Found PROPERTIES IN IP AUTH CONFIG FILE: ");
 					log.info(nameParts);
 					if (nameParts.length == 2)
 					{	
@@ -1531,14 +1531,14 @@ public class UKShibAuthentication implements AuthenticationMethod
 						// check if we have a right property for ALL UNI IP ranges defined in config
 						if (ipConfigGroupName.equals(shibUniGroupName))
 						{
-							log.info("FOUND GROUP IN CONFIG: "+ipConfigGroupName);
+							log.info("UK ShibAuthentication - createIPMatchers(): FOUND GROUP IN CONFIG: "+ipConfigGroupName);
 							// if yes, add matchers for IP ranges in this particular group, we are not interested in anything else
 							addIPMatchers(ipConfigGroupName, ConfigurationManager.getProperty("authentication-ip", propName));
 						}
 						else
 						{
 							// otherwise log error
-							throw new IPMatcherException("ALL UNI IP RANGES group NOT DEFINED IN THE authentication-ip config file: "+ipConfigGroupName);
+							throw new IPMatcherException("UK ShibAuthentication - createIPMatchers(): ALL UNI IP RANGES group NOT DEFINED IN THE authentication-ip config file: "+ipConfigGroupName);
 						}
 					}
 					else
@@ -1551,7 +1551,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 		}
 		else
 		{
-			log.error("UNIVERSITY ACCESS IP CHECK SHOULD BE PERFORMED, but UNI IP GROUP IS NOT DEFINED IN authentication-shibboleth config file!");
+			log.error("UK ShibAuthentication - createIPMatchers():  UNIVERSITY ACCESS IP CHECK SHOULD BE PERFORMED, but UNI IP GROUP IS NOT DEFINED IN authentication-shibboleth config file!");
 		}
 	}
 
@@ -1560,6 +1560,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 	private void addIPMatchers(String groupName, String ipRanges)
     {
         String[] ranges = ipRanges.split("\\s*,\\s*");
+		log.debug("JR - UKShibAuthentication - addIPMatchers() - We got these IP ranges from config file:\n" + ranges);
 
         for (String entry : ranges)
         {
@@ -1568,11 +1569,13 @@ public class UKShibAuthentication implements AuthenticationMethod
                 IPMatcher ipm;
                 if (entry.startsWith("-"))
                 {
+					log.debug("JR - UKShibAuthentication - addIPMatchers() - adding negative matcher for entry: " + entry);
                     ipm = new IPMatcher(entry.substring(1));
                     ipNegativeMatchers.add(ipm);
                 }
                 else
                 {
+					log.debug("JR - UKShibAuthentication - addIPMatchers() - adding positive matcher for entry: " + entry);
                     ipm = new IPMatcher(entry);
                     ipMatchers.add(ipm);
                 }
