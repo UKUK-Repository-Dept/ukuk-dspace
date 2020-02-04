@@ -320,8 +320,8 @@ public class IPMatcher
         for (int i = 0; i < netmask.length; i++)
         {
             
-            debug.log("JR - Candidate: " + candidate[i]);
-            debug.log("JR - Netmask: " + netmask[i]);
+            log.debug("JR - Candidate: " + candidate[i]);
+            log.debug("JR - Netmask: " + netmask[i]);
             log.debug("JR - candidate[i] & netmask[i]: "+(candidate[i] & netmask[i]));
             log.debug("JR - network[i]: "+network[i]);
             log.debug("JR - network[i] & netmask[i]: "+(network[i] & netmask[i]));
