@@ -246,7 +246,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 			// <UK>
 			// Do we want to check if user is trying to authenticate from allowed IP as well?
 			// </UK>
-			boolean checkAllowedIP = ConfigurationManager.getBooleanProperty("authentication-shibboleth","ip.check", true);
+			boolean checkAllowedIP = ConfigurationManager.getBooleanProperty("authentication-shibboleth-ip","ip.check", false);
 			if (checkAllowedIP == true)
 			{
 				// Step 0: Check if user is at CU
@@ -1414,9 +1414,8 @@ public class UKShibAuthentication implements AuthenticationMethod
 		ipMatcherConfigGroupNames = new HashMap<IPMatcher, String>();
         
 		// Get the user's IP address
-        // String addr = request.getRemoteAddr();
-		String addr = "2001:0718:2401:FFFF:FFFF:FFFF:FFFF:FFFF";
-        log.info("Calling from isFromCU!");
+        String addr = request.getRemoteAddr();
+        log.info("Calling from isFromCU! Getting IP address.");
 		if (useProxies == null) {
 			log.debug("Calling from isFromCU! - use proxies is NULL");
             useProxies = ConfigurationManager.getBooleanProperty("useProxies", false);
@@ -1479,14 +1478,16 @@ public class UKShibAuthentication implements AuthenticationMethod
 	private void createIPMatchers(Context context) throws IPMatcherException
 	{
 		
-		log.debug("UK ShibAuthentication - createIPMatchers(): Checking, if ALL UNI IP GROUP is defined in authentication-shibboleth config file...");
-		String shibUniGroupName = ConfigurationManager.getProperty("authentication-shibboleth","ip.uniGroup");
+		log.debug("UK ShibAuthentication - createIPMatchers(): Checking, if IP allowed group is defined in authentication-shibboleth-ip config file...");
+
+		String shibUniGroupName = ConfigurationManager.getProperty("authentication-shibboleth-ip","ip.allowedGroup");
+		
 		log.debug("UK ShibAuthentication - createIPMatchers(): FOUND UNI GROUP IN SHIBBOLETH CONFIG FILE: "+ shibUniGroupName);
 		if (shibUniGroupName != null)
 		{
 
 			log.info("UK ShibAuthentication - createIPMatchers(): Getting allowed UNI IP ranges from config file");
-			Enumeration ipAuthProperties = ConfigurationManager.propertyNames("authentication-ip");
+			Enumeration ipAuthProperties = ConfigurationManager.propertyNames("authentication-shibboleth-ip");
 		
 			while (ipAuthProperties.hasMoreElements())
 			{
@@ -1540,13 +1541,13 @@ public class UKShibAuthentication implements AuthenticationMethod
                 IPMatcher ipm;
                 if (entry.startsWith("-"))
                 {
-					log.debug("JR - UKShibAuthentication - addIPMatchers() - adding negative matcher for entry: " + entry);
+					log.debug("UKShibAuthentication - addIPMatchers() - adding negative matcher for entry: " + entry);
                     ipm = new IPMatcher(entry.substring(1));
                     ipNegativeMatchers.add(ipm);
                 }
                 else
                 {
-					log.debug("JR - UKShibAuthentication - addIPMatchers() - adding positive matcher for entry: " + entry);
+					log.debug("UKShibAuthentication - addIPMatchers() - adding positive matcher for entry: " + entry);
                     ipm = new IPMatcher(entry);
                     ipMatchers.add(ipm);
                 }
