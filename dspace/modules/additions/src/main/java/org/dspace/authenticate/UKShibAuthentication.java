@@ -1492,7 +1492,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 			while (ipAuthProperties.hasMoreElements())
 			{
 				String propName = (String) ipAuthProperties.nextElement();
-				if (propName.startsWith("ip.groupName"))
+				if (propName.startsWith("allowedGroupName"))
 				{
 					String[] nameParts = propName.split("\\.");
 					log.debug("UK ShibAuthentication - createIPMatchers(): Found PROPERTIES IN IP AUTH CONFIG FILE: ");
