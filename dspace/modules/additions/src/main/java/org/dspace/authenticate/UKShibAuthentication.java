@@ -1408,7 +1408,7 @@ public class UKShibAuthentication implements AuthenticationMethod
      *
      * @return true if the user is a CU user
      */
-    private boolean isFromCU(Context context, HttpServletRequest request) throws IPMatcherException
+    private void isFromCU(Context context, HttpServletRequest request) throws IPMatcherException
     {
 
 		ipMatchers = new ArrayList<IPMatcher>();
@@ -1496,8 +1496,6 @@ public class UKShibAuthentication implements AuthenticationMethod
                         "bad_ip=" + addr), ipme);
             }
 		}
-		throw new RuntimeException("This should never happen!");
-
     }
 	/**
 	* Checks if a group that should users' IP address be part of is defined in authentication-shibboleth.cfg 
