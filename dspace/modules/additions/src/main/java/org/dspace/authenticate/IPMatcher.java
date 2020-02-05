@@ -133,23 +133,23 @@ public class IPMatcher
                 ipPart = parts[0];
                 mustHave4 = true;
                 
-                log.debug("JR - IP address (from config) in some kind of slash notation.");
+                log.debug("IP address (from config) in some kind of slash notation.");
                 
                 String[] maskParts = parts[1].split("\\.");
 
-                log.debug("JR - IP address (from config) MASK PARTS: " + maskParts);
+                log.debug("IP address (from config) MASK PARTS: " + maskParts);
 
                 if (maskParts.length == 1)
                 {
 
-                    log.debug("JR - IP address (from config) in CIDR notation. We only have one mask part: " + maskParts[0]);
+                    log.debug("IP address (from config) in CIDR notation. We only have one mask part: " + maskParts[0]);
                     // CIDR slash notation
                     int x;
     
                     try
                     {
                         x = Integer.parseInt(maskParts[0]);
-                        log.debug("JR - parsed integer from maskParts[0]:" + x);
+                        log.debug("Parsed integer from maskParts[0]:" + x);
                     }
                     catch (NumberFormatException nfe)
                     {
@@ -163,23 +163,23 @@ public class IPMatcher
                     }
     
                     int fullMask = -1 << (32 - x);
-                    log.debug("JR - FULL MASK:" + fullMask);
+                    log.debug("FULL MASK:" + fullMask);
                     
                     netmask[0] = (byte) ((fullMask & 0xFF000000) >>> 24);
-                    log.debug("JR - NETMASK - FIRST PART: " + netmask[0]);
+                    log.debug("NETMASK - FIRST PART: " + netmask[0]);
                     
                     netmask[1] = (byte) ((fullMask & 0x00FF0000) >>> 16);
-                    log.debug("JR - NETMASK - SECOND PART: " + netmask[1]);
+                    log.debug("NETMASK - SECOND PART: " + netmask[1]);
                     
                     netmask[2] = (byte) ((fullMask & 0x0000FF00) >>> 8);
-                    log.debug("JR - NETMASK - THIRD PART: " + netmask[2]);
+                    log.debug("NETMASK - THIRD PART: " + netmask[2]);
                     
                     netmask[3] = (byte) (fullMask & 0x000000FF);
-                    log.debug("JR - NETMASK - FOURTH PART: " + netmask[3]);
+                    log.debug("NETMASK - FOURTH PART: " + netmask[3]);
                     
                     // Returns the number of actual IP bytes found in the given IP address String
                     ipToBytes(ipPart, network, mustHave4);
-                    log.debug("JR - processed IP:" + ipPart + "Number of actual IP bytes in this IP address: " + ipToBytes(ipPart, network, mustHave4));
+                    log.debug("Processed IP:" + ipPart + "Number of actual IP bytes in this IP address: " + ipToBytes(ipPart, network, mustHave4));
 
                     if (log.isDebugEnabled()) {
                         log.debug("fullMask: "+fullMask);
@@ -194,7 +194,7 @@ public class IPMatcher
                 }
                 else
                 {
-                    log.debug("JR - We have an IP address (in config) with full mask specified.");
+                    log.debug("We have an IP address (in config) with full mask specified.");
                     // full netmask specified
                     ipToBytes(parts[0],network,true);
                     ipToBytes(parts[1], netmask, true);
@@ -204,7 +204,7 @@ public class IPMatcher
 
             case 1:
                 // Get IP
-                log.debug("JR - we have a plain and simple IP address, without any mask or without the IP being defined only partialy.");
+                log.debug("We have a plain and simple IP address, without any mask or without the IP being defined only partialy.");
                 for (int i = 0; i < netmask.length; i++)
                     netmask[i] = -1;
                 int partCount = ipToBytes(ipPart, network, mustHave4);
@@ -222,10 +222,10 @@ public class IPMatcher
                         + ipSpec);
             }
             network = ip4ToIp6(network);
-            log.debug("JR - NETWORK: " + network);
+            log.debug("NETWORK: " + network);
             
             netmask = ip4MaskToIp6(netmask);
-            log.debug("JR - NETMASK: " + netmask);
+            log.debug("NETMASK: " + netmask);
 
             if (log.isDebugEnabled()) {
                 for (int i = 0; i < network.length; i++) {
@@ -259,9 +259,9 @@ public class IPMatcher
     private static int ipToBytes(String ip, byte[] bytes, boolean mustHave4)
             throws IPMatcherException
     {
-        log.debug("JR - Calling from ipToBytes!");
+        log.debug("Calling from ipToBytes!");
         String[] parts = ip.split("\\.");
-        log.debug("JR - ipToBytes() - we have IP with these parts: " + parts);
+        log.debug("ipToBytes() - we have IP with these parts: " + parts);
 
         if (parts.length > 4 || mustHave4 && parts.length != 4)
         {
@@ -270,7 +270,7 @@ public class IPMatcher
 
         try
         {
-            log.debug("JR - ipToBytes() - We are checking if IP specified in config is not MALFORMED.");
+            log.debug("ipToBytes() - We are checking if IP specified in config is not MALFORMED.");
             for (int i = 0; i < parts.length; i++)
             {
                 int p = Integer.parseInt(parts[i]);
@@ -280,10 +280,10 @@ public class IPMatcher
                             + ip);
 
                 }
-                log.debug("JR - ipToBytes() - integer representing ip part: " + p + "is not < 0 or > 255!");
+                log.debug("ipToBytes() - integer representing ip part: " + p + "is not < 0 or > 255!");
 
                 bytes[i] = (byte) (p < 128 ? p : p - 256);
-                log.debug("JR - ipToBytes() - bytes in array part bytes[" + i + "]:" + bytes[i]);
+                log.debug("ipToBytes() - bytes in array part bytes[" + i + "]:" + bytes[i]);
             }
         }
         catch (NumberFormatException nfe)
@@ -311,22 +311,22 @@ public class IPMatcher
     {
         // JR - 4. 2. 2020: match() is called for each IPMatcher object 
         // created in UKShibAuthentication class - method createIPMatchers()
-        log.debug("JR - we got this IP address: " + ipIn);
+        log.debug("We got this IP address: " + ipIn);
         byte[] candidate;
 
         if (ipIn.indexOf(':') < 0)
         {
             candidate = new byte[4];
             ipToBytes(ipIn, candidate, true);
-            log.debug("JR - match() - ipToBytes()=" + ipToBytes(ipIn, candidate, true));
+            log.debug("match() - ipToBytes()=" + ipToBytes(ipIn, candidate, true));
             candidate = ip4ToIp6(candidate);
-            log.debug("JR: match() - candidate = ip4ToIp6(candidate) = " + candidate);
+            log.debug("match() - candidate = ip4ToIp6(candidate) = " + candidate);
         }
         else
             try
             {
                 candidate = Inet6Address.getByName(ipIn).getAddress();
-                log.debug("JR - match() - candidate = Inet6Address.getByName(ipIn).getAddress()=" + candidate);
+                log.debug("match() - candidate = Inet6Address.getByName(ipIn).getAddress()=" + candidate);
             }
             catch (UnknownHostException e)
             {
