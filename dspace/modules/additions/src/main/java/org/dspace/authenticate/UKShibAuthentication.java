@@ -1444,7 +1444,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 		// Try to match user's IP addres with one in the dictionary
 		for (IPMatcher ipm : ipMatchers)
         {
-			log.debug("JR - Matching against matcher: " + ipm.ipPart);
+			log.debug("JR - Matching against matcher: " + ipm.getIPSpec());
             try
             {
 				// IP is matched
