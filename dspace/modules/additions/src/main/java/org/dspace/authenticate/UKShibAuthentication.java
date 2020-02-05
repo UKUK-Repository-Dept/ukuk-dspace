@@ -258,14 +258,19 @@ public class UKShibAuthentication implements AuthenticationMethod
 				*/
 				log.info("Starting Custom Shibboleth Authentication");
 				log.info("Custom Shibboleth Authentication: Checking if request is comming from within CU!");
-				if (isFromCU(context, request) == true) {
-					log.info("Request is comming from within CU!");
-					atCU = true;
-				}
-				else {
-					log.info("Request is not comming from within CU!");
-					atCU = false;
-				}
+				
+				// Check if user is accessing DSpace from allowed IP based on config file
+				isFromCU(context, request);
+
+				
+				// if (isFromCU(context, request) == true) {
+				// 	log.info("Request is comming from within CU!");
+				// 	atCU = true;
+				// }
+				// else {
+				// 	log.info("Request is not comming from within CU!");
+				// 	atCU = false;
+				// }
 				// </JR>
 			}
 			
@@ -373,10 +378,10 @@ public class UKShibAuthentication implements AuthenticationMethod
 			if (affiliations == null) {
 				if (defaultRoles != null)
 					affiliations = Arrays.asList(defaultRoles.split(","));
-				log.info("Failed to find Shibboleth role header, '"+roleHeader+"', falling back to the default roles: '"+defaultRoles+"'");
 				log.debug("Failed to find Shibboleth role header, '"+roleHeader+"', falling back to the default roles: '"+defaultRoles+"'");
-			} else {
-				log.info("Found Shibboleth role header: '"+roleHeader+"' = '"+affiliations+"'");
+			} 
+			else 
+			{
 				log.debug("Found Shibboleth role header: '"+roleHeader+"' = '"+affiliations+"'");
 			}
 
@@ -407,11 +412,9 @@ public class UKShibAuthentication implements AuthenticationMethod
 
 					if (groupNames == null) {
 						log.debug("Unable to find role mapping for the value, '"+affiliation+"', there should be a mapping in config/modules/authentication-shibboleth.cfg:  role."+affiliation+" = <some group name>");
-						log.info("Unable to find role mapping for the value, '"+affiliation+"', there should be a mapping in config/modules/authentication-shibboleth.cfg:  role."+affiliation+" = <some group name>");
 						continue;
 					} else {
 						log.debug("Mapping role affiliation to DSpace group: '"+groupNames+"'");
-						log.info("Mapping role affiliation to DSpace group: '"+groupNames+"'");
 					}
 
 					// Add each group to the list.
@@ -429,7 +432,6 @@ public class UKShibAuthentication implements AuthenticationMethod
 							}
 							else 
 							{
-								log.info("Groupname is="+names[i]+" / CANNOT FIND THIS GROUP!");
 								log.debug("Unable to find group: '"+names[i].trim()+"'");
 							}
 							
@@ -514,7 +516,6 @@ public class UKShibAuthentication implements AuthenticationMethod
 						}
 					}
 				} else { 
-					log.info("Unable to find groups");
 					log.debug("Unable to find groups");
 				}
 			} catch (SQLException sqle) {
@@ -1384,7 +1385,6 @@ public class UKShibAuthentication implements AuthenticationMethod
 			}
 			else 
 			{
-				log.info("Groupname is="+groupName+" / CANNOT FIND THIS GROUP!");
 				log.debug("Unable to find group: '"+groupName.trim()+"'");
 			}
 		}
@@ -1420,7 +1420,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 		String addr = "195.113.92.131";
         log.info("Calling from isFromCU!");
 		if (useProxies == null) {
-			log.info("Calling from isFromCU! - use proxies is NULL");
+			log.debug("Calling from isFromCU! - use proxies is NULL");
             useProxies = ConfigurationManager.getBooleanProperty("useProxies", false);
         }
 
@@ -1436,7 +1436,7 @@ public class UKShibAuthentication implements AuthenticationMethod
             }
         }
 		
-		log.info("TESTING IP ADDRESS: "+ addr);
+		log.debug("TESTING IP ADDRESS: "+ addr);
 		
 		// Create IPMatchers
 		createIPMatchers(context);
@@ -1444,21 +1444,25 @@ public class UKShibAuthentication implements AuthenticationMethod
 		// Try to match user's IP addres with one in the dictionary
 		for (IPMatcher ipm : ipMatchers)
         {
-			log.debug("JR - Matching against matcher: " + ipm.getIPSpec());
+			log.debug("Matching against matcher: " + ipm.getIPSpec());
             try
             {
 				// IP is matched
 				if (ipm.match(addr))
 				{
 					log.info("Users IP found in a group used for all university access!");
-					return true;
+					// IP has a positive match, user is comming from IP address in range defined in config
+					// and tested in this IPMatcher instance
+					atCU = true;
 				}
-				else
-				{
-					log.info("Users IP didn't match ALL UNI IP range defined in authentication-ip config!");
-					log.info("Users IP is not a CUNI IP!");
-					return false;
-				}
+				// else
+				// {
+				// 	log.info("Users IP didn't match IP range " + ipm.getIPSpec());
+				// 	// return false;
+				// 	// IP didn't match, user is comming from IP address outside range defined in config
+				// 	// and tested in this IPMatcher instance
+					
+				// }
             }
             catch (IPMatcherException ipme)
             {
@@ -1478,13 +1482,13 @@ public class UKShibAuthentication implements AuthenticationMethod
 
 					log.info("Found IP that should not have access - it has a negative match in config.");
 					log.info("Users IP is not a CUNI IP!");
-					return false;
+					atCU=false;
                 }
-				else
-				{
-					log.info("Users IP found in a group used for all university access!");
-					return true;
-				}
+				// else
+				// {
+				// 	log.info("Users IP found in a group used for all university access!");
+				// 	continue;
+				// }
             }
             catch (IPMatcherException ipme)
             {
@@ -1510,9 +1514,9 @@ public class UKShibAuthentication implements AuthenticationMethod
 	private void createIPMatchers(Context context) throws IPMatcherException
 	{
 		
-		log.info("UK ShibAuthentication - createIPMatchers(): Checking, if ALL UNI IP GROUP is defined in authentication-shibboleth config file...");
+		log.debug("UK ShibAuthentication - createIPMatchers(): Checking, if ALL UNI IP GROUP is defined in authentication-shibboleth config file...");
 		String shibUniGroupName = ConfigurationManager.getProperty("authentication-shibboleth","ip.uniGroup");
-		log.info("UK ShibAuthentication - createIPMatchers(): FOUND UNI GROUP IN SHIBBOLETH CONFIG FILE: "+ shibUniGroupName);
+		log.debug("UK ShibAuthentication - createIPMatchers(): FOUND UNI GROUP IN SHIBBOLETH CONFIG FILE: "+ shibUniGroupName);
 		if (shibUniGroupName != null)
 		{
 
@@ -1525,15 +1529,15 @@ public class UKShibAuthentication implements AuthenticationMethod
 				if (propName.startsWith("ip."))
 				{
 					String[] nameParts = propName.split("\\.");
-					log.info("UK ShibAuthentication - createIPMatchers(): Found PROPERTIES IN IP AUTH CONFIG FILE: ");
-					log.info(nameParts);
+					log.debug("UK ShibAuthentication - createIPMatchers(): Found PROPERTIES IN IP AUTH CONFIG FILE: ");
+					log.debug(nameParts);
 					if (nameParts.length == 2)
 					{	
 						String ipConfigGroupName = nameParts[1];
 						// check if we have a right property for ALL UNI IP ranges defined in config
 						if (ipConfigGroupName.equals(shibUniGroupName))
 						{
-							log.info("UK ShibAuthentication - createIPMatchers(): FOUND GROUP IN CONFIG: "+ipConfigGroupName);
+							log.debug("UK ShibAuthentication - createIPMatchers(): FOUND GROUP IN CONFIG: "+ipConfigGroupName);
 							// if yes, add matchers for IP ranges in this particular group, we are not interested in anything else
 							addIPMatchers(ipConfigGroupName, ConfigurationManager.getProperty("authentication-ip", propName));
 						}
@@ -1562,7 +1566,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 	private void addIPMatchers(String groupName, String ipRanges)
     {
         String[] ranges = ipRanges.split("\\s*,\\s*");
-		log.debug("JR - UKShibAuthentication - addIPMatchers() - We got these IP ranges from config file:\n" + ranges);
+		log.debug("UKShibAuthentication - addIPMatchers() - We got these IP ranges from config file:\n" + ranges);
 
         for (String entry : ranges)
         {
