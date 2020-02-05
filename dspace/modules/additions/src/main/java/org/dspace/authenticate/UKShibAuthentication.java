@@ -1416,7 +1416,8 @@ public class UKShibAuthentication implements AuthenticationMethod
 		ipMatcherConfigGroupNames = new HashMap<IPMatcher, String>();
         
 		// Get the user's IP address
-        String addr = request.getRemoteAddr();
+        // String addr = request.getRemoteAddr();
+		String addr = "195.113.92.131";
         log.info("Calling from isFromCU!");
 		if (useProxies == null) {
 			log.info("Calling from isFromCU! - use proxies is NULL");
