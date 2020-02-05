@@ -44,6 +44,15 @@ public class IPMatcher
 
     /** Network mask */
     private byte[] netmask;
+    private String ipSpec;
+
+    public String getIPSpec() {
+        return ipSpec;
+    }
+
+    private void setIPSpec(String value) {
+        this.ipSpec = value;
+    }
 
     /**
      * Construct an IPMatcher that will test for the given IP specification
@@ -61,7 +70,7 @@ public class IPMatcher
 
         String ipPart = ipSpec;
         String[] parts = ipSpec.split("/");
-
+        setIPSpec(ipSpec);
         log.debug("JR - IP address (from config) parts:\n" + parts);
 
         if (parts[0].indexOf(':') >= 0)
