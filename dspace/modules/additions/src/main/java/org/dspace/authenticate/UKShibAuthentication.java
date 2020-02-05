@@ -1415,7 +1415,7 @@ public class UKShibAuthentication implements AuthenticationMethod
         
 		// Get the user's IP address
         // String addr = request.getRemoteAddr();
-		String addr = "2001:0718:1E03:0000:0000:0000:0000:0000";
+		String addr = "2001:0718:2401:FFFF:FFFF:FFFF:FFFF:FFFF";
         log.info("Calling from isFromCU!");
 		if (useProxies == null) {
 			log.debug("Calling from isFromCU! - use proxies is NULL");
