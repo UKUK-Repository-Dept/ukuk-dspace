@@ -260,17 +260,15 @@ public class UKShibAuthentication implements AuthenticationMethod
 				log.info("Custom Shibboleth Authentication: Checking if request is comming from within CU!");
 				
 				// Check if user is accessing DSpace from allowed IP based on config file
-				isFromCU(context, request);
-
 				
-				// if (isFromCU(context, request) == true) {
-				// 	log.info("Request is comming from within CU!");
-				// 	atCU = true;
-				// }
-				// else {
-				// 	log.info("Request is not comming from within CU!");
-				// 	atCU = false;
-				// }
+				if (isFromCU(context, request) == true) {
+					log.info("Request is comming from within CU!");
+					atCU = true;
+				}
+				else {
+					log.info("Request is not comming from within CU!");
+					atCU = false;
+				}
 				// </JR>
 			}
 			
@@ -1408,7 +1406,7 @@ public class UKShibAuthentication implements AuthenticationMethod
      *
      * @return true if the user is a CU user
      */
-    private void isFromCU(Context context, HttpServletRequest request) throws IPMatcherException
+    private Boolean isFromCU(Context context, HttpServletRequest request) throws IPMatcherException
     {
 
 		ipMatchers = new ArrayList<IPMatcher>();
