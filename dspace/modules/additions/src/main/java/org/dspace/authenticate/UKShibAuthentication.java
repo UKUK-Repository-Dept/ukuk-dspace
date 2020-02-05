@@ -493,7 +493,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 								String groupPrefix = "IP";
 								ipAllowedGroup = findIpAllowedGroup(context, groupPrefix + group.getName());//if (ipAllowedGroup != null) // <-- WHAT THE HELL IS THIS DOING HERE?!
 								if (ipAllowedGroup == null) {
-									log.error("UNABLE TO FOUND AN IP-ALLOWED SPECIAL GROU FOR SHIBBOLETH GROUP '"+group.getName()+"'");
+									log.error("UNABLE TO FOUND AN IP-ALLOWED SPECIAL GROUP FOR SHIBBOLETH GROUP '"+group.getName()+"'");
 									groups.add(group.getID());
 								}
 								else {
@@ -1505,12 +1505,12 @@ public class UKShibAuthentication implements AuthenticationMethod
 						{
 							log.debug("UK ShibAuthentication - createIPMatchers(): FOUND GROUP IN CONFIG: "+ipConfigGroupName);
 							// if yes, add matchers for IP ranges in this particular group, we are not interested in anything else
-							addIPMatchers(ipConfigGroupName, ConfigurationManager.getProperty("authentication-ip", propName));
+							addIPMatchers(ipConfigGroupName, ConfigurationManager.getProperty("authentication-shibboleth-ip", propName));
 						}
 						else
 						{
 							// otherwise log error
-							throw new IPMatcherException("UK ShibAuthentication - createIPMatchers(): ALL UNI IP RANGES group NOT DEFINED IN THE authentication-ip config file: "+ipConfigGroupName);
+							throw new IPMatcherException("UK ShibAuthentication - createIPMatchers(): ALL UNI IP RANGES group NOT DEFINED IN THE authentication-shibboleth-ip config file: "+ipConfigGroupName);
 						}
 					}
 					else
