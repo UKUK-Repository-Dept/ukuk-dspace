@@ -1401,7 +1401,7 @@ public class UKShibAuthentication implements AuthenticationMethod
 	 * <UK> IP MATCHING PART
 	 * 
      * Check to see if the user is an CU user. At present, it just checks the
-     * source IP address. If the user is off-site CU user, this will return false.
+     * source IP address. If the user is not accessing DSpace from CU network, this will return false.
      *
      * @param request
      *            current request
@@ -1453,16 +1453,9 @@ public class UKShibAuthentication implements AuthenticationMethod
 					log.info("Users IP found in a group used for all university access!");
 					// IP has a positive match, user is comming from IP address in range defined in config
 					// and tested in this IPMatcher instance
-					atCU = true;
+					return true;
 				}
-				// else
-				// {
-				// 	log.info("Users IP didn't match IP range " + ipm.getIPSpec());
-				// 	// return false;
-				// 	// IP didn't match, user is comming from IP address outside range defined in config
-				// 	// and tested in this IPMatcher instance
-					
-				// }
+				
             }
             catch (IPMatcherException ipme)
             {
@@ -1470,32 +1463,9 @@ public class UKShibAuthentication implements AuthenticationMethod
                         "bad_ip=" + addr), ipme);
             }
         }
-		// END OF THIS - WORKS
 
-		// TODO: Check how negative matchers work when user tries to authenticate from address that bellong to the "negative"/excluded range
-		for (IPMatcher ipm : ipNegativeMatchers)
-        {
-            try
-            {
-                if (ipm.match(addr))
-                {
-
-					log.info("Found IP that should not have access - it has a negative match in config.");
-					log.info("Users IP is not a CUNI IP!");
-					atCU=false;
-                }
-				// else
-				// {
-				// 	log.info("Users IP found in a group used for all university access!");
-				// 	continue;
-				// }
-            }
-            catch (IPMatcherException ipme)
-            {
-                log.warn(LogManager.getHeader(context, "configuration_error",
-                        "bad_ip=" + addr), ipme);
-            }
-		}
+		// We didn't find a match in any IP range defined in config file
+		return false;
     }
 	/**
 	* Checks if a group that should users' IP address be part of is defined in authentication-shibboleth.cfg 
@@ -1508,7 +1478,6 @@ public class UKShibAuthentication implements AuthenticationMethod
 	* @throws IPMatcherException
 	*			when group defined in authentication-shibboleth.cfg is not found in authentication-ip.cfg
 	*/
-	// * TODO: Add support for IP checking and IP group matching for each user group defined in authentication-shibboleth.cfg
 	private void createIPMatchers(Context context) throws IPMatcherException
 	{
 		
