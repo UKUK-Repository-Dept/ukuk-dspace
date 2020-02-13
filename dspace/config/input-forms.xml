@@ -361,6 +361,10 @@
 	<name-map collection-handle="20.500.11956/111252" form-name="oa_books" />
 	<!-- END OF: KAROLINUM PRESS OA MONOGRAPHS -->
 
+	<!-- FACULTY OF LAW OA MONOGRAPHS -->
+	<name-map collection-handle="20.500.11956/116350" form-name="oa_books" />
+	<!-- END OF: FACULTY OF LAW OA MONOGRAPHS -->
+
 	<!-- END OF PRODUCTION SERVER -->
 	
 	<!-- TEST SERVER -->
