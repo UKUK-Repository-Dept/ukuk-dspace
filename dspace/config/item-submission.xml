@@ -18,6 +18,10 @@
  <!-- for handle "default".                                                -->
  <submission-map>
    <name-map collection-handle="default" submission-name="traditional" />
+   <!-- <JR> - 21. 2. 2020 -->
+   <!-- Submissions with UploadFile step without embargo for special digitiazation collections -->
+   <name-map collection-handle="20.500.11956/116127" submission-name="special-digitization" />
+   <name-map collection-handle="20.500.11956/108695" submission-name="special-digitization" />
    <name-map collection-handle="1233456789/1367" submission-name="articles" />
  </submission-map>
 
@@ -271,7 +275,54 @@
 
 
      
-   </submission-process>
+  </submission-process>
+  <!-- <JR> - 21. 2. 2020 -->
+  <!-- 
+      SPECIAL DIGITIZATION SUBMISSION PROCESS
+
+      New Submission Process for submission to collections for students with special needs. 
+      This submission process is very similar to default workflow, only difference is the 'Upload Files' step
+      that doesn't use UploadWithEmbargo, as it is not needed in case of these documents.
+
+      When UploadWithEmbargo step is used, it breaks the default BITSTREAM_READ policy set for the collection.
+      Anonymous users are added to the BITSTREAM_READ policy. This is not desired, since bitreams of items in these collections
+      are restricted to students with special needs.
+  -->
+  <submission-process name="special-digitization">
+    <!-- Step 1. Since DSpace 4.0, the initial questions has been disabled. Metadata are shown exactly as 
+      required in input-forms and items are assumed to have always multiple-files attached.
+        If re-enable the initial questions step you should comment out this step-->
+    <step>
+      <processing-class>org.dspace.submit.step.SkipInitialQuestionsStep</processing-class>
+    </step>
+
+    <!--Step 2 will be to Describe the item.-->
+    <step>
+      <heading>submit.progressbar.describe</heading>
+      <processing-class>org.dspace.submit.step.DescribeStep</processing-class>
+      <jspui-binding>org.dspace.app.webui.submit.step.JSPDescribeStep</jspui-binding>
+      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.DescribeStep</xmlui-binding>
+      <workflow-editable>true</workflow-editable>
+    </step>
+
+    <!-- Step 3 - Upload files -->
+    <step>
+        <heading>submit.progressbar.upload</heading>
+        <processing-class>org.dspace.submit.step.UploadStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>
+		    <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
+        <workflow-editable>true</workflow-editable>
+      </step>
+
+    <!--Step 4 Verify/Review step -->
+    <step>
+      <heading>submit.progressbar.verify</heading>
+      <processing-class>org.dspace.submit.step.VerifyStep</processing-class>
+      <jspui-binding>org.dspace.app.webui.submit.step.JSPVerifyStep</jspui-binding>
+      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.ReviewStep</xmlui-binding>
+      <workflow-editable>true</workflow-editable>
+    </step>
+  </submission-process>
 
   <submission-process name="articles">
     <!-- Step 1. Since DSpace 4.0, the initial questions has been disabled. Metadata are shown exactly as 
