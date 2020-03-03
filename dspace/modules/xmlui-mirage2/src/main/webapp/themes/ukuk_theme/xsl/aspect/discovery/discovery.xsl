@@ -194,13 +194,23 @@
                         </span>
                     </h4>
                 </xsl:element>
-                <h5 class="heading-translated">
-                    <xsl:choose>
-                        <xsl:when test="dri:list[@n=(concat($handle, ':dc.title.translated'))]">
-                            <xsl:apply-templates select="dri:list[@n=(concat($handle, ':dc.title.translated'))]/dri:item"/>
-                        </xsl:when>
-                    </xsl:choose>
-                </h5>
+                
+                <!-- <JR> - 3. 3. 2020 - Translated titles -->
+                <xsl:choose>
+                    <xsl:when test="count($metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='title'][@qualifier='translated']) > 1">
+                        <xsl:for-each select="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='title'][@qualifier='translated']">
+                            <h5 class="heading-translated">
+                                <xsl:value-of select="./node()"/>
+                            </h5>
+                        </xsl:for-each>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <h5 class="heading-translated">
+                                <xsl:value-of select="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='title'][@qualifier='translated']"/>
+                        </h5>
+                    </xsl:otherwise>
+                </xsl:choose>
+                
                 <h5 class="work-type">
                     <xsl:choose>
                         <xsl:when test="dri:list[@n=(concat($handle, ':dc.type'))]">
