@@ -1441,12 +1441,20 @@ it, please enter the types and the actual numbers or codes.</hint>
 			<stored-value>application/pdf</stored-value>
 		</pair>
 		<pair>
-			<displayed-value>Dokument Word</displayed-value>
+			<displayed-value>Dokument Microsoft Word (.doc)</displayed-value>
 			<stored-value>application/msword</stored-value>
 		</pair>
 		<pair>
-			<displayed-value>Jednoduchý textový soubor</displayed-value>
+			<displayed-value>Dokument Microsoft Word 2007 (.docx)</displayed-value>
+			<stored-value>application/vnd.openxmlformats-officedocument.wordprocessingml.document</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Textový soubor (.txt)</displayed-value>
 			<stored-value>text/plain</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Soubor RTF (.rtf)</displayed-value>
+			<stored-value>text/richtext</stored-value>
 		</pair>
 	</value-pairs>
 
