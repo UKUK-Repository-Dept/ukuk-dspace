@@ -17,6 +17,7 @@ import org.apache.cocoon.caching.CacheableProcessingComponent;
 import org.apache.cocoon.environment.ObjectModelHelper;
 import org.apache.cocoon.environment.Request;
 import org.apache.cocoon.util.HashUtil;
+import org.apache.commons.lang.StringUtils;
 import org.apache.excalibur.source.SourceValidity;
 import org.apache.excalibur.source.impl.validity.NOPValidity;
 import org.dspace.app.xmlui.cocoon.AbstractDSpaceTransformer;
@@ -193,6 +194,24 @@ public class Navigation extends AbstractDSpaceTransformer implements CacheablePr
             {
                 account.addItemXref(contextPath + "/register", T_register);
             }
+
+            final javax.servlet.http.HttpServletRequest hreq = (javax.servlet.http.HttpServletRequest) this.objectModel
+                    .get(org.apache.cocoon.environment.http.HttpEnvironment.HTTP_REQUEST_OBJECT);
+
+            String redirect = hreq.getPathInfo();
+            String query = hreq.getQueryString();
+            if(!StringUtils.isBlank(query)){
+                redirect += "?" + query;
+            }
+            if (redirect.endsWith(".continue"))
+            {
+                // Don't remember continuation addresses #896
+                redirect = "login"; // See ShibbolethAction or
+                // AuthenticateAction
+            }
+            hreq.getSession()
+                    .setAttribute("xmlui.user.loginredirect", redirect);
+
         }
     }
 

@@ -60,62 +60,14 @@ public class LoginChooser extends AbstractDSpaceTransformer implements
 	 * of this component.
 	 */
 	public Serializable getKey() {
-		Request request = ObjectModelHelper.getRequest(objectModel);
-		String previous_email = request.getParameter("login_email");
-
-		// Get any message parameters
-		HttpSession session = request.getSession();
-		String header = (String) session
-				.getAttribute(AuthenticationUtil.REQUEST_INTERRUPTED_HEADER);
-		String message = (String) session
-				.getAttribute(AuthenticationUtil.REQUEST_INTERRUPTED_MESSAGE);
-		String characters = (String) session
-				.getAttribute(AuthenticationUtil.REQUEST_INTERRUPTED_CHARACTERS);
-
-		// If there is a message or previous email attempt then the page is not
-		// cachable
-		if (header == null && message == null && characters == null
-				&& previous_email == null)
-        {
-            // cacheable
-            return "1";
-        }
-		else
-        {
-            // Uncachable
-            return "0";
-        }
+		return null;
 	}
 
 	/**
 	 * Generate the cache validity object.
 	 */
 	public SourceValidity getValidity() {
-		Request request = ObjectModelHelper.getRequest(objectModel);
-		String previous_email = request.getParameter("login_email");
-
-		// Get any message parameters
-		HttpSession session = request.getSession();
-		String header = (String) session
-				.getAttribute(AuthenticationUtil.REQUEST_INTERRUPTED_HEADER);
-		String message = (String) session
-				.getAttribute(AuthenticationUtil.REQUEST_INTERRUPTED_MESSAGE);
-		String characters = (String) session
-				.getAttribute(AuthenticationUtil.REQUEST_INTERRUPTED_CHARACTERS);
-
-		// If there is a message or previous email attempt then the page is not
-		// cachable
-		if (header == null && message == null && characters == null
-				&& previous_email == null)
-        {
-            // Always valid
-            return NOPValidity.SHARED_INSTANCE;
-        }
-		else
-        {
-            // invalid
-            return null;
-        }
+		return null;
 	}
 
 	/**

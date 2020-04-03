@@ -93,7 +93,10 @@ public class AuthenticateAction extends AbstractAction
             	{
             		// Otherwise direct the user to the specified 'loginredirect' page (or homepage by default)
             		String loginRedirect = ConfigurationManager.getProperty("xmlui.user.loginredirect");
-            		redirectURL += (loginRedirect != null) ? loginRedirect.trim() : "/";	
+                    if(loginRedirect==null) {
+                        loginRedirect = (String)request.getSession().getAttribute("xmlui.user.loginredirect");
+                    }
+            		redirectURL += (loginRedirect != null) ? loginRedirect.trim() : "/";
             	}
             	
                 // Authentication successful send a redirect.

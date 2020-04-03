@@ -111,14 +111,7 @@ public class ItemRequestForm extends AbstractDSpaceTransformer implements Cachea
      * This key must be unique inside the space of this component.
      */
     public Serializable getKey() {
-    	
-        String requesterName = parameters.getParameter("requesterName","");
-        String requesterEmail = parameters.getParameter("requesterEmail","");
-        String allFiles = parameters.getParameter("allFiles","");
-        String message = parameters.getParameter("message","");
-        String bitstreamId = parameters.getParameter("bitstreamId","");
-        
-       return HashUtil.hash(requesterName + "-" + requesterEmail + "-" + allFiles +"-"+message+"-"+bitstreamId);
+	    return null;
     }
 
     /**
@@ -126,7 +119,7 @@ public class ItemRequestForm extends AbstractDSpaceTransformer implements Cachea
      */
     public SourceValidity getValidity() 
     {
-        return NOPValidity.SHARED_INSTANCE;
+        return null;
     }
     
     
