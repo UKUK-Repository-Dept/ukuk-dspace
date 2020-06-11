@@ -1249,7 +1249,7 @@ it, please enter the types and the actual numbers or codes.</hint>
     			<dc-qualifier>isbn</dc-qualifier>
 				<repeatable>false</repeatable>
 				<input-type>onebox</input-type>
-    			<label>Identifikátor ISBN knihy</label>
+    			<label>Identifikátor ISBN vkládaného dokumentu</label>
 				<hint>Zadejte identifikátor ISBN vkládaného dokumentu, nebo identifikátor ISBN dokumentu, ze kterého pochází vkládaná část (kapitola, soubor více kapitol).</hint>
     			<type-bind>Kniha,Část knihy,Skriptum,Vzdělávací materiál</type-bind>
 			</field>
@@ -1271,7 +1271,6 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<input-type>onebox</input-type>
 				<label>Název vydavatele</label>
-				<required>Musíte zadat název vydavatele vkládaného dokumentu</required>
 				<hint>Zadejte název vydavatele vkládaného dokumentu.</hint>
 				<type-bind>Vzdělávací materiál</type-bind>
 			</field>
