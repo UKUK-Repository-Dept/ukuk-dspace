@@ -1432,6 +1432,14 @@ it, please enter the types and the actual numbers or codes.</hint>
 			<displayed-value>Část knihy</displayed-value>
 			<stored-value>Část knihy</stored-value>
 		</pair>
+		<pair>
+			<displayed-value>Vzdělávací materiál</displayed-value>
+			<stored-value>Vzdělávací materiál</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Vzdělávací materiál -> Skriptum</displayed-value>
+			<stored-value>Skriptum</stored-value>
+		</pair>
 	</value-pairs>
 
 	<value-pairs value-pairs-name="carolina_identifiers" dc-term="carolinaId">
