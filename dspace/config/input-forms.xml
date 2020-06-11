@@ -1251,8 +1251,8 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<input-type>onebox</input-type>
     			<label>Identifikátor ISBN knihy</label>
-				<hint>Zadejte identifikátor ISBN vkládané knihy, nebo identifikátor ISBN knihy ze které pochází vkládaná část knihy (kapitola, soubor více kapitol).</hint>
-    			<type-bind>Kniha,Část knihy</type-bind>
+				<hint>Zadejte identifikátor ISBN vkládaného dokumentu, nebo identifikátor ISBN dokumentu, ze kterého pochází vkládaná část (kapitola, soubor více kapitol).</hint>
+    			<type-bind>Kniha,Část knihy,Skriptum,Vzdělávací materiál</type-bind>
 			</field>
 			<field>
 				<dc-schema>dc</dc-schema>
@@ -1263,6 +1263,18 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<label>Název vydavatele (povinný údaj)</label>
 				<required>Musíte zadat název vydavatele vkládaného dokumentu</required>
 				<hint>Zadejte název vydavatele vkládaného dokumentu.</hint>
+				<type-bind>Kniha,Část knihy,Skriptum,Článek</type-bind>
+			</field>
+			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>publisher</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+				<label>Název vydavatele</label>
+				<required>Musíte zadat název vydavatele vkládaného dokumentu</required>
+				<hint>Zadejte název vydavatele vkládaného dokumentu.</hint>
+				<type-bind>Vzdělávací materiál</type-bind>
 			</field>
 			<!-- BOOKS SPECIFIC FIELD -->
 			<field>
@@ -1274,7 +1286,17 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<label>Místo vydání (povinný údaj)</label>
 				<required>Musíte zadat místo vydání vkládaného dokumentu</required>
 				<hint>Zadejte místo vydání vkládaného dokumentu.</hint>
-				<type-bind>Kniha,Část knihy</type-bind>
+				<type-bind>Kniha,Část knihy,Skriptum</type-bind>
+			</field>
+			<field>
+				<dc-schema>uk</dc-schema>
+				<dc-element>publication-place</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<input-type>onebox</input-type>
+				<label>Místo vydání</label>
+				<hint>Zadejte místo vydání vkládaného dokumentu.</hint>
+				<type-bind>Vzdělávací materiál,Článek</type-bind>
 			</field>
 			<field>
                 <dc-schema>dc</dc-schema>
