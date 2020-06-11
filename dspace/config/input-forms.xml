@@ -1159,10 +1159,9 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <dc-element>contributor</dc-element>
                 <dc-qualifier>author</dc-qualifier>
                 <repeatable>true</repeatable>
-                <label>Autor dokumentu (povinný údaj)</label>
+                <label>Autor / autoři dokumentu</label>
                 <input-type>name</input-type>
-                <hint>Zadejte jméno autora/ů dokumentu. Pokud je autorů více, přidejte dalšího autora kliknutím na tlačítko "Přidat".</hint>
-                <required>Musíte zadat jméno autora dokumentu.</required>               
+                <hint>Zadejte jméno autora/ů dokumentu a klikněte na tlačítko "Přidat". Pokud je autorů více, vepište jméno dalšího autor a znovu kliněte na tlačítko "Přidat".</hint>               
             </field>
 			<field>
 				<dc-schema>dc</dc-schema>
@@ -1206,10 +1205,9 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<dc-element>carolinaFormat</dc-element>
 				<dc-qualifier></dc-qualifier>
 				<repeatable>true</repeatable>
-				<label>Formát souborů v balíku (povinné pole)</label>
+				<label>Formát souborů v balíku</label>
 				<input-type value-pairs-name="carolina_file_formats">dropdown</input-type>
-				<hint>Vyberte z nabídky formát souboru, který je součástí balíčku. Pokud je formátů souborů víc, vyberte ze seznamu více položek podržením klávesy [Ctrl] a kliknutím na další formát souboru.</hint>
-				<required>Musíte přidat formát souboru, který je součástí balíku.</required>
+				<hint>Vyberte z nabídky formát souboru, který je součástí balíčku. Pokud je formátů souborů víc, vyberte ze seznamu více položek podržením klávesy [Ctrl] a kliknutím na další formát souboru. Pokud součástí záznamu dokumentu bude jeden nebo více plných textů (mimo ZIP balík), nechte pole prázdné.</hint>
 			</field>
 			<field>
 				<dc-schema>dc</dc-schema>
@@ -1240,9 +1238,8 @@ it, please enter the types and the actual numbers or codes.</hint>
     			<dc-qualifier>issn</dc-qualifier>
 				<repeatable>false</repeatable>
 				<input-type>onebox</input-type>
-    			<label>Identifikátor ISSN zdrojového periodika (povinný údaj)</label>
+    			<label>Identifikátor ISSN zdrojového periodika</label>
 				<hint>Zadejte identifikátor ISSN periodika, ze kterého pochází vkládaný článek.</hint>
-				<required>Musíte identifikátor ISSN periodika, ze kterého pochází vkládaný článek.</required>
     			<type-bind>Článek</type-bind>
 			</field>
 			<!-- BOOKS SPECIFIC FIELD -->
