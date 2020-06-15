@@ -1201,6 +1201,15 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <hint>Vložte klíčové slovo. Další klíčová slova můžete přidat kliknutím na tlačítko "Přidat".</hint>
             </field>
 			<field>
+				<dc-schema>dc</dc-schema>
+				<dc-element>description</dc-element>
+				<dc-qualifier></dc-qualifier>
+				<repeatable>false</repeatable>
+				<label>Obsah</label>
+				<input-type>textarea</input-type>
+				<hint>Do tohoto pole můžete uvést detailnější popis obsahu vkládaného studijního materiálu.</hint>
+			</field>
+			<field>
 				<dc-schema>uk</dc-schema>
 				<dc-element>carolinaFormat</dc-element>
 				<dc-qualifier></dc-qualifier>
