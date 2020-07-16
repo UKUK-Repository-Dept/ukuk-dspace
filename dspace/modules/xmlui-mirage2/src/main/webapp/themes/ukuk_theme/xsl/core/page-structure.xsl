@@ -749,7 +749,7 @@
                     <hr/>
                     <div class="col-xs-7 col-sm-8">
                         <div>
-                          <p>&#169; 2017 <a href="http://www.cuni.cz" target="_blank"> Univerzita Karlova</a>, <a href="http://knihovna.cuni.cz" target="_blank"> &#218;st&#345;edn&#237; knihovna</a>, Ovocn&#253; trh 3-5, 116 36 Praha; <a href="mailto:admin-repozitar@cuni.cz">email: admin-repozitar [at] cuni.cz</a> </p>
+                          <p>&#169; 2017 <a href="http://www.cuni.cz" target="_blank"> Univerzita Karlova</a>, <a href="http://knihovna.cuni.cz" target="_blank"> &#218;st&#345;edn&#237; knihovna</a>, Ovocn&#253; trh 560/5, 116 36 Praha 1; <a href="mailto:admin-repozitar@cuni.cz">email: admin-repozitar [at] cuni.cz</a> </p>
                           <p> Za dodr&#382;en&#237; v&#353;ech ustanoven&#237; autorsk&#233;ho z&#225;kona jsou zodpov&#283;dn&#233; jednotliv&#233; slo&#382;ky Univerzity Karlovy. / Each constituent part of Charles University is responsible for adherence to all provisions of the copyright law. </p>
                             <p><strong>Upozornění / Notice: </strong>Získané informace nemohou být použity k výdělečným účelům nebo vydávány za studijní, vědeckou nebo jinou tvůrčí činnost jiné osoby než autora. / Any retrieved information shall not be used for any commercial purposes or claimed as results of studying, scientific or any other creative activities of any person other than the author.</p>
                         </div>
