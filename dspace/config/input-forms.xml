@@ -616,7 +616,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Jazyk práce (povinný údaj)</label>
 				<input-type value-pairs-name="common_iso_languages_cz">dropdown</input-type>
-				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
+				<hint>Vyberte jazyk práce z rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
 				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
 			</field>
             <field>
@@ -815,7 +815,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Jazyk práce (povinný údaj)</label>
 				<input-type value-pairs-name="common_iso_languages_cz">dropdown</input-type>
-				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
+				<hint>Vyberte jazyk práce z rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
 				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
 			</field>
             <field>
