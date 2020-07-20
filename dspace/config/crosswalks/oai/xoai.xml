@@ -373,12 +373,26 @@
 
         <!-- 
             UK internal systems Filter 
-            - return an Item record if it is not withdrawn
-
         -->
         <Filter id="ukInternalSystemsFilter">
             <Definition>
-                <Custom ref="itemWithdrawnCondition"/>
+                <Or>
+                    <LeftCondition>
+                        <Or>
+                            <LeftCondition>
+                                <Custom ref="itemAccessCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Not>
+                                    <Custom ref="itemAccessCondition"/>
+                                </Not>
+                            </RightCondition>
+                        </Or>
+                    </LeftCondition>
+                    <RightCondition>
+                        <Custom ref="itemWithdrawnCondition"/>
+                    </RightCondition>
+                </Or>
             </Definition>
         </Filter>
 
