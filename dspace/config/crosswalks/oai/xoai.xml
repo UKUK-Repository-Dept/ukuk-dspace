@@ -57,7 +57,7 @@
         <!-- Context for internal systems -->
         <Context baseurl="intenal" name="Internal Systems Context">
             <Filter ref="ukInternalSystemsFilter" />
-            <Set ref="ukInternalSystemsSet">
+            <Set ref="ukInternalSystemsSet"/>
             <Format ref="oaidc_uk_vufind"/>
         </Context>
         
