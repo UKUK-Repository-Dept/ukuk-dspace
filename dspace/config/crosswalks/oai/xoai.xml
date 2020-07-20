@@ -384,7 +384,9 @@
                             </LeftCondition>
                             <RightCondition>
                                 <Not>
-                                    <Custom ref="itemAccessCondition"/>
+                                    <Condition>
+                                        <Custom ref="itemAccessCondition"/>
+                                    </Condition>
                                 </Not>
                             </RightCondition>
                         </Or>
