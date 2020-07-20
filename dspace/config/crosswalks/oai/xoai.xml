@@ -59,6 +59,9 @@
             <Filter ref="ukInternalSystemsFilter" />
             <Set ref="ukInternalSystemsSet"/>
             <Format ref="oaidc_uk_vufind"/>
+            <Description>
+                This context is used for metadata harvesting by other internal systems of the Charles University. Specific metadata formats are provided for those systems.
+            </Description>
         </Context>
         
 	<!--
