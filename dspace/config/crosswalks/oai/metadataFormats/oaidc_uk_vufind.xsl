@@ -81,7 +81,7 @@
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
 			<!-- dc.identifier.aleph -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='aleph']/doc:element/doc:field[@name='value'">
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='aleph']/doc:element/doc:field[@name='value']">
 				<dc:identifier.lis><xsl:value-of select="." /></dc:identifier.lis>
 			</xsl:for-each>
 			<!-- dc.identifier.isbn -->
