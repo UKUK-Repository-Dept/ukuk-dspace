@@ -85,19 +85,19 @@
 				<dc:identifier.lis><xsl:value-of select="." /></dc:identifier.lis>
 			</xsl:for-each>
 			<!-- dc.identifier.isbn -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:element/doc:field[@name='value'">
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:element/doc:field[@name='value']">
 				<dc:identifier.isbn><xsl:value-of select="." /></dc:identifier.isbn>
 			</xsl:for-each>
 			<!-- dc.identifier.issn -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='issn']/doc:element/doc:field[@name='value'">
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='issn']/doc:element/doc:field[@name='value']">
 				<dc:identifier.issn><xsl:value-of select="." /></dc:identifier.issn>
 			</xsl:for-each>
 			<!-- others.handle -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='handle'">
+			<xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='handle']">
 				<dc:identifier.sourceSystem><xsl:value-of select="." /></dc:identifier.sourceSystem>
 			</xsl:for-each>
 			<!-- others.lastModifyDate -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='lastModifyDate'">
+			<xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='lastModifyDate']">
 				<dc:date.lastModified><xsl:value-of select="." /></dc:date.lastModified>
 			</xsl:for-each>
 
