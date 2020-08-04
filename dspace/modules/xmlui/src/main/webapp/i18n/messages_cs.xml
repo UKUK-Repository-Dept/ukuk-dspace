@@ -2286,6 +2286,11 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-csl">konzultant</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-edt">editor</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-ill">ilustrátor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-aui">autor předmluvy</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-pht">fotograf</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-csp">konzultant projektu</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-org">organizátor</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-com">zpracovatel</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-referee">oponent práce</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-trl">překladatel</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-other">jiný spoluautor</message>
