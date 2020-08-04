@@ -2306,6 +2306,11 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-csl">Consultant</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-edt">Editor</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-ill">Illustrator</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-aui">Author of Introduction</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-pht">Photographer</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-csp">Consultant to a project</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-org">Organizer</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-com">Compiler</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-referee">Thesis Referee</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-trl">Translator</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-other">Other Contributor</message>
