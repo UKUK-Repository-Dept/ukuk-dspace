@@ -245,10 +245,14 @@ public class ItemUtils
                 createValue("lastModifyDate", item.getLastModified().toString()));
 
         // get collection info
-        Collection c = item.getOwningCollection();
-
-        other.getField().add(
+        try {
+            Collection c = item.getOwningCollection();
+            other.getField().add(
             createValue("owningCollection", c.getHandle()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            other.getField().add(createValue("owningCollection", "none"));
+        }
 
         metadata.getElement().add(other);
 
