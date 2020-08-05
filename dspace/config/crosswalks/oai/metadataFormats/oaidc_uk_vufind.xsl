@@ -54,8 +54,8 @@
 			<!-- dc.publisher & dc.publisher.place-->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element/doc:field[@name='value']">
 				<dc:publisher>
-					<xsl:value-of select="." />
-					<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element[@name='place']/doc:element/doc:field[@name='value']">
+					<xsl:value-of select="." /><xsl:text>, </xsl:text>
+					<xsl:for-each select="../../doc:element[@name='place']/doc:element/doc:field[@name='value']">
 						<xsl:value-of select="." />
 					</xsl:for-each>
 				</dc:publisher>
@@ -99,6 +99,10 @@
 			<!-- others.lastModifyDate -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='lastModifyDate']">
 				<dc:date.lastModified><xsl:value-of select="." /></dc:date.lastModified>
+			</xsl:for-each>
+			<!-- others.owningCollection -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='owningCollection']">
+				<dc:collection><xsl:value-of select="." /></dc:collection>
 			</xsl:for-each>
 
 			
