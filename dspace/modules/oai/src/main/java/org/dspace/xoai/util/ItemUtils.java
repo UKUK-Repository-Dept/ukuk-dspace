@@ -243,8 +243,13 @@ public class ItemUtils
                 createValue("identifier", DSpaceItem.buildIdentifier(item.getHandle())));
         other.getField().add(
                 createValue("lastModifyDate", item.getLastModified().toString()));
+
+        // get collection info
+        Collection c = item.getOwningCollection();
+
         other.getField().add(
-            createValue("owningCollection", Collection.getHandle(item.getOwningCollection())));
+            createValue("owningCollection", c.getHandle()));
+
         metadata.getElement().add(other);
 
         // Repository Info
