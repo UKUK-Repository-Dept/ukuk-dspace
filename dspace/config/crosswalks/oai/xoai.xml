@@ -30,17 +30,17 @@
             <Format ref="qdc"/>
             <Format ref="marc"/>
             <Format ref="uketd_dc"/>
-	    <Format ref="dctransport"/>
+	        <Format ref="dctransport"/>
             <Format ref="uk_nusl"/>
-	    <Format ref="oai_uk_vufind"/>
-	    <Format ref="oai_dc_citations"/>
+	        <Format ref="oaidc_uk_vufind"/>
+	        <Format ref="oai_dc_citations"/>
             <!--<Format ref="junii2" />-->
             <Description>
                 This is the default context of the DSpace OAI-PMH data provider.
             </Description>
         </Context>
 
-	<Context baseurl="nusl" name="NUSL Context">
+	    <Context baseurl="nusl" name="NUSL Context">
                 <!-- The NUŠL filtr -->
                 <Filter ref="nuslFilter"/>
                 <Set ref="nuslSet"/>
@@ -52,6 +52,19 @@
                 <Description>
                         This context is used for NUSL metadata harversting. Only publicly accessible theses that are not blacklisted because of GDPR are returned
                 </Description>
+        </Context>
+
+        <!-- Context for internal systems -->
+        <Context baseurl="intenal" name="Internal Systems Context">
+            <Filter ref="ukInternalSystemsFilter" />
+            <Set ref="ukInternalSystemsSet"/>
+            <Format ref="xoai"/>
+            <Format ref="oaidc"/>
+            <Format ref="mets"/>
+            <Format ref="oaidc_uk_vufind"/>
+            <Description>
+                This context is used for metadata harvesting by other internal systems of the Charles University. Specific metadata formats are provided for those systems.
+            </Description>
         </Context>
         
 	<!--
@@ -197,18 +210,18 @@
             <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
         </Format>
-	<Format id="oai_uk_vufind">
-	    <Prefix>oai_uk</Prefix>
-	    <XSLT>metadataFormats/oai_uk_vufind.xsl</XSLT>
-	    <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
-	    <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
-	</Format>
-	<Format id="oai_dc_citations">
-		<Prefix>oai_dc_citations</Prefix>
-		<XSLT>metadataFormats/oai_dc_citations.xsl</XSLT>
-		<Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
-		<SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
-	</Format>
+        <Format id="oaidc_uk_vufind">
+            <Prefix>oaidc_uk_vufind</Prefix>
+            <XSLT>metadataFormats/oaidc_uk_vufind.xsl</XSLT>
+            <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
+            <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+        </Format>
+        <Format id="oai_dc_citations">
+            <Prefix>oai_dc_citations</Prefix>
+            <XSLT>metadataFormats/oai_dc_citations.xsl</XSLT>
+            <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
+            <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+        </Format>
     </Formats>
     <Transformers>
         <Transformer id="driverTransformer">
@@ -355,6 +368,33 @@
                         </And>
                     </RightCondition>
                 </And>
+            </Definition>
+        </Filter>
+
+        <!-- 
+            UK internal systems Filter 
+        -->
+        <Filter id="ukInternalSystemsFilter">
+            <Definition>
+                <Or>
+                    <LeftCondition>
+                        <Or>
+                            <LeftCondition>
+                                <Custom ref="itemAccessCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Not>
+                                    <Condition>
+                                        <Custom ref="itemAccessCondition"/>
+                                    </Condition>
+                                </Not>
+                            </RightCondition>
+                        </Or>
+                    </LeftCondition>
+                    <RightCondition>
+                        <Custom ref="itemWithdrawnCondition"/>
+                    </RightCondition>
+                </Or>
             </Definition>
         </Filter>
 
@@ -526,9 +566,13 @@
             <Name>EC_fundedresources set</Name>
             <!-- Just an alias -->
         </Set>
-	<Set id="nuslSet">
+	    <Set id="nuslSet">
                 <Spec>nusl_set</Spec>
                 <Name>NUSL set</Name>
+        </Set>
+        <Set id="ukInternalSystemsSet">
+            <Spec>uk_internal</Spec>
+            <Name>UK Internal Systems Set</Name>
         </Set>
     </Sets>
 </Configuration>
