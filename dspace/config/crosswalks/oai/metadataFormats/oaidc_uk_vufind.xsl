@@ -23,6 +23,7 @@
 			xmlns:dc="http://purl.org/dc/elements/1.1/" 
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+			<!-- COMMON METADATA -->
 			<!-- dc.title -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
 				<dc:title><xsl:value-of select="." /></dc:title>
@@ -31,11 +32,6 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element[@name='translated']/doc:element/doc:field[@name='value']">
 				<dc:title><xsl:value-of select="." /></dc:title>
 			</xsl:for-each>
-			<!-- dc.title.* -->
-			<!-- <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:element/doc:field[@name='value']">
-				<dc:title-alternative><xsl:value-of select="." /></dc:title-alternative>
-			</xsl:for-each> -->
-			<!-- dc.creator -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='creator']/doc:element/doc:field[@name='value']">
 				<dc:creator><xsl:value-of select="." /></dc:creator>
 			</xsl:for-each>
@@ -44,8 +40,15 @@
 				<dc:creator><xsl:value-of select="." /></dc:creator>
 			</xsl:for-each>
 			<!-- dc.contributor.* (!advisor and not opponent / referee) -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name!='advisor' or @name!='opponent' or @name!='referee']/doc:element/doc:field[@name='value']">
-				<dc:contributor><xsl:value-of select="." /></dc:contributor>
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element/doc:element">
+				<xsl:choose>
+					<xsl:when test="../@name='advisor'"></xsl:when>
+					<xsl:when test="../@name='referee'"></xsl:when>
+					<xsl:when test="../@name='opponent'"></xsl:when>
+					<xsl:otherwise>
+						<dc:contributor><xsl:value-of select="field[@name='value']" /></dc:contributor>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:for-each>
 			<!-- dc.contributor -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element/doc:field[@name='value']">
@@ -81,10 +84,6 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
-			<!-- dc.identifier.aleph -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='aleph']/doc:element/doc:field[@name='value']">
-				<dc:identifier.lis><xsl:value-of select="." /></dc:identifier.lis>
-			</xsl:for-each>
 			<!-- dc.identifier.isbn -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:element/doc:field[@name='value']">
 				<dc:identifier.isbn><xsl:value-of select="." /></dc:identifier.isbn>
@@ -105,10 +104,105 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='owningCollection']">
 				<dc:collection><xsl:value-of select="." /></dc:collection>
 			</xsl:for-each>
-
-			
-			
-
+			<!-- END OF: COMMON METADATA -->
+			<!-- SPECIFIC METADATA -->
+			<!-- ALL TYPES -->
+			<!-- Bitstreams -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle']">
+				<xsl:if test="./doc:field[@name='name']/text()='ORIGINAL'">
+					<xsl:for-each select="./doc:element[@name='bitstreams']/doc:element[@name='bitstream']">
+						<dc:relation.file><xsl:value-of select="./doc:field[@name='url']" /></dc:relation.file>
+					</xsl:for-each>
+				</xsl:if>
+			</xsl:for-each>
+			<!-- THESES -->
+			<!-- dc.identifier.repId -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='repId']/doc:element/doc:field[@name='value']">
+				<dc:identifier.sis><xsl:value-of select="." /></dc:identifier.sis>
+			</xsl:for-each>
+			<!-- dc.identifier.sis -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='sis']/doc:element/doc:field[@name='value']">
+				<dc:identifier.sis><xsl:value-of select="." /></dc:identifier.sis>
+			</xsl:for-each>
+			<!-- dc.contributor.advisor -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='advisor']/doc:element/doc:field[@name='value']">
+				<dc:contributor.advisor><xsl:value-of select="." /></dc:contributor.advisor>
+			</xsl:for-each>
+			<!-- dc.contributor.referee -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='referee']/doc:element/doc:field[@name='value']">
+				<dc:contributor.referee><xsl:value-of select="." /></dc:contributor.referee>
+			</xsl:for-each>
+			<!-- dc.description.faculty-->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='faculty']/doc:element/doc:field[@name='value']">
+				<dc:description.faculty><xsl:value-of select="." /></dc:description.faculty>
+			</xsl:for-each>
+			<!-- dc.description.department -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='department']/doc:element/doc:field[@name='value']">
+				<dc:description.department><xsl:value-of select="." /></dc:description.department>
+			</xsl:for-each>
+			<!-- thesis.degree.program -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='thesis']/doc:element[@name='degree']/doc:element[@name='program']/doc:element/doc:field[@name='value']">
+				<dc:description.studyProgram><xsl:value-of select="." /></dc:description.studyProgram>
+			</xsl:for-each>
+			<!-- thesis.degree.discipline -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='thesis']/doc:element[@name='degree']/doc:element[@name='discipline']/doc:element/doc:field[@name='value']">
+				<dc:description.studyField><xsl:value-of select="." /></dc:description.studyField>
+			</xsl:for-each>
+			<!-- Defense status -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='thesis']/doc:element[@name='grade']/doc:element[@name='cs']/doc:element/doc:field[@name='value']">
+				<xsl:choose>
+                    <xsl:when test="./text()='Výtečně'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:when test="./text()='Výborně'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:when test="./text()='Velmi dobře'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:when test="./text()='Dobře'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:when test="./text()='Prospěl'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:when test="./text()='Prospěl/a'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:when test="./text()='Uspokojivě'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:when test="./text()='Dostatečně'">
+                        <dc:description.defended><xsl:text>true</xsl:text></dc:description.defended>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <dc:description.defended><xsl:text>false</xsl:text></dc:description.defended>
+                    </xsl:otherwise>
+                </xsl:choose>
+			</xsl:for-each>
+			<!-- PUBLICATIONS -->
+			<!-- dc.rights -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:field[@name='value']">
+				<dc:rights><xsl:value-of select="." /></dc:rights>
+			</xsl:for-each>
+			<!-- dc.rights.uri -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element[@name='uri']/doc:element/doc:field[@name='value']">
+				<dc:rights.uri><xsl:value-of select="." /></dc:rights.uri>
+			</xsl:for-each>
+			<!-- THESES + PUBLICATIONS -->
+			<!-- dc.description.abstract-->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='abstract']/doc:element/doc:field[@name='value']">
+				<dc:description.abstract><xsl:value-of select="." /></dc:description.abstract>
+			</xsl:for-each>
+			<!-- THESES + DIGITIZED STUDY MATERIALS -->
+			<!-- dc.identifier.aleph -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='aleph']/doc:element/doc:field[@name='value']">
+				<dc:identifier.lis><xsl:value-of select="." /></dc:identifier.lis>
+			</xsl:for-each>
+			<!-- dc.identifier.lisID -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='lisID']/doc:element/doc:field[@name='value']">
+				<dc:identifier.lis><xsl:value-of select="." /></dc:identifier.lis>
+			</xsl:for-each>
 
 			<!-- THESIS SPECIFIC -->
 			<!-- dc.contributor.advisor -->
