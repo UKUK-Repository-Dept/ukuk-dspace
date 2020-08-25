@@ -111,7 +111,7 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle']">
 				<xsl:if test="./doc:field[@name='name']/text()='ORIGINAL'">
 					<xsl:for-each select="./doc:element[@name='bitstreams']/doc:element[@name='bitstream']">
-						<dc:relation.file><xsl:value-of select="./doc:field[@name='url']" /></dc:relation.file>
+						<dc:relation.file><xsl:value-of select="./doc:field[@name='url']" /><xsl:text>|</xsl:text><xsl:value-of select="./doc:field[@name='description']" /></dc:relation.file>
 					</xsl:for-each>
 				</xsl:if>
 			</xsl:for-each>
