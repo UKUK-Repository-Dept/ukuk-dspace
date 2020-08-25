@@ -116,6 +116,11 @@
 
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/115512" form-name="articles" />
+
+	<!-- Volume 2020 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/118532" form-name="articles" />
+	
 	<!-- END OF FÓRUM SOCIÁLNÍ PRÁCE -->
 	
 	<!-- SVĚT LITERATURY -->
@@ -248,6 +253,10 @@
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/115511" form-name="articles" />
 
+	<!-- Volume 2020 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/119689" form-name="articles" />
+
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
 	<!-- PRAŽSKÉ EGYPTOLOGICKÉ STUDIE -->
@@ -376,6 +385,10 @@
 
 	<!-- Issue 58 -->
 	<name-map collection-handle="20.500.11956/116906" form-name="articles" />
+
+	<!-- Volume 2020 -->
+	<!-- Issue 59 -->
+	<name-map collection-handle="20.500.11956/119806" form-name="articles" />
 	<!-- END OF LITTERARIA PRAGENSIA -->
 
 	<!-- SPECIAL DIGITIZATION -->
@@ -646,7 +659,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Jazyk práce (povinný údaj)</label>
 				<input-type value-pairs-name="common_iso_languages_cz">dropdown</input-type>
-				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
+				<hint>Vyberte jazyk práce z rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
 				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
 			</field>
             <field>
@@ -845,7 +858,7 @@ it, please enter the types and the actual numbers or codes.</hint>
 				<repeatable>false</repeatable>
 				<label>Jazyk práce (povinný údaj)</label>
 				<input-type value-pairs-name="common_iso_languages_cz">dropdown</input-type>
-				<hint>Vyberte jazyk práce s rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
+				<hint>Vyberte jazyk práce z rozbalovacího menu. Pokud jazyk práce neodpovídá žádné položce seznamu, zvolte možnost "Jiný".</hint>
 				<required>Musíte vybrat jazyk práce z rozbalovacího seznamu.</required>
 			</field>
             <field>
