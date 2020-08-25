@@ -180,6 +180,10 @@
                     </xsl:otherwise>
                 </xsl:choose>
 			</xsl:for-each>
+			<!-- File availability -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='uk']/doc:element[@name='thesis']/doc:element[@name='file-availability']/doc:element/doc:field[@name='value']">
+				<dc:description.filesAvailability><xsl:value-of select="." /></dc:description.filesAvailability>
+			</xsl:for-each>
 			<!-- PUBLICATIONS -->
 			<!-- dc.rights -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:field[@name='value']">
