@@ -38,11 +38,13 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:variable name="language"><xsl:value-of select="../doc:element/@name" /></xsl:variable>
-						<xsl:element name="{concat('dc:title.', $language)}">
+						<xsl:variable name="language_short"><xsl:value-of select="substring-before($language, '_')" /><xsl:variable>
+						<xsl:element name="{concat('dc:title.', $language_short)}">
 							<xsl:value-of select="." />
 						</xsl:element>
 					</xsl:otherwise>
 				</xsl:choose>
+
 			</xsl:for-each>
 			<!-- dc.title.translated -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element[@name='translated']/doc:element/doc:field[@name='value']">
