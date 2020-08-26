@@ -37,11 +37,11 @@
 						<dc:title><xsl:value-of select="." /></dc:title>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:variable name="language"><xsl:value-of select="../doc:element/@name" /></xsl:variable>
+						<!-- <xsl:variable name="language"><xsl:value-of select="../doc:element/@name" /></xsl:variable>
 						<xsl:variable name="language_short"><xsl:value-of select="substring-before($language, '_')" /><xsl:variable>
-						<xsl:element name="concat('dc:title.', $language_short)">
-							<xsl:value-of select="." />
-						</xsl:element>
+						<xsl:element name="concat('dc:title.', $language_short)"> -->
+						<dc:title><xsl:value-of select="." /></dc:title>
+						<!-- </xsl:element> -->
 					</xsl:otherwise>
 				</xsl:choose>
 
