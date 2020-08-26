@@ -29,11 +29,11 @@
 				
 				<xsl:choose>
 					<xsl:when test="../@name='cs_CZ'">
-						<!-- <xsl:variable name="language" select="concat(../@name)" />
+						<xsl:variable name="language" select="substring-before(../@name,'_')" />
 						<xsl:element name="{concat('dc:title.', $language)}">
 							<xsl:value-of select="." />
-						</xsl:element> -->
-						<dc:title.cs><xsl:value-of select="." /></dc:title.cs>
+						</xsl:element>
+						<!-- <dc:title.cs><xsl:value-of select="." /></dc:title.cs> -->
 					</xsl:when>
 					<xsl:otherwise>
 						<dc:title><xsl:value-of select="." /></dc:title>
