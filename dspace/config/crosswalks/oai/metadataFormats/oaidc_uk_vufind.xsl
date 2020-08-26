@@ -26,7 +26,23 @@
 			<!-- COMMON METADATA -->
 			<!-- dc.title -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
-				<dc:title><xsl:value-of select="." /></dc:title>
+				<xsl:choose>
+					<xsl:when test="../doc:element/@name == 'cs_CZ'">
+						<dc:title.cs><xsl:value-of select="." /></dc:title.cs>
+					</xsl:when>
+					<xsl:when test="../doc:element/@name == 'en_US'">
+						<dc:title.en><xsl:value-of select="." /></dc.title.en>
+					</xsl:when>
+					<xsl:when test="../doc:element/@name == 'none'">
+						<dc:title><xsl:value-of select="." /></dc:title>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:variable name="language"><xsl:value-of select="../doc:element/@name" /></xsl:variable>
+						<xsl:element name="{concat('dc:title.', $language)}">
+							<xsl:value-of select="." />
+						</xsl:element>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:for-each>
 			<!-- dc.title.translated -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element[@name='translated']/doc:element/doc:field[@name='value']">
