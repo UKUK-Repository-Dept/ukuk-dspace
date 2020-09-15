@@ -109,16 +109,20 @@
 			</xsl:for-each>
 			<!-- dc.subject -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='subject']/doc:element/doc:field[@name='value']">
-				<xsl:variable name="language" select="substring-before(../@name,'_')" />
 				<xsl:choose>
-					<xsl:when test="$language = ''">
-						<!-- <dc:title.cs><xsl:value-of select="." /></dc:title.cs> -->
-						<dc:subject><xsl:value-of select="." /></dc:subject>
+					<xsl:when test="../@name = 'none'">
+						<xsl:variable name="language">null</xsl:variable>
+						<xsl:element name="dc:subject">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
+							<xsl:value-of select="." />
+						</xsl:element>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:element name="{concat('dc:subject.', $language)}">
+						<xsl:variable name="language" select="substring(../@name,1,2)" />
+						<xsl:element name="dc:subject">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
 							<xsl:value-of select="." />
-						</xsl:element>		
+						</xsl:element>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:for-each>
