@@ -32,7 +32,7 @@
 						<xsl:variable name="language">null</xsl:variable>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:variable name="language" select="substring-before(../@name,'_'" />
+						<xsl:variable name="language" select="substring-before(../@name,'_')" />
 					</xsl:otherwise>
 				</xsl:choose>
 
@@ -49,7 +49,7 @@
 						<xsl:variable name="language">null</xsl:variable>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:variable name="language" select="substring-before(../@name,'_'" />
+						<xsl:variable name="language" select="substring-before(../@name,'_')" />
 					</xsl:otherwise>
 				</xsl:choose>
 				
