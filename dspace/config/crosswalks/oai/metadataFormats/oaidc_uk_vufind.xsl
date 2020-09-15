@@ -30,38 +30,46 @@
 				<xsl:choose>
 					<xsl:when test="../@name = 'none'">
 						<xsl:variable name="language">null</xsl:variable>
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
+							<xsl:value-of select="." />
+						</xsl:element>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:variable name="language" select="substring-before(../@name,'_')" />
+						<xsl:variable name="language" select="substring(../@name,1,2)" />
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
+							<xsl:value-of select="." />
+						</xsl:element>
 					</xsl:otherwise>
 				</xsl:choose>
-
-				<xsl:element name="dc:title">
-					<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
-					<xsl:value-of select="." />
-				</xsl:element>
-				
 			</xsl:for-each>
+
 			<!-- dc.title.translated -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element[@name='translated']/doc:element/doc:field[@name='value']">
 				<xsl:choose>
 					<xsl:when test="../@name = 'none'">
 						<xsl:variable name="language">null</xsl:variable>
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
+							<xsl:value-of select="." />
+						</xsl:element>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:variable name="language" select="substring-before(../@name,'_')" />
+						<xsl:variable name="language" select="substring(../@name,1,2)" />
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
+							<xsl:value-of select="." />
+						</xsl:element>
 					</xsl:otherwise>
 				</xsl:choose>
-				
-				<xsl:element name="dc:title">
-					<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
-					<xsl:value-of select="." />
-				</xsl:element>
-
 			</xsl:for-each>
+			
+			<!-- dc.creator -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='creator']/doc:element/doc:field[@name='value']">
 				<dc:creator><xsl:value-of select="." /></dc:creator>
 			</xsl:for-each>
+			
 			<!-- dc.contributor.author -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
 				<dc:creator><xsl:value-of select="." /></dc:creator>
