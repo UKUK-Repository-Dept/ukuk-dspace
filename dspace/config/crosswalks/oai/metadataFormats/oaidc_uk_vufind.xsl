@@ -30,12 +30,16 @@
 				<xsl:variable name="language" select="substring-before(../@name,'_')" />
 				<xsl:choose>
 					<xsl:when test="$language = ''">
-						<dc:title><xsl:value-of select="." /></dc:title>
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang">null</xsl:attribute>
+							<xsl:value-of select="." />
+						</xsl:element>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:element name="{concat('dc:title.', $language)}">
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
 							<xsl:value-of select="." />
-						</xsl:element>		
+						</xsl:element>
 					</xsl:otherwise>
 				</xsl:choose>
 				
@@ -45,12 +49,17 @@
 				<xsl:variable name="language" select="substring-before(../@name,'_')" />
 				<xsl:choose>
 					<xsl:when test="$language = ''">
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang">null</xsl:attribute>
+							<xsl:value-of select="." />
+						</xsl:element>
 						<dc:title><xsl:value-of select="." /></dc:title>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:element name="{concat('dc:title.', $language)}">
+						<xsl:element name="dc:title">
+							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
 							<xsl:value-of select="." />
-						</xsl:element>		
+						</xsl:element>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:for-each>
