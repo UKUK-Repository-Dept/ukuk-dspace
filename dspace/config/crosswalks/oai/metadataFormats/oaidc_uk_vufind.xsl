@@ -50,14 +50,14 @@
 				<xsl:choose>
 					<xsl:when test="../@name = 'none'">
 						<xsl:variable name="language">null</xsl:variable>
-						<xsl:element name="dc:title">
+						<xsl:element name="dc:title.translated">
 							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
 							<xsl:value-of select="." />
 						</xsl:element>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:variable name="language" select="substring(../@name,1,2)" />
-						<xsl:element name="dc:title">
+						<xsl:element name="dc:title.translated">
 							<xsl:attribute name="lang"><xsl:value-of select="$language"/></xsl:attribute>
 							<xsl:value-of select="." />
 						</xsl:element>
