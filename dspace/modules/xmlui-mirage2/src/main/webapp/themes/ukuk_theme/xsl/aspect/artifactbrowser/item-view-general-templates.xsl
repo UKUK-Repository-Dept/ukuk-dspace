@@ -542,11 +542,14 @@
     <!-- EMBARGO INFORMATION -->
     <xsl:template name="itemSummaryView-DIM-general-embargo-information">
         <xsl:if test="dim:field[@element='date' and @qualifier='embargoEndDate']">
+            <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='emgargoEndDate']/text()" />
+            
             <xsl:variable name="embargo-date-formated">
                 <xsl:call-template name="formatdate-SIS">
-                    <xsl:with-param name="DateTimeStr" select="dim:field[@element='date' and @qualifier='emgargoEndDate']/text()" />
+                    <xsl:with-param name="DateTimeStr" select="$embargo-date" />
                 </xsl:call-template>
             </xsl:variable>
+            
             <div class="item-page-field-wrapper table word-break alert alert-danger">
                 <h4 class="item-view-heading">
                     <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-heading</i18n:text>
