@@ -256,6 +256,39 @@
                         <xsl:text>)</xsl:text>
                     </xsl:if>
                 </h5>
+                <!-- <JR> - 14. 10. 2020 - Adding embargo information to thesis discovery results -->
+                <xsl:if test="dri:list[@n=(concat($handle, ':dc.date.embargoEndDate'))]">
+                    <div class="artifact-info artifact-info-embargo">
+                        <span class="embargo-information h4">
+                            <small>
+                                <xsl:element name="b">
+                                    <xsl:attribute name="class">
+                                        <xsl:text>search-result-metadata-heading</xsl:text>
+                                    </xsl:attribute>
+                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text>: </xsl:text>
+                                </xsl:element>
+                                <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.date.embargoEndDate'))]/dri:item">
+                                    <xsl:call-template name="formatdate-SIS">
+                                        <xsl:with-param name="DateTimeStr" select="." />
+                                    </xsl:call-template>
+                                </xsl:for-each>
+                            </small>
+                        </span>
+                    </div>
+                    <!-- <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='embargoEndDate']/text()" />
+            
+                    <xsl:variable name="embargo-date-formated">
+                        <xsl:call-template name="formatdate-SIS">
+                            <xsl:with-param name="DateTimeStr" select="$embargo-date" />
+                        </xsl:call-template>
+                    </xsl:variable>
+
+                    <span class="embargo-information h4">
+                        <small>
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text> </xsl:text><xsl:value-of select="$embargo-date-formated" />
+                        </small>
+                    </span> -->
+                </xsl:if>
                 <div class="artifact-info artifact-info-author">
                     <span class="author h4">
                         <small>
@@ -432,39 +465,6 @@
                         </span>
                         <xsl:text> </xsl:text>
                     </div>
-                </xsl:if>
-                <!-- <JR> - 14. 10. 2020 - Adding embargo information to thesis discovery results -->
-                <xsl:if test="dri:list[@n=(concat($handle, ':dc.date.embargoEndDate'))]">
-                    <div class="artifact-info artifact-info-embargo">
-                        <span class="embargo-information h4">
-                            <small>
-                                <xsl:element name="b">
-                                    <xsl:attribute name="class">
-                                        <xsl:text>search-result-metadata-heading</xsl:text>
-                                    </xsl:attribute>
-                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text>: </xsl:text>
-                                </xsl:element>
-                                <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.date.embargoEndDate'))]/dri:item">
-                                    <xsl:call-template name="formatdate-SIS">
-                                        <xsl:with-param name="DateTimeStr" select="." />
-                                    </xsl:call-template>
-                                </xsl:for-each>
-                            </small>
-                        </span>
-                    </div>
-                    <!-- <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='embargoEndDate']/text()" />
-            
-                    <xsl:variable name="embargo-date-formated">
-                        <xsl:call-template name="formatdate-SIS">
-                            <xsl:with-param name="DateTimeStr" select="$embargo-date" />
-                        </xsl:call-template>
-                    </xsl:variable>
-
-                    <span class="embargo-information h4">
-                        <small>
-                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text> </xsl:text><xsl:value-of select="$embargo-date-formated" />
-                        </small>
-                    </span> -->
                 </xsl:if>
                 <xsl:choose>
                     <xsl:when test="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item/dri:hi">
