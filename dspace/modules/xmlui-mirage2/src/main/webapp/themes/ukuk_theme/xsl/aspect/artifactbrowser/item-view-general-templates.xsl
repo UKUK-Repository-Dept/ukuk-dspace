@@ -1053,7 +1053,7 @@
         </xsl:variable>
 
         <xsl:variable name="yyyy">
-            <xsl:value-of select="substring($datestr,6,4)" />
+            <xsl:value-of select="substring($datestr,7,4)" />
         </xsl:variable>
 
         <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
