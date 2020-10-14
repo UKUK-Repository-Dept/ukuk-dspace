@@ -550,10 +550,13 @@
                 </xsl:call-template>
             </xsl:variable>
             
-            <div class="item-page-field-wrapper table word-break alert alert-danger">
+            <div class="item-page-field-wrapper table word-break alert-danger alert-dismissible fade show">
                 <h4 class="item-view-heading">
                     <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-heading</i18n:text>
                 </h4>
+                <button class="close" data-dismiss="alert" aria-label="Zavřít / Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <div>
                     <span>
                         <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text> </xsl:text><xsl:value-of select="$embargo-date-formated" />
