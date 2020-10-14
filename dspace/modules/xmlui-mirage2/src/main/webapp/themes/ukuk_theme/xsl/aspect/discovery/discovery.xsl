@@ -463,8 +463,10 @@
                                     <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text>: </xsl:text>
                                 </xsl:element>
                                 <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.date.embargoEndDate'))]/dri:item">
+                                    <xsl:variable name="embargo-date" select="dri:list[@n=(concat($handle, ':dc.date.embargoEndDate'))]/dri:item/text()" />
+                                    <xsl:value-of select="dri:list[@n=(concat($handle, ':dc.date.embargoEndDate'))]/dri:item" />
                                     <xsl:call-template name="formatdate-SIS">
-                                        <xsl:with-param name="DateTimeStr" select="node()/text()" />
+                                        <xsl:with-param name="DateTimeStr" select="$embargo-date" />
                                     </xsl:call-template>
                                 </xsl:for-each>
                             </small>
