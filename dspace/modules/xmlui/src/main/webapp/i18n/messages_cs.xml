@@ -2294,6 +2294,12 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-referee">oponent práce</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-trl">překladatel</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-other">jiný spoluautor</message>
+	<!-- <JR> 14. 10. 2020 - překlady nadpisu pro upozornění o embargu určité části dokumentu nebo celého dokumentu -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-heading">Omezená dostupnost dokumentu</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-reason-heading">Důvod omezené dostupnosti:</message>
+	<!-- <JR> 14. 10. 2020 - překlady  upozornění o nedostupnosti části dokumentu nebo celého dokumentu -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-date-text">Celý dokument nebo jeho části jsou nepřístupné do</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-reason-general">U dokumentu bylo schváleno odložení zveřejnění.</message>
 	<!--<JR> - 18. 9. 2019 - blok pro formáty souborů v archivu - Digitalizace Carolina-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-archive-contents-formats">Dostupné formáty souborů</message>
 	<!-- <JR> - 20. 2. 2017 - změna na "Klíčová slova"-->

@@ -778,4 +778,25 @@
         <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
     </xsl:template>
 
+    <xsl:template name="formatdate-SIS">
+        <xsl:param name="DateTimeStr" />
+        <xsl:variable name="datestr">
+            <xsl:value-of select="$DateTimeStr" />
+        </xsl:variable>
+
+        <xsl:variable name="dd">
+            <xsl:value-of select="substring($datestr,1,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="mm">
+            <xsl:value-of select="substring($datestr,4,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="yyyy">
+            <xsl:value-of select="substring($datestr,6,4)" />
+        </xsl:variable>
+
+        <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
+    </xsl:template>
+
 </xsl:stylesheet>
