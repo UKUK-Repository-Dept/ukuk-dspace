@@ -221,6 +221,58 @@
                             </xsl:call-template>
                         </xsl:when>
                     </xsl:choose>
+                    <!-- <JR> - 14. 10. 2020 - Added defence status to discovery item-list  -->
+                    <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+                        <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+                            <xsl:choose>
+                                <xsl:when test="node()/text()='Výtečně'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="node()/text()='Výborně'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="node()/text()='Velmi dobře'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="node()/text()='Dobře'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="node()/text()='Prospěl'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="node()/text()='Prospěl/a'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="node()/text()='Uspokojivě'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="node()/text()='Dostatečně'">
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text> (</xsl:text>
+                                        <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view</i18n:text></span>
+                                    <xsl:text>)</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:if>
+                    </xsl:if>
                 </h5>
                 <div class="artifact-info artifact-info-author">
                     <span class="author h4">
@@ -399,6 +451,22 @@
                         <xsl:text> </xsl:text>
                     </div>
                 </xsl:if>
+                <!-- <JR> - 14. 10. 2020 - Adding embargo information to thesis discovery results -->
+                <xsl:if test="dim:field[@element='date' and @qualifier='embargoEndDate']">
+                    <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='embargoEndDate']/text()" />
+            
+                    <xsl:variable name="embargo-date-formated">
+                        <xsl:call-template name="formatdate-SIS">
+                            <xsl:with-param name="DateTimeStr" select="$embargo-date" />
+                        </xsl:call-template>
+                    </xsl:variable>
+
+                    <span class="embargo-information h4">
+                        <small>
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text> </xsl:text><xsl:value-of select="$embargo-date-formated" />
+                        </small>
+                    </span>
+                </xsl:if>
                 <xsl:choose>
                     <xsl:when test="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item/dri:hi">
                         <!--
@@ -520,36 +588,12 @@
         <xsl:variable name="wt">
             <xsl:value-of select="$workType" />
         </xsl:variable>
-        <!--<xsl:value-of select="$workType"/>-->
-
-        <!--<xsl:if test="$wt = 'bakalářská práce'">-->
-            <!--<i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view</i18n:text>-->
-        <!--</xsl:if>-->
-        <!--<xsl:if test="$wt = 'diplomová práce práce'">-->
-            <!--<xsl:variable name="wtTranslated">-->
-                <!--<i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view</i18n:text>-->
-            <!--</xsl:variable>-->
-            <!--<xsl:value-of select="wtTranslated"/>-->
-        <!--</xsl:if>-->
-        <!--<xsl:if test="$wt = 'rigorózní práce'">-->
-            <!--<xsl:variable name="wtTranslated">-->
-                <!--<i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-rigo-th-item-view</i18n:text>-->
-            <!--</xsl:variable>-->
-            <!--<xsl:value-of select="wtTranslated"/>-->
-        <!--</xsl:if>-->
+        
         <xsl:choose>
             <xsl:when test="$wt = 'bakalářská práce'">
-                <!--<xsl:variable name="wtTranslated">-->
-                    <!--<i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view</i18n:text>-->
-                <!--</xsl:variable>-->
-                <!--<xsl:value-of select="wtTranslated"/>-->
                 <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-bachelor-th-item-view</i18n:text>
             </xsl:when>
             <xsl:when test="$wt = 'diplomová práce'">
-                <!--<xsl:variable name="wtTranslated">-->
-                    <!--<i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view</i18n:text>-->
-                <!--</xsl:variable>-->
-                <!--<xsl:value-of select="wtTranslated"/>-->
                 <i18n:text>xmlui.dri2xhtml.METS-1.0.item-type-diploma-th-item-view</i18n:text>
             </xsl:when>
             <xsl:when test="$wt = 'rigorózní práce'">
@@ -1057,6 +1101,27 @@
             </div>
         </xsl:if>
 
+    </xsl:template>
+
+    <xsl:template name="formatdate-SIS">
+        <xsl:param name="DateTimeStr" />
+        <xsl:variable name="datestr">
+            <xsl:value-of select="$DateTimeStr" />
+        </xsl:variable>
+
+        <xsl:variable name="dd">
+            <xsl:value-of select="substring($datestr,1,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="mm">
+            <xsl:value-of select="substring($datestr,4,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="yyyy">
+            <xsl:value-of select="substring($datestr,7,4)" />
+        </xsl:variable>
+
+        <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
     </xsl:template>
 
 

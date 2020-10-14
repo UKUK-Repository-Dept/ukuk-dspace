@@ -555,7 +555,7 @@
                     <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-heading</i18n:text>
                 </h4>
                 <button class="close" data-dismiss="alert" aria-label="Zavřít / Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"><xsl:text>&times;</xsl:text></span>
                 </button>
                 <div>
                     <span>
