@@ -542,7 +542,7 @@
     <!-- EMBARGO INFORMATION -->
     <xsl:template name="itemSummaryView-DIM-general-embargo-information">
         <xsl:if test="dim:field[@element='date' and @qualifier='embargoEndDate']">
-            <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='emgargoEndDate']/text()" />
+            <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='embargoEndDate']/text()" />
             
             <xsl:variable name="embargo-date-formated">
                 <xsl:call-template name="formatdate-SIS">
