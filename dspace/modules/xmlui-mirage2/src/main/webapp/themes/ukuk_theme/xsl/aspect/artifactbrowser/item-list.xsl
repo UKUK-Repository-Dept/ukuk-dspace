@@ -110,15 +110,16 @@
                     &#xFEFF; <!-- non-breaking space to force separating the end tag -->
                 </span>
             </h4>
-            <div class="artifact-info">
-                <span class="defence-status-header h4">
-                    <small>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list</i18n:text><xsl:text>: </xsl:text>
-                    </small>
-                </span>
-                <span class="defence-status h4">
-                    <small>
-                        <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+            <!-- <JR> - 14. 10. 2020 - Added defence status -->
+            <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+                <div class="artifact-defence-status">
+                    <span class="defence-status-header h4">
+                        <small>
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list</i18n:text><xsl:text>: </xsl:text>
+                        </small>
+                    </span>
+                    <span class="defence-status h4">
+                        <small>
                             <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
                                 <xsl:choose>
                                     <xsl:when test="node()/text()='Výtečně'">
@@ -150,10 +151,13 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </xsl:if>
-                        </xsl:if>
-                    </small>
-                </span>
-                <xsl:if test="dim:field[@element='date' and @qualifier='embargoEndDate']">
+                        </small>
+                    </span>
+                </div>
+            </xsl:if>
+            <!-- <JR> - 14. 10. 2020 - Added embargo date -->
+            <xsl:if test="dim:field[@element='date' and @qualifier='embargoEndDate']">
+                <div class="artifact-embargo-information">
                     <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='embargoEndDate']/text()" />
             
                     <xsl:variable name="embargo-date-formated">
@@ -167,7 +171,9 @@
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text> </xsl:text><xsl:value-of select="$embargo-date-formated" />
                         </small>
                     </span>
-                </xsl:if>
+                </div>
+            </xsl:if>
+            <div class="artifact-info">
                 <span class="author h4">
                     <small>
                     <xsl:choose>
@@ -228,7 +234,7 @@
 	                    <xsl:text>)</xsl:text>
                         </small></span>
                 </xsl:if>
-	</div>
+	        </div>
 		<xsl:if test="dim:field[@element='dateAccepted'][not (@qualifier)]">
 			<div class="artifact-defence-date">
             		<span class="defence-date h4"> 
