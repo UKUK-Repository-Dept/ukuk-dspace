@@ -16,7 +16,6 @@
     xmlns:rights="http://cosimo.stanford.edu/sdr/metsrights/"
     xmlns:confman="org.dspace.core.ConfigurationManager"
     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink xsl util jstring rights confman">
-    <xsl:import href="item-view.xsl" />
     
     <xsl:template name="itemSummaryView-DIM-general-title-first">
         <xsl:choose>
@@ -1038,5 +1037,26 @@
     </xsl:template>
 
     <!-- END OF: EMBARGO DATE -->
+
+    <xsl:template name="formatdate-SIS">
+        <xsl:param name="DateTimeStr" />
+        <xsl:variable name="datestr">
+            <xsl:value-of select="$DateTimeStr" />
+        </xsl:variable>
+
+        <xsl:variable name="dd">
+            <xsl:value-of select="substring($datestr,1,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="mm">
+            <xsl:value-of select="substring($datestr,4,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="yyyy">
+            <xsl:value-of select="substring($datestr,6,4)" />
+        </xsl:variable>
+
+        <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
+    </xsl:template>
 
 </xsl:stylesheet>
