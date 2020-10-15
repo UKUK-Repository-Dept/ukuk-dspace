@@ -786,7 +786,7 @@
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.published_before">Zveřejněno</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.published_before_help">Dokument byl již dříve publikován</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.published_before_note">Je-li zaškrtávací pole nahoře označeno, ze záznamu se odstraní následující:</message>
-	<message key="xmlui.Submission.submit.InitialQuestionsStep.date_issued">Dátum publikování</message>
+	<message key="xmlui.Submission.submit.InitialQuestionsStep.date_issued">Datum publikování</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.citation">Citace zdrojového dokumentu</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.publisher">Nakladatel</message>
 	
