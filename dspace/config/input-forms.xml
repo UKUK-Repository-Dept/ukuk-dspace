@@ -356,7 +356,7 @@
 
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/120820" form-name="articles" />
+	<name-map collection-handle="20.500.11956/122216" form-name="articles" />
 	
 	<!-- END OF NOVÁ ČEŠTINA DOMA A VE SVĚTĚ-->
 
@@ -376,7 +376,7 @@
 
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/120822" form-name="articles" />
+	<name-map collection-handle="20.500.11956/122215" form-name="articles" />
 
 	<!-- END OF HISTORIE - OTÁZKY - PROBLÉMY -->
 
@@ -877,7 +877,7 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <label>Autor práce (povinný údaj)</label>
                 <input-type>name</input-type>
                 <hint>Zadejte jméno autorů článku.</hint>
-                <required>Musíte zadat jméno autora habilitační práce.</required>               
+                <required>Musíte zadat jméno autora dokumentu.</required>               
             </field>
             <field>
                 <dc-schema>dc</dc-schema>
