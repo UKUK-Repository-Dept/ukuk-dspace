@@ -152,6 +152,10 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 61 -->
 	<name-map collection-handle="20.500.11956/118174" form-name="articles" />
+	<!-- Issue 62 -->
+	<name-map collection-handle="20.500.11956/122407" form-name="articles" />
+	<!-- Special issue -->
+	<name-map collection-handle="20.500.11956/122648" form-name="articles" />
 	
 	<!-- END OF SVÉT LITERATURY -->
 
@@ -227,7 +231,9 @@
 
 	<!-- Volume 2019 -->
 	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/116253" form-name="articles" />	
+	<name-map collection-handle="20.500.11956/116253" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/122647" form-name="articles" />
      	
 	<!-- END OF STUDIA HERCYNIA -->
 
@@ -274,6 +280,9 @@
 	<!-- Issue 23 -->
 	<name-map collection-handle="20.500.11956/117065" form-name="articles" />
 
+	<!-- Volume 2020 -->
+	<!-- Issue 24 -->
+	<name-map collection-handle="20.500.11956/122406" form-name="articles" />
 	<!-- END OF: PRAŽSKÉ EGYPTOLOGICKÉ STUDIE -->
 	
 	
