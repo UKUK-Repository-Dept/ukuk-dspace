@@ -43,6 +43,8 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/123086" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123652" form-name="articles" />
 	
 	<!-- ČASOPIS PRO MODERNÍ FILOLOGII -->
 	
@@ -126,6 +128,9 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/118532" form-name="articles" />
+
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123631" form-name="articles" />
 	
 	<!-- END OF FÓRUM SOCIÁLNÍ PRÁCE -->
 	
@@ -245,6 +250,10 @@
 	<name-map collection-handle="20.500.11956/116253" form-name="articles" />
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/122647" form-name="articles" />
+
+	<!-- Volume 2020 -->
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123630" form-name="articles" />
      	
 	<!-- END OF STUDIA HERCYNIA -->
 
@@ -273,6 +282,8 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/119689" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123070" form-name="articles" />
 
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
@@ -318,7 +329,7 @@
 	<name-map collection-handle="20.500.11956/123072" form-name="articles" />
 	
 	<!-- Issue 2 -->
-	<name-map collection-handle="20.500.11956/123070" form-name="articles" />
+	<name-map collection-handle="20.500.11956/123653" form-name="articles" />
 
 	<!-- END OF STUDIA ETHNOLOGICA PRAGENSIA -->
 	
@@ -391,7 +402,11 @@
 
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/122216" form-name="articles" />
+  <name-map collection-handle="20.500.11956/122216" form-name="articles" />
+
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123655" form-name="articles" />
+
 	
 	<!-- END OF NOVÁ ČEŠTINA DOMA A VE SVĚTĚ-->
 
@@ -412,6 +427,9 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/122215" form-name="articles" />
+
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123654" form-name="articles" />
 
 	<!-- END OF HISTORIE - OTÁZKY - PROBLÉMY -->
 
