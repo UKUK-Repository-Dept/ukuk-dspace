@@ -110,6 +110,69 @@
                     &#xFEFF; <!-- non-breaking space to force separating the end tag -->
                 </span>
             </h4>
+            <!-- <JR> - 14. 10. 2020 - Added defence status -->
+            <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+                <div class="artifact-defence-status">
+                    <span class="defence-status-header h4">
+                        <small>
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list</i18n:text><xsl:text>: </xsl:text>
+                        </small>
+                    </span>
+                    <span class="defence-status h4">
+                        <small>
+                            <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+                                <xsl:choose>
+                                    <xsl:when test="node()/text()='Výtečně'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="node()/text()='Výborně'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="node()/text()='Velmi dobře'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="node()/text()='Dobře'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="node()/text()='Prospěl'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="node()/text()='Prospěl/a'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="node()/text()='Uspokojivě'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="node()/text()='Dostatečně'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view</i18n:text></span>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:if>
+                        </small>
+                    </span>
+                </div>
+            </xsl:if>
+            <!-- <JR> - 14. 10. 2020 - Added embargo date -->
+            <xsl:if test="dim:field[@element='date' and @qualifier='embargoEndDate']">
+                <div class="artifact-embargo-information">
+                    <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='embargoEndDate']/text()" />
+            
+                    <xsl:variable name="embargo-date-formated">
+                        <xsl:call-template name="formatdate-SIS">
+                            <xsl:with-param name="DateTimeStr" select="$embargo-date" />
+                        </xsl:call-template>
+                    </xsl:variable>
+
+                    <span class="embargo-information h4">
+                        <small>
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text> </xsl:text><xsl:value-of select="$embargo-date-formated" />
+                        </small>
+                    </span>
+                </div>
+            </xsl:if>
             <div class="artifact-info">
                 <span class="author h4">
                     <small>
@@ -171,7 +234,7 @@
 	                    <xsl:text>)</xsl:text>
                         </small></span>
                 </xsl:if>
-	</div>
+	        </div>
 		<xsl:if test="dim:field[@element='dateAccepted'][not (@qualifier)]">
 			<div class="artifact-defence-date">
             		<span class="defence-date h4"> 
@@ -395,6 +458,27 @@
                     </xsl:if>
                 </div>
             </div>
+        </xsl:template>
+
+        <xsl:template name="formatdate-SIS">
+            <xsl:param name="DateTimeStr" />
+            <xsl:variable name="datestr">
+                <xsl:value-of select="$DateTimeStr" />
+            </xsl:variable>
+
+            <xsl:variable name="dd">
+                <xsl:value-of select="substring($datestr,1,2)" />
+            </xsl:variable>
+
+            <xsl:variable name="mm">
+                <xsl:value-of select="substring($datestr,4,2)" />
+            </xsl:variable>
+
+            <xsl:variable name="yyyy">
+                <xsl:value-of select="substring($datestr,7,4)" />
+            </xsl:variable>
+
+            <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
         </xsl:template>
 
 </xsl:stylesheet>

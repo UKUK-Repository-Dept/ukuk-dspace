@@ -786,7 +786,7 @@
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.published_before">Zveřejněno</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.published_before_help">Dokument byl již dříve publikován</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.published_before_note">Je-li zaškrtávací pole nahoře označeno, ze záznamu se odstraní následující:</message>
-	<message key="xmlui.Submission.submit.InitialQuestionsStep.date_issued">Dátum publikování</message>
+	<message key="xmlui.Submission.submit.InitialQuestionsStep.date_issued">Datum publikování</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.citation">Citace zdrojového dokumentu</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.publisher">Nakladatel</message>
 	
@@ -2294,6 +2294,12 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-referee">oponent práce</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-trl">překladatel</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-other">jiný spoluautor</message>
+	<!-- <JR> 14. 10. 2020 - překlady nadpisu pro upozornění o embargu určité části dokumentu nebo celého dokumentu -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-heading">Omezená dostupnost dokumentu</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-reason-heading">Důvod omezené dostupnosti:</message>
+	<!-- <JR> 14. 10. 2020 - překlady  upozornění o nedostupnosti části dokumentu nebo celého dokumentu -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-date-text">Celý dokument nebo jeho části jsou nepřístupné do</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-reason-general">U dokumentu bylo schváleno odložení zveřejnění.</message>
 	<!--<JR> - 18. 9. 2019 - blok pro formáty souborů v archivu - Digitalizace Carolina-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-archive-contents-formats">Dostupné formáty souborů</message>
 	<!-- <JR> - 20. 2. 2017 - změna na "Klíčová slova"-->
@@ -2329,6 +2335,8 @@
 	<!--<JR> - 21. 2. 2017 - přidání výrazu pro oponenta práce  v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-referee-item-view">Oponent práce</message>
 	<message key="xmlui.Discovery.AbstractSearch.type_ds_facultyDepartment">Prohledávat podle fakult a kateder</message>
+	<!-- <JR> - 14. 10. 2020 - přidání výrazů pro nadpis stavu obhájení v item-list -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list">Výsledek obhajoby</message>
 	<!--<JR> - 22. 2. 2017 - přidání výrazů pro obhájené a neobhájené práce v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view">OBHÁJENO</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view">NEOBHÁJENO</message>

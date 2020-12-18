@@ -539,10 +539,63 @@
     </xsl:template>
     <!-- END OF: KEYWORDS (CS)  -->
 
+    <!-- EMBARGO INFORMATION -->
+    <xsl:template name="itemSummaryView-DIM-general-embargo-information">
+        <xsl:if test="dim:field[@element='date' and @qualifier='embargoEndDate']">
+            <xsl:variable name="embargo-date" select="dim:field[@element='date' and @qualifier='embargoEndDate']/text()" />
+            
+            <xsl:variable name="embargo-date-formated">
+                <xsl:call-template name="formatdate-SIS">
+                    <xsl:with-param name="DateTimeStr" select="$embargo-date" />
+                </xsl:call-template>
+            </xsl:variable>
+            
+            <div class="item-page-field-wrapper table word-break alert alert-danger">
+                <h4 class="item-view-heading">
+                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-heading</i18n:text>
+                </h4>
+                
+                <div>
+                    <span>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-date-text</i18n:text><xsl:text> </xsl:text><xsl:value-of select="$embargo-date-formated" />
+                    </span>
+                </div>
+                <xsl:if test="dim:field[@element='embargo' and @qualifier='reason']">
+                    <div>
+                        <h5 class="item-view-heading">
+                            <i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-reason-heading</i18n:text>
+                        </h5>
+                        <div>
+                            <xsl:choose>
+                                <xsl:when test="$active-locale='cs'">
+                                        <xsl:if test="dim:field[@element='embargo' and @qualifier='reason' and @language='cs']">
+                                            <span><xsl:value-of select="dim:field[@element='embargo' and @qualifier='reason' and @language='cs']" /></span>
+                                        </xsl:if>
+                                </xsl:when>
+                                <xsl:when test="$active-locale='en'">
+                                    <xsl:if test="dim:field[@element='embargo' and @qualifier='reason' and @language='en']">
+                                        <span><xsl:value-of select="dim:field[@element='embargo' and @qualifier='reason' and @language='en']" /></span>
+                                    </xsl:if>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <span><i18n:text>xmlui.dri2xhtml.METS-1.0.item-embargo-reason-general</i18n:text></span>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </div>
+                    </div>
+                </xsl:if>
+            </div>
+        </xsl:if>
+    </xsl:template>
+    <!-- END OF: EMBARGO INFORMATION -->
+
     <!-- FILES METADATA -->
     <xsl:template name="itemSummaryView-DIM-general-file-section">
         <xsl:choose>
             <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+
+                <xsl:call-template name="itemSummaryView-DIM-general-embargo-information" />
+                
                 <div class="item-page-field-wrapper table word-break">
                     <h4 class="item-view-heading">
                         <i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-viewOpen</i18n:text>
@@ -988,5 +1041,26 @@
     </xsl:template>
 
     <!-- END OF: EMBARGO DATE -->
+
+    <xsl:template name="formatdate-SIS">
+        <xsl:param name="DateTimeStr" />
+        <xsl:variable name="datestr">
+            <xsl:value-of select="$DateTimeStr" />
+        </xsl:variable>
+
+        <xsl:variable name="dd">
+            <xsl:value-of select="substring($datestr,1,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="mm">
+            <xsl:value-of select="substring($datestr,4,2)" />
+        </xsl:variable>
+
+        <xsl:variable name="yyyy">
+            <xsl:value-of select="substring($datestr,7,4)" />
+        </xsl:variable>
+
+        <xsl:value-of select="concat($dd,'. ', $mm, '. ', $yyyy)" />
+    </xsl:template>
 
 </xsl:stylesheet>
