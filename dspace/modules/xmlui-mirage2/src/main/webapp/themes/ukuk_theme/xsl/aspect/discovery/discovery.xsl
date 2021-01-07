@@ -227,19 +227,17 @@
                             <xsl:text> (</xsl:text>
                             <xsl:choose>
                                 <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='O'">
-                                    <span class="text-theses-defended">
+                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
                                 </xsl:when>
                                 <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='U'">
-                                    <span class="text-theses-defended">
+                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
                                 </xsl:when>
                                 <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='N'">
-                                    <span class="text-theses-failed">
+                                    <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <span class="text-theses-defended">
+                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
                                 </xsl:otherwise>
-                                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text>
-                                    </span>
                             </xsl:choose>
                             <xsl:text>)</xsl:text>
                         </xsl:when>
