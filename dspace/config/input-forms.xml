@@ -36,7 +36,15 @@
 	<!-- Open Access Books of the Faculty of Arts Press -->
 	 <name-map collection-handle="20.500.11956/108460" form-name="oa_books" />
 
-     	<!-- Open Access journals of the Faculty of Arts Press -->
+	<!-- Open Access journals of the Faculty of Arts Press -->
+
+	<!-- BRÜCKEN -->
+
+	<!-- Volume 2020 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/123086" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123652" form-name="articles" />
 	
 	<!-- ČASOPIS PRO MODERNÍ FILOLOGII -->
 	
@@ -120,6 +128,9 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/118532" form-name="articles" />
+
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123631" form-name="articles" />
 	
 	<!-- END OF FÓRUM SOCIÁLNÍ PRÁCE -->
 	
@@ -152,6 +163,10 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 61 -->
 	<name-map collection-handle="20.500.11956/118174" form-name="articles" />
+	<!-- Issue 62 -->
+	<name-map collection-handle="20.500.11956/122407" form-name="articles" />
+	<!-- Special issue -->
+	<name-map collection-handle="20.500.11956/122648" form-name="articles" />
 	
 	<!-- END OF SVÉT LITERATURY -->
 
@@ -184,8 +199,11 @@
 	<name-map collection-handle="20.500.11956/108696" form-name="articles" />
 
 	<!-- Volume 2020 -->
-	<!-- Issue 30 -->
+	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/117128" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123165" form-name="articles" />
+	
 	<!-- END OF LINGUISTICA PRAGENSIA -->
 
 	<!-- SLOVO A SMYSL -->
@@ -211,6 +229,8 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 33 -->
 	<name-map collection-handle="20.500.11956/117320" form-name="articles" />
+	<!-- Issue 34 -->
+	<name-map collection-handle="20.500.11956/123332" form-name="articles" />
 	
 	<!-- END OF SLOVO A SMYSL -->
 
@@ -227,7 +247,13 @@
 
 	<!-- Volume 2019 -->
 	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/116253" form-name="articles" />	
+	<name-map collection-handle="20.500.11956/116253" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/122647" form-name="articles" />
+
+	<!-- Volume 2020 -->
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123630" form-name="articles" />
      	
 	<!-- END OF STUDIA HERCYNIA -->
 
@@ -256,6 +282,8 @@
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/119689" form-name="articles" />
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123070" form-name="articles" />
 
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
@@ -274,6 +302,12 @@
 	<!-- Issue 23 -->
 	<name-map collection-handle="20.500.11956/117065" form-name="articles" />
 
+	<!-- Volume 2020 -->
+	<!-- Issue 24 -->
+	<name-map collection-handle="20.500.11956/122406" form-name="articles" />
+	
+	<!-- Issue 25 -->
+	<name-map collection-handle="20.500.11956/123941" form-name="articles" />
 	<!-- END OF: PRAŽSKÉ EGYPTOLOGICKÉ STUDIE -->
 	
 	
@@ -293,6 +327,13 @@
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/115510" form-name="articles" />
 
+	<!-- Volume 2020 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/123072" form-name="articles" />
+	
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123653" form-name="articles" />
+
 	<!-- END OF STUDIA ETHNOLOGICA PRAGENSIA -->
 	
 	<!-- PRAGUE ECONOMIC AND SOCIAL HISTORY PAPERS -->
@@ -307,6 +348,10 @@
 
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/120042" form-name="articles" />
+
+	<!-- Volume 2019 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/123472" form-name="articles" />
 
 	<!-- CHATREŠŠAR -->
 
@@ -323,6 +368,10 @@
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/117227" form-name="articles" />
 
+	<!-- Volume 2020 -->
+	<!-- Issue 1 -->
+	<name-map collection-handle="20.500.11956/123467" form-name="articles" />
+
 	<!-- END OF CHATREŠSAR -->
 	
 	<!-- PRAGUE PAPERS ON THE HISTORY OF INTERNATIONAL RELATIONS -->
@@ -336,6 +385,9 @@
 	<!-- Volume 2019 -->
 	<!-- Issue 1 -->
 	<name-map collection-handle="20.500.11956/112403" form-name="articles" />
+
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123800" form-name="articles" />
 
 	<!-- END OF PRAGUE PAPERS ON THE HISTORY OF INTERNATIONAL RELATIONS -->
 
@@ -356,7 +408,11 @@
 
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/120820" form-name="articles" />
+  <name-map collection-handle="20.500.11956/122216" form-name="articles" />
+
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123655" form-name="articles" />
+
 	
 	<!-- END OF NOVÁ ČEŠTINA DOMA A VE SVĚTĚ-->
 
@@ -376,7 +432,10 @@
 
 	<!-- Volume 2020 -->
 	<!-- Issue 1 -->
-	<name-map collection-handle="20.500.11956/120822" form-name="articles" />
+	<name-map collection-handle="20.500.11956/122215" form-name="articles" />
+
+	<!-- Issue 2 -->
+	<name-map collection-handle="20.500.11956/123654" form-name="articles" />
 
 	<!-- END OF HISTORIE - OTÁZKY - PROBLÉMY -->
 
@@ -877,7 +936,7 @@ it, please enter the types and the actual numbers or codes.</hint>
                 <label>Autor práce (povinný údaj)</label>
                 <input-type>name</input-type>
                 <hint>Zadejte jméno autorů článku.</hint>
-                <required>Musíte zadat jméno autora habilitační práce.</required>               
+                <required>Musíte zadat jméno autora dokumentu.</required>               
             </field>
             <field>
                 <dc-schema>dc</dc-schema>
@@ -892,7 +951,7 @@ it, please enter the types and the actual numbers or codes.</hint>
             <field>
                 <dc-schema>dc</dc-schema>
                 <dc-element>title</dc-element>
-                <dc-qualifier>alternative</dc-qualifier>
+                <dc-qualifier>translated</dc-qualifier>
                 <repeatable>false</repeatable>
                 <label>Přeložený název práce</label>
                 <input-type>onebox</input-type>
