@@ -224,19 +224,24 @@
                     <!-- <JR> - 7. 1. 2020 - Added defence status based on code to discovery item-list. This will be used when available, otherwise, the template based on thesis grade will be used. -->
                     <xsl:choose>
                         <xsl:when test="dri:list[@n=(concat($handle, ':uk.thesis.defenceStatus'))]">
+                            <xsl:text> (</xsl:text>
                             <xsl:choose>
                                 <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='O'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
+                                    <span class="text-theses-defended">
                                 </xsl:when>
                                 <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='U'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
+                                    <span class="text-theses-defended">
                                 </xsl:when>
                                 <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='N'">
-                                    <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
+                                    <span class="text-theses-failed">
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text></span>
+                                    <span class="text-theses-defended">
                                 </xsl:otherwise>
+                                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="."/></i18n:text>
+                                    </span>
+                            </xsl:choose>
+                            <xsl:text>)</xsl:text>
                         </xsl:when>
                         <xsl:otherwise>
                             <!-- <JR> - 14. 10. 2020 - Added defence status to discovery item-list  -->
