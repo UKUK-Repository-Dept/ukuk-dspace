@@ -2360,7 +2360,11 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list">Defence status</message>
 	<!--<JR> - 22. 2. 2017 - přidání výrazů pro obhájené a neobhájené práce v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view">DEFENDED</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view">FAILED</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view">NOT DEFENDED</message>
+	<!-- <JR> - 7. 1. 2020 - přidání výrazů pro kódy stavu obhajoby kvalifikačních prací, které se budou zobrazovat v item-view -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.O">DEFENDED</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.U">RECOGNIZED</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.N">NOT DEFENDED</message>
 	<!--<JR> - 22. 2. 2017 - přidání výrayů pro ISO hodnoty jazyka práce-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-item-view">Language</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-work-language-cs-item-view">Czech</message>
