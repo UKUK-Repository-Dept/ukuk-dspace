@@ -38,7 +38,7 @@
                 </xsl:choose>
             </xsl:when>
             <xsl:when test="dim:field[@element='grade' and @qualifier='cs']">
-                <xsl:variable name="grade-cs" select="dim:field[@element='grade' and @qualifier='cs']">
+                <xsl:variable name="grade-cs" select="dim:field[@element='grade' and @qualifier='cs']" />
                 <xsl:choose>
                     <xsl:when test="$grade-cs='Výtečně'">
                         <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>)</xsl:text>
