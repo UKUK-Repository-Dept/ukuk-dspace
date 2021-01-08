@@ -111,6 +111,7 @@
                 </span>
             </h4>
             <!-- <JR> - 7. 1. 2020 - Added defence status based on code to discovery item-list. This will be used when available, otherwise, the template based on thesis grade will be used. -->
+            <xsl:choose>
                 <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']">
                     <div class="artifact-defence-status">
                         <span class="defence-status-header h4">
