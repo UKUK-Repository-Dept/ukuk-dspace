@@ -19,8 +19,24 @@
 
     <!-- <JR> - 22. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-theses-defense-status">
-        <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
-            <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
+        <xsl:choose>
+            <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']">
+                <xsl:choose>
+                    <xsl:when test="node()/text()='O'">
+                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="node()/text()='U'">
+                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="node()/text()='N'">
+                        <xsl:text> (</xsl:text><span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:when test="dim:field[@element='grade' and @qualifier='cs']">
                 <xsl:choose>
                     <xsl:when test="node()/text()='Výtečně'">
                         <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>)</xsl:text>
@@ -66,8 +82,8 @@
                         <xsl:text>)</xsl:text>
                     </xsl:otherwise>
                 </xsl:choose>
-            </xsl:if>
-        </xsl:if>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 
     <!-- <JR> - 21. 2. 2017 -->
