@@ -112,51 +112,51 @@
             </h4>
             <!-- <JR> - 7. 1. 2020 - Added defence status based on code to discovery item-list. This will be used when available, otherwise, the template based on thesis grade will be used. -->
             <xsl:choose>
-                <xsl:when test="dri:list[@n=(concat($handle, ':uk.thesis.defenceStatus'))]">
+                <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']">
                     <xsl:text> (</xsl:text>
                     <xsl:choose>
-                        <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='O'">
-                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                        <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='O'">
+                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
                         </xsl:when>
-                        <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='U'">
-                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                        <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='U'">
+                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
                         </xsl:when>
-                        <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']='N'">
-                            <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                        <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='N'">
+                            <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
                         </xsl:when>
                         <xsl:otherwise>
-                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
                         </xsl:otherwise>
                     </xsl:choose>
                     <xsl:text>)</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
                     <!-- <JR> - 14. 10. 2020 - Added defence status to discovery item-list  -->
-                    <xsl:if test="dri:list[@n=(concat($handle, ':thesis.grade.cs'))]">
+                    <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
                         <xsl:text> (</xsl:text>
                             <xsl:choose>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Výtečně'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Výtečně'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Výborně'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Výborně'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Velmi dobře'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Velmi dobře'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Dobře'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Dobře'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Prospěl'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Prospěl'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Prospěl/a'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Prospěl/a'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Uspokojivě'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Uspokojivě'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
-                                <xsl:when test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='grade' and @qualifier='cs']='Dostatečně'">
+                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Dostatečně'">
                                     <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
                                 </xsl:when>
                                 <xsl:otherwise>
