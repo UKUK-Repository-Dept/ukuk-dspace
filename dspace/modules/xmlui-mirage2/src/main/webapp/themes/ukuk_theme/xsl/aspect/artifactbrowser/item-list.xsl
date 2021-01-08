@@ -111,59 +111,72 @@
                 </span>
             </h4>
             <!-- <JR> - 7. 1. 2020 - Added defence status based on code to discovery item-list. This will be used when available, otherwise, the template based on thesis grade will be used. -->
-            <xsl:choose>
                 <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']">
-                    <xsl:text> (</xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='O'">
-                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
-                        </xsl:when>
-                        <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='U'">
-                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
-                        </xsl:when>
-                        <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='N'">
-                            <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>)</xsl:text>
+                    <div class="artifact-defence-status">
+                        <span class="defence-status-header h4">
+                            <small>
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list</i18n:text><xsl:text>: </xsl:text>
+                            </small>
+                        </span>
+                        <span class="defence-status h4">
+                            <xsl:choose>
+                                <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='O'">
+                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                                </xsl:when>
+                                <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='U'">
+                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                                </xsl:when>
+                                <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']='N'">
+                                    <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="dim:field[@element='thesis' and @qualifier='defenceStatus']"/></i18n:text></span>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </span>
+                    </div>
                 </xsl:when>
                 <xsl:otherwise>
                     <!-- <JR> - 14. 10. 2020 - Added defence status to discovery item-list  -->
                     <xsl:if test="dim:field[@element='grade' and @qualifier='cs']">
-                        <xsl:text> (</xsl:text>
-                            <xsl:choose>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Výtečně'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Výborně'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Velmi dobře'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Dobře'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Prospěl'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Prospěl/a'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Uspokojivě'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Dostatečně'">
-                                    <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view</i18n:text></span>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        <xsl:text>)</xsl:text>
+                        <div class="artifact-defence-status">
+                            <span class="defence-status-header h4">
+                                <small>
+                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list</i18n:text><xsl:text>: </xsl:text>
+                                </small>
+                            </span>
+                            <span class="defence-status h4">
+                                <xsl:choose>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Výtečně'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Výborně'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Velmi dobře'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Dobře'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Prospěl'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Prospěl/a'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Uspokojivě'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:when test="dim:field[@element='grade' and @qualifier='cs']='Dostatečně'">
+                                        <span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view</i18n:text></span>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </span>
+                        </div>
                     </xsl:if>
                 </xsl:otherwise>
             </xsl:choose>
