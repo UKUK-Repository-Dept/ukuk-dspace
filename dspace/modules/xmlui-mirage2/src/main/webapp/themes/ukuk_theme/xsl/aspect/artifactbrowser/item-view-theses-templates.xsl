@@ -21,53 +21,55 @@
     <xsl:template name="itemSummaryView-DIM-theses-defense-status">
         <xsl:choose>
             <xsl:when test="dim:field[@element='thesis' and @qualifier='defenceStatus']">
+                <xsl:variable name="defence-status" select="dim:field[@element='thesis' and @qualifier='defenceStatus']" />
                 <xsl:choose>
-                    <xsl:when test="node()/text()='O'">
-                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                    <xsl:when test="$defence-status='O'">
+                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$defence-status"/></i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='U'">
-                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                    <xsl:when test="$defence-status='U'">
+                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$defence-status"/></i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='N'">
-                        <xsl:text> (</xsl:text><span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                    <xsl:when test="$defence-status='N'">
+                        <xsl:text> (</xsl:text><span class="text-theses-failed"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$defence-status"/></i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="node()/text()"/></i18n:text></span><xsl:text>)</xsl:text>
+                        <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view.code.<xsl:value-of select="$defence-status"/></i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
             <xsl:when test="dim:field[@element='grade' and @qualifier='cs']">
+                <xsl:variable name="grade-cs" select="dim:field[@element='grade' and @qualifier='cs']">
                 <xsl:choose>
-                    <xsl:when test="node()/text()='Výtečně'">
+                    <xsl:when test="$grade-cs='Výtečně'">
                         <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Výborně'">
+                    <xsl:when test="$grade-cs='Výborně'">
                         <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Velmi dobře'">
+                    <xsl:when test="$grade-cs='Velmi dobře'">
                         <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Dobře'">
+                    <xsl:when test="$grade-cs='Dobře'">
                         <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Prospěl'">
+                    <xsl:when test="$grade-cs='Prospěl'">
                         <xsl:text> (</xsl:text><span class="text-theses-defended"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text></span><xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Prospěl/a'">
+                    <xsl:when test="$grade-cs='Prospěl/a'">
                         <xsl:text> (</xsl:text>
                         <span class="text-theses-defended">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text>
                         </span>
                         <xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Uspokojivě'">
+                    <xsl:when test="$grade-cs='Uspokojivě'">
                         <xsl:text> (</xsl:text>
                         <span class="text-theses-defended">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text>
                         </span>
                         <xsl:text>)</xsl:text>
                     </xsl:when>
-                    <xsl:when test="node()/text()='Dostatečně'">
+                    <xsl:when test="$grade-cs='Dostatečně'">
                         <xsl:text> (</xsl:text>
                         <span class="text-theses-defended">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view</i18n:text>
