@@ -397,32 +397,34 @@
     <!--    THESIS AFILIATION   -->
     <!-- <AM> - 18. 4. 2017 -->
     <xsl:template name="itemSummaryView-DIM-theses-affiliation">
-        <div class="simple-item-view-description item-page-field-wrapper table">
-            <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-affiliation-item-view</i18n:text></h4>
-            <div>
-                <xsl:choose>
-                    <xsl:when test="dim:field[@element='author' and @qualifier='affiliation']">
-                        <xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation']"/>
-                        <xsl:if test="dim:field[@element='author' and @qualifier='affiliation' and @language='en']">
-                            <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation' and @language='en']"/>
-                        </xsl:if>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:choose>
-                            <xsl:when test="$active-locale='en'">
-                                <xsl:text>Information unavailable</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="$active-locale='cs'">
-                                <xsl:text>Informace není k dispozici</xsl:text>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:text>Information unavailable</xsl:text>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </xsl:otherwise>
-                </xsl:choose>
+        <xsl:if test="dim:field[@element='author' and @qualifier='affiliation']">
+            <div class="simple-item-view-description item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-affiliation-item-view</i18n:text></h4>
+                <div>
+                    <xsl:choose>
+                        <xsl:when test="dim:field[@element='author' and @qualifier='affiliation']">
+                            <xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation']"/>
+                            <xsl:if test="dim:field[@element='author' and @qualifier='affiliation' and @language='en']">
+                                <xsl:text> / </xsl:text><xsl:value-of select="dim:field[@element='author' and @qualifier='affiliation' and @language='en']"/>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:choose>
+                                <xsl:when test="$active-locale='en'">
+                                    <xsl:text>Information unavailable</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="$active-locale='cs'">
+                                    <xsl:text>Informace není k dispozici</xsl:text>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>Information unavailable</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </div>
             </div>
-        </div>
+        </xsl:if>
     </xsl:template>
     <!--    END OF: THESIS AFILIATION   -->
 </xsl:stylesheet>
