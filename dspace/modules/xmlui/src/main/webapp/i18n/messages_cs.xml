@@ -2320,6 +2320,8 @@
         <message key="xmlui.dri2xhtml.METS-1.0.item-affiliation-item-view">Afiliace autora</message>
 	<!--<JR> - 20.2.2017 - přidání výrazu pro katedru/ústav v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-department-item-view">Katedra / ústav / klinika</message>
+	<!-- <JR> - 11. 1. 2021 - přidání výrazu pro externí katedru/ústav/kliniku v item-view -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-department-external-item-view">Katedra / ústav / klinika (externí)</message>
 	<!--<JR> - 20. 2. 2017 - přidání výrazu pro typ práce v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-type-item-view">Typ dokumentu</message>
 	<!--<JR> - 20. 2. 2017 - přidání výrazů pro jednotlivé typy dokumentů v item-view-->

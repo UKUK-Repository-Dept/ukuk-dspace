@@ -238,6 +238,7 @@
     <!--    THESIS DEPARTMENT   -->
     <!-- <JR> - 20. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-theses-department">
+        <xsl:if test="dim:field[@element='description' and @qualifier='department']">
             <div class="simple-item-view-description item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-department-item-view</i18n:text></h4>
                 <div>
@@ -265,8 +266,49 @@
                     </xsl:choose>
                 </div>
             </div>
+        </xsl:if>
     </xsl:template>
     <!--    END OF: THESIS DEPARTMENT   -->
+
+    <!-- <JR> - 11. 1. 2021 - THESIS EXTERNAL DEPARTMENT-->
+    <xsl:template name="itemSummaryView-DIM-theses-department-external">
+        <xsl:if test="dim:field[@element='departmentExternal' and @qualifier='name']">
+            <div class="simple-item-view-description item-page-field-wrapper table">
+                <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-department-external-item-view</i18n:text></h4>
+                <div>
+                    <xsl:choose>
+                        <xsl:when test="$active-locale='en'">
+                            <xsl:choose>
+                                <xsl:when test="dim:field[@element='departmentExternal' and @qualifier='name' and @language='en_US']">
+                                    <xsl:value-of select="dim:field[@element='departmentExternal' and @qualifier='name' and @language='en_US']"/>
+                                </xsl:when>
+                                <xsl:when test="dim:field[@element='departmentExternal' and @qualifier='name' and @language='cs_CZ']">
+                                    <xsl:value-of select="dim:field[@element='departmentExternal' and @qualifier='name' and @language='cs_CZ']"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>Information is unavailable</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:when>
+                        <xsl:when test="$active-locale='cs'">
+                            <xsl:choose>                        
+                                <xsl:when test="dim:field[@element='departmentExternal' and @qualifier='name' and @language='cs_CZ']">
+                                    <xsl:value-of select="dim:field[@element='departmentExternal' and @qualifier='name' and @language='cs_CZ']"/>
+                                </xsl:when>
+                                <xsl:when test="dim:field[@element='departmentExternal' and @qualifier='name' and @language='en_US']">
+                                    <xsl:value-of select="dim:field[@element='departmentExternal' and @qualifier='name' and @language='en_US']"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>Informace není k dispozici</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:when>
+                    </xsl:choose>
+                </div>
+            </div>
+        </xsl:if>
+    </xsl:template>
+    <!--    END OF: THESIS EXTERNAL DEPARTMENT   -->
 
     <!--    THESIS ACCEPTANCE DATE  -->
     <!-- <JR> - 21. 2. 2017 -->

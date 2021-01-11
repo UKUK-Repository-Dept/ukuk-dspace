@@ -225,6 +225,7 @@
 		    <xsl:call-template name="itemSummaryView-DIM-theses-faculty"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-discipline"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-department"/>
+            <xsl:call-template name="itemSummaryView-DIM-theses-department-external" />
 		    <xsl:call-template name="itemSummaryView-DIM-theses-acceptance-date"/>
             <xsl:call-template name="itemSummaryView-DIM-general-publisher"/>
             <!-- <xsl:call-template name="itemSummaryView-DIM-publications-identifiers"/> -->
