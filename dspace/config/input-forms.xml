@@ -1503,6 +1503,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 			<displayed-value>Univerzita Karlova</displayed-value>
 			<stored-value>Univerzita Karlova</stored-value>
 		</pair>
+		<pair>
+			<displayed-value>Ministerstvo školství, mládeže a tělovýchovy</displayed-value>
+			<stored-value>Ministerstvo školství, mládeže a tělovýchovy</stored-value>
+		</pair>
 	</value-pairs>
 
     <value-pairs value-pairs-name="ukdstypes_CS" dc-term="type">
