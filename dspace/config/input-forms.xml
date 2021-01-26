@@ -2005,6 +2005,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 			<stored-value></stored-value>
 		</pair>
 		<pair>
+			<displayed-value>Autor komentáře</displayed-value>
+			<stored-value>cwt</stored-value>
+		</pair>
+		<pair>
 			<displayed-value>Autor předmluvy</displayed-value>
 			<stored-value>aui</stored-value>
 		</pair>
