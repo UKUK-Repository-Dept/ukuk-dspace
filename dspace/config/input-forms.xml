@@ -1480,6 +1480,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 
 	<value-pairs value-pairs-name="uk_license_uri" dc-term="rights_uri">
 		<pair>
+			<displayed-value>CC BY 4.0</displayed-value>
+			<stored-value>https://creativecommons.org/licenses/by/4.0/</stored-value>
+		</pair>
+		<pair>
 			<displayed-value>CC BY-NC-ND 2.0</displayed-value>
 			<stored-value>http://creativecommons.org/licenses/by-nc-nd/2.0/</stored-value>
 		</pair>
