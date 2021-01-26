@@ -2315,6 +2315,12 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-trl">Translator</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-cwt">Commentator for written text</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-other">Other Contributor</message>
+	<!-- <JR> 14. 10. 2020 - překlady nadpisu pro upozornění o embargu určité části dokumentu nebo celého dokumentu -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-heading">Item with restricted access</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-reason-heading">Reason for restricted acccess:</message>
+	<!-- <JR> 14. 10. 2020 - překlady obecného upozornění o nedostupnosti části dokumentu nebo celého dokumentu -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-date-text">Whole item or its parts have restricted access until</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-reason-general">Delayed publication date was allowed for this document.</message>
 	<!--<JR> - 18. 9. 2019 - blok pro formáty souborů v archivu - Digitalizace Carolina-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-archive-contents-formats">Available file formats</message>
 	<!--<JR> - 20. 2. 2017 - změna na "Keywords"-->
@@ -2351,6 +2357,8 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-referee-item-view">Referee</message>
 	<message key="xmlui.Discovery.AbstractSearch.type_ds_facultyDepartment">Search by faculty and department</message>
 	<message key="xmlui.Discovery.AbstractSearch.type_ds_uk_language">Filter by: Language</message>
+	<!-- <JR> - 14. 10. 2020 - přidání výrazů pro nadpis stavu obhájení v item-list -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-heading-item-list">Defence status</message>
 	<!--<JR> - 22. 2. 2017 - přidání výrazů pro obhájené a neobhájené práce v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-defended-item-view">DEFENDED</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-defense-status-not-defended-item-view">FAILED</message>
