@@ -231,6 +231,8 @@
 	<name-map collection-handle="20.500.11956/117320" form-name="articles" />
 	<!-- Issue 34 -->
 	<name-map collection-handle="20.500.11956/123332" form-name="articles" />
+	<!-- Issue 35 -->
+	<name-map collection-handle="20.500.11956/124194" form-name="articles" />
 	
 	<!-- END OF SLOVO A SMYSL -->
 
@@ -284,6 +286,8 @@
 	<name-map collection-handle="20.500.11956/119689" form-name="articles" />
 	<!-- Issue 2 -->
 	<name-map collection-handle="20.500.11956/123070" form-name="articles" />
+	<!-- Special Issue 2020 -->
+	<name-map collection-handle="20.500.11956/124183" form-name="articles" />
 
 	<!-- END OF STUDIE Z APLIKOVANÉ LINGVISTIKY -->
 
@@ -1482,6 +1486,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 
 	<value-pairs value-pairs-name="uk_license_uri" dc-term="rights_uri">
 		<pair>
+			<displayed-value>CC BY 4.0</displayed-value>
+			<stored-value>https://creativecommons.org/licenses/by/4.0/</stored-value>
+		</pair>
+		<pair>
 			<displayed-value>CC BY-NC-ND 2.0</displayed-value>
 			<stored-value>http://creativecommons.org/licenses/by-nc-nd/2.0/</stored-value>
 		</pair>
@@ -2005,6 +2013,10 @@ it, please enter the types and the actual numbers or codes.</hint>
 		<pair>
 			<displayed-value>Žádný</displayed-value>
 			<stored-value></stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Autor komentáře</displayed-value>
+			<stored-value>cwt</stored-value>
 		</pair>
 		<pair>
 			<displayed-value>Autor předmluvy</displayed-value>

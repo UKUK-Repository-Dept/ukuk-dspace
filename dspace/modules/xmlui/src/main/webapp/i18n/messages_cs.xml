@@ -2293,6 +2293,7 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-com">zpracovatel</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-referee">oponent práce</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-trl">překladatel</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-cwt">autor komentáře</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-contributor-other">jiný spoluautor</message>
 	<!-- <JR> 14. 10. 2020 - překlady nadpisu pro upozornění o embargu určité části dokumentu nebo celého dokumentu -->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-embargo-heading">Omezená dostupnost dokumentu</message>
