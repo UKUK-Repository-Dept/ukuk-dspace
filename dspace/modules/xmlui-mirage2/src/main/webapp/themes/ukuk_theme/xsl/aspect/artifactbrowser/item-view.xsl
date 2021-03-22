@@ -220,6 +220,7 @@
 		<div class="col-xs-12 col-sm-7">
 		    <xsl:call-template name="itemSummaryView-DIM-general-authors"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-advisors"/>
+            <xsl:call-template name="itemSummaryView-DIM-theses-consultants"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-referees"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-affiliation"/>
 		    <xsl:call-template name="itemSummaryView-DIM-theses-faculty"/>
