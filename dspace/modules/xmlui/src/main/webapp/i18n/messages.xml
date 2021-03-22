@@ -2355,6 +2355,8 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-acceptance-date-item-view">Date of defense</message>
 	<!--<JR> - 21. 2. 2017 - přidání výrazu pro vedoucího práce  v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-advisor-item-view">Advisor</message>
+	<!-- <JR> - 22. 3. 2021 - přidání výrazu pro konzultanta práce v item-view -->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-consultant-item-view">Consultant</message>
 	<!--<JR> - 21. 2. 2017 - přidání výrazu pro oponenta práce  v item-view-->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-referee-item-view">Referee</message>
 	<message key="xmlui.Discovery.AbstractSearch.type_ds_facultyDepartment">Search by faculty and department</message>
