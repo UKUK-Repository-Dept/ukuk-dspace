@@ -154,7 +154,7 @@
             <div class="simple-item-view-consultants item-page-field-wrapper table">
                 <h4 class="item-view-heading"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-consultant-item-view</i18n:text></h4>
                 <xsl:for-each select="dim:field[@element='contributor' and @qualifier='consultant']">
-                    <xsl:call-template name="itemSummaryView-DIM-theses-advisors-entry" />
+                    <xsl:call-template name="itemSummaryView-DIM-theses-consultants-entry" />
                 </xsl:for-each>
             </div>
         </xsl:if>
@@ -169,7 +169,7 @@
         </div>
     </xsl:template>
     <!-- END OF: THESIS CONSULTANTS -->
-    
+
     <!-- THESIS FACULTY -->
     <!-- <JR> - 20. 2. 2017 -->
     <xsl:template name="itemSummaryView-DIM-theses-faculty">
